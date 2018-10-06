@@ -12,23 +12,23 @@ Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 **Juho Lee**, Lancelot F. James, Seungjin Choi, and François Caron\\
 [Codes](https://github.com/OxCSML-BayesNP/BNRG)
 
-- [Set Transformer](https://arxiv.org/abs/1810.00825)\\
+- [Set transformer](https://arxiv.org/abs/1810.00825)\\
 **Juho Lee**, Yoonho Lee, Jungtaek Kim, Adam R. Kosiorek, Seungjin Choi, and Yee Whye Teh
 
-- [Learning to Propagate Labels: Transductive Propagation Network for Few-shot Learning](https://arxiv.org/abs/1805.10002)\\
-Yanbin Liu, **Juho Lee**, Minseop Park, Saehoon Kim, Eunho Yang, Sungju Hwan and Yi Yang
+- [Learning to propagate labels: transductive propagation network for few-shot learning](https://arxiv.org/abs/1805.10002)\\
+Yanbin Liu, **Juho Lee**, Minseop Park, Saehoon Kim, Eunho Yang, Sung Ju Hwang and Yi Yang
 
-- [Adaptive Network Sparsification via Dependent Variational Beta-Bernoulli Dropout](https://arxiv.org/abs/1805.10896v2)\\
+- [Adaptive network sparsification via dependent variational beta-Bernoulli dropout](https://arxiv.org/abs/1805.10896v2)\\
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
-- [Uncertainty-Aware Attention for Reliable Interpretation and Prediction](https://arxiv.org/abs/1805.09653)\\
+- [Uncertainty-aware attention for reliable interpretation and prediction](https://arxiv.org/abs/1805.09653)\\
 Jay Heo\*, Hae Beom Lee\*, Saehoon Kim, **Juho Lee**, Kwang Joon Kim, Eunho Yang, and Sung Ju
 Hwang\\
 (*: Equal Constribution)\\
 NIPS 2018
 
-- [Dropmax: Adaptive Variational Softmax](https://arxiv.org/abs/1712.07834)\\
+- [Dropmax: adaptive variational softmax](https://arxiv.org/abs/1712.07834)\\
 Hae Beom Lee, **Juho Lee**, Saehoon Kim, Eunho Yang, and Sung Ju Hwang\\
 NIPS 2018\\
 [Codes](https://github.com/haebeom-lee/dropmax)
