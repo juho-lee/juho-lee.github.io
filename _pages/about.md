@@ -18,4 +18,4 @@ My [CV](files/cv.pdf) (updated Oct 2018).
 - Bayesian deep learning & deep Bayesian learning
 
 ## Contacts
-- (First_name).(Last_name) at stats.ox.ac.uk
+- (first_name).(last_name) at stats.ox.ac.uk
