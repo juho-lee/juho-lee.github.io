@@ -8,29 +8,31 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
-- [A Bayesian model for sparse graphs with flexible degree distribution and overlapping community structure](https://arxiv.org/abs/1810.01778)\\
-**Juho Lee**, Lancelot F. James, Seungjin Choi, and François Caron\\
-[Codes](https://github.com/OxCSML-BayesNP/BNRG)
-
 - [Set transformer](https://arxiv.org/abs/1810.00825)\\
 **Juho Lee**, Yoonho Lee, Jungtaek Kim, Adam R. Kosiorek, Seungjin Choi, and Yee Whye Teh
-
-- [Learning to propagate labels: transductive propagation network for few-shot learning](https://arxiv.org/abs/1805.10002)\\
-Yanbin Liu, **Juho Lee**, Minseop Park, Saehoon Kim, Eunho Yang, Sung Ju Hwang and Yi Yang
 
 - [Adaptive network sparsification via dependent variational beta-Bernoulli dropout](https://arxiv.org/abs/1805.10896v2)\\
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
+- [Learning to propagate labels: transductive propagation network for few-shot learning](https://arxiv.org/abs/1805.10002)\\
+Yanbin Liu, **Juho Lee**, Minseop Park, Saehoon Kim, Eunho Yang, Sung Ju Hwang and Yi Yang\\
+ICLR 2019
+
+- [A Bayesian model for sparse graphs with flexible degree distribution and overlapping community structure](https://arxiv.org/abs/1810.01778)\\
+**Juho Lee**, Lancelot F. James, Seungjin Choi, and François Caron\\
+AISTATS 2019 (oral presentation)\\
+[Codes](https://github.com/OxCSML-BayesNP/BNRG)
+
 - [Uncertainty-aware attention for reliable interpretation and prediction](https://arxiv.org/abs/1805.09653)\\
 Jay Heo\*, Hae Beom Lee\*, Saehoon Kim, **Juho Lee**, Kwang Joon Kim, Eunho Yang, and Sung Ju
 Hwang\\
 (*: Equal Constribution)\\
-NIPS 2018
+NeurIPS 2018
 
 - [Dropmax: adaptive variational softmax](https://arxiv.org/abs/1712.07834)\\
 Hae Beom Lee, **Juho Lee**, Saehoon Kim, Eunho Yang, and Sung Ju Hwang\\
-NIPS 2018\\
+NeurIPS 2018\\
 [Codes](https://github.com/haebeom-lee/dropmax)
 
 - [Bayesian inference on random simple graphs with power law degree distributions](http://proceedings.mlr.press/v70/lee17a.html)\\
