@@ -8,7 +8,11 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
-- [Set transformer](https://arxiv.org/abs/1810.00825)\\
+- Beyond the Chinese restaurant and Pitman-Yor processes: statistical models with double power-law behavior\\
+Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
+(*: Equal Contribution)
+
+- [Set transformer: a framework for attention-based permutation-invariant neural networks](https://arxiv.org/abs/1810.00825)\\
 **Juho Lee**, Yoonho Lee, Jungtaek Kim, Adam R. Kosiorek, Seungjin Choi, and Yee Whye Teh
 
 - [Adaptive network sparsification via dependent variational beta-Bernoulli dropout](https://arxiv.org/abs/1805.10896v2)\\
