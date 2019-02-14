@@ -8,8 +8,7 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
-- Beyond the Chinese restaurant and Pitman-Yor processes:\\ 
-statistical models with double power-law behavior\\
+- [Beyond the Chinese restaurant and Pitman-Yor processes: statistical models with double power-law behavior](https://arxiv.org/abs/1902.04714)\\
 Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
 (*: Equal Contribution)
 
