@@ -15,8 +15,11 @@ Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
 - [Set transformer: a framework for attention-based permutation-invariant neural networks](https://arxiv.org/abs/1810.00825)\\
 **Juho Lee**, Yoonho Lee, Jungtaek Kim, Adam R. Kosiorek, Seungjin Choi, and Yee Whye Teh
 
-- [Adaptive network sparsification via dependent variational beta-Bernoulli dropout](https://arxiv.org/abs/1805.10896v2)\\
+- [Adaptive network sparsification with dependent variational beta-Bernoulli dropout](https://arxiv.org/abs/1805.10896v3)\\
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
+
+- [Mixed effect composite RNN-GP: a personalized and reliable prediction model for healthcare](https://arxiv.org/abs/1806.01551)\\
+Ingyo Chung, Saehoon Kim, **Juho Lee**, Sung Ju Hwang, Eunho Yang
 
 ## Conferences
 - [Learning to propagate labels: transductive propagation network for few-shot learning](https://arxiv.org/abs/1805.10002)\\
