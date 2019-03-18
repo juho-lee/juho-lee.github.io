@@ -8,14 +8,19 @@ redirect_from:
   - /about.html
 ---
 
-I'm a postdoc in [machine learning group at University of Oxford](http://csml.stats.ox.ac.uk), working with Professor [François Caron](http://www.stats.ox.ac.uk/~caron/). I'm also working as a research scientist for [AITRICS](https://www.aitrics.com). Before joining Oxford, I finished my PhD in computer science & engineering at POSTECH, South Korea, under the supervision of Professor [Seungjin Choi](http://mlg.postech.ac.kr/~seungjin/).
+I'm a research scientist at [AITRICS](https://www.aitrics.com). Prior to joining AITRICS, I worked
+as a postdoc in [machine larning group at Univsersity of Oxford](http://csml.stats.ox.ac.uk) with
+Professor [François Caron](http://www.stats.ox.ac.uk/~caron/). I finished my PhD in computer science
+& engineering at POSTECH, under the supervision of Professor [Seungjin
+Choi](http://mlg.postech.ac.kr/~seungjin/).
 
-My [CV](files/cv.pdf) (updated Oct 2018).
+My [CV](files/cv.pdf) (updated Mar 2019).
 
 ## Research Interests
 - Bayesian nonparametric models
 - Random graph models
 - Bayesian deep learning & deep Bayesian learning
+- Deep learning for healthcare
 
 ## Contacts
-- (first_name).(last_name) at stats.ox.ac.uk
+- (first_name) at aitrics.com
