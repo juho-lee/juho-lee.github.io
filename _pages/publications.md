@@ -8,13 +8,6 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
-- [Beyond the Chinese restaurant and Pitman-Yor processes: statistical models with double power-law behavior](https://arxiv.org/abs/1902.04714)\\
-Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
-(*: Equal Contribution)
-
-- [Set transformer: a framework for attention-based permutation-invariant neural networks](https://arxiv.org/abs/1810.00825)\\
-**Juho Lee**, Yoonho Lee, Jungtaek Kim, Adam R. Kosiorek, Seungjin Choi, and Yee Whye Teh
-
 - [Adaptive network sparsification with dependent variational beta-Bernoulli dropout](https://arxiv.org/abs/1805.10896v3)\\
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
@@ -22,6 +15,15 @@ Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
 Ingyo Chung, Saehoon Kim, **Juho Lee**, Sung Ju Hwang, Eunho Yang
 
 ## Conferences
+- [Beyond the Chinese restaurant and Pitman-Yor processes: statistical models with double power-law behavior](https://arxiv.org/abs/1902.04714)\\
+Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
+(*: Equal Contribution)
+ICML 2019
+
+- [Set transformer: a framework for attention-based permutation-invariant neural networks](https://arxiv.org/abs/1810.00825)\\
+**Juho Lee**, Yoonho Lee, Jungtaek Kim, Adam R. Kosiorek, Seungjin Choi, and Yee Whye Teh\\
+ICML 2019
+
 - [Learning to propagate labels: transductive propagation network for few-shot learning](https://arxiv.org/abs/1805.10002)\\
 Yanbin Liu, **Juho Lee**, Minseop Park, Saehoon Kim, Eunho Yang, Sung Ju Hwang and Yi Yang\\
 ICLR 2019
