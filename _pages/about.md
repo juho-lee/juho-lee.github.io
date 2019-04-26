@@ -14,7 +14,7 @@ Professor [François Caron](http://www.stats.ox.ac.uk/~caron/). I finished my Ph
 & engineering at POSTECH, under the supervision of Professor [Seungjin
 Choi](http://mlg.postech.ac.kr/~seungjin/).
 
-My [CV](files/cv.pdf) (updated Mar 2019).
+My [CV](files/cv.pdf) (updated Apr. 2019).
 
 ## Research Interests
 - Bayesian nonparametric models
