@@ -23,7 +23,7 @@ Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
 (*: Equal Contribution)\\
 ICML 2019
 
-- [Set transformer: a framework for attention-based permutation-invariant neural networks](https://arxiv.org/abs/1810.00825)\\
+- [Set transformer: a framework for attention-based permutation-invariant neural networks](https://arxiv.org/abs/1810.00825v3)\\
 **Juho Lee**, Yoonho Lee, Jungtaek Kim, Adam R. Kosiorek, Seungjin Choi, and Yee Whye Teh\\
 ICML 2019
 
