@@ -8,6 +8,9 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
+- [A unified construction for series representations and finite approximations of completely random measures](https://arxiv.org/abs/1905.10733)\\
+**Juho Lee**, Xenia Miscouridou, François Caron
+
 - [Adaptive network sparsification with dependent variational beta-Bernoulli dropout](https://arxiv.org/abs/1805.10896v3)\\
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
