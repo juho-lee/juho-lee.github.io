@@ -21,7 +21,7 @@ Ingyo Chung, Saehoon Kim, **Juho Lee**, Sung Ju Hwang, Eunho Yang
 - [Beyond the Chinese restaurant and Pitman-Yor processes: statistical models with double power-law behavior](https://arxiv.org/abs/1902.04714)\\
 Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
 (*: Equal Contribution)\\
-ICML 2019
+ICML 2019 (full oral presentation)
 
 - [Set transformer: a framework for attention-based permutation-invariant neural networks](https://arxiv.org/abs/1810.00825v3)\\
 **Juho Lee**, Yoonho Lee, Jungtaek Kim, Adam R. Kosiorek, Seungjin Choi, and Yee Whye Teh\\
