@@ -8,6 +8,9 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
+- [Deep amortized clustering](https://arxiv.org/abs/1909.13433)\\
+**Juho Lee**, Yoonho Lee, Yee Whye Teh
+
 - [A unified construction for series representations and finite approximations of completely random measures](https://arxiv.org/abs/1905.10733)\\
 **Juho Lee**, Xenia Miscouridou, François Caron
 
