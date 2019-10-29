@@ -9,7 +9,8 @@ Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
 - [Deep amortized clustering](https://arxiv.org/abs/1909.13433)\\
-**Juho Lee**, Yoonho Lee, Yee Whye Teh
+**Juho Lee**, Yoonho Lee, Yee Whye Teh\\
+Accepted to [NeurIPS 2019 Sets \& Partitions workshop](https://www.sets.parts) as an oral presentation.
 
 - [A unified construction for series representations and finite approximations of completely random measures](https://arxiv.org/abs/1905.10733)\\
 **Juho Lee**, Xenia Miscouridou, François Caron
