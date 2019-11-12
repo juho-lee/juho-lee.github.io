@@ -18,10 +18,12 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 - [Adaptive network sparsification with dependent variational beta-Bernoulli dropout](https://arxiv.org/abs/1805.10896v3)\\
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
-- [Mixed effect composite RNN-GP: a personalized and reliable prediction model for healthcare](https://arxiv.org/abs/1806.01551)\\
-Ingyo Chung, Saehoon Kim, **Juho Lee**, Sung Ju Hwang, Eunho Yang
-
 ## Conferences
+- [Deep mixed effect model using Gaussian processes: a personalized and reliable prediction for
+  healthcare](https://arxiv.org/abs/1806.01551)\\
+Ingyo Chung, Saehoon Kim, **Juho Lee**, Sung Ju Hwang, Eunho Yang\\
+AAAI 2020 (to appear)
+
 - [Beyond the Chinese restaurant and Pitman-Yor processes: statistical models with double power-law behavior](https://arxiv.org/abs/1902.04714)\\
 Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
 (*: Equal Contribution)\\
