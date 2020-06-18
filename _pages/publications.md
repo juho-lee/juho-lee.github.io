@@ -19,6 +19,10 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
+-[Cost-effective Interactive Attention Learning with Neural Attention Processes](https://arxiv.org/abs/2006.05419)\\
+Jay Heo, Junhyeon Park, Hyewon Jeong, Kwang Joon Kim, **Juho Lee**, Eunho Yang, Sung Ju Hwang\\
+ICML 2020 (to appear)
+
 - [Deep mixed effect model using Gaussian processes: a personalized and reliable prediction for
   healthcare](https://arxiv.org/abs/1806.01551)\\
 Ingyo Chung, Saehoon Kim, **Juho Lee**, Sung Ju Hwang, Eunho Yang\\
