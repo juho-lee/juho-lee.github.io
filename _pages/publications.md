@@ -8,6 +8,10 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
+- [The Normal-Generalised Gamma-Pareto process: A novel pure-jump Lévy process with flexible tail and jump-activity properties
+](https://arxiv.org/abs/2006.10968) \\
+Fadhel Ayed, **Juho Lee**, François Caron
+
 - [Deep amortized clustering](https://arxiv.org/abs/1909.13433)\\
 **Juho Lee**, Yoonho Lee, Yee Whye Teh\\
 A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Partitions workshop](https://www.sets.parts) as an oral presentation.
