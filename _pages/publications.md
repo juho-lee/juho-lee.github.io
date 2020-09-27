@@ -25,11 +25,11 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 ## Conferences
 - [Bootstrapping neural processes](https://arxiv.org/abs/2008.02956)\\
 **Juho Lee**\*, Yoonho Lee\*, Jungtaek Kim, Eunho Yang, Sung Ju Hwang, Yee Whye Teh\\
-NeurIPS 2020 (To appear)
+NeurIPS 2020 (to appear)
 
 - [Neural complexity measures](https://arxiv.org/abs/2008.02953)\\
 Yoonho Lee, **Juho Lee**, Sung Ju Hwang, Eunho Yang, Seungjin Choi\\
-NeurIPS 2020 (To appear)
+NeurIPS 2020 (to appear)
 
 - [Cost-effective interactive attention learning with neural attention processes](https://arxiv.org/abs/2006.05419)\\
 Jay Heo, Junhyeon Park, Hyewon Jeong, Kwang Joon Kim, **Juho Lee**, Eunho Yang, Sung Ju Hwang\\
@@ -38,7 +38,7 @@ ICML 2020
 - [Deep mixed effect model using Gaussian processes: a personalized and reliable prediction for
   healthcare](https://arxiv.org/abs/1806.01551)\\
 Ingyo Chung, Saehoon Kim, **Juho Lee**, Sung Ju Hwang, Eunho Yang\\
-AAAI 2020 (to appear)
+AAAI 2020
 
 - [Beyond the Chinese restaurant and Pitman-Yor processes: statistical models with double power-law behavior](https://arxiv.org/abs/1902.04714)\\
 Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
