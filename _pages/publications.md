@@ -8,12 +8,6 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
-- [Bootstrapping neural processes](https://arxiv.org/abs/2008.02956)\\
-**Juho Lee**\*, Yoonho Lee\*, Jungtaek Kim, Eunho Yang, Sung Ju Hwang, Yee Whye Teh
-
-- [Neural complexity measures](https://arxiv.org/abs/2008.02953)\\
-Yoonho Lee, **Juho Lee**, Sung Ju Hwang, Eunho Yang, Seungjin Choi
-
 - [The Normal-Generalised Gamma-Pareto process: A novel pure-jump Lévy process with flexible tail and jump-activity properties
 ](https://arxiv.org/abs/2006.10968) \\
 Fadhel Ayed, **Juho Lee**, François Caron
@@ -29,9 +23,17 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
+- [Bootstrapping neural processes](https://arxiv.org/abs/2008.02956)\\
+**Juho Lee**\*, Yoonho Lee\*, Jungtaek Kim, Eunho Yang, Sung Ju Hwang, Yee Whye Teh\\
+NeurIPS 2020 (To appear)
+
+- [Neural complexity measures](https://arxiv.org/abs/2008.02953)\\
+Yoonho Lee, **Juho Lee**, Sung Ju Hwang, Eunho Yang, Seungjin Choi\\
+NeurIPS 2020 (To appear)
+
 - [Cost-effective interactive attention learning with neural attention processes](https://arxiv.org/abs/2006.05419)\\
 Jay Heo, Junhyeon Park, Hyewon Jeong, Kwang Joon Kim, **Juho Lee**, Eunho Yang, Sung Ju Hwang\\
-ICML 2020 (to appear)
+ICML 2020
 
 - [Deep mixed effect model using Gaussian processes: a personalized and reliable prediction for
   healthcare](https://arxiv.org/abs/1806.01551)\\
