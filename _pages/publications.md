@@ -25,6 +25,7 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 ## Conferences
 - [Bootstrapping neural processes](https://arxiv.org/abs/2008.02956)\\
 **Juho Lee**\*, Yoonho Lee\*, Jungtaek Kim, Eunho Yang, Sung Ju Hwang, Yee Whye Teh\\
+(*: Equal Contribution)\\
 NeurIPS 2020 (to appear)
 
 - [Neural complexity measures](https://arxiv.org/abs/2008.02953)\\
