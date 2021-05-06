@@ -23,14 +23,23 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
+- Learning to perturb word embeddings for out-of-distribution QA \\
+Seanie Lee, Minki Kang, **Juho Lee** and Sung Ju Hwang\\
+ACL 2021 (To appear)
+
+- [SetVAE: learning hierarchical composition for generative modeling of set-structured data](https://arxiv.org/abs/2103.15619)\\
+Jinwoo Kim, Jaehoon Yoo, **Juho Lee**, Seunghoon Hong\\
+CVPR 2021 (To appear)\\
+[Codes](https://github.com/jw9730/setvae)
+
 - [Bootstrapping neural processes](https://arxiv.org/abs/2008.02956)\\
 **Juho Lee**\*, Yoonho Lee\*, Jungtaek Kim, Eunho Yang, Sung Ju Hwang, Yee Whye Teh\\
 (*: Equal Contribution)\\
-NeurIPS 2020 (to appear)
+NeurIPS 2020
 
 - [Neural complexity measures](https://arxiv.org/abs/2008.02953)\\
 Yoonho Lee, **Juho Lee**, Sung Ju Hwang, Eunho Yang, Seungjin Choi\\
-NeurIPS 2020 (to appear)
+NeurIPS 2020
 
 - [Cost-effective interactive attention learning with neural attention processes](https://arxiv.org/abs/2006.05419)\\
 Jay Heo, Junhyeon Park, Hyewon Jeong, Kwang Joon Kim, **Juho Lee**, Eunho Yang, Sung Ju Hwang\\
