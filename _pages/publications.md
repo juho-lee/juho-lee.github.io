@@ -23,8 +23,12 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
+- Adversarial purification with score-based generative models \\
+Jongmin Yoon, Sung Ju Hwang, **Juho Lee**\\
+ICML 2021 (To appear)
+
 - Learning to perturb word embeddings for out-of-distribution QA \\
-Seanie Lee, Minki Kang, **Juho Lee** and Sung Ju Hwang\\
+Seanie Lee, Minki Kang, **Juho Lee**, Sung Ju Hwang\\
 ACL 2021 (To appear)
 
 - [SetVAE: learning hierarchical composition for generative modeling of set-structured data](https://arxiv.org/abs/2103.15619)\\
