@@ -23,11 +23,12 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
-- Adversarial purification with score-based generative models \\
+- [Adversarial purification with score-based generative models](https://arxiv.org/abs/2106.06041) \\
 Jongmin Yoon, Sung Ju Hwang, **Juho Lee**\\
-ICML 2021 (To appear)
+ICML 2021 (To appear)\\
+[Codes](https://github.com/jmyoon1/adp)
 
-- Learning to perturb word embeddings for out-of-distribution QA \\
+- [Learning to perturb word embeddings for out-of-distribution QA](https://arxiv.org/abs/2105.02692) \\
 Seanie Lee, Minki Kang, **Juho Lee**, Sung Ju Hwang\\
 ACL 2021 (To appear)
 
