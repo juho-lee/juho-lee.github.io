@@ -17,7 +17,6 @@ My [CV](files/cv.pdf) (updated Aug. 2020).
 - Bayesian deep learning & deep Bayesian learning
 - Bayesian nonparametric models
 - Random graph models
-- Deep learning for healthcare
 
 ## For prospective students
 I'm looking for self-motivated students interested in machine learning / deep learning / Bayesian methods. For now, I only advise students in the graduate school of AI at KAIST, so please get an admission before contacting me. I strongly recommend to contact me in advance (at least two or three months earlier than the grad school admission deadline) and conduct a research project with me.
