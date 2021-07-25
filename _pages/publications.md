@@ -44,12 +44,12 @@ CVPR 2021\\
 - [Bootstrapping neural processes](https://arxiv.org/abs/2008.02956)\\
 **Juho Lee**\*, Yoonho Lee\*, Jungtaek Kim, Eunho Yang, Sung Ju Hwang, Yee Whye Teh\\
 (*: Equal Contribution)\\
-[Code](https://github.com/juho-lee/bnp)
+[Code](https://github.com/juho-lee/bnp)\\
 NeurIPS 2020
 
 - [Neural complexity measures](https://arxiv.org/abs/2008.02953)\\
 Yoonho Lee, **Juho Lee**, Sung Ju Hwang, Eunho Yang, Seungjin Choi\\
-[Code](https://github.com/yoonholee/neural-complexity)
+[Code](https://github.com/yoonholee/neural-complexity)\\
 NeurIPS 2020
 
 - [Cost-effective interactive attention learning with neural attention processes](https://arxiv.org/abs/2006.05419)\\
@@ -68,6 +68,7 @@ ICML 2019 (full oral presentation)
 
 - [Set transformer: a framework for attention-based permutation-invariant neural networks](https://arxiv.org/abs/1810.00825v3)\\
 **Juho Lee**, Yoonho Lee, Jungtaek Kim, Adam R. Kosiorek, Seungjin Choi, and Yee Whye Teh\\
+[Code](https://github.com/juho-lee/set_transformer)\\
 ICML 2019
 
 - [Learning to propagate labels: transductive propagation network for few-shot learning](https://arxiv.org/abs/1805.10002)\\
