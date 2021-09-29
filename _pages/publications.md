@@ -23,7 +23,16 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
-- A Multi-Mode Modulator for Multi-Domain Few-Shot Classification\\
+- Diversity matters when learning from ensembles\\
+Giung Nam\*, Jongmin Yoon\*, Yoonho Lee, **Juho Lee**\\
+(*: Equal Contribution)\\
+NeurIPS 2022 (To appear)
+
+- Mini-batch consistent slot set encoder for scalable set encoding\\
+Andreis Bruno, Jeffrey Ryan Willette, **Juho Lee**, Sung Ju Hwang\\
+NeurIPS 2022 (To appear)
+
+- A multi-mode modulator for multi-domain few-shot classification\\
 Yanbin Liu, **Juho Lee**, Linchao Zhu, Ling Chen, Humphrey Shi, Yi Yang\\
 ICCV 2021 (To appear)
 
