@@ -8,6 +8,9 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
+- [Scale mixtures of neural network Gaussian processes](https://arxiv.org/abs/2107.01408)\\
+Hyungi Lee, Eunggu Yoon, Hongseok Yang, **Juho Lee**
+
 - [The Normal-Generalised Gamma-Pareto process: A novel pure-jump Lévy process with flexible tail and jump-activity properties
 ](https://arxiv.org/abs/2006.10968) \\
 Fadhel Ayed, **Juho Lee**, François Caron
