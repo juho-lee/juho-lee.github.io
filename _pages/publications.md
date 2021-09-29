@@ -26,11 +26,11 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 - Diversity matters when learning from ensembles\\
 Giung Nam\*, Jongmin Yoon\*, Yoonho Lee, **Juho Lee**\\
 (*: Equal Contribution)\\
-NeurIPS 2022 (To appear)
+NeurIPS 2021 (To appear)
 
 - Mini-batch consistent slot set encoder for scalable set encoding\\
 Andreis Bruno, Jeffrey Ryan Willette, **Juho Lee**, Sung Ju Hwang\\
-NeurIPS 2022 (To appear)
+NeurIPS 2021 (To appear)
 
 - A multi-mode modulator for multi-domain few-shot classification\\
 Yanbin Liu, **Juho Lee**, Linchao Zhu, Ling Chen, Humphrey Shi, Yi Yang\\
