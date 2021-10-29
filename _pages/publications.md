@@ -26,18 +26,19 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
-- Diversity matters when learning from ensembles\\
+- [Diversity matters when learning from ensembles](https://arxiv.org/abs/2110.14149)\\
 Giung Nam\*, Jongmin Yoon\*, Yoonho Lee, **Juho Lee**\\
 (*: Equal Contribution)\\
-NeurIPS 2021 (To appear)
+NeurIPS 2021 (To appear)\\
+[Code](https://github.com/cs-giung/giung2/tree/main/projects/Diversity-Matters)
 
-- Mini-batch consistent slot set encoder for scalable set encoding\\
+- [Mini-batch consistent slot set encoder for scalable set encoding](https://arxiv.org/abs/2103.01615)\\
 Andreis Bruno, Jeffrey Ryan Willette, **Juho Lee**, Sung Ju Hwang\\
 NeurIPS 2021 (To appear)
 
-- A multi-mode modulator for multi-domain few-shot classification\\
+- [A multi-mode modulator for multi-domain few-shot classification](https://openaccess.thecvf.com/content/ICCV2021/html/Liu_A_Multi-Mode_Modulator_for_Multi-Domain_Few-Shot_Classification_ICCV_2021_paper.html)\\
 Yanbin Liu, **Juho Lee**, Linchao Zhu, Ling Chen, Humphrey Shi, Yi Yang\\
-ICCV 2021 (To appear)
+ICCV 2021
 
 - [Adversarial purification with score-based generative models](https://arxiv.org/abs/2106.06041) \\
 Jongmin Yoon, Sung Ju Hwang, **Juho Lee**\\
