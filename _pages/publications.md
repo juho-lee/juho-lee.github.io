@@ -27,11 +27,11 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 Hyungi Lee, Eunggu Yoon, Hongseok Yang, **Juho Lee**\\
 ICLR 2022 (To appear)
 
-- [Sequential Reptile: Inter-Task Gradient Alignment for Multilingual Learning](https://arxiv.org/abs/2110.02600)\\
+- [Sequential Reptile: inter-task gradient alignment for multilingual learning](https://arxiv.org/abs/2110.02600)\\
 Seanie Lee, Hae Beom Lee, **Juho Lee**, Sung Ju Hwang\\
 ICLR 2022 (To appear)
 
-- [Meta Learning Low Rank Covariance Factors for Energy-Based Deterministic Uncertainty](https://arxiv.org/abs/2110.06381)\\
+- [Meta learning low rank covariance factors for energy-based deterministic uncertainty](https://arxiv.org/abs/2110.06381)\\
 Jeffrey Ryan Willette, Hae Beom Lee, **Juho Lee**, Sung Ju Hwang\\
 ICLR 2022 (To appear)
 
