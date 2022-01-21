@@ -8,9 +8,6 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
-- [Scale mixtures of neural network Gaussian processes](https://arxiv.org/abs/2107.01408)\\
-Hyungi Lee, Eunggu Yoon, Hongseok Yang, **Juho Lee**
-
 - [The Normal-Generalised Gamma-Pareto process: A novel pure-jump Lévy process with flexible tail and jump-activity properties
 ](https://arxiv.org/abs/2006.10968) \\
 Fadhel Ayed, **Juho Lee**, François Caron
@@ -26,15 +23,27 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
+- [Scale mixtures of neural network Gaussian processes](https://arxiv.org/abs/2107.01408)\\
+Hyungi Lee, Eunggu Yoon, Hongseok Yang, **Juho Lee**\\
+ICLR 2022 (To appear)
+
+- [Sequential Reptile: Inter-Task Gradient Alignment for Multilingual Learning](https://arxiv.org/abs/2110.02600)\\
+Seanie Lee, Hae Beom Lee, **Juho Lee**, Sung Ju Hwang\\
+ICLR 2022 (To appear)
+
+- [Meta Learning Low Rank Covariance Factors for Energy-Based Deterministic Uncertainty](https://arxiv.org/abs/2110.06381)\\
+Jeffrey Ryan Willette, Hae Beom Lee, **Juho Lee**, Sung Ju Hwang\\
+ICLR 2022 (To appear)
+
 - [Diversity matters when learning from ensembles](https://arxiv.org/abs/2110.14149)\\
 Giung Nam\*, Jongmin Yoon\*, Yoonho Lee, **Juho Lee**\\
 (*: Equal Contribution)\\
-NeurIPS 2021 (To appear)\\
+NeurIPS 2021\\
 [Code](https://github.com/cs-giung/giung2/tree/main/projects/Diversity-Matters)
 
 - [Mini-batch consistent slot set encoder for scalable set encoding](https://arxiv.org/abs/2103.01615)\\
 Andreis Bruno, Jeffrey Ryan Willette, **Juho Lee**, Sung Ju Hwang\\
-NeurIPS 2021 (To appear)
+NeurIPS 2021
 
 - [A multi-mode modulator for multi-domain few-shot classification](https://openaccess.thecvf.com/content/ICCV2021/html/Liu_A_Multi-Mode_Modulator_for_Multi-Domain_Few-Shot_Classification_ICCV_2021_paper.html)\\
 Yanbin Liu, **Juho Lee**, Linchao Zhu, Ling Chen, Humphrey Shi, Yi Yang\\
