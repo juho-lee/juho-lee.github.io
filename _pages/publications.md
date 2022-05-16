@@ -24,7 +24,7 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 
 ## Conferences
 - Improving ensemble distillation with weight averaging and diversifying perturbation\\
-Giung Nam, Byeongho Heo, **Juho Lee**\\
+Giung Nam, Hyungi Lee, Byeongho Heo, **Juho Lee**\\
 ICML 2022 (To appear)
 
 - Set based stochastic subsampling\\
