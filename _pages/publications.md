@@ -28,7 +28,7 @@ Giung Nam, Byeongho Heo, **Juho Lee**\\
 ICML 2022 (To appear)
 
 - Set based stochastic subsampling\\
-Bruno Andreis, A. Tuan Nguyen, Seanie Lee, **Juho Lee**, Eunho Yang, Sung Ju Hwang\\
+Bruno Andreis, Seanie Lee, A. Tuan Nguyen, **Juho Lee**, Eunho Yang, Sung Ju Hwang\\
 ICML 2022 (To appear)
 
 - [Scale mixtures of neural network Gaussian processes](https://arxiv.org/abs/2107.01408)\\
