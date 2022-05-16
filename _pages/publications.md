@@ -23,17 +23,25 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Conferences
+- Improving ensemble distillation with weight averaging and diversifying perturbation\\
+Giung Nam, Byeongho Heo, **Juho Lee**\\
+ICML 2022 (To appear)
+
+- Set based stochastic subsampling\\
+Bruno Andreis, A. Tuan Nguyen, Seanie Lee, **Juho Lee**, Eunho Yang, Sung Ju Hwang\\
+ICML 2022 (To appear)
+
 - [Scale mixtures of neural network Gaussian processes](https://arxiv.org/abs/2107.01408)\\
 Hyungi Lee, Eunggu Yoon, Hongseok Yang, **Juho Lee**\\
-ICLR 2022 (To appear)
+ICLR 2022
 
 - [Sequential Reptile: inter-task gradient alignment for multilingual learning](https://arxiv.org/abs/2110.02600)\\
 Seanie Lee, Hae Beom Lee, **Juho Lee**, Sung Ju Hwang\\
-ICLR 2022 (To appear)
+ICLR 2022
 
 - [Meta learning low rank covariance factors for energy-based deterministic uncertainty](https://arxiv.org/abs/2110.06381)\\
 Jeffrey Ryan Willette, Hae Beom Lee, **Juho Lee**, Sung Ju Hwang\\
-ICLR 2022 (To appear)
+ICLR 2022
 
 - [Diversity matters when learning from ensembles](https://arxiv.org/abs/2110.14149)\\
 Giung Nam\*, Jongmin Yoon\*, Yoonho Lee, **Juho Lee**\\
