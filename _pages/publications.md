@@ -29,7 +29,7 @@ Bernoulli (To appear)
 Balhae Kim, Jungwon Choi, Seanie Lee, Yoonho Lee, Jung-Woo Ha, **Juho Lee**\\
 NeurIPS 2022 (To appear)
 
-- Set-based meta-interpolation for few-task meta-learning
+- Set-based meta-interpolation for few-task meta-learning\\
 Seanie Lee, Bruno Andreis, Kenji Kawaguchi, **Juho Lee**, Sung Ju Hwang\\
 NeurIPS 2022 (To appear)
 
