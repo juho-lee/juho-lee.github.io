@@ -16,20 +16,31 @@ Fadhel Ayed, **Juho Lee**, François Caron
 **Juho Lee**, Yoonho Lee, Yee Whye Teh\\
 A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Partitions workshop](https://www.sets.parts) as an oral presentation.
 
-- [A unified construction for series representations and finite approximations of completely random measures](https://arxiv.org/abs/1905.10733)\\
-**Juho Lee**, Xenia Miscouridou, François Caron
-
 - [Adaptive network sparsification with dependent variational beta-Bernoulli dropout](https://arxiv.org/abs/1805.10896v3)\\
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
-## Conferences
-- Improving ensemble distillation with weight averaging and diversifying perturbation\\
-Giung Nam, Hyungi Lee, Byeongho Heo, **Juho Lee**\\
-ICML 2022 (To appear)
+## Journals
+- [A unified construction for series representations and finite approximations of completely random measures](https://arxiv.org/abs/1905.10733)\\
+**Juho Lee**, Xenia Miscouridou, François Caron\\
+Bernoulli (To appear)
 
-- Set based stochastic subsampling\\
+## Conferences
+- On divergence measures for Bayesian pseudocoresets\\
+Balhae Kim, Jungwon Choi, Seanie Lee, Yoonho Lee, Jung-Woo Ha, **Juho Lee**\\
+NeurIPS 2022 (To appear)
+
+- Set-based meta-interpolation for few-task meta-learning
+Seanie Lee, Bruno Andreis, Kenji Kawaguchi, **Juho Lee**, Sung Ju Hwang\\
+NeurIPS 2022 (To appear)
+
+- [Improving ensemble distillation with weight averaging and diversifying perturbation](https://proceedings.mlr.press/v162/nam22a.html)\\
+Giung Nam, Hyungi Lee, Byeongho Heo, **Juho Lee**\\
+ICML 2022\\
+[Code](https://github.com/cs-giung/distill-latentbe)
+
+- [Set based stochastic subsampling](https://proceedings.mlr.press/v162/andreis22a.html)\\
 Bruno Andreis, Seanie Lee, A. Tuan Nguyen, **Juho Lee**, Eunho Yang, Sung Ju Hwang\\
-ICML 2022 (To appear)
+ICML 2022
 
 - [Scale mixtures of neural network Gaussian processes](https://arxiv.org/abs/2107.01408)\\
 Hyungi Lee, Eunggu Yoon, Hongseok Yang, **Juho Lee**\\
