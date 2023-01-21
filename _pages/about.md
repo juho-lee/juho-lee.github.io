@@ -11,7 +11,7 @@ I'm an assistant professor in the [Kim Jaechul Graduate School of AI at Korea Ad
 Prior to joining KAIST, I worked as a research scientist at [AITRICS](https://www.aitrics.com). I finished my PhD in computer science & engineering department at Pohang university of Science & Technology (POSTECH) under the supervision of Professor [Seungjin Choi](http://mlg.postech.ac.kr/~seungjin/), and did my postdoc in [Computational Statistics & Machine Learning group at Univsersity of Oxford](http://csml.stats.ox.ac.uk) with
 Professor [François Caron](http://www.stats.ox.ac.uk/~caron/).
 
-My [CV](files/cv.pdf) (updated Sep. 2022).
+My [CV](files/cv.pdf) (updated Jan. 2023).
 
 ## Research Interests
 - Bayesian deep learning & deep Bayesian learning
