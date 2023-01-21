@@ -19,7 +19,7 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 - [The Normal-Generalised Gamma-Pareto process: A novel pure-jump Lévy process with flexible tail and jump-activity properties
 ](https://arxiv.org/abs/2006.10968) \\
 Fadhel Ayed, **Juho Lee**, François Caron\\
-Bayesian Anaylsis (to appear)
+To appear in Bayesian Anaylsis
 
 - [Benefits of stochastic weight averaging in developing neural network radiation scheme for numerical weather prediction](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021MS002921?af=R)\\
 Hwan-Jin Song, Soonyoung Roh, **Juho Lee**, Giung Nam, Eunggu Yun, Jongmin Yoon, Park Sa Kim\\
@@ -28,28 +28,28 @@ Journal of Advances in Modeling Earth Systems, October 2022
 
 - [A unified construction for series representations and finite approximations of completely random measures](https://arxiv.org/abs/1905.10733)\\
 **Juho Lee**, Xenia Miscouridou, François Caron\\
-Bernoulli (to appear)
+To appear in Bernoulli
 
 ## Conferences
 - Martingale posterior neural processes \\
 Hyungi Lee, Eunggu Yun, Giung Nam, Edwin Fong, **Juho Lee**\\
-ICLR 2023 (**spotlight**) (to appear)
+To appear in ICLR 2023 (**spotlight**)
 
 - Decoupled training for long-tailed classification with stochastic representations\\
 Giung Nam, Sunguk Jang, **Juho Lee**\\
-ICLR 2023 (to appear)
+To appear in ICLR 2023
 
 - A simple yet powerful deep active learning with snapshot ensembles\\
 Seohyeon Jung, Sanghyun Kim, **Juho Lee**\\
-ICLR 2023 (to appear)
+To appear in ICLR 2023
 
 - Self-distillation for further pre-training of transformers\\
 Seanie Lee, Minki Kang, **Juho Lee**, Sung Ju Hwang, Kenji Kawaguchi\\
-ICLR 2023 (to appear)
+To appear in ICLR 2023
 
 - Exploring the role of mean teachers in self-supervised masked auto-encoders\\
 Youngwan Lee, Jeffrey Ryan Willette, Jonghee Kim, **Juho Lee**, Sung Ju Hwang \\
-ICLR 2023 (to appear)
+To appear in ICLR 2023
 
 - [On divergence measures for Bayesian pseudocoresets](https://arxiv.org/abs/2210.06205)\\
 Balhae Kim, Jungwon Choi, Seanie Lee, Yoonho Lee, Jung-Woo Ha, **Juho Lee**\\
@@ -183,3 +183,20 @@ AISTATS 2014
 - [Online video segmentation by Bayesian split-merge clustering](https://link.springer.com/chapter/10.1007/978-3-642-33765-9_61)\\
 **Juho Lee**, Suha Kwak, Bohyung Han, and Seungjin Choi\\
 ECCV 2012
+
+## Workshops
+- [Modeling uplift from observational time-series in continual scenarios](https://openreview.net/forum?id=pKyB5wMnTiy)\\
+Sanghyun Kim, Jungwon Choi, NamHee Kim, Jaesung Ryu, **Juho Lee**\\
+AAAI23 Bridge on Continual Casality (**oral presentation**), 2023
+
+- [Adaptive strategy for resetting a non-stationary Markov chain during learning via joint stochastic optimization](https://openreview.net/forum?id=fuHh4CC3-5Z)\\
+Hyunsu Kim, **Juho Lee**, Hongseok Yang\\
+Third Symposium on Advances in Approximate Bayesian Inference, 2021
+
+- [Towards deep amortized clustering](https://slideslive.com/38923511/contributed-talk-towards-deep-amortized-clustering)\\
+**Juho Lee**, Yoonho Lee, Yee Whye Teh\\
+NeurIPS 2019 Sets & Partitions workshop (**contributed talk**), 2019
+
+- [Graph embedding VAE: a permutation invariant model of graph structure](https://grlearning.github.io/papers/19.pdf)\\
+Tony Duan, **Juho Lee**\\
+NeurIPS 2019 Graph Representation Learning workshop, 2019
