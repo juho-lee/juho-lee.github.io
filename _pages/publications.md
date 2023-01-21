@@ -8,10 +8,6 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
-- [The Normal-Generalised Gamma-Pareto process: A novel pure-jump Lévy process with flexible tail and jump-activity properties
-](https://arxiv.org/abs/2006.10968) \\
-Fadhel Ayed, **Juho Lee**, François Caron
-
 - [Deep amortized clustering](https://arxiv.org/abs/1909.13433)\\
 **Juho Lee**, Yoonho Lee, Yee Whye Teh\\
 A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Partitions workshop](https://www.sets.parts) as an oral presentation.
@@ -20,6 +16,11 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Journals
+- [The Normal-Generalised Gamma-Pareto process: A novel pure-jump Lévy process with flexible tail and jump-activity properties
+](https://arxiv.org/abs/2006.10968) \\
+Fadhel Ayed, **Juho Lee**, François Caron\\
+Bayesian Anaylsis (To appear)
+
 - [Benefits of stochastic weight averaging in developing neural network radiation scheme for numerical weather prediction](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021MS002921?af=R)\\
 Hwan-Jin Song, Soonyoung Roh, **Juho Lee**, Giung Nam, Eunggu Yun, Jongmin Yoon, Park Sa Kim\\
 Journal of Advances in Modeling Earth Systems, October 2022
@@ -30,13 +31,33 @@ Journal of Advances in Modeling Earth Systems, October 2022
 Bernoulli (To appear)
 
 ## Conferences
-- On divergence measures for Bayesian pseudocoresets\\
-Balhae Kim, Jungwon Choi, Seanie Lee, Yoonho Lee, Jung-Woo Ha, **Juho Lee**\\
-NeurIPS 2022 (To appear)
+- Martingale posterior neural processes \\
+Hyungi Lee, Eunggu Yun, Giung Nam, Edwin Fong, **Juho Lee**\\
+ICLR 2023 (**spotlight**, To appear)
 
-- Set-based meta-interpolation for few-task meta-learning\\
+- Decoupled training for long-tailed classification with stochastic representations\\
+Giung Nam, Sunguk Jang, **Juho Lee**\\
+ICLR 2023 (To appear)
+
+- A simple yet powerful deep active learning with snapshot ensembles\\
+Seohyeon Jung, Sanghyun Kim, **Juho Lee**\\
+ICLR 2023 (To appear)
+
+- Self-distillation for further pre-training of transformers\\
+Seanie Lee, Minki Kang, **Juho Lee**, Sung Ju Hwang, Kenji Kawaguchi\\
+ICLR 2023 (To appear)
+
+- Exploring the role of mean teachers in self-supervised masked auto-encoders\\
+Youngwan Lee, Jeffrey Ryan Willette, Jonghee Kim, **Juho Lee**, Sung Ju Hwang \\
+ICLR 2023 (To appear)
+
+- [On divergence measures for Bayesian pseudocoresets](https://arxiv.org/abs/2210.06205)\\
+Balhae Kim, Jungwon Choi, Seanie Lee, Yoonho Lee, Jung-Woo Ha, **Juho Lee**\\
+NeurIPS 2022
+
+- [Set-based meta-interpolation for few-task meta-learning](https://arxiv.org/abs/2205.09990)\\
 Seanie Lee, Bruno Andreis, Kenji Kawaguchi, **Juho Lee**, Sung Ju Hwang\\
-NeurIPS 2022 (To appear)
+NeurIPS 2022
 
 - [Improving ensemble distillation with weight averaging and diversifying perturbation](https://proceedings.mlr.press/v162/nam22a.html)\\
 Giung Nam, Hyungi Lee, Byeongho Heo, **Juho Lee**\\
@@ -110,7 +131,7 @@ AAAI 2020
 - [Beyond the Chinese restaurant and Pitman-Yor processes: statistical models with double power-law behavior](https://arxiv.org/abs/1902.04714)\\
 Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
 (*: Equal Contribution)\\
-ICML 2019 (full oral presentation)
+ICML 2019 (**long oral presentation**)
 
 - [Set transformer: a framework for attention-based permutation-invariant neural networks](https://arxiv.org/abs/1810.00825v3)\\
 **Juho Lee**, Yoonho Lee, Jungtaek Kim, Adam R. Kosiorek, Seungjin Choi, and Yee Whye Teh\\
@@ -123,7 +144,7 @@ ICLR 2019
 
 - [A Bayesian model for sparse graphs with flexible degree distribution and overlapping community structure](https://arxiv.org/abs/1810.01778)\\
 **Juho Lee**, Lancelot F. James, Seungjin Choi, and François Caron\\
-AISTATS 2019 (oral presentation)\\
+AISTATS 2019 (**oral presentation**)\\
 [Code](https://github.com/OxCSML-BayesNP/BNRG)
 
 - [Uncertainty-aware attention for reliable interpretation and prediction](https://arxiv.org/abs/1805.09653)\\
