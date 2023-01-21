@@ -33,23 +33,23 @@ Bernoulli (To appear)
 ## Conferences
 - Martingale posterior neural processes \\
 Hyungi Lee, Eunggu Yun, Giung Nam, Edwin Fong, **Juho Lee**\\
-ICLR 2023 (**spotlight**, To appear)
+ICLR 2023 (**spotlight**) (to appear)
 
 - Decoupled training for long-tailed classification with stochastic representations\\
 Giung Nam, Sunguk Jang, **Juho Lee**\\
-ICLR 2023 (To appear)
+ICLR 2023 (to appear)
 
 - A simple yet powerful deep active learning with snapshot ensembles\\
 Seohyeon Jung, Sanghyun Kim, **Juho Lee**\\
-ICLR 2023 (To appear)
+ICLR 2023 (to appear)
 
 - Self-distillation for further pre-training of transformers\\
 Seanie Lee, Minki Kang, **Juho Lee**, Sung Ju Hwang, Kenji Kawaguchi\\
-ICLR 2023 (To appear)
+ICLR 2023 (to appear)
 
 - Exploring the role of mean teachers in self-supervised masked auto-encoders\\
 Youngwan Lee, Jeffrey Ryan Willette, Jonghee Kim, **Juho Lee**, Sung Ju Hwang \\
-ICLR 2023 (To appear)
+ICLR 2023 (to appear)
 
 - [On divergence measures for Bayesian pseudocoresets](https://arxiv.org/abs/2210.06205)\\
 Balhae Kim, Jungwon Choi, Seanie Lee, Yoonho Lee, Jung-Woo Ha, **Juho Lee**\\
