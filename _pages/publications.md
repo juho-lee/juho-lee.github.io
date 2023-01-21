@@ -19,7 +19,7 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 - [The Normal-Generalised Gamma-Pareto process: A novel pure-jump Lévy process with flexible tail and jump-activity properties
 ](https://arxiv.org/abs/2006.10968) \\
 Fadhel Ayed, **Juho Lee**, François Caron\\
-Bayesian Anaylsis (To appear)
+Bayesian Anaylsis (to appear)
 
 - [Benefits of stochastic weight averaging in developing neural network radiation scheme for numerical weather prediction](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021MS002921?af=R)\\
 Hwan-Jin Song, Soonyoung Roh, **Juho Lee**, Giung Nam, Eunggu Yun, Jongmin Yoon, Park Sa Kim\\
@@ -28,7 +28,7 @@ Journal of Advances in Modeling Earth Systems, October 2022
 
 - [A unified construction for series representations and finite approximations of completely random measures](https://arxiv.org/abs/1905.10733)\\
 **Juho Lee**, Xenia Miscouridou, François Caron\\
-Bernoulli (To appear)
+Bernoulli (to appear)
 
 ## Conferences
 - Martingale posterior neural processes \\
