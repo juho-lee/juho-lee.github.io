@@ -14,6 +14,10 @@ Hoil Lee, Fadhel Ayed, Paul Jung, **Juho Lee**, Hongseok Yang, François Caron
 - [Learning to Pool in Graph Neural Networks for Extrapolation](https://arxiv.org/abs/2106.06210)\\
 Jihoon Ko, Taehyung Kwon, Kijung Shin, **Juho Lee**
 
+- [Deep amortized clustering](https://arxiv.org/abs/1909.13433)\\
+**Juho Lee**, Yoonho Lee, Yee Whye Teh\\
+A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Partitions workshop](https://www.sets.parts) as an oral presentation.
+
 - [Adaptive network sparsification with dependent variational beta-Bernoulli dropout](https://arxiv.org/abs/1805.10896v3)\\
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
