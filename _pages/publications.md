@@ -11,7 +11,7 @@ Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 - [Deep neural networks with dependent weights: Gaussian process mixture limit, heavy tails, sparsity and compressibility](https://arxiv.org/abs/2205.08187)\\
 Hoil Lee, Fadhel Ayed, Paul Jung, **Juho Lee**, Hongseok Yang, François Caron
 
-- [Learning to Pool in Graph Neural Networks for Extrapolation](https://arxiv.org/abs/2106.06210)\\
+- [Learning to pool in graph neural networks for extrapolation](https://arxiv.org/abs/2106.06210)\\
 Jihoon Ko, Taehyung Kwon, Kijung Shin, **Juho Lee**
 
 - [Deep amortized clustering](https://arxiv.org/abs/1909.13433)\\
