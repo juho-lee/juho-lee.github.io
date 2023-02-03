@@ -42,11 +42,13 @@ Hyungi Lee, Eunggu Yun, Giung Nam, Edwin Fong, **Juho Lee**\\
 To appear in ICLR 2023 (**spotlight**)
 
 - Decoupled training for long-tailed classification with stochastic representations\\
-Giung Nam, Sunguk Jang, **Juho Lee**\\
+Giung Nam\*, Sunguk Jang\*, **Juho Lee**\\
+(*: Equal Contribution)\\
 To appear in ICLR 2023
 
 - A simple yet powerful deep active learning with snapshot ensembles\\
-Seohyeon Jung, Sanghyun Kim, **Juho Lee**\\
+Seohyeon Jung\*, Sanghyun Kim\*, **Juho Lee**\\
+(*: Equal Contribution)\\
 To appear in ICLR 2023
 
 - Self-distillation for further pre-training of transformers\\
