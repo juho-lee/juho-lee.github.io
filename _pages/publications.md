@@ -8,8 +8,14 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
+- [Over-parameterised shallow neural networks with asymmetrical node scaling: global convergence guarantees and feature learning](https://arxiv.org/abs/2302.01002)\\
+Francois Caron, Fadhel Ayed, Paul Jung, Hoil Lee, **Juho Lee**, Hongseok Yang
+
 - [Deep neural networks with dependent weights: Gaussian process mixture limit, heavy tails, sparsity and compressibility](https://arxiv.org/abs/2205.08187)\\
 Hoil Lee, Fadhel Ayed, Paul Jung, **Juho Lee**, Hongseok Yang, François Caron
+
+- [Hybrid generative-contrastive representation learning](https://arxiv.org/abs/2106.06162)\\
+Saehoon Kim, Sungwoong Kim, **Juho Lee**
 
 - [Learning to pool in graph neural networks for extrapolation](https://arxiv.org/abs/2106.06210)\\
 Jihoon Ko, Taehyung Kwon, Kijung Shin, **Juho Lee**
@@ -56,7 +62,8 @@ Seanie Lee, Minki Kang, **Juho Lee**, Sung Ju Hwang, Kenji Kawaguchi\\
 To appear in ICLR 2023
 
 - Exploring the role of mean teachers in self-supervised masked auto-encoders\\
-Youngwan Lee, Jeffrey Ryan Willette, Jonghee Kim, **Juho Lee**, Sung Ju Hwang \\
+Youngwan Lee\*, Jeffrey Ryan Willette\*, Jonghee Kim, **Juho Lee**, Sung Ju Hwang \\
+(*: Equal Contribution)\\
 To appear in ICLR 2023
 
 - [On divergence measures for Bayesian pseudocoresets](https://arxiv.org/abs/2210.06205)\\
