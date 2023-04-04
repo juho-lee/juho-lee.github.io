@@ -43,25 +43,25 @@ Journal of Advances in Modeling Earth Systems, October 2022
 To appear in Bernoulli
 
 ## Conferences
-- Martingale posterior neural processes \\
+- [Martingale posterior neural processes](https://openreview.net/forum?id=-9PVqZ-IR_) \\
 Hyungi Lee, Eunggu Yun, Giung Nam, Edwin Fong, **Juho Lee**\\
-To appear in ICLR 2023 (**spotlight**)
+To appear in ICLR 2023 (**Notable top 25%**)
 
-- Decoupled training for long-tailed classification with stochastic representations\\
+- [Decoupled training for long-tailed classification with stochastic representations](https://openreview.net/forum?id=bcYZwYo-0t)\\
 Giung Nam\*, Sunguk Jang\*, **Juho Lee**\\
 (*: Equal Contribution)\\
 To appear in ICLR 2023
 
-- A simple yet powerful deep active learning with snapshot ensembles\\
+- [A simple yet powerful deep active learning with snapshot ensembles](https://openreview.net/forum?id=IVESH65r0Ar)\\
 Seohyeon Jung\*, Sanghyun Kim\*, **Juho Lee**\\
 (*: Equal Contribution)\\
 To appear in ICLR 2023
 
-- Self-distillation for further pre-training of transformers\\
+- [Self-distillation for further pre-training of transformers](https://openreview.net/forum?id=kj6oK_Hj40)\\
 Seanie Lee, Minki Kang, **Juho Lee**, Sung Ju Hwang, Kenji Kawaguchi\\
 To appear in ICLR 2023
 
-- Exploring the role of mean teachers in self-supervised masked auto-encoders\\
+- [Exploring the role of mean teachers in self-supervised masked auto-encoders](https://openreview.net/forum?id=7sn6Vxp92xV)\\
 Youngwan Lee\*, Jeffrey Ryan Willette\*, Jonghee Kim, **Juho Lee**, Sung Ju Hwang \\
 (*: Equal Contribution)\\
 To appear in ICLR 2023
@@ -102,7 +102,7 @@ NeurIPS 2021\\
 [Code](https://github.com/cs-giung/giung2/tree/main/projects/Diversity-Matters)
 
 - [Mini-batch consistent slot set encoder for scalable set encoding](https://arxiv.org/abs/2103.01615)\\
-Andreis Bruno, Jeffrey Ryan Willette, **Juho Lee**, Sung Ju Hwang\\
+Bruno Andreis, Jeffrey Ryan Willette, **Juho Lee**, Sung Ju Hwang\\
 NeurIPS 2021
 
 - [A multi-mode modulator for multi-domain few-shot classification](https://openaccess.thecvf.com/content/ICCV2021/html/Liu_A_Multi-Mode_Modulator_for_Multi-Domain_Few-Shot_Classification_ICCV_2021_paper.html)\\
