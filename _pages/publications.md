@@ -83,7 +83,7 @@ ICLR 2023
 - [Exploring the role of mean teachers in self-supervised masked auto-encoders](https://openreview.net/forum?id=7sn6Vxp92xV)\\
 Youngwan Lee\*, Jeffrey Ryan Willette\*, Jonghee Kim, **Juho Lee**, Sung Ju Hwang \\
 (*: Equal Contribution)\\
-To appear in ICLR 2023
+ICLR 2023
 
 - [On divergence measures for Bayesian pseudocoresets](https://arxiv.org/abs/2210.06205)\\
 Balhae Kim, Jungwon Choi, Seanie Lee, Yoonho Lee, Jung-Woo Ha, **Juho Lee**\\
