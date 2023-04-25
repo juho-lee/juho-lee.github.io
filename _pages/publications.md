@@ -45,7 +45,8 @@ To appear in Bernoulli
 ## Conferences
 
 - Probabilistic imputation for time-series classification with missing data \\
-SeungHyun Kim, Hyunsu Kim, Eunggu Yun, Hwangrae Lee, Jaehun Lee, **Juho Lee** \\
+SeungHyun Kim\*, Hyunsu Kim\*, Eunggu Yun\*, Hwangrae Lee, Jaehun Lee, **Juho Lee** \\
+(*: Equal Contribution)\\
 To appear in ICML 2023
 
 - Traversing between modes in function space for fast ensembling \\
