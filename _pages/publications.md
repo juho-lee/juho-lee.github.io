@@ -58,7 +58,8 @@ Hyunsu Kim, Hyungi Lee, Hongseok Yang, **Juho Lee**\\
 To appear in ICML 2023
 
 - Scalable set encoding with universal mini-batch consistency and unbiased full set gradient approximation \\
-Jeffrey Ryan Willette, Seanie Lee, Bruno Andreis, Kenji Kawaguchi, **Juho Lee**, Sung Ju Hwang \\
+Jeffrey Ryan Willette\*, Seanie Lee\*, Bruno Andreis, Kenji Kawaguchi, **Juho Lee**, Sung Ju Hwang \\
+(*: Equal Contribution)\\
 To appear in ICML 2023
 
 
