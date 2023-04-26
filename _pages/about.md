@@ -14,12 +14,13 @@ Professor [François Caron](http://www.stats.ox.ac.uk/~caron/).
 My [CV](cv.pdf) (updated Jan. 2023).
 
 ## Research Interests
-- Bayesian deep learning & deep Bayesian learning
+- Bayesian deep learning
 - Bayesian nonparametric models
-- Random graph models
+- Generative models
+- Meta learning
 
 ## For prospective students
-I'm looking for self-motivated students interested in machine learning / deep learning / Bayesian methods. For now, I only advise students in the graduate school of AI at KAIST, so please get an admission before contacting me. I strongly recommend to contact me in advance (at least two or three months earlier than the grad school admission deadline) and conduct a research project with me.
+I'm seeking self-motivated students who are interested in machine learning, deep learning, and Bayesian methods. Currently, I only advise students who are enrolled in the Kim Jaechul graduate school of AI. If you want to work with me, I encourage you to reaching out to me early, ideally two or three months before the grad school admission deadline and work on research projects under my supervision.
 
 ## Contacts
 - (first_name)(last_name) at kaist.ac.kr
