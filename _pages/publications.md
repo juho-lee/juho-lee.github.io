@@ -9,7 +9,7 @@ Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
 - [Over-parameterised shallow neural networks with asymmetrical node scaling: global convergence guarantees and feature learning](https://arxiv.org/abs/2302.01002)\\
-Francois Caron, Fadhel Ayed, Paul Jung, Hoil Lee, **Juho Lee**, Hongseok Yang
+François Caron, Fadhel Ayed, Paul Jung, Hoil Lee, **Juho Lee**, Hongseok Yang
 
 - [Deep neural networks with dependent weights: Gaussian process mixture limit, heavy tails, sparsity and compressibility](https://arxiv.org/abs/2205.08187)\\
 Hoil Lee, Fadhel Ayed, Paul Jung, **Juho Lee**, Hongseok Yang, François Caron
