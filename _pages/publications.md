@@ -237,7 +237,7 @@ ICML 2023 Workshop on Challenges in Deployable Generative AI, 2023
 Sanghyun Kim, Jungwon Choi, NamHee Kim, Jaesung Ryu, **Juho Lee**\\
 AAAI23 Bridge on Continual Casality (**oral presentation**), 2023
 
-- [Fine-tuning Diffusion Models with Limited Data](https://openreview.net/forum?id=0J6afk9DqrR)\\
+- [Fine-tuning diffusion models with limited data](https://openreview.net/forum?id=0J6afk9DqrR)\\
 Taehong Moon, Moonseok Choi, Gayoung Lee, Jung-Woo Ha, **Juho Lee**\\
 NeurIPS 2022 Workshop on Score-Based Methods, 2022
 
