@@ -44,24 +44,24 @@ To appear in Bernoulli
 
 ## Conferences
 
-- Probabilistic imputation for time-series classification with missing data \\
+- [Probabilistic imputation for time-series classification with missing data](https://proceedings.mlr.press/v202/kim23m.html) \\
 SeungHyun Kim\*, Hyunsu Kim\*, Eunggu Yun\*, Hwangrae Lee, Jaehun Lee, **Juho Lee** \\
 (*: Equal Contribution)\\
-To appear in ICML 2023
+ICML 2023
 
-- Traversing between modes in function space for fast ensembling \\
+- [Traversing between modes in function space for fast ensembling](https://proceedings.mlr.press/v202/yun23a.html) \\
 Eunggu Yun\*, Hyungi Lee\*, Giung Nam\*, **Juho Lee**\\
 (*: Equal Contribution)\\
-To appear in ICML 2023
+ICML 2023
 
-- Regularizing towards soft equivariance under mixed symmetries \\
+- [Regularizing towards soft equivariance under mixed symmetries](https://proceedings.mlr.press/v202/kim23p.html) \\
 Hyunsu Kim, Hyungi Lee, Hongseok Yang, **Juho Lee**\\
-To appear in ICML 2023
+ICML 2023
 
-- Scalable set encoding with universal mini-batch consistency and unbiased full set gradient approximation \\
+- [Scalable set encoding with universal mini-batch consistency and unbiased full set gradient approximation](https://proceedings.mlr.press/v202/willette23a.html) \\
 Jeffrey Ryan Willette\*, Seanie Lee\*, Bruno Andreis, Kenji Kawaguchi, **Juho Lee**, Sung Ju Hwang \\
 (*: Equal Contribution)\\
-To appear in ICML 2023
+ICML 2023
 
 
 - [Martingale posterior neural processes](https://openreview.net/forum?id=-9PVqZ-IR_) \\
@@ -221,6 +221,14 @@ AISTATS 2014
 ECCV 2012
 
 ## Workshops
+- [Early exiting for accelerated inference in diffusion models](https://openreview.net/forum?id=nhGdjo9Xed)\\
+Taehong Moon, Moonseok Choi, EungGu Yun, Jongmin Yoon, Gayoung Lee, **Juho Lee**\\
+ICML 2023 workshop on Structured Probabilistic Inference & Generative Modeling, 2023
+
+- [Function space Bayesian pseudocoreset for Bayesian neural networks](https://openreview.net/forum?id=VTtUDU9YNE)\\
+Balhae Kim, Hyungi Lee, **Juho Lee**\\
+ICML 2023 workshop on Structured Probabilistic Inference & Generative Modeling, 2023
+
 - [Towards safe self-distillation of internet-scale text-to-image diffusion models](https://arxiv.org/pdf/2307.05977.pdf)\\
 Sanghyun Kim, Seohyeon Jung, Balhae Kim, Moonseok Choi, Jinwoo Shin, **Juho Lee**\\
 ICML 2023 Workshop on Challenges in Deployable Generative AI, 2023
