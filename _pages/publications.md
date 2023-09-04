@@ -221,9 +221,17 @@ AISTATS 2014
 ECCV 2012
 
 ## Workshops
+- [Towards safe self-distillation of internet-scale text-to-image diffusion models](https://arxiv.org/pdf/2307.05977.pdf)\\
+Sanghyun Kim, Seohyeon Jung, Balhae Kim, Moonseok Choi, Jinwoo Shin, **Juho Lee**\\
+ICML 2023 Workshop on Challenges in Deployable Generative AI, 2023
+
 - [Modeling uplift from observational time-series in continual scenarios](https://openreview.net/forum?id=pKyB5wMnTiy)\\
 Sanghyun Kim, Jungwon Choi, NamHee Kim, Jaesung Ryu, **Juho Lee**\\
 AAAI23 Bridge on Continual Casality (**oral presentation**), 2023
+
+- [Fine-tuning Diffusion Models with Limited Data](https://openreview.net/forum?id=0J6afk9DqrR)\\
+Taehong Moon, Moonseok Choi, Gayoung Lee, Jung-Woo Ha, **Juho Lee**\\
+NeurIPS 2022 Workshop on Score-Based Methods, 2022
 
 - [Adaptive strategy for resetting a non-stationary Markov chain during learning via joint stochastic optimization](https://openreview.net/forum?id=fuHh4CC3-5Z)\\
 Hyunsu Kim, **Juho Lee**, Hongseok Yang\\
