@@ -44,6 +44,10 @@ To appear in Bernoulli
 
 ## Conferences
 
+- Function Space Bayesian pseudocoreset for Bayesian neural networks \\
+Balhae Kim, Hyungi Lee, **Juho Lee** \\
+To appear in NeurIPS 2023\\
+
 - [Probabilistic imputation for time-series classification with missing data](https://proceedings.mlr.press/v202/kim23m.html) \\
 SeungHyun Kim\*, Hyunsu Kim\*, Eunggu Yun\*, Hwangrae Lee, Jaehun Lee, **Juho Lee** \\
 (*: Equal Contribution)\\
