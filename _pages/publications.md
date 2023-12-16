@@ -11,9 +11,6 @@ Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 - [Over-parameterised shallow neural networks with asymmetrical node scaling: global convergence guarantees and feature learning](https://arxiv.org/abs/2302.01002)\\
 François Caron, Fadhel Ayed, Paul Jung, Hoil Lee, **Juho Lee**, Hongseok Yang
 
-- [Deep neural networks with dependent weights: Gaussian process mixture limit, heavy tails, sparsity and compressibility](https://arxiv.org/abs/2205.08187)\\
-Hoil Lee, Fadhel Ayed, Paul Jung, **Juho Lee**, Hongseok Yang, François Caron
-
 - [Hybrid generative-contrastive representation learning](https://arxiv.org/abs/2106.06162)\\
 Saehoon Kim, Sungwoong Kim, **Juho Lee**
 
@@ -28,25 +25,34 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Journals
+- [Deep neural networks with dependent weights: Gaussian process mixture limit, heavy tails, sparsity and compressibility](https://www.jmlr.org/papers/v24/22-0537.html))\\
+Hoil Lee, Fadhel Ayed, Paul Jung, **Juho Lee**, Hongseok Yang, François Caron\\
+Journal of Machine Learning Research, September 2023
+
+- [A unified construction for series representations and finite approximations of completely random measures](https://projecteuclid.org/journals/bernoulli/volume-29/issue-3/A-unified-construction-for-series-representations-and-finite-approximations-of/10.3150/22-BEJ1536.short)\\
+**Juho Lee**, Xenia Miscouridou, François Caron\\
+Bernoulli, August 2023
+
 - [The Normal-Generalised Gamma-Pareto process: A novel pure-jump Lévy process with flexible tail and jump-activity properties
-](https://arxiv.org/abs/2006.10968) \\
+](https://projecteuclid.org/journals/bayesian-analysis/advance-publication/The-Normal-Generalised-Gamma-Pareto-Process--A-Novel-Pure/10.1214/22-BA1343.full) \\
 Fadhel Ayed, **Juho Lee**, François Caron\\
-To appear in Bayesian Anaylsis
+Bayesian Anaylsis, December 2022
 
 - [Benefits of stochastic weight averaging in developing neural network radiation scheme for numerical weather prediction](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021MS002921?af=R)\\
 Hwan-Jin Song, Soonyoung Roh, **Juho Lee**, Giung Nam, Eunggu Yun, Jongmin Yoon, Park Sa Kim\\
 Journal of Advances in Modeling Earth Systems, October 2022
 
 
-- [A unified construction for series representations and finite approximations of completely random measures](https://arxiv.org/abs/1905.10733)\\
-**Juho Lee**, Xenia Miscouridou, François Caron\\
-To appear in Bernoulli
 
 ## Conferences
+- [Spear and shield: adversarial attacks and defense methods for model-based link prediction
+on continuous-time dynamic graphs](https://arxiv.org/abs/2308.10779) \\
+Dongjin Lee, **Juho Lee**, and Kijung Shin \\
+To appear in AAAI 2024
 
-- Function Space Bayesian pseudocoreset for Bayesian neural networks \\
+- [Function Space Bayesian pseudocoreset for Bayesian neural networks](https://arxiv.org/abs/2310.17852) \\
 Balhae Kim, Hyungi Lee, **Juho Lee** \\
-To appear in NeurIPS 2023
+NeurIPS 2023
 
 - [Probabilistic imputation for time-series classification with missing data](https://proceedings.mlr.press/v202/kim23m.html) \\
 SeungHyun Kim\*, Hyunsu Kim\*, Eunggu Yun\*, Hwangrae Lee, Jaehun Lee, **Juho Lee** \\
@@ -66,7 +72,6 @@ ICML 2023
 Jeffrey Ryan Willette\*, Seanie Lee\*, Bruno Andreis, Kenji Kawaguchi, **Juho Lee**, Sung Ju Hwang \\
 (*: Equal Contribution)\\
 ICML 2023
-
 
 - [Martingale posterior neural processes](https://openreview.net/forum?id=-9PVqZ-IR_) \\
 Hyungi Lee, Eunggu Yun, Giung Nam, Edwin Fong, **Juho Lee**\\
