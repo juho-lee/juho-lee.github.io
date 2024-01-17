@@ -45,6 +45,26 @@ Journal of Advances in Modeling Earth Systems, October 2022
 
 
 ## Conferences
+- Fast ensembling with diffusion Schrödinger bridge \\
+Hyunsu Kim, Jongmin Yoon, and **Juho Lee**\\
+To appear in ICLR 2024
+
+- Sparse weight averaging with multiple particles for iterative magnitude pruning \\
+Moonseok Choi, Hyungi Lee, Giung Nam, and **Juho Lee**\\
+To appear in ICLR 2024
+
+- Lipsum-FT: Robust fine-tuning of zero-shot models using random text guidance \\
+Giung Nam, Byeongho Heo, and **Juho Lee**\\
+To appear in ICLR 2024
+
+- Enhancing transfer learning with flexible nonparametric posterior sampling \\
+Hyungi Lee, Giung Nam, Edwin Fong, and **Juho Lee** \\
+To appear in ICLR 2024
+
+- Self-supervised dataset distillation for transfer learning \\
+Dong Bok Lee, Seanie Lee, Joonho Ko, Kenji Kawaguchi, **Juho Lee**, and Sung Ju Hwang \\
+To appear in ICLR 2024
+
 - [Spear and shield: adversarial attacks and defense methods for model-based link prediction
 on continuous-time dynamic graphs](https://arxiv.org/abs/2308.10779) \\
 Dongjin Lee, **Juho Lee**, and Kijung Shin \\
