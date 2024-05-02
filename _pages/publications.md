@@ -45,30 +45,43 @@ Journal of Advances in Modeling Earth Systems, October 2022
 
 
 ## Conferences
-- Fast ensembling with diffusion Schrödinger bridge \\
+
+- Variational partial group convolutions for input-aware partial equivariance of rotations and color-shifts\\
+Hyunsu Kim, Yegon Kim, Hongseok Yang, and **Juho Lee**\\
+To appear in ICML 2024
+
+- A simple early exiting framework for accelerated sampling in diffusion models \\
+Taehong Moon, Moonseok Choi, EungGu Yun, Jongmin Yoon, Gayoung Lee, Jaewoong Cho, and **Juho Lee**\\
+To appear in ICML 2024
+
+- Learning to explore for stochastic gradient MCMC \\
+Seunghyun Kim, Seohyeon Jung, Seonghyeon Kim, and **Juho Lee**\\
+To appear in ICML 2024
+
+- [Fast ensembling with diffusion Schrödinger bridge](https://openreview.net/forum?id=Mgq6kxl115) \\
 Hyunsu Kim, Jongmin Yoon, and **Juho Lee**\\
-To appear in ICLR 2024
+ICLR 2024
 
-- Sparse weight averaging with multiple particles for iterative magnitude pruning \\
+- [Sparse weight averaging with multiple particles for iterative magnitude pruning](https://openreview.net/forum?id=Y9t7MqZtCR) \\
 Moonseok Choi, Hyungi Lee, Giung Nam, and **Juho Lee**\\
-To appear in ICLR 2024
+ICLR 2024
 
-- Lipsum-FT: Robust fine-tuning of zero-shot models using random text guidance \\
+- [Lipsum-FT: Robust fine-tuning of zero-shot models using random text guidance](https://openreview.net/forum?id=2JF8mJRJ7M) \\
 Giung Nam, Byeongho Heo, and **Juho Lee**\\
-To appear in ICLR 2024
+ICLR 2024
 
-- Enhancing transfer learning with flexible nonparametric posterior sampling \\
+- [Enhancing transfer learning with flexible nonparametric posterior sampling](https://openreview.net/forum?id=vSwu81S33z) \\
 Hyungi Lee, Giung Nam, Edwin Fong, and **Juho Lee** \\
-To appear in ICLR 2024
+ICLR 2024
 
-- Self-supervised dataset distillation for transfer learning \\
+- [Self-supervised dataset distillation for transfer learning](https://openreview.net/forum?id=h57gkDO2Yg) \\
 Dong Bok Lee, Seanie Lee, Joonho Ko, Kenji Kawaguchi, **Juho Lee**, and Sung Ju Hwang \\
-To appear in ICLR 2024
+ICLR 2024
 
 - [Spear and shield: adversarial attacks and defense methods for model-based link prediction
 on continuous-time dynamic graphs](https://arxiv.org/abs/2308.10779) \\
 Dongjin Lee, **Juho Lee**, and Kijung Shin \\
-To appear in AAAI 2024
+AAAI 2024
 
 - [Function Space Bayesian pseudocoreset for Bayesian neural networks](https://arxiv.org/abs/2310.17852) \\
 Balhae Kim, Hyungi Lee, **Juho Lee** \\
