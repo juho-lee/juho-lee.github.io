@@ -45,6 +45,9 @@ Journal of Advances in Modeling Earth Systems, October 2022
 
 
 ## Conferences
+- Safeguard text-to-image diffusion models with human feedback inversion\\
+Sanghyun Kim, Seohyeon Jung, Balhae Kim, Moonseok Choi, Jinwoo Shin, **Juho Lee**\\
+To appear in ECCV 2024
 
 - Variational partial group convolutions for input-aware partial equivariance of rotations and color-shifts\\
 Hyunsu Kim, Yegon Kim, Hongseok Yang, and **Juho Lee**\\
