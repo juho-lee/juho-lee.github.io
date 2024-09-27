@@ -45,21 +45,39 @@ Journal of Advances in Modeling Earth Systems, October 2022
 
 
 ## Conferences
+- Model fusion through Bayesian optimization in language model fine-tuning\\
+Chaeyun Jang\∗, Hyungi Lee\∗, Jungtaek Kim\^, and **Juho Lee**\^\\
+(*: equal contribution, ^: co-corresponding)
+To appear in NeurIPS 2024 (**spotlight presentation**)
+
+- Ex Uno Pluria: insights on ensembling in low precision number systems\\
+Giung Nam, **Juho Lee**\\
+To appear in NeurIPS 2024
+
+- Learning infinitesimal generators of continuous symmetries from data\\
+Gyeonghoon Ko, Hyunsu Kim, **Juho Lee**\\
+To appear in NeurIPS 2024
+
+- [Stochastic optimal control for diffusion bridges in function spaces](https://arxiv.org/abs/2405.20630)\\
+Byoungwoo Park, Jungwon Choi, Sungbin Lim\^, **Juho Lee**\^\\
+(^: co-corresponding)
+To appear in NeurIPS 2024
+
 - Safeguard text-to-image diffusion models with human feedback inversion\\
 Sanghyun Kim, Seohyeon Jung, Balhae Kim, Moonseok Choi, Jinwoo Shin, **Juho Lee**\\
 To appear in ECCV 2024
 
-- Variational partial group convolutions for input-aware partial equivariance of rotations and color-shifts\\
+- [Variational partial group convolutions for input-aware partial equivariance of rotations and color-shifts](https://proceedings.mlr.press/v235/kim24q.html)\\
 Hyunsu Kim, Yegon Kim, Hongseok Yang, and **Juho Lee**\\
-To appear in ICML 2024
+ICML 2024
 
-- A simple early exiting framework for accelerated sampling in diffusion models \\
+- [A simple early exiting framework for accelerated sampling in diffusion models](https://proceedings.mlr.press/v235/moon24a.html) \\
 Taehong Moon, Moonseok Choi, EungGu Yun, Jongmin Yoon, Gayoung Lee, Jaewoong Cho, and **Juho Lee**\\
-To appear in ICML 2024
+ICML 2024
 
-- Learning to explore for stochastic gradient MCMC \\
+- [Learning to explore for stochastic gradient MCMC](https://proceedings.mlr.press/v235/kim24k.html) \\
 Seunghyun Kim, Seohyeon Jung, Seonghyeon Kim, and **Juho Lee**\\
-To appear in ICML 2024
+ICML 2024
 
 - [Fast ensembling with diffusion Schrödinger bridge](https://openreview.net/forum?id=Mgq6kxl115) \\
 Hyunsu Kim, Jongmin Yoon, and **Juho Lee**\\
@@ -92,12 +110,12 @@ NeurIPS 2023
 
 - [Probabilistic imputation for time-series classification with missing data](https://proceedings.mlr.press/v202/kim23m.html) \\
 SeungHyun Kim\*, Hyunsu Kim\*, Eunggu Yun\*, Hwangrae Lee, Jaehun Lee, **Juho Lee** \\
-(*: Equal Contribution)\\
+(*: equal contribution)\\
 ICML 2023
 
 - [Traversing between modes in function space for fast ensembling](https://proceedings.mlr.press/v202/yun23a.html) \\
 Eunggu Yun\*, Hyungi Lee\*, Giung Nam\*, **Juho Lee**\\
-(*: Equal Contribution)\\
+(*: equal contribution)\\
 ICML 2023
 
 - [Regularizing towards soft equivariance under mixed symmetries](https://proceedings.mlr.press/v202/kim23p.html) \\
@@ -106,7 +124,7 @@ ICML 2023
 
 - [Scalable set encoding with universal mini-batch consistency and unbiased full set gradient approximation](https://proceedings.mlr.press/v202/willette23a.html) \\
 Jeffrey Ryan Willette\*, Seanie Lee\*, Bruno Andreis, Kenji Kawaguchi, **Juho Lee**, Sung Ju Hwang \\
-(*: Equal Contribution)\\
+(*: equal contribution)\\
 ICML 2023
 
 - [Martingale posterior neural processes](https://openreview.net/forum?id=-9PVqZ-IR_) \\
@@ -115,12 +133,12 @@ ICLR 2023 (**Notable top 25%**)
 
 - [Decoupled training for long-tailed classification with stochastic representations](https://openreview.net/forum?id=bcYZwYo-0t)\\
 Giung Nam\*, Sunguk Jang\*, **Juho Lee**\\
-(*: Equal Contribution)\\
+(*: equal contribution)\\
 ICLR 2023
 
 - [A simple yet powerful deep active learning with snapshot ensembles](https://openreview.net/forum?id=IVESH65r0Ar)\\
 Seohyeon Jung\*, Sanghyun Kim\*, **Juho Lee**\\
-(*: Equal Contribution)\\
+(*: equal contribution)\\
 ICLR 2023
 
 - [Self-distillation for further pre-training of transformers](https://openreview.net/forum?id=kj6oK_Hj40)\\
@@ -129,7 +147,7 @@ ICLR 2023
 
 - [Exploring the role of mean teachers in self-supervised masked auto-encoders](https://openreview.net/forum?id=7sn6Vxp92xV)\\
 Youngwan Lee\*, Jeffrey Ryan Willette\*, Jonghee Kim, **Juho Lee**, Sung Ju Hwang \\
-(*: Equal Contribution)\\
+(*: equal contribution)\\
 ICLR 2023
 
 - [On divergence measures for Bayesian pseudocoresets](https://arxiv.org/abs/2210.06205)\\
@@ -163,7 +181,7 @@ ICLR 2022
 
 - [Diversity matters when learning from ensembles](https://arxiv.org/abs/2110.14149)\\
 Giung Nam\*, Jongmin Yoon\*, Yoonho Lee, **Juho Lee**\\
-(*: Equal Contribution)\\
+(*: equal contribution)\\
 NeurIPS 2021\\
 [Code](https://github.com/cs-giung/giung2/tree/main/projects/Diversity-Matters)
 
@@ -191,7 +209,7 @@ CVPR 2021\\
 
 - [Bootstrapping neural processes](https://arxiv.org/abs/2008.02956)\\
 **Juho Lee**\*, Yoonho Lee\*, Jungtaek Kim, Eunho Yang, Sung Ju Hwang, Yee Whye Teh\\
-(*: Equal Contribution)\\
+(*: equal contribution)\\
 [Code](https://github.com/juho-lee/bnp)\\
 NeurIPS 2020
 
@@ -211,7 +229,7 @@ AAAI 2020
 
 - [Beyond the Chinese restaurant and Pitman-Yor processes: statistical models with double power-law behavior](https://arxiv.org/abs/1902.04714)\\
 Fadhel Ayed\*, **Juho Lee**\*, and François Caron\\
-(*: Equal Contribution)\\
+(*: equal contribution)\\
 ICML 2019 (**long oral presentation**)
 
 - [Set transformer: a framework for attention-based permutation-invariant neural networks](https://arxiv.org/abs/1810.00825v3)\\
