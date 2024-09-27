@@ -46,8 +46,8 @@ Journal of Advances in Modeling Earth Systems, October 2022
 
 ## Conferences
 - Model fusion through Bayesian optimization in language model fine-tuning\\
-Chaeyun Jang\∗, Hyungi Lee\∗, Jungtaek Kim\^, and **Juho Lee**\^\\
-(*: equal contribution, ^: co-corresponding)
+Chaeyun Jang\*, Hyungi Lee\*, Jungtaek Kim^, and **Juho Lee**^\\
+(*: equal contribution, ^: equal advising)\\
 To appear in NeurIPS 2024 (**spotlight presentation**)
 
 - Ex Uno Pluria: insights on ensembling in low precision number systems\\
@@ -59,8 +59,8 @@ Gyeonghoon Ko, Hyunsu Kim, **Juho Lee**\\
 To appear in NeurIPS 2024
 
 - [Stochastic optimal control for diffusion bridges in function spaces](https://arxiv.org/abs/2405.20630)\\
-Byoungwoo Park, Jungwon Choi, Sungbin Lim\^, **Juho Lee**\^\\
-(^: co-corresponding)
+Byoungwoo Park, Jungwon Choi, Sungbin Lim^, **Juho Lee**^\\
+(^: equal advising)\\
 To appear in NeurIPS 2024
 
 - Safeguard text-to-image diffusion models with human feedback inversion\\
