@@ -82,14 +82,14 @@ NeurIPS 2024
 Gyeonghoon Ko, Hyunsu Kim, **Juho Lee**\\
 NeurIPS 2024
 
-- [Stochastic optimal control for diffusion bridges in function spaces](https://arxiv.org/abs/2405.20630)\\
+- [Stochastic optimal control for diffusion bridges in function spaces](https://openreview.net/forum?id=WyQW4G57Zd)\\
 Byoungwoo Park, Jungwon Choi, Sungbin Lim^, **Juho Lee**^\\
 (^: equal advising)\\
-To appear in NeurIPS 2024
+NeurIPS 2024
 
-- Safeguard text-to-image diffusion models with human feedback inversion\\
+- [Safeguard text-to-image diffusion models with human feedback inversion](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/08393.pdf)\\
 Sanghyun Kim, Seohyeon Jung, Balhae Kim, Moonseok Choi, Jinwoo Shin, **Juho Lee**\\
-To appear in ECCV 2024
+ECCV 2024
 
 - [Variational partial group convolutions for input-aware partial equivariance of rotations and color-shifts](https://proceedings.mlr.press/v235/kim24q.html)\\
 Hyunsu Kim, Yegon Kim, Hongseok Yang, and **Juho Lee**\\
