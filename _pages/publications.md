@@ -45,18 +45,42 @@ Journal of Advances in Modeling Earth Systems, October 2022
 
 
 ## Conferences
-- Model fusion through Bayesian optimization in language model fine-tuning\\
+- [Parameter expanded stochastic gradient Markov chain Monte Carlo](https://openreview.net/forum?id=exgLs4snap)\\
+Hyunsu Kim, Giung Nam, Chulhee Yun, Hongseok Yang, and  **Juho Lee**\\
+To appear in ICLR 2025
+
+- [Dimension agnostic neural processes](https://openreview.net/forum?id=uGJxl2odR0)\\
+Hyungi Lee, Chaeyun Jang, Dong Bok Lee, and **Juho Lee**\\
+To appear in ICLR 2025
+
+- [Variational Bayesian pseudo-coreset](https://openreview.net/forum?id=0NAVeUm7sk)\\
+Hyungi Lee, Seungyoo Lee, and **Juho Lee**\\
+To appear in ICLR 2025
+
+- [Amortized control of continuous state space Feynman-Kac model for irregular time series](https://openreview.net/forum?id=8zJRon6k5v)\\
+Byoungwoo Park, Hyungi Lee, and **Juho Lee**\\
+To appear in ICLR 2025
+
+- [Learning diverse attacks on large language models for robust red-teaming and safety tuning](https://openreview.net/forum?id=1mXufFuv95)\\
+Seanie Lee, Minsu Kim, Lynn Cherif, David Dobre, **Juho Lee**, Sung Ju Hwang, Kenji Kawaguchi, Gauthier Gidel, Yoshua Bengio, Nikolay Malkin, and Moksh Jain\\
+To appear in ICLR 2025
+
+- [HarmAug: effective data augmentation for knowledge distillation of safety guard Models](https://openreview.net/forum?id=y3zswp3gek)\\
+Seanie Lee, Haebin Seong, Dong Bok Lee, Minki Kang, Xiaoyin Chen, Dominik Wagner, Yoshua Bengio, **Juho Lee**, and Sung Ju Hwang\\
+To appear in ICLR 2025
+
+- [Model fusion through Bayesian optimization in language model fine-tuning](https://openreview.net/forum?id=lV4kTHTgpJ)\\
 Chaeyun Jang\*, Hyungi Lee\*, Jungtaek Kim^, and **Juho Lee**^\\
 (*: equal contribution, ^: equal advising)\\
-To appear in NeurIPS 2024 (**spotlight presentation**)
+NeurIPS 2024 (**spotlight presentation**)
 
-- Ex Uno Pluria: insights on ensembling in low precision number systems\\
+- [Ex Uno Pluria: insights on ensembling in low precision number systems](https://openreview.net/forum?id=CbtkDWZzDq)\\
 Giung Nam, **Juho Lee**\\
-To appear in NeurIPS 2024
+NeurIPS 2024
 
-- Learning infinitesimal generators of continuous symmetries from data\\
+- [Learning infinitesimal generators of continuous symmetries from data](https://openreview.net/forum?id=wl44W8xpc7)\\
 Gyeonghoon Ko, Hyunsu Kim, **Juho Lee**\\
-To appear in NeurIPS 2024
+NeurIPS 2024
 
 - [Stochastic optimal control for diffusion bridges in function spaces](https://arxiv.org/abs/2405.20630)\\
 Byoungwoo Park, Jungwon Choi, Sungbin Lim^, **Juho Lee**^\\
