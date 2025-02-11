@@ -8,9 +8,6 @@ You may also find my recent articles on [Google
 Scholar](https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en).
 
 ## Preprints
-- [Over-parameterised shallow neural networks with asymmetrical node scaling: global convergence guarantees and feature learning](https://arxiv.org/abs/2302.01002)\\
-François Caron, Fadhel Ayed, Paul Jung, Hoil Lee, **Juho Lee**, Hongseok Yang
-
 - [Hybrid generative-contrastive representation learning](https://arxiv.org/abs/2106.06162)\\
 Saehoon Kim, Sungwoong Kim, **Juho Lee**
 
@@ -25,6 +22,10 @@ A preliminary version of this work has been accepted to [NeurIPS 2019 Sets & Par
 **Juho Lee**, Saehoon Kim, Jaehong Yoon, Hae Beom Lee, Eunho Yang, Sung Ju Hwang
 
 ## Journals
+- [Over-parameterised shallow neural networks with asymmetrical node scaling: global convergence guarantees and feature learning](https://arxiv.org/abs/2302.01002)\\
+François Caron, Fadhel Ayed, Paul Jung, Hoil Lee, **Juho Lee**, Hongseok Yang\\
+To appear in Transactions on Machine Learning Research, 2025
+
 - [Deep neural networks with dependent weights: Gaussian process mixture limit, heavy tails, sparsity and compressibility](https://www.jmlr.org/papers/v24/22-0537.html))\\
 Hoil Lee, Fadhel Ayed, Paul Jung, **Juho Lee**, Hongseok Yang, François Caron\\
 Journal of Machine Learning Research, September 2023
