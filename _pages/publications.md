@@ -60,7 +60,7 @@ To appear in ICLR 2025
 
 - [Amortized control of continuous state space Feynman-Kac model for irregular time series](https://openreview.net/forum?id=8zJRon6k5v)\\
 Byoungwoo Park, Hyungi Lee, and **Juho Lee**\\
-To appear in ICLR 2025
+To appear in ICLR 2025 (**oral presentation**)
 
 - [Learning diverse attacks on large language models for robust red-teaming and safety tuning](https://openreview.net/forum?id=1mXufFuv95)\\
 Seanie Lee, Minsu Kim, Lynn Cherif, David Dobre, **Juho Lee**, Sung Ju Hwang, Kenji Kawaguchi, Gauthier Gidel, Yoshua Bengio, Nikolay Malkin, and Moksh Jain\\
