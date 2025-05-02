@@ -44,31 +44,47 @@ Hwan-Jin Song, Soonyoung Roh, **Juho Lee**, Giung Nam, Eunggu Yun, Jongmin Yoon,
 Journal of Advances in Modeling Earth Systems, October 2022
 
 
-
 ## Conferences
+- Bayesian neural scaling laws extrapolation with prior-fitted networks\\
+Dongwoo Lee, Dong Bok Lee, Steven Adriaensen, **Juho Lee**, Sung Ju Hwang, Frank Hutter, Seon Joo Kim, and Hae Beom Lee\\
+To appear in ICML 2025
+
+- Ensemble distribution distillation via flow matching\\
+Jonggeon Park, Giung Nam, Hyunsu Kim, Jongmin Yoon, and **Juho Lee**\\
+To appear in ICML 2025
+
+- Active learning with selective time-step acquisition for PDEs\\
+Yegon Kim, Hyunsu Kim, Gyeonghoon Ko, and **Juho Lee**\\
+(*: equal contribution)\\
+To appear in ICML 2025
+
+- StarFT: robust fine-tuning of zero-shot models via spuriosity alignment\\
+Younghyun Kim*, Jongheon Jeong*, Sangkyung Kwak, Kyungmin Lee, **Juho Lee** and Jinwoo Shin\\
+To appear in IJCAI 2025
+
 - [Parameter expanded stochastic gradient Markov chain Monte Carlo](https://openreview.net/forum?id=exgLs4snap)\\
 Hyunsu Kim, Giung Nam, Chulhee Yun, Hongseok Yang, and  **Juho Lee**\\
-To appear in ICLR 2025
+ICLR 2025
 
 - [Dimension agnostic neural processes](https://openreview.net/forum?id=uGJxl2odR0)\\
 Hyungi Lee, Chaeyun Jang, Dong Bok Lee, and **Juho Lee**\\
-To appear in ICLR 2025
+ICLR 2025
 
 - [Variational Bayesian pseudo-coreset](https://openreview.net/forum?id=0NAVeUm7sk)\\
 Hyungi Lee, Seungyoo Lee, and **Juho Lee**\\
-To appear in ICLR 2025
+ICLR 2025
 
 - [Amortized control of continuous state space Feynman-Kac model for irregular time series](https://openreview.net/forum?id=8zJRon6k5v)\\
 Byoungwoo Park, Hyungi Lee, and **Juho Lee**\\
-To appear in ICLR 2025 (**oral presentation**)
+ICLR 2025 (**oral presentation**)
 
 - [Learning diverse attacks on large language models for robust red-teaming and safety tuning](https://openreview.net/forum?id=1mXufFuv95)\\
 Seanie Lee, Minsu Kim, Lynn Cherif, David Dobre, **Juho Lee**, Sung Ju Hwang, Kenji Kawaguchi, Gauthier Gidel, Yoshua Bengio, Nikolay Malkin, and Moksh Jain\\
-To appear in ICLR 2025
+ICLR 2025
 
 - [HarmAug: effective data augmentation for knowledge distillation of safety guard Models](https://openreview.net/forum?id=y3zswp3gek)\\
 Seanie Lee, Haebin Seong, Dong Bok Lee, Minki Kang, Xiaoyin Chen, Dominik Wagner, Yoshua Bengio, **Juho Lee**, and Sung Ju Hwang\\
-To appear in ICLR 2025
+ICLR 2025
 
 - [Model fusion through Bayesian optimization in language model fine-tuning](https://openreview.net/forum?id=lV4kTHTgpJ)\\
 Chaeyun Jang\*, Hyungi Lee\*, Jungtaek Kim^, and **Juho Lee**^\\
