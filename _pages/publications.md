@@ -50,7 +50,8 @@ Dong Bok Lee, Aoxuan Silvia Zhang, Byungjoo Kim, Junhyeon Park, Steven Adriaense
 To appear in NeurIPS 2025
 
 - PANGEA: projection-based augmentation with non-relevant general data for enhanced domain adaptation in LLMs\\
-Seungyoo Lee, Giung Nam, Hyungi Lee, Moonseok Choi, **Juho Lee**\\
+Seungyoo Lee, Giung Nam, Moonseok Choi, Hyungi Lee^, **Juho Lee**^\\
+(^: equal advising)\\
 To appear in NeurIPS 2025
 
 - Axial neural networks for dimension-free foundation models\\
@@ -66,7 +67,8 @@ Seanie Lee, Sangwoo Park, Dong Bok Lee, Dominik Wagner, Haebin Seong, Tobias Boc
 To appear in NeurIPS 2025
 
 - Reliable decision-making via calibrated retrieval-augmented generation\\
-Chaeyun Jang, Deukhwan Cho, Hyungi Lee, Seanie Lee, **Juho Lee**\\
+Chaeyun Jang, Deukhwan Cho, Seanie Lee, Hyungi Lee^, **Juho Lee**^\\
+(^: equal advising)\\
 To appear in NeurIPS 2025
 
 - Compact memory for continual learning\\
