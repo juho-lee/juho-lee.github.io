@@ -37,7 +37,7 @@ Bernoulli, August 2023
 - [The Normal-Generalised Gamma-Pareto process: A novel pure-jump Lévy process with flexible tail and jump-activity properties
 ](https://projecteuclid.org/journals/bayesian-analysis/advance-publication/The-Normal-Generalised-Gamma-Pareto-Process--A-Novel-Pure/10.1214/22-BA1343.full) \\
 Fadhel Ayed, **Juho Lee**, François Caron\\
-Bayesian Anaylsis, December 2022
+Bayesian Analysis, December 2022
 
 - [Benefits of stochastic weight averaging in developing neural network radiation scheme for numerical weather prediction](https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021MS002921?af=R)\\
 Hwan-Jin Song, Soonyoung Roh, **Juho Lee**, Giung Nam, Eunggu Yun, Jongmin Yoon, Park Sa Kim\\
@@ -45,22 +45,50 @@ Journal of Advances in Modeling Earth Systems, October 2022
 
 
 ## Conferences
-- Bayesian neural scaling laws extrapolation with prior-fitted networks\\
+- Cost-sensitive freeze-thaw Bayesian optimization for efficient hyperparameter tuning\\
+Dong Bok Lee, Aoxuan Silvia Zhang, Byungjoo Kim, Junhyeon Park, Steven Adriaensen, **Juho Lee**, Sung Ju Hwang, Hae Beom Lee\\
+To appear in NeurIPS 2025
+
+- PANGEA: projection-based augmentation with non-relevant general data for enhanced domain adaptation in LLMs\\
+Seungyoo Lee, Giung Nam, Hyungi Lee, Moonseok Choi, **Juho Lee**\\
+To appear in NeurIPS 2025
+
+- Axial neural networks for dimension-free foundation models\\
+Hyunsu Kim, Jonggeon Park, Joan Bruna, Hongseok Yang, **Juho Lee**\\
+To appear in NeurIPS 2025 (**spotlight**)
+
+- Test time scaling for neural processes\\
+Hyungi Lee, Moonseok Choi, Hyunsu Kim, Kyunghyun Cho, Rajesh Ranganath, **Juho Lee**\\
+To appear in NeurIPS 2025
+
+- FedSVD: adaptive orthogonalization for private federated learning with LoRA\\
+Seanie Lee, Sangwoo Park, Dong Bok Lee, Dominik Wagner, Haebin Seong, Tobias Bocklet, **Juho Lee**, Sung Ju Hwang\\
+To appear in NeurIPS 2025
+
+- Reliable decision-making via calibrated retrieval-augmented generation\\
+Chaeyun Jang, Deukhwan Cho, Hyungi Lee, Seanie Lee, **Juho Lee**\\
+To appear in NeurIPS 2025
+
+- Compact memory for continual learning\\
+Yohan Jung, Hyungi Lee, Wenlong Chen, Thomas Möllenhoff, Yingzhen Li, **Juho Lee**, Mohammad Emtiyaz Khan\\
+To appear in NeurIPS 2025
+
+- [Bayesian neural scaling laws extrapolation with prior-fitted networks](https://arxiv.org/abs/2505.23032)\\
 Dongwoo Lee, Dong Bok Lee, Steven Adriaensen, **Juho Lee**, Sung Ju Hwang, Frank Hutter, Seon Joo Kim, and Hae Beom Lee\\
-To appear in ICML 2025
+ICML 2025
 
-- Ensemble distribution distillation via flow matching\\
+- [Ensemble distribution distillation via flow matching](https://openreview.net/forum?id=waeJHU2oeI)\\
 Jonggeon Park, Giung Nam, Hyunsu Kim, Jongmin Yoon, and **Juho Lee**\\
-To appear in ICML 2025
+ICML 2025
 
-- Active learning with selective time-step acquisition for PDEs\\
+- [Active learning with selective time-step acquisition for PDEs](https://openreview.net/forum?id=ef1UHxznNy)\\
 Yegon Kim, Hyunsu Kim, Gyeonghoon Ko, and **Juho Lee**\\
 (*: equal contribution)\\
-To appear in ICML 2025
+ICML 2025
 
-- StarFT: robust fine-tuning of zero-shot models via spuriosity alignment\\
+- [StarFT: robust fine-tuning of zero-shot models via spuriosity alignment](https://arxiv.org/abs/2505.13232)\\
 Younghyun Kim*, Jongheon Jeong*, Sangkyung Kwak, Kyungmin Lee, **Juho Lee** and Jinwoo Shin\\
-To appear in IJCAI 2025
+IJCAI 2025
 
 - [Parameter expanded stochastic gradient Markov chain Monte Carlo](https://openreview.net/forum?id=exgLs4snap)\\
 Hyunsu Kim, Giung Nam, Chulhee Yun, Hongseok Yang, and  **Juho Lee**\\
@@ -89,7 +117,7 @@ ICLR 2025
 - [Model fusion through Bayesian optimization in language model fine-tuning](https://openreview.net/forum?id=lV4kTHTgpJ)\\
 Chaeyun Jang\*, Hyungi Lee\*, Jungtaek Kim^, and **Juho Lee**^\\
 (*: equal contribution, ^: equal advising)\\
-NeurIPS 2024 (**spotlight presentation**)
+NeurIPS 2024 (**spotlight**)
 
 - [Ex Uno Pluria: insights on ensembling in low precision number systems](https://openreview.net/forum?id=CbtkDWZzDq)\\
 Giung Nam, **Juho Lee**\\
@@ -290,7 +318,7 @@ AISTATS 2019 (**oral presentation**)\\
 - [Uncertainty-aware attention for reliable interpretation and prediction](https://arxiv.org/abs/1805.09653)\\
 Jay Heo\*, Hae Beom Lee\*, Saehoon Kim, **Juho Lee**, Kwang Joon Kim, Eunho Yang, and Sung Ju
 Hwang\\
-(*: Equal Constribution)\\
+(*: Equal Contribution)\\
 NeurIPS 2018
 
 - [Dropmax: adaptive variational softmax](https://arxiv.org/abs/1712.07834)\\
