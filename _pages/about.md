@@ -15,9 +15,12 @@ My [CV](cv.pdf) (updated Jan. 2026).
 
 ## Research Interests
 - Bayesian deep learning
-- Bayesian nonparametric models
-- Generative models
-- Meta learning
+- Predictive modeling of uncertainty for large-scale models
+- Foundation models for statistical inference (automatic statisticians)
+- Synthetic data generation for self-improving models
+- ML-based weather forecasting
+- Diffusion models and stochastic optimal control theory
+
 
 ## For prospective students
 I'm seeking self-motivated students who are interested in machine learning, deep learning, and Bayesian methods. Currently, I only advise students who are enrolled in the Kim Jaechul graduate school of AI. If you want to work with me, I encourage you to reaching out to me early, ideally two or three months before the grad school admission deadline and work on research projects under my supervision.
