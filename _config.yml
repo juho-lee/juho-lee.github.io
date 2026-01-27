@@ -79,7 +79,7 @@ analytics:
 author:
   name             : "Juho Lee"
   avatar           : "profile_new.png"
-  bio              : "Bayesian deep learning, Bayesian inference, meta learning, generative models"
+  bio              : 
   location         : "Seoul, Republic of Korea"
   employer         :
   googlescholar    : "https://scholar.google.co.kr/citations?user=Py4URJUAAAAJ&hl=en"
