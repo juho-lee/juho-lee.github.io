@@ -50,7 +50,7 @@ Journal of Advances in Modeling Earth Systems, October 2022
 ## Conferences
 
 - Stochastic optimal control for continuous-time fMRI representation learning \\
-Joonhyeong Park, Byoungwoo Park, Chang-Bae Bang, Jungwon Choi, Hyungjin Chung, Byung-Hoon Kim, **Juho Lee**\\
+Joonhyeong Park*, Byoungwoo Park*, Chang-Bae Bang, Jungwon Choi, Hyungjin Chung, Byung-Hoon Kim, **Juho Lee**\\
 To appear in ICLR 2026
 
 - Soft equivariance regularization for invariant self-supervised learning \\
