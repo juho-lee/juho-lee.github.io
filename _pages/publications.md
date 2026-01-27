@@ -102,7 +102,7 @@ Yegon Kim, Hyunsu Kim, Gyeonghoon Ko, and **Juho Lee**\\
 ICML 2025
 
 - [StarFT: robust fine-tuning of zero-shot models via spuriosity alignment](https://arxiv.org/abs/2505.13232)\\
-Younghyun Kim*, Jongheon Jeong*, Sangkyung Kwak, Kyungmin Lee, **Juho Lee** and Jinwoo Shin\\
+Younghyun Kim\*, Jongheon Jeong\*, Sangkyung Kwak, Kyungmin Lee, **Juho Lee** and Jinwoo Shin\\
 IJCAI 2025
 
 - [Parameter expanded stochastic gradient Markov chain Monte Carlo](https://openreview.net/forum?id=exgLs4snap)\\
