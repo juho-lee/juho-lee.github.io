@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juho Lee</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="container site-header">
+    <div class="header-main">
+      <div>
+        <h1>Juho Lee</h1>
+        <p class="subtitle">Associate Professor, Kim Jaechul Graduate School of AI, KAIST</p>
+        <p class="header-links">
+          <a href="https://scholar.google.com/citations?user=Py4URJUAAAAJ&hl=ko" target="_blank" rel="noreferrer">Google
+            Scholar</a>
+          <span class="dot">·</span>
+          <a href="https://github.com/juho-lee" target="_blank" rel="noreferrer">GitHub</a>
+          <span class="dot">·</span>
+          <a href="https://www.overleaf.com/read/mkfrcbwfcgmc#3d3dc6" target="_blank" rel="noreferrer">CV</a>
+        </p>
+      </div>
+      <img class="profile-photo" src="./assets/profile.png" alt="Portrait of Juho Lee" />
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#activities">Activities</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="about" class="panel">
+      <h2>About</h2>
+      <div id="about-content"></div>
+    </section>
+
+    <section id="publications" class="panel">
+      <div class="section-head">
+        <h2>Selected Publications</h2>
+        <p class="section-note">Grouped by type, each list sorted newest first</p>
+      </div>
+      <p class="legend" id="author-legend"></p>
+      <div id="publication-sections" class="publication-sections"></div>
+    </section>
+
+    <section id="activities" class="panel">
+      <h2>Talks, Teaching, and Service</h2>
+      <div id="activities-content"></div>
+    </section>
+
+    <section id="contact" class="panel">
+      <h2>Contact</h2>
+      <p>
+        Email:
+        juholee [at] kaist [dot] ac [dot] kr
+      </p>
+      <p>
+        <a href="https://scholar.google.com/citations?user=Py4URJUAAAAJ&hl=ko" target="_blank" rel="noreferrer">Google
+          Scholar</a>
+        <span class="dot">·</span>
+        <a href="https://github.com/juho-lee" target="_blank" rel="noreferrer">GitHub</a>
+        <span class="dot">·</span>
+        <a href="https://www.overleaf.com/read/mkfrcbwfcgmc#3d3dc6" target="_blank" rel="noreferrer">CV</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="container site-footer">
+    <p>Last updated automatically from <code>data/about.js</code> and <code>data/publications.js</code></p>
+  </footer>
+
+  <button id="to-top-button" class="to-top-button" type="button" aria-label="Back to top">To the top</button>
+
+  <script type="module" src="app.js"></script>
+</body>
+
+</html>
