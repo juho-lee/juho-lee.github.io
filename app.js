@@ -8,6 +8,12 @@ const CATEGORY_ORDER = [
   { key: "workshop", title: "Workshops" },
   { key: "preprint", title: "Preprints" },
 ];
+const CONFERENCE_VENUE_ORDER = {
+  neurips: 0,
+  nips: 0,
+  icml: 1,
+  iclr: 2,
+};
 
 const VALID_CATEGORIES = new Set(CATEGORY_ORDER.map((item) => item.key));
 const PUBLICATION_MAP = new Map(PUBLICATIONS.map((pub) => [getPublicationId(pub), pub]));
@@ -217,6 +223,20 @@ function sortPublications(items) {
     if (byYear !== 0) {
       return byYear;
     }
+
+    if (a.category === "conference" && b.category === "conference") {
+      const aVenue = String(a.venue || "").toLowerCase();
+      const bVenue = String(b.venue || "").toLowerCase();
+      const aOrder = CONFERENCE_VENUE_ORDER[aVenue] ?? 99;
+      const bOrder = CONFERENCE_VENUE_ORDER[bVenue] ?? 99;
+      if (aOrder !== bOrder) {
+        return aOrder - bOrder;
+      }
+      if (aVenue !== bVenue) {
+        return aVenue.localeCompare(bVenue);
+      }
+    }
+
     return String(a.title).localeCompare(String(b.title));
   });
 }
@@ -406,29 +426,13 @@ function formatBibTeX(pub) {
   return lines.join("\n");
 }
 
-async function copyText(text) {
-  if (navigator.clipboard?.writeText) {
-    await navigator.clipboard.writeText(text);
-    return;
-  }
-  const textarea = document.createElement("textarea");
-  textarea.value = text;
-  textarea.style.position = "fixed";
-  textarea.style.opacity = "0";
-  document.body.appendChild(textarea);
-  textarea.focus();
-  textarea.select();
-  document.execCommand("copy");
-  document.body.removeChild(textarea);
-}
-
 function setupExportActions() {
   const container = document.getElementById("publication-sections");
   if (!container) {
     return;
   }
 
-  container.addEventListener("click", async (event) => {
+  container.addEventListener("click", (event) => {
     const button = event.target.closest("button[data-action]");
     if (!button) {
       return;
@@ -441,22 +445,19 @@ function setupExportActions() {
       return;
     }
 
-    const text = action === "copy-bibtex" ? formatCitation(pub) : "";
-    if (!text) {
+    if (action !== "toggle-bibtex") {
       return;
     }
-    try {
-      await copyText(text);
-      button.textContent = "Copied BibTex";
-      setTimeout(() => {
-        button.textContent = "BibTex";
-      }, 1200);
-    } catch {
-      button.textContent = "Copy failed";
-      setTimeout(() => {
-        button.textContent = "BibTex";
-      }, 1200);
+
+    const block = container.querySelector(`[data-bibtex-block="${CSS.escape(id)}"]`);
+    if (!block) {
+      return;
     }
+
+    const expanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", String(!expanded));
+    button.textContent = expanded ? "BibTex" : "Hide BibTex";
+    block.hidden = expanded;
   });
 }
 
@@ -548,9 +549,11 @@ function renderPublications() {
         const note = pub.note ? `<span class="badge">${escapeHtml(pub.note)}</span>` : "";
         const statusPrefix =
           pub.status === "to_appear" ? '<span class="pub-status">To appear in</span> ' : "";
-        const exportButtons = `<button class="action-link" type="button" data-action="copy-bibtex" data-pub-id="${escapeHtml(
-          getPublicationId(pub)
-        )}">BibTex</button>`;
+        const pubId = getPublicationId(pub);
+        const bibtexBlock = escapeHtml(formatCitation(pub));
+        const exportButtons = `<button class="action-link" type="button" data-action="toggle-bibtex" data-pub-id="${escapeHtml(
+          pubId
+        )}" aria-expanded="false">BibTex</button>`;
 
         return `
           <li class="publication-item">
@@ -558,6 +561,7 @@ function renderPublications() {
             <div class="pub-authors">${authors}</div>
             <div class="pub-venue">${statusPrefix}${formatVenue(pub.venue, pub.year)} ${note}</div>
             <div class="pub-links">${links ? `${links} <span class="dot">·</span> ` : ""}${exportButtons}</div>
+            <pre class="bibtex-block" data-bibtex-block="${escapeHtml(pubId)}" hidden><code>${bibtexBlock}</code></pre>
           </li>
         `;
       })
