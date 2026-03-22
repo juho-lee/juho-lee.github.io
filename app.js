@@ -64,6 +64,14 @@ function getPlainAuthorName(author) {
   return String(raw).replaceAll("\\", "").replaceAll("*", "").replaceAll("†", "").trim();
 }
 
+function isMyName(authorName) {
+  const normalized = String(authorName || "")
+    .toLowerCase()
+    .replaceAll(/\s+/g, " ")
+    .trim();
+  return normalized === "juho lee";
+}
+
 function formatAuthorForBib(authorName) {
   const tokens = String(authorName)
     .trim()
@@ -200,11 +208,14 @@ function formatAuthors(authors = []) {
 
   return authors
     .map((author) => {
+      const plainName = getPlainAuthorName(author);
       if (typeof author === "string") {
-        return escapeHtml(getPlainAuthorName(author));
+        const renderedName = escapeHtml(plainName);
+        return isMyName(plainName) ? `<span class="author-self">${renderedName}</span>` : renderedName;
       }
 
-      const name = escapeHtml(getPlainAuthorName(author));
+      const name = escapeHtml(plainName);
+      const formattedName = isMyName(plainName) ? `<span class="author-self">${name}</span>` : name;
       let markers = "";
       if (author?.equalContribution) {
         markers += "<sup>*</sup>";
@@ -212,7 +223,7 @@ function formatAuthors(authors = []) {
       if (author?.corresponding && correspondingCount > 1) {
         markers += "<sup>†</sup>";
       }
-      return `${name}${markers}`;
+      return `${formattedName}${markers}`;
     })
     .join(", ");
 }

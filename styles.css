@@ -211,6 +211,11 @@ h2 {
   margin-left: 1px;
 }
 
+.author-self {
+  font-weight: 600;
+  color: var(--fg);
+}
+
 .pub-venue {
   color: var(--fg);
 }
