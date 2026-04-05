@@ -335,6 +335,28 @@ function renderActivities() {
   `;
 }
 
+function bibProtectCaps(title) {
+  return title.replace(/\S+/g, (word, offset) => {
+    const before = title.slice(0, offset);
+    const isFirstWord = before.trim() === "";
+    const afterColon = /:\s*$/.test(before);
+    if (isFirstWord || afterColon) {
+      return word;
+    }
+    if (word.startsWith("{") && word.endsWith("}")) {
+      return word;
+    }
+    // Separate trailing punctuation so it stays outside the braces
+    const match = word.match(/^(.*?)([.,;:!?]*)$/);
+    const core = match[1];
+    const punct = match[2];
+    if (/[A-Z]/.test(core)) {
+      return `{${core}}${punct}`;
+    }
+    return word;
+  });
+}
+
 function getBibKey(pub) {
   if (pub.bibkey) {
     return pub.bibkey;
@@ -360,7 +382,7 @@ function formatBibTeX(pub) {
 
   const authors = (pub.authors || []).map(getPlainAuthorName).map(formatAuthorForBib).join(" and ");
   lines.push(`  author = {${authors}},`);
-  lines.push(`  title = {${pub.title}},`);
+  lines.push(`  title = {${bibProtectCaps(pub.title)}},`);
   lines.push(`  year = {${pub.year}},`);
 
   if (type === "article") {
