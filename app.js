@@ -340,16 +340,17 @@ function bibProtectCaps(title) {
     const before = title.slice(0, offset);
     const isFirstWord = before.trim() === "";
     const afterColon = /:\s*$/.test(before);
-    if (isFirstWord || afterColon) {
-      return word;
-    }
     if (word.startsWith("{") && word.endsWith("}")) {
       return word;
     }
-    // Separate trailing punctuation so it stays outside the braces
     const match = word.match(/^(.*?)([.,;:!?]*)$/);
     const core = match[1];
     const punct = match[2];
+    if (isFirstWord || afterColon) {
+      // BibTeX capitalizes only the first character automatically;
+      // protect if there are uppercase letters beyond it (e.g. PANGEA, HarmAug)
+      return /[A-Z]/.test(core.slice(1)) ? `{${core}}${punct}` : word;
+    }
     if (/[A-Z]/.test(core)) {
       return `{${core}}${punct}`;
     }
