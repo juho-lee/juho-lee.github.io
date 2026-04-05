@@ -12,6 +12,6 @@ export const ABOUT = {
     "Diffusion models and stochastic optimal control theory"
   ],
   prospectiveStudents: [
-    "I’m seeking self-motivated students who are interested in machine learning, deep learning, and Bayesian methods. Currently, I only advise students who are enrolled in the Kim Jaechul graduate school of AI. If you want to work with me, I encourage you to reaching out to me early, ideally two or three months before the grad school admission deadline and work on research projects under my supervision.",
+    "I’m seeking self-motivated students who are interested in machine learning, deep learning, and Bayesian methods. Currently, I only advise students who are enrolled in the Kim Jaechul graduate school of AI. If you want to work with me, I encourage you to reach out to me early, ideally two or three months before the grad school admission deadline and work on research projects under my supervision.",
   ],
 };

@@ -179,7 +179,7 @@ function formatVenue(venueKey, year) {
     return `${escapeHtml(venueKey || "Unknown venue")} ${escapeHtml(year)}`;
   }
 
-  return `${escapeHtml(alias.name)} ${escapeHtml(year)} <span class="badge">${escapeHtml(alias.short)}</span>`;
+  return `${escapeHtml(alias.short)} ${escapeHtml(year)}`;
 }
 
 function formatLinks(links = []) {
@@ -335,30 +335,6 @@ function renderActivities() {
   `;
 }
 
-function formatCitation(pub) {
-  const key = getBibKey(pub);
-  const type = pub.category === "journal" ? "article" : pub.category === "preprint" ? "misc" : "inproceedings";
-  const author = (pub.authors || []).map(getPlainAuthorName).map(formatAuthorForBib).join(" and ");
-  const lines = [`@${type}{${key},`, `author = {${author}},`];
-
-  if (type === "article") {
-    const alias = VENUE_ALIASES[String(pub.venue || "").toLowerCase()];
-    lines.push(`journal = {${alias?.name || pub.venue}},`);
-  } else if (type === "inproceedings") {
-    lines.push(`booktitle = {${getExpandedBooktitle(pub.venue, pub.year)}},`);
-  } else {
-    lines.push("archivePrefix = {arXiv},");
-  }
-
-  lines.push(`year = {${pub.year}}`);
-  lines.push("}");
-  return lines.join("\n");
-}
-
-function bibEscape(value) {
-  return String(value).replaceAll("{", "\\{").replaceAll("}", "\\}");
-}
-
 function getBibKey(pub) {
   if (pub.bibkey) {
     return pub.bibkey;
@@ -377,44 +353,21 @@ function getBibKey(pub) {
   return `${slugify(firstAuthor)}${pub.year}${slugify(firstContent)}`;
 }
 
-function getBooktitleMacro(venue, year) {
-  const key = String(venue || "").toLowerCase();
-  if (key === "neurips") {
-    return `\\neuripsbooktitle{${year}}`;
-  }
-  if (key === "icml") {
-    return `\\icmlbooktitle{${year}}`;
-  }
-  if (key === "iclr") {
-    return `\\iclrbooktitle{${year}}`;
-  }
-  if (key === "aistats") {
-    return `\\aistatsbooktitle{${year}}`;
-  }
-  return null;
-}
-
 function formatBibTeX(pub) {
   const type = pub.category === "journal" ? "article" : pub.category === "preprint" ? "misc" : "inproceedings";
   const key = getBibKey(pub);
   const lines = [`@${type}{${key},`];
 
-  const authors = (pub.authors || []).map(getPlainAuthorName).join(" and ");
-  lines.push(`  author = {${bibEscape(authors)}},`);
-  lines.push(`  title = {${bibEscape(pub.title)}},`);
+  const authors = (pub.authors || []).map(getPlainAuthorName).map(formatAuthorForBib).join(" and ");
+  lines.push(`  author = {${authors}},`);
+  lines.push(`  title = {${pub.title}},`);
   lines.push(`  year = {${pub.year}},`);
 
   if (type === "article") {
     const alias = VENUE_ALIASES[String(pub.venue || "").toLowerCase()];
-    lines.push(`  journal = {${bibEscape(alias?.name || pub.venue)}},`);
+    lines.push(`  journal = {${alias?.name || pub.venue}},`);
   } else if (type === "inproceedings") {
-    const macro = getBooktitleMacro(pub.venue, pub.year);
-    const alias = VENUE_ALIASES[String(pub.venue || "").toLowerCase()];
-    if (macro) {
-      lines.push(`  booktitle = {${macro}},`);
-    } else {
-      lines.push(`  booktitle = {${bibEscape(alias?.name || pub.venue)}},`);
-    }
+    lines.push(`  booktitle = {${getExpandedBooktitle(pub.venue, pub.year)}},`);
   } else {
     lines.push("  archivePrefix = {arXiv},");
     const paperUrl = getPaperUrl(pub);
@@ -456,19 +409,27 @@ function setupExportActions() {
       return;
     }
 
-    if (action !== "toggle-bibtex") {
+    if (action === "toggle-bibtex") {
+      const block = container.querySelector(`[data-bibtex-block="${CSS.escape(id)}"]`);
+      if (!block) {
+        return;
+      }
+      const expanded = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!expanded));
+      button.textContent = expanded ? "BibTeX" : "Hide BibTeX";
+      block.hidden = expanded;
       return;
     }
 
-    const block = container.querySelector(`[data-bibtex-block="${CSS.escape(id)}"]`);
-    if (!block) {
+    if (action === "copy-bibtex") {
+      const block = container.querySelector(`[data-bibtex-block="${CSS.escape(id)}"] code`);
+      const text = block?.textContent || "";
+      navigator.clipboard.writeText(text).then(() => {
+        button.textContent = "Copied!";
+        setTimeout(() => { button.textContent = "Copy BibTeX"; }, 2000);
+      });
       return;
     }
-
-    const expanded = button.getAttribute("aria-expanded") === "true";
-    button.setAttribute("aria-expanded", String(!expanded));
-    button.textContent = expanded ? "BibTex" : "Hide BibTex";
-    block.hidden = expanded;
   });
 }
 
@@ -561,10 +522,8 @@ function renderPublications() {
         const statusPrefix =
           pub.status === "to_appear" ? '<span class="pub-status">To appear in</span> ' : "";
         const pubId = getPublicationId(pub);
-        const bibtexBlock = escapeHtml(formatCitation(pub));
-        const exportButtons = `<button class="action-link" type="button" data-action="toggle-bibtex" data-pub-id="${escapeHtml(
-          pubId
-        )}" aria-expanded="false">BibTex</button>`;
+        const bibtexBlock = escapeHtml(formatBibTeX(pub));
+        const exportButtons = `<button class="action-link" type="button" data-action="toggle-bibtex" data-pub-id="${escapeHtml(pubId)}" aria-expanded="false">BibTeX</button>`;
 
         return `
           <li class="publication-item">
@@ -572,7 +531,10 @@ function renderPublications() {
             <div class="pub-authors">${authors}</div>
             <div class="pub-venue">${statusPrefix}${formatVenue(pub.venue, pub.year)} ${note}</div>
             <div class="pub-links">${links ? `${links} <span class="dot">·</span> ` : ""}${exportButtons}</div>
-            <pre class="bibtex-block" data-bibtex-block="${escapeHtml(pubId)}" hidden><code>${bibtexBlock}</code></pre>
+            <div class="bibtex-wrapper" data-bibtex-block="${escapeHtml(pubId)}" hidden>
+              <button class="action-link bibtex-copy-btn" type="button" data-action="copy-bibtex" data-pub-id="${escapeHtml(pubId)}">Copy</button>
+              <pre class="bibtex-block"><code>${bibtexBlock}</code></pre>
+            </div>
           </li>
         `;
       })
@@ -595,5 +557,7 @@ renderAbout();
 renderPublications();
 renderActivities();
 setupExportActions();
-validatePublications();
+if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+  validatePublications();
+}
 setupToTopButton();

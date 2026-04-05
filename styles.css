@@ -15,12 +15,25 @@
 }
 
 :root {
-  --bg: #ffffff;
+  --bg: #fafaf8;
   --fg: #111111;
   --muted: #666666;
   --line: #e8e8e8;
-  --link: #0b57d0;
-  --link-hover: #003a9b;
+  --link: #1d3d6b;
+  --link-hover: #0f2240;
+  --code-bg: #f4f4f2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18181a;
+    --fg: #e8e8e6;
+    --muted: #888888;
+    --line: #2e2e2e;
+    --link: #7aabf0;
+    --link-hover: #a8c8f8;
+    --code-bg: #111113;
+  }
 }
 
 * {
@@ -56,11 +69,10 @@ body {
 }
 
 .profile-photo {
-  width: 116px;
-  height: 116px;
-  border-radius: 6px;
+  width: 160px;
+  height: 160px;
+  border-radius: 0;
   object-fit: cover;
-  border: 1px solid var(--line);
   flex-shrink: 0;
 }
 
@@ -99,16 +111,19 @@ main {
   padding: 24px 0 48px;
 }
 
-.panel + .panel {
-  margin-top: 34px;
+.panel+.panel {
+  margin-top: 52px;
 }
 
 h2 {
   font-size: 1.25rem;
   margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--fg);
+  width: fit-content;
 }
 
-.about-block + .about-block {
+.about-block+.about-block {
   margin-top: 16px;
 }
 
@@ -117,7 +132,7 @@ h2 {
   margin: 0 0 6px;
 }
 
-.about-block p + p {
+.about-block p+p {
   margin-top: 8px;
 }
 
@@ -126,7 +141,7 @@ h2 {
   padding-left: 18px;
 }
 
-.about-list li + li {
+.about-list li+li {
   margin-top: 4px;
 }
 
@@ -163,14 +178,26 @@ h2 {
 
 .publication-list {
   margin: 12px 0 0;
-  padding-left: 22px;
+  padding-left: 28px;
   display: grid;
   gap: 16px;
 }
 
+.publication-list .publication-item::marker {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
 .publication-item {
   padding-bottom: 14px;
+  padding-left: 12px;
   border-bottom: 1px solid var(--line);
+  border-left: 3px solid var(--line);
+}
+
+.publication-item:hover {
+  border-left-color: var(--fg);
 }
 
 .pub-title {
@@ -191,12 +218,29 @@ h2 {
   gap: 0;
 }
 
+.bibtex-wrapper {
+  position: relative;
+  margin-top: 10px;
+}
+
+.bibtex-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.bibtex-copy-btn:hover {
+  color: var(--fg);
+}
+
 .bibtex-block {
-  margin: 10px 0 0;
+  margin: 0;
   padding: 12px 14px;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: #fafafa;
+  background: var(--code-bg);
   color: var(--fg);
   white-space: pre-wrap;
   word-break: break-word;
@@ -212,7 +256,7 @@ h2 {
 }
 
 .author-self {
-  font-weight: 600;
+  font-weight: 800;
   color: var(--fg);
 }
 
@@ -303,8 +347,8 @@ a:focus-visible {
   }
 
   .profile-photo {
-    width: 92px;
-    height: 92px;
+    width: 120px;
+    height: 120px;
   }
 
   h1 {
