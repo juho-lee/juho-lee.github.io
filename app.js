@@ -500,6 +500,36 @@ function validatePublications() {
   }
 }
 
+function setupThemeToggle() {
+  const button = document.getElementById("theme-toggle");
+  if (!button) return;
+
+  const html = document.documentElement;
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function isDarkActive() {
+    const current = html.getAttribute("data-theme");
+    return current === "dark" || (!current && mq.matches);
+  }
+
+  function updateButton() {
+    const dark = isDarkActive();
+    button.textContent = dark ? "☀" : "☾";
+    button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  }
+
+  updateButton();
+
+  button.addEventListener("click", () => {
+    const next = isDarkActive() ? "light" : "dark";
+    html.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    updateButton();
+  });
+
+  mq.addEventListener("change", updateButton);
+}
+
 function setupToTopButton() {
   const button = document.getElementById("to-top-button");
   if (!button) {
@@ -583,4 +613,5 @@ setupExportActions();
 if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
   validatePublications();
 }
+setupThemeToggle();
 setupToTopButton();
