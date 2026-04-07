@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publication Editor</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem("theme");
+      if (t) document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+  <style>
+    /* ── Layout ─────────────────────────────────────────────── */
+    .editor-header {
+      padding: 32px 0 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .editor-main {
+      padding: 32px 0 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 680px) {
+      .editor-main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── Form sections ───────────────────────────────────────── */
+    .form-section+.form-section {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    /* ── Fields ──────────────────────────────────────────────── */
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .field+.field {
+      margin-top: 11px;
+    }
+
+    .field label {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .field input[type="text"],
+    .field input[type="url"],
+    .field input[type="number"],
+    .field select {
+      background: var(--bg);
+      color: var(--fg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 6px 10px;
+      font: inherit;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--fg);
+    }
+
+    .field input.has-error,
+    .field select.has-error {
+      border-color: #c0392b;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* ── Authors ─────────────────────────────────────────────── */
+    .author-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .author-row {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .author-name {
+      flex: 1;
+      min-width: 0;
+      background: var(--bg);
+      color: var(--fg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 5px 9px;
+      font: inherit;
+      font-size: 0.87rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .author-name:focus {
+      border-color: var(--fg);
+    }
+
+    .self-badge {
+      font-size: 0.72rem;
+      color: var(--link);
+      border: 1px solid var(--link);
+      border-radius: 3px;
+      padding: 1px 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .author-flag {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .author-flag input[type="checkbox"] {
+      accent-color: var(--link);
+    }
+
+    .icon-btn {
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      border-radius: 4px;
+      padding: 3px 8px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      line-height: 1.5;
+      flex-shrink: 0;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .icon-btn:hover {
+      color: #c0392b;
+      border-color: #c0392b;
+    }
+
+    .author-hint {
+      font-size: 0.77rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ── Buttons ─────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--fg);
+      border-radius: 4px;
+      padding: 7px 14px;
+      font: inherit;
+      font-size: 0.87rem;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      border-color: var(--fg);
+    }
+
+    .btn-primary {
+      background: var(--fg);
+      color: var(--bg);
+      border-color: var(--fg);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.82;
+    }
+
+    .btn-sm {
+      font-size: 0.82rem;
+      padding: 4px 11px;
+    }
+
+    .btn-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Preview panel ───────────────────────────────────────── */
+    .preview-panel {
+      position: sticky;
+      top: 24px;
+    }
+
+    .preview-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .error-list {
+      margin-bottom: 10px;
+    }
+
+    .error-item {
+      font-size: 0.83rem;
+      color: #c0392b;
+      margin-bottom: 3px;
+    }
+
+    .markdown-box {
+      position: relative;
+      background: var(--code-bg);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 14px 16px 14px 16px;
+      min-height: 80px;
+    }
+
+    .markdown-box pre {
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.8rem;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      word-break: break-all;
+      color: var(--fg);
+    }
+
+    .markdown-box pre.empty {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 9px;
+      right: 11px;
+      background: none;
+      border: none;
+      font: inherit;
+      font-size: 0.77rem;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 2px 5px;
+      transition: color 0.15s;
+    }
+
+    .copy-btn:hover {
+      color: var(--fg);
+    }
+
+    /* ── Queue ───────────────────────────────────────────────── */
+    .queue-section {
+      margin-top: 28px;
+    }
+
+    .queue-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .queue-header-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .queue-header-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .queue-empty {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .queue-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: var(--code-bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+    }
+
+    .queue-item-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .queue-item-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .queue-item-meta {
+      font-size: 0.77rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .queue-export-box {
+      margin-top: 10px;
+      position: relative;
+      background: var(--code-bg);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+
+    .queue-export-box pre {
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.78rem;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      word-break: break-all;
+      color: var(--fg);
+    }
+
+    /* ── Checkbox note ───────────────────────────────────────── */
+    .check-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .check-label input[type="checkbox"] {
+      accent-color: var(--link);
+    }
+
+    /* ── Divider ─────────────────────────────────────────────── */
+    .hint-text {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="container editor-header">
+    <div>
+      <h1 style="font-size:1.4rem">Publication Editor</h1>
+      <p class="subtitle">Generate entries for <code>data/publications_source.md</code></p>
+    </div>
+    <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+      <button class="btn btn-sm" id="theme-toggle-btn" type="button">☾</button>
+      <a href="index.html" class="btn btn-sm">← Site</a>
+    </div>
+  </header>
+
+  <main class="container editor-main">
+
+    <!-- ── FORM PANEL ─────────────────────────────────────── -->
+    <div class="form-panel">
+      <form id="pub-form" autocomplete="off" onsubmit="return false;">
+
+        <!-- Meta -->
+        <div class="form-section">
+          <p class="section-label">Meta</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-category">Category</label>
+              <select id="f-category">
+                <option value="conference">Conference</option>
+                <option value="journal">Journal</option>
+                <option value="preprint">Preprint</option>
+                <option value="workshop">Workshop</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-year" id="year-label">Year <span class="req">*</span></label>
+              <input id="f-year" type="number" min="1990" max="2040" placeholder="2025" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Title -->
+        <div class="form-section">
+          <p class="section-label">Title</p>
+          <div class="field">
+            <label for="f-title">Title <span class="req" style="color:#c0392b">*</span></label>
+            <input id="f-title" type="text" placeholder="Full paper title" />
+          </div>
+          <div class="field">
+            <label for="f-paper-url">Paper URL <span style="font-weight:300; color:var(--muted)">(optional)</span></label>
+            <input id="f-paper-url" type="url" placeholder="https://openreview.net/…" />
+          </div>
+        </div>
+
+        <!-- Authors -->
+        <div class="form-section">
+          <p class="section-label">Authors <span style="color:#c0392b">*</span></p>
+          <div class="author-list" id="author-list"></div>
+          <button type="button" class="btn btn-sm" id="add-author-btn" style="margin-top:9px">+ Add author</button>
+          <p class="author-hint">✱ = equal contribution &nbsp;·&nbsp; † = co-corresponding (must mark 2+ authors)</p>
+        </div>
+
+        <!-- Venue -->
+        <div class="form-section" id="venue-section">
+          <p class="section-label">Venue</p>
+
+          <!-- Conference / Journal / Preprint venue input -->
+          <div class="field" id="venue-field">
+            <label for="f-venue" id="venue-label">Venue <span style="color:#c0392b" id="venue-star">*</span></label>
+            <input id="f-venue" type="text" list="venue-datalist" placeholder="e.g. NeurIPS" />
+            <datalist id="venue-datalist">
+              <option value="NeurIPS">
+              <option value="ICML">
+              <option value="ICLR">
+              <option value="AISTATS">
+              <option value="AAAI">
+              <option value="ACL">
+              <option value="CVPR">
+              <option value="ICCV">
+              <option value="ECCV">
+              <option value="IJCAI">
+              <option value="Journal of Machine Learning Research">
+              <option value="Transactions on Machine Learning Research">
+              <option value="Bernoulli">
+              <option value="Bayesian Analysis">
+            </datalist>
+          </div>
+
+          <!-- Workshop: full free-form venue string -->
+          <div class="field" id="workshop-venue-field" style="display:none">
+            <label for="f-workshop-venue">Full venue string <span style="color:#c0392b">*</span></label>
+            <input id="f-workshop-venue" type="text" placeholder="ICML 2025 workshop on Topic, 2025" />
+            <p class="hint-text">Include the year at the end after a comma, e.g. <code>NeurIPS 2024 Workshop on Score-Based Methods, 2024</code></p>
+          </div>
+
+          <!-- Conference: to appear + note -->
+          <div id="conf-extras" style="margin-top:10px">
+            <label class="check-label">
+              <input type="checkbox" id="f-to-appear" />
+              To appear (not yet published)
+            </label>
+            <div class="field" style="margin-top:10px" id="note-field">
+              <label for="f-note">Award / Note <span style="font-weight:300; color:var(--muted)">(optional)</span></label>
+              <input id="f-note" type="text" placeholder='e.g. spotlight, oral presentation, Notable top 25%' />
+            </div>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="form-section">
+          <p class="section-label">Links</p>
+          <div class="field">
+            <label for="f-code-url">Code URL <span style="font-weight:300; color:var(--muted)">(optional)</span></label>
+            <input id="f-code-url" type="url" placeholder="https://github.com/…" />
+          </div>
+          <div id="extra-links-list"></div>
+          <button type="button" class="btn btn-sm" id="add-link-btn" style="margin-top:9px">+ Add link</button>
+        </div>
+
+        <!-- Actions -->
+        <div class="btn-actions">
+          <button type="button" class="btn btn-primary" id="copy-btn">Copy markdown</button>
+          <button type="button" class="btn" id="queue-btn">Add to queue</button>
+          <button type="button" class="btn" id="reset-btn">Reset</button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- ── PREVIEW PANEL ──────────────────────────────────── -->
+    <div class="preview-panel">
+      <p class="preview-title">Preview</p>
+
+      <div class="error-list" id="error-list"></div>
+
+      <div class="markdown-box">
+        <pre id="preview-pre" class="empty">Fill in the form to see the markdown…</pre>
+        <button type="button" class="copy-btn" id="preview-copy-btn">Copy</button>
+      </div>
+
+      <!-- Queue -->
+      <div class="queue-section">
+        <div class="queue-header">
+          <span class="queue-header-title">Queue (<span id="queue-count">0</span>)</span>
+          <div class="queue-header-actions">
+            <button type="button" class="btn btn-sm" id="export-btn">Export all</button>
+            <button type="button" class="btn btn-sm" id="clear-queue-btn">Clear</button>
+          </div>
+        </div>
+        <div id="queue-list"></div>
+        <div id="queue-export" style="display:none">
+          <div class="queue-export-box">
+            <pre id="queue-export-pre"></pre>
+            <button type="button" class="copy-btn" id="queue-copy-btn">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // ─────────────────────────────────────────────────────────────
+    // Constants
+    // ─────────────────────────────────────────────────────────────
+    const SELF = "Juho Lee";
+    const QUEUE_KEY = "pub_editor_queue_v1";
+
+    // ─────────────────────────────────────────────────────────────
+    // State
+    // ─────────────────────────────────────────────────────────────
+    let authors = [];     // { name, isSelf, equal, corr }
+    let extraLinks = [];  // { label, url }
+
+    // ─────────────────────────────────────────────────────────────
+    // DOM helpers
+    // ─────────────────────────────────────────────────────────────
+    const el = id => document.getElementById(id);
+    const val = id => el(id).value.trim();
+    const chk = id => el(id).checked;
+
+    function esc(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Theme toggle (mirrors main site)
+    // ─────────────────────────────────────────────────────────────
+    el("theme-toggle-btn").addEventListener("click", () => {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      const next = current === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    });
+
+    // ─────────────────────────────────────────────────────────────
+    // Author management
+    // ─────────────────────────────────────────────────────────────
+    function renderAuthors() {
+      const list = el("author-list");
+      list.innerHTML = "";
+      authors.forEach((a, i) => {
+        const row = document.createElement("div");
+        row.className = "author-row";
+
+        const nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.className = "author-name";
+        nameInput.value = a.name;
+        nameInput.placeholder = "Author name";
+        nameInput.addEventListener("input", e => {
+          authors[i].name = e.target.value;
+          authors[i].isSelf = e.target.value.trim() === SELF;
+          renderAuthors();
+          updatePreview();
+        });
+
+        row.appendChild(nameInput);
+
+        if (a.isSelf) {
+          const badge = document.createElement("span");
+          badge.className = "self-badge";
+          badge.textContent = "self";
+          row.appendChild(badge);
+        }
+
+        const eqLabel = document.createElement("label");
+        eqLabel.className = "author-flag";
+        eqLabel.title = "Equal contribution (✱)";
+        const eqCb = document.createElement("input");
+        eqCb.type = "checkbox";
+        eqCb.checked = a.equal;
+        eqCb.addEventListener("change", e => { authors[i].equal = e.target.checked; updatePreview(); });
+        eqLabel.appendChild(eqCb);
+        eqLabel.appendChild(document.createTextNode(" ✱"));
+        row.appendChild(eqLabel);
+
+        const corrLabel = document.createElement("label");
+        corrLabel.className = "author-flag";
+        corrLabel.title = "Co-corresponding (†)";
+        const corrCb = document.createElement("input");
+        corrCb.type = "checkbox";
+        corrCb.checked = a.corr;
+        corrCb.addEventListener("change", e => { authors[i].corr = e.target.checked; updatePreview(); });
+        corrLabel.appendChild(corrCb);
+        corrLabel.appendChild(document.createTextNode(" †"));
+        row.appendChild(corrLabel);
+
+        const rm = document.createElement("button");
+        rm.type = "button";
+        rm.className = "icon-btn";
+        rm.textContent = "✕";
+        rm.addEventListener("click", () => { authors.splice(i, 1); renderAuthors(); updatePreview(); });
+        row.appendChild(rm);
+
+        list.appendChild(row);
+      });
+    }
+
+    el("add-author-btn").addEventListener("click", () => {
+      authors.push({ name: "", isSelf: false, equal: false, corr: false });
+      renderAuthors();
+      const inputs = el("author-list").querySelectorAll(".author-name");
+      if (inputs.length) inputs[inputs.length - 1].focus();
+    });
+
+    // ─────────────────────────────────────────────────────────────
+    // Extra links management
+    // ─────────────────────────────────────────────────────────────
+    function renderExtraLinks() {
+      const list = el("extra-links-list");
+      list.innerHTML = "";
+      extraLinks.forEach((lnk, i) => {
+        const row = document.createElement("div");
+        row.style.cssText = "display:flex; gap:7px; margin-top:9px; align-items:center;";
+
+        const labelInput = document.createElement("input");
+        labelInput.type = "text";
+        labelInput.value = lnk.label;
+        labelInput.placeholder = "Label";
+        labelInput.style.cssText = "width:90px; background:var(--bg); color:var(--fg); border:1px solid var(--line); border-radius:4px; padding:5px 8px; font:inherit; font-size:0.87rem; outline:none;";
+        labelInput.addEventListener("input", e => { extraLinks[i].label = e.target.value; updatePreview(); });
+
+        const urlInput = document.createElement("input");
+        urlInput.type = "url";
+        urlInput.value = lnk.url;
+        urlInput.placeholder = "https://…";
+        urlInput.style.cssText = "flex:1; background:var(--bg); color:var(--fg); border:1px solid var(--line); border-radius:4px; padding:5px 8px; font:inherit; font-size:0.87rem; outline:none;";
+        urlInput.addEventListener("input", e => { extraLinks[i].url = e.target.value; updatePreview(); });
+
+        const rm = document.createElement("button");
+        rm.type = "button";
+        rm.className = "icon-btn";
+        rm.textContent = "✕";
+        rm.addEventListener("click", () => { extraLinks.splice(i, 1); renderExtraLinks(); updatePreview(); });
+
+        row.appendChild(labelInput);
+        row.appendChild(urlInput);
+        row.appendChild(rm);
+        list.appendChild(row);
+      });
+    }
+
+    el("add-link-btn").addEventListener("click", () => {
+      extraLinks.push({ label: "", url: "" });
+      renderExtraLinks();
+    });
+
+    // ─────────────────────────────────────────────────────────────
+    // Category change → show/hide fields
+    // ─────────────────────────────────────────────────────────────
+    function onCategoryChange() {
+      const cat = val("f-category") || el("f-category").value;
+
+      const isConf = cat === "conference";
+      const isJournal = cat === "journal";
+      const isPreprint = cat === "preprint";
+      const isWorkshop = cat === "workshop";
+
+      // Venue inputs
+      el("venue-field").style.display = isWorkshop ? "none" : "";
+      el("workshop-venue-field").style.display = isWorkshop ? "" : "none";
+
+      // Venue placeholder / label
+      if (isJournal) {
+        el("f-venue").placeholder = "e.g. Transactions on Machine Learning Research";
+      } else if (isPreprint) {
+        el("f-venue").placeholder = "Not used for preprints";
+        el("f-venue").value = "";
+      } else {
+        el("f-venue").placeholder = "e.g. NeurIPS";
+      }
+
+      // Conference extras (to appear, note)
+      el("conf-extras").style.display = isConf ? "" : "none";
+
+      // Venue section: dim for preprints
+      el("venue-section").style.opacity = isPreprint ? "0.45" : "1";
+      el("venue-section").style.pointerEvents = isPreprint ? "none" : "";
+
+      updatePreview();
+    }
+
+    el("f-category").addEventListener("change", onCategoryChange);
+    el("f-to-appear").addEventListener("change", () => {
+      // When "to appear", note field is hidden (to-appear entries rarely have awards)
+      el("note-field").style.display = chk("f-to-appear") ? "none" : "";
+      updatePreview();
+    });
+
+    // ─────────────────────────────────────────────────────────────
+    // Markdown generation
+    // ─────────────────────────────────────────────────────────────
+    function buildAuthorStr(authors) {
+      return authors
+        .filter(a => a.name.trim())
+        .map(a => {
+          let name = a.isSelf ? `**${a.name}**` : a.name;
+          let suffix = "";
+          if (a.equal) suffix += "\\*";
+          if (a.corr) suffix += "†";
+          return name + suffix;
+        })
+        .join(", ");
+    }
+
+    function generateMarkdown() {
+      const category = el("f-category").value;
+      const year = val("f-year");
+      const title = val("f-title");
+      const paperUrl = val("f-paper-url");
+      const toAppear = chk("f-to-appear") && category === "conference";
+      const note = val("f-note");
+      const codeUrl = val("f-code-url");
+      const venue = category === "workshop" ? val("f-workshop-venue") : val("f-venue");
+      const validAuthors = authors.filter(a => a.name.trim());
+
+      if (!title) return "";
+
+      const lines = [];
+
+      // ── Title line ─────────────────────────────────────────
+      // URL papers: `- [Title](url)\\`   No-URL papers: `- Title \\`
+      const titleFrag = paperUrl ? `[${title}](${paperUrl})` : `${title} `;
+      lines.push(`- ${titleFrag}\\\\`);
+
+      // ── Author line ────────────────────────────────────────
+      const authorStr = buildAuthorStr(validAuthors);
+      if (authorStr) {
+        // Needs trailing \\ if something follows (venue line, links, etc.)
+        const venueExists = category !== "preprint" && venue;
+        const linksExist = codeUrl || extraLinks.some(l => l.label && l.url);
+        const moreAfter = venueExists || linksExist;
+        lines.push(moreAfter ? `${authorStr}\\\\` : authorStr);
+      }
+
+      // ── Venue line ─────────────────────────────────────────
+      if (category !== "preprint" && venue) {
+        let venueLine;
+        if (toAppear) {
+          venueLine = `To appear in ${venue} ${year}`;
+        } else if (category === "journal") {
+          venueLine = year ? `${venue}, ${year}` : venue;
+        } else if (category === "workshop") {
+          venueLine = venue; // free-form, user includes year
+        } else {
+          // conference
+          venueLine = note ? `${venue} ${year} (**${note}**)` : `${venue} ${year}`;
+        }
+        const linksExist = codeUrl || extraLinks.some(l => l.label && l.url);
+        lines.push(linksExist ? `${venueLine}\\\\` : venueLine);
+      }
+
+      // ── Links ──────────────────────────────────────────────
+      const allLinks = [];
+      if (codeUrl) allLinks.push({ label: "Code", url: codeUrl });
+      extraLinks.filter(l => l.label && l.url).forEach(l => allLinks.push(l));
+      allLinks.forEach((lnk, i) => {
+        const trail = i < allLinks.length - 1 ? "\\\\" : "";
+        lines.push(`[${lnk.label}](${lnk.url})${trail}`);
+      });
+
+      return lines.join("\n");
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Validation
+    // ─────────────────────────────────────────────────────────────
+    function validate() {
+      const errors = [];
+      const cat = el("f-category").value;
+      const title = val("f-title");
+      const year = val("f-year");
+      const paperUrl = val("f-paper-url");
+      const codeUrl = val("f-code-url");
+      const venue = cat === "workshop" ? val("f-workshop-venue") : val("f-venue");
+      const validAuthors = authors.filter(a => a.name.trim());
+      const corrCount = validAuthors.filter(a => a.corr).length;
+
+      if (!title) errors.push("Title is required.");
+      if (cat !== "preprint" && !year) errors.push("Year is required.");
+      if (year && (parseInt(year) < 1990 || parseInt(year) > 2040))
+        errors.push("Year is out of range (1990–2040).");
+      if (cat !== "preprint" && !venue) errors.push("Venue is required.");
+      if (validAuthors.length === 0) errors.push("At least one author is required.");
+      if (corrCount === 1)
+        errors.push("† marks co-corresponding: needs 2+ authors marked, or remove the mark.");
+      if (paperUrl && !isUrl(paperUrl)) errors.push("Paper URL is not valid.");
+      if (codeUrl && !isUrl(codeUrl)) errors.push("Code URL is not valid.");
+      extraLinks.forEach(l => {
+        if (l.url && !isUrl(l.url)) errors.push(`Link "${l.label || "unnamed"}" URL is not valid.`);
+      });
+
+      return errors;
+    }
+
+    function isUrl(str) {
+      try { new URL(str); return true; } catch { return false; }
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Preview update
+    // ─────────────────────────────────────────────────────────────
+    function updatePreview() {
+      const errors = validate();
+      const md = generateMarkdown();
+
+      // Errors
+      const errList = el("error-list");
+      errList.innerHTML = "";
+      errors.forEach(msg => {
+        const d = document.createElement("div");
+        d.className = "error-item";
+        d.textContent = "⚠ " + msg;
+        errList.appendChild(d);
+      });
+
+      // Markdown
+      const pre = el("preview-pre");
+      if (md) {
+        pre.textContent = md;
+        pre.classList.remove("empty");
+      } else {
+        pre.textContent = "Fill in the form to see the markdown…";
+        pre.classList.add("empty");
+      }
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Copy helper
+    // ─────────────────────────────────────────────────────────────
+    function copyToClipboard(text, btn) {
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = orig; }, 1600);
+      }).catch(() => {
+        alert("Could not copy — please select and copy manually.");
+      });
+    }
+
+    el("preview-copy-btn").addEventListener("click", () => {
+      const pre = el("preview-pre");
+      if (!pre.classList.contains("empty")) copyToClipboard(pre.textContent, el("preview-copy-btn"));
+    });
+
+    el("copy-btn").addEventListener("click", () => {
+      const errors = validate();
+      if (errors.length) { alert("Fix validation errors first:\n\n" + errors.join("\n")); return; }
+      copyToClipboard(el("preview-pre").textContent, el("copy-btn"));
+    });
+
+    el("queue-copy-btn").addEventListener("click", () => {
+      copyToClipboard(el("queue-export-pre").textContent, el("queue-copy-btn"));
+    });
+
+    // ─────────────────────────────────────────────────────────────
+    // Queue (localStorage)
+    // ─────────────────────────────────────────────────────────────
+    function loadQueue() {
+      try { return JSON.parse(localStorage.getItem(QUEUE_KEY) || "[]"); }
+      catch { return []; }
+    }
+
+    function saveQueue(q) {
+      localStorage.setItem(QUEUE_KEY, JSON.stringify(q));
+    }
+
+    function renderQueue() {
+      const queue = loadQueue();
+      el("queue-count").textContent = queue.length;
+      const list = el("queue-list");
+      list.innerHTML = "";
+      if (!queue.length) {
+        list.innerHTML = '<p class="queue-empty">No entries queued.</p>';
+        el("queue-export").style.display = "none";
+        return;
+      }
+      queue.forEach((entry, i) => {
+        const item = document.createElement("div");
+        item.className = "queue-item";
+        item.innerHTML = `
+          <div class="queue-item-body">
+            <div class="queue-item-title">${esc(entry.title)}</div>
+            <div class="queue-item-meta">${esc(entry.meta)}</div>
+          </div>`;
+        const rm = document.createElement("button");
+        rm.type = "button";
+        rm.className = "icon-btn";
+        rm.style.marginTop = "1px";
+        rm.textContent = "✕";
+        rm.addEventListener("click", () => {
+          const q = loadQueue(); q.splice(i, 1); saveQueue(q); renderQueue();
+          // Refresh export if open
+          if (el("queue-export").style.display !== "none") showExport();
+        });
+        item.appendChild(rm);
+        list.appendChild(item);
+      });
+    }
+
+    el("queue-btn").addEventListener("click", () => {
+      const errors = validate();
+      if (errors.length) { alert("Fix errors before queuing:\n\n" + errors.join("\n")); return; }
+      const cat = el("f-category").value;
+      const year = val("f-year");
+      const venue = cat === "workshop" ? val("f-workshop-venue") : val("f-venue");
+      const queue = loadQueue();
+      queue.push({
+        title: val("f-title"),
+        meta: `${cat} · ${venue} ${year}`.trim(),
+        markdown: generateMarkdown(),
+      });
+      saveQueue(queue);
+      renderQueue();
+      const btn = el("queue-btn");
+      const orig = btn.textContent;
+      btn.textContent = "Added!";
+      setTimeout(() => { btn.textContent = orig; }, 1600);
+    });
+
+    function showExport() {
+      const queue = loadQueue();
+      if (!queue.length) return;
+      el("queue-export-pre").textContent = queue.map(e => e.markdown).join("\n\n");
+      el("queue-export").style.display = "";
+    }
+
+    el("export-btn").addEventListener("click", () => {
+      if (el("queue-export").style.display !== "none") {
+        el("queue-export").style.display = "none";
+      } else {
+        showExport();
+      }
+    });
+
+    el("clear-queue-btn").addEventListener("click", () => {
+      if (!loadQueue().length) return;
+      if (confirm("Clear all queued entries?")) {
+        saveQueue([]); renderQueue();
+        el("queue-export").style.display = "none";
+      }
+    });
+
+    // ─────────────────────────────────────────────────────────────
+    // Reset
+    // ─────────────────────────────────────────────────────────────
+    el("reset-btn").addEventListener("click", () => {
+      if (!confirm("Reset the form?")) return;
+      ["f-title", "f-paper-url", "f-year", "f-venue", "f-workshop-venue", "f-note", "f-code-url"]
+        .forEach(id => { el(id).value = ""; });
+      el("f-category").value = "conference";
+      el("f-to-appear").checked = false;
+      authors = [];
+      extraLinks = [];
+      renderAuthors();
+      renderExtraLinks();
+      onCategoryChange();
+    });
+
+    // ─────────────────────────────────────────────────────────────
+    // Live update wiring
+    // ─────────────────────────────────────────────────────────────
+    ["f-title", "f-paper-url", "f-year", "f-venue", "f-workshop-venue",
+      "f-note", "f-code-url"].forEach(id => {
+        el(id).addEventListener("input", updatePreview);
+      });
+
+    // ─────────────────────────────────────────────────────────────
+    // Init
+    // ─────────────────────────────────────────────────────────────
+    onCategoryChange();
+    renderAuthors();
+    renderExtraLinks();
+    renderQueue();
+    updatePreview();
+  </script>
+</body>
+
+</html>
