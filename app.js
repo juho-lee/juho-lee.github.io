@@ -135,7 +135,7 @@ function getExpandedBooktitle(venue, year) {
   return alias?.name || venue || "Unknown venue";
 }
 
-function applySentenceCaseWithBraces(rawTitle) {
+function applySentenceCaseWithBraces(rawTitle, keepBraces = false) {
   if (typeof rawTitle !== "string") {
     return "";
   }
@@ -162,7 +162,10 @@ function applySentenceCaseWithBraces(rawTitle) {
 
   const cased = chars.join("");
 
-  return cased.replace(/§(\d+)§/g, (_, index) => preserved[Number(index)] || "");
+  return cased.replace(/§(\d+)§/g, (_, index) => {
+    const text = preserved[Number(index)] || "";
+    return keepBraces ? `{${text}}` : text;
+  });
 }
 
 function formatTitle(pub) {
@@ -383,7 +386,10 @@ function formatBibTeX(pub) {
 
   const authors = (pub.authors || []).map(getPlainAuthorName).map(formatAuthorForBib).join(" and ");
   lines.push(`  author = {${authors}},`);
-  lines.push(`  title = {${bibProtectCaps(pub.title)}},`);
+  const bibTitle = pub.titleSentenceCase === true
+    ? applySentenceCaseWithBraces(pub.title, true)
+    : bibProtectCaps(pub.title);
+  lines.push(`  title = {${bibTitle}},`);
   lines.push(`  year = {${pub.year}},`);
 
   if (type === "article") {
