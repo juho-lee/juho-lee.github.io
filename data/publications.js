@@ -52,6 +52,76 @@ export const VENUE_ALIASES = {
 
 export const PUBLICATIONS = [
   {
+    title: "Confidence is Not Universal: Task-Dependent Calibration and Emergent Behavior in {LLMs}",
+    titleSentenceCase: true,
+    category: "conference",
+    authors: [
+      "Chaeyun Jang",
+      "Moonseok Choi",
+      "Yegon Kim",
+      "Seungyoo Lee",
+      { name: "Juho Lee", corresponding: true },
+      { name: "Hyungi Lee", corresponding: true },
+    ],
+    year: 2026,
+    venue: "icml",
+    status: "to_appear",
+  },
+  {
+    title: "From Drift to Coherence: Stabilizing Beliefs in {LLMs}",
+    titleSentenceCase: true,
+    category: "conference",
+    authors: [
+      "SongEun Kim",
+      "Seungyoo Lee",
+      "Edwin Fong",
+      "Hyungi Lee",
+      "Juho Lee",
+    ],
+    year: 2026,
+    venue: "icml",
+    status: "to_appear",
+  },
+  {
+    title: "{OCNR}: Stabilizing Self-Play by Mitigating Iteration-Collapse With One-Class Novelty Rewards",
+    titleSentenceCase: true,
+    category: "conference",
+    authors: [
+      "Seungyoo Lee",
+      "Giung Nam",
+      "Hyungi Lee",
+      "Juho Lee",
+    ],
+    year: 2026,
+    venue: "icml",
+    status: "to_appear",
+  },
+  {
+    title: "Riemannian Diffusion Models on General Manifolds via Physics-Informed Neural Networks",
+    titleSentenceCase: true,
+    category: "conference",
+    authors: [
+      "Gyeonghoon Ko",
+      "Juho Lee",
+    ],
+    year: 2026,
+    venue: "icml",
+    status: "to_appear",
+  },
+  {
+    title: "Functional adjoint sampler: scalable sampling on infinite dimensional spaces",
+    titleSentenceCase: false,
+    category: "conference",
+    authors: [
+      "Byoungwoo Park",
+      "Juho Lee",
+      "Guan-Horng Liu",
+    ],
+    year: 2026,
+    venue: "icml",
+    status: "to_appear",
+  },
+  {
     title: "ForestPersons: a large-scale dataset for under-canopy missing person detection",
     titleSentenceCase: false,
     category: "conference",
@@ -68,7 +138,9 @@ export const PUBLICATIONS = [
     ],
     year: 2026,
     venue: "iclr",
-    status: "to_appear",
+    links: [
+      { label: "Paper", url: "https://openreview.net/forum?id=ZC2N9q8USm" },
+    ],
   },
   {
     title: "Soft equivariance regularization for invariant self-supervised learning",
@@ -83,7 +155,9 @@ export const PUBLICATIONS = [
     ],
     year: 2026,
     venue: "iclr",
-    status: "to_appear",
+    links: [
+      { label: "Paper", url: "https://openreview.net/forum?id=TuQW7VPfXF" },
+    ],
   },
   {
     title: "Stochastic optimal control for continuous-time fMRI representation learning",
@@ -100,7 +174,9 @@ export const PUBLICATIONS = [
     ],
     year: 2026,
     venue: "iclr",
-    status: "to_appear",
+    links: [
+      { label: "Paper", url: "https://openreview.net/forum?id=N51nP3TBwR" },
+    ],
   },
   {
     title: "Active learning with selective time-step acquisition for PDEs",
