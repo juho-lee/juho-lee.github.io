@@ -319,6 +319,29 @@ h2 {
   margin-left: 8px;
 }
 
+.badge-new {
+  display: inline-block;
+  border: 1px solid #2d7a4f;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.78rem;
+  color: #2d7a4f;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .badge-new {
+    border-color: #6ecf95;
+    color: #6ecf95;
+  }
+}
+
+html[data-theme="dark"] .badge-new {
+  border-color: #6ecf95;
+  color: #6ecf95;
+}
+
 a {
   color: var(--link);
   text-decoration: none;

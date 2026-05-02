@@ -151,16 +151,16 @@ function applySentenceCaseWithBraces(rawTitle) {
   const lower = withoutBraces.toLowerCase();
   const chars = [...lower];
 
+  const firstPlaceholderPos = lower.indexOf("§");
   for (let i = 0; i < chars.length; i += 1) {
+    if (firstPlaceholderPos !== -1 && i >= firstPlaceholderPos) break;
     if (/[a-z]/.test(chars[i])) {
       chars[i] = chars[i].toUpperCase();
       break;
     }
   }
 
-  const cased = chars.join("").replace(/(:\s+)([a-z])/g, (_, prefix, letter) => {
-    return `${prefix}${letter.toUpperCase()}`;
-  });
+  const cased = chars.join("");
 
   return cased.replace(/§(\d+)§/g, (_, index) => preserved[Number(index)] || "");
 }
@@ -572,6 +572,7 @@ function renderPublications() {
         const authors = formatAuthors(pub.authors);
         const links = formatLinks(pub.links);
         const note = pub.note ? `<span class="badge">${escapeHtml(pub.note)}</span>` : "";
+        const newBadge = pub.isNew ? '<span class="badge-new">new</span>' : "";
         const statusPrefix =
           pub.status === "to_appear" ? '<span class="pub-status">To appear in</span> ' : "";
         const pubId = getPublicationId(pub);
@@ -582,7 +583,7 @@ function renderPublications() {
           <li class="publication-item">
             <div class="pub-title">${formatTitle(pub)}</div>
             <div class="pub-authors">${authors}</div>
-            <div class="pub-venue">${statusPrefix}${formatVenue(pub.venue, pub.year)} ${note}</div>
+            <div class="pub-venue">${statusPrefix}${formatVenue(pub.venue, pub.year)} ${note}${newBadge}</div>
             <div class="pub-links">${links ? `${links} <span class="dot">·</span> ` : ""}${exportButtons}</div>
             <div class="bibtex-wrapper" data-bibtex-block="${escapeHtml(pubId)}" hidden>
               <button class="action-link bibtex-copy-btn" type="button" data-action="copy-bibtex" data-pub-id="${escapeHtml(pubId)}">Copy</button>

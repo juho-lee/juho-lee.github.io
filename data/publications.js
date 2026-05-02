@@ -52,7 +52,7 @@ export const VENUE_ALIASES = {
 
 export const PUBLICATIONS = [
   {
-    title: "Confidence is Not Universal: Task-Dependent Calibration and Emergent Behavior in {LLMs}",
+    title: "Confidence is Not Universal: task-Dependent Calibration and Emergent Behavior in {LLMs}",
     titleSentenceCase: true,
     category: "conference",
     authors: [
@@ -66,9 +66,10 @@ export const PUBLICATIONS = [
     year: 2026,
     venue: "icml",
     status: "to_appear",
+    isNew: true,
   },
   {
-    title: "From Drift to Coherence: Stabilizing Beliefs in {LLMs}",
+    title: "From Drift to Coherence: stabilizing Beliefs in {LLMs}",
     titleSentenceCase: true,
     category: "conference",
     authors: [
@@ -81,9 +82,10 @@ export const PUBLICATIONS = [
     year: 2026,
     venue: "icml",
     status: "to_appear",
+    isNew: true,
   },
   {
-    title: "{OCNR}: Stabilizing Self-Play by Mitigating Iteration-Collapse With One-Class Novelty Rewards",
+    title: "{OCNR}: stabilizing Self-Play by Mitigating Iteration-Collapse With One-Class Novelty Rewards",
     titleSentenceCase: true,
     category: "conference",
     authors: [
@@ -95,6 +97,7 @@ export const PUBLICATIONS = [
     year: 2026,
     venue: "icml",
     status: "to_appear",
+    isNew: true,
   },
   {
     title: "Riemannian Diffusion Models on General Manifolds via Physics-Informed Neural Networks",
@@ -107,6 +110,7 @@ export const PUBLICATIONS = [
     year: 2026,
     venue: "icml",
     status: "to_appear",
+    isNew: true,
   },
   {
     title: "Functional adjoint sampler: scalable sampling on infinite dimensional spaces",
@@ -120,6 +124,7 @@ export const PUBLICATIONS = [
     year: 2026,
     venue: "icml",
     status: "to_appear",
+    isNew: true,
   },
   {
     title: "ForestPersons: a large-scale dataset for under-canopy missing person detection",
