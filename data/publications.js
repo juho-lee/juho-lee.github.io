@@ -47,10 +47,27 @@ export const VENUE_ALIASES = {
     name: "International Joint Conference on Artificial Intelligence",
     short: "IJCAI",
   },
+  uai: {
+    name: "Annual Conference on Uncertainty in Artificial Intelligence",
+    short: "UAI",
+  }
 };
 
 
 export const PUBLICATIONS = [
+    {
+    title: "A Model-Free Universal AI",
+    titleSentenceCase: true,
+    category: "conference",
+    authors: [
+      "Yegon Kim",
+      "Juho Lee",
+    ],
+    year: 2026,
+    venue: "uai",
+    status: "to_appear",
+    isNew: true,
+  },
   {
     title: "Confidence is Not Universal: task-Dependent Calibration and Emergent Behavior in {LLMs}",
     titleSentenceCase: true,
