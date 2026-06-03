@@ -8,12 +8,6 @@ const CATEGORY_ORDER = [
   { key: "workshop", title: "Workshops" },
   { key: "preprint", title: "Preprints" },
 ];
-const CONFERENCE_VENUE_ORDER = {
-  neurips: 0,
-  nips: 0,
-  icml: 1,
-  iclr: 2,
-};
 
 const VALID_CATEGORIES = new Set(CATEGORY_ORDER.map((item) => item.key));
 const PUBLICATION_MAP = new Map(PUBLICATIONS.map((pub) => [getPublicationId(pub), pub]));
@@ -83,7 +77,7 @@ function formatAuthorForBib(authorName) {
   const family = tokens[tokens.length - 1];
   const given = tokens.slice(0, -1);
   const initials = given.map((part) => `${part[0]?.toUpperCase() || ""}.`).join(" ");
-  return `${family}, ${initials}`.trim();
+  return initials ? `${family}, ${initials}` : family;
 }
 
 function getPaperUrl(pub) {
@@ -232,27 +226,7 @@ function formatAuthors(authors = []) {
 }
 
 function sortPublications(items) {
-  return [...items].sort((a, b) => {
-    const byYear = Number(b.year) - Number(a.year);
-    if (byYear !== 0) {
-      return byYear;
-    }
-
-    if (a.category === "conference" && b.category === "conference") {
-      const aVenue = String(a.venue || "").toLowerCase();
-      const bVenue = String(b.venue || "").toLowerCase();
-      const aOrder = CONFERENCE_VENUE_ORDER[aVenue] ?? 99;
-      const bOrder = CONFERENCE_VENUE_ORDER[bVenue] ?? 99;
-      if (aOrder !== bOrder) {
-        return aOrder - bOrder;
-      }
-      if (aVenue !== bVenue) {
-        return aVenue.localeCompare(bVenue);
-      }
-    }
-
-    return String(a.title).localeCompare(String(b.title));
-  });
+  return [...items].sort((a, b) => Number(b.year) - Number(a.year));
 }
 
 function renderAbout() {
@@ -456,6 +430,8 @@ function setupExportActions() {
       navigator.clipboard.writeText(text).then(() => {
         button.textContent = "Copied!";
         setTimeout(() => { button.textContent = "Copy BibTeX"; }, 2000);
+      }).catch(() => {
+        button.textContent = "Copy BibTeX";
       });
       return;
     }

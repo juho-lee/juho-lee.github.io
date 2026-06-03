@@ -307,7 +307,7 @@ def main() -> None:
             pub["note"] = "Preliminary version accepted at NeurIPS 2019 Sets & Partitions Workshop (oral)"
             pub["links"].append({"label": "Workshop", "url": "https://www.sets.parts"})
 
-    publications.sort(key=lambda p: (p["category"], -int(p["year"]), p["title"]))
+    publications.sort(key=lambda p: (p["category"], -int(p["year"])))
 
     issues = validate_publications(publications)
     if issues:
