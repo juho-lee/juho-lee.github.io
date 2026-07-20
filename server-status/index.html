@@ -1183,7 +1183,9 @@ function GPUDashboard() {
         }
         .slot-row input { accent-color: var(--c-shared); width: 14px; height: 14px; }
         .slot-rack-id { color: var(--text-muted); width: 34px; }
-        .slot-owner { flex: 1; }
+        .slot-owner { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+        .slot-owner-name { display: flex; align-items: center; }
+        .slot-detail { font-size: 10px; color: var(--text-muted); }
         .slot-status { font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
         .slot-servers { color: var(--text-muted); font-size: 11px; width: 80px; text-align: right; }
         .footnote {
@@ -1525,8 +1527,13 @@ function GPUDashboard() {
                             <input type="checkbox" checked={checked} onChange={() => toggleSlot(key)} />
                             <span className="slot-rack-id mono">R{String(r.rackId).padStart(2, "0")}</span>
                             <span className="slot-owner">
-                              {r.shared && <span className="slot-shared-tag">공용</span>}
-                              {r.labActual}
+                              <span className="slot-owner-name">
+                                {r.shared && <span className="slot-shared-tag">공용</span>}
+                                {r.labActual}
+                              </span>
+                              {r.items.length > 0 && (
+                                <span className="slot-detail mono">{r.detail}</span>
+                              )}
                             </span>
                             <span className="slot-status" style={{ color: STATUS_META[st].color }}>
                               {STATUS_META[st].label}
