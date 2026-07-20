@@ -118,7 +118,7 @@ const STATUS_META = {
 };
 
 const SEG_COLORS = {
-  server: "var(--c-occupied)",
+  server: "var(--c-occupied-fill)",
   Master: "var(--c-shared)",
   Storage: "var(--c-shared)",
   NAS: "#8AA0C4",
@@ -357,7 +357,7 @@ function SummaryCard({ room }) {
         <span className="summary-unit">랙</span>
       </div>
       <div className="summary-bar">
-        <div style={{ flexGrow: occupied || 0.001, background: "var(--c-occupied)" }} />
+        <div style={{ flexGrow: occupied || 0.001, background: "var(--c-occupied-fill)" }} />
         <div style={{ flexGrow: shared || 0.001, background: "var(--c-shared)" }} />
         <div style={{ flexGrow: empty || 0.001, background: "var(--c-empty)" }} />
         <div style={{ flexGrow: reclaim || 0.001, background: "var(--c-reclaim)" }} />
@@ -472,6 +472,27 @@ function GPUDashboard() {
     }
   });
   const [shareMsg, setShareMsg] = useState("");
+
+  // 라이트/다크 테마 (브라우저에 선택 저장)
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem("gpuDashboardTheme") || "dark";
+    } catch (e) {
+      return "dark";
+    }
+  });
+  useEffect(() => {
+    try {
+      localStorage.setItem("gpuDashboardTheme", theme);
+    } catch (e) {
+      /* 저장 불가 시 무시 */
+    }
+    // 오버스크롤 시 드러나는 body 배경도 테마에 맞춤
+    const bg = theme === "light" ? "#F4F6F9" : "#0A0C10";
+    document.body.style.background = bg;
+    document.documentElement.style.background = bg;
+  }, [theme]);
+  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
 
   // 최초 로드 시 URL 해시(#plan=...)에 담긴 선택을 복원
   useEffect(() => {
@@ -626,7 +647,7 @@ function GPUDashboard() {
   }, [allLabs, query, labSortKey, labAvg]);
 
   return (
-    <div className="dash-root">
+    <div className="dash-root" data-theme={theme}>
       <style>{`
         .dash-root {
           --bg: #0A0C10;
@@ -643,12 +664,32 @@ function GPUDashboard() {
           --c-over: #FF5A4D;
           --c-near: #F5B544;
           --c-ok: #34D399;
+          --on-accent: #0A0C10;
+          --c-occupied-fill: #5B8DEF;
           background: var(--bg);
           color: var(--text);
           font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', -apple-system, sans-serif;
           min-height: 100vh;
           padding: 28px 20px 60px;
           box-sizing: border-box;
+        }
+        .dash-root[data-theme="light"] {
+          --bg: #F4F6F9;
+          --panel: #FFFFFF;
+          --panel2: #EBEEF3;
+          --border: #CDD4DE;
+          --text: #14171D;
+          --text-muted: #4B5568;
+          --c-occupied: #2C64D4;
+          --c-shared: #A66A12;
+          --c-empty: #C3C9D4;
+          --c-reclaim: #D6362B;
+          --c-infra: #626C7D;
+          --c-over: #CF2C22;
+          --c-near: #B07C10;
+          --c-ok: #157F53;
+          --on-accent: #FFFFFF;
+          --c-occupied-fill: #3B82F6;
         }
         .dash-root * { box-sizing: border-box; }
         .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
@@ -681,6 +722,25 @@ function GPUDashboard() {
           font-size: 13px;
           margin-top: 4px;
         }
+        .header-right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 10px;
+        }
+        .theme-toggle {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 12px;
+          padding: 6px 12px;
+          border-radius: 999px;
+          border: 1px solid var(--border);
+          background: var(--panel);
+          color: var(--text);
+          cursor: pointer;
+          transition: all 0.15s ease;
+          white-space: nowrap;
+        }
+        .theme-toggle:hover { border-color: var(--c-occupied); color: var(--c-occupied); }
         .header-stat {
           font-family: 'IBM Plex Mono', monospace;
           text-align: right;
@@ -805,7 +865,7 @@ function GPUDashboard() {
         .chip.active {
           background: var(--c-occupied);
           border-color: var(--c-occupied);
-          color: #0A0C10;
+          color: var(--on-accent);
           font-weight: 600;
         }
         .search-input {
@@ -1210,9 +1270,18 @@ function GPUDashboard() {
           <div className="header-title">GPU 서버실 현황판</div>
           <div className="header-sub">홍릉 · 양재 · 대전 — 랙 배정 및 점유 현황 (설문 취합 기준, 1–2개 연구실 업데이트 예정)</div>
         </div>
-        <div className="header-stat">
-          <div className="header-stat-big mono">{RACK_DATA.length}</div>
-          <div className="header-stat-label">TOTAL RACKS · {totalServers} SERVERS</div>
+        <div className="header-right">
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            title={theme === "dark" ? "라이트 모드로 전환" : "다크 모드로 전환"}
+          >
+            {theme === "dark" ? "☀️ 라이트 모드" : "🌙 다크 모드"}
+          </button>
+          <div className="header-stat">
+            <div className="header-stat-big mono">{RACK_DATA.length}</div>
+            <div className="header-stat-label">TOTAL RACKS · {totalServers} SERVERS</div>
+          </div>
         </div>
       </div>
 
