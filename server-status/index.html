@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<title>GPU 서버실 현황판</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #0A0C10; }
+  #root { min-height: 100vh; }
+  .boot {
+    color: #7C8496; font-family: system-ui, sans-serif;
+    text-align: center; padding: 80px 20px; font-size: 14px;
+  }
+</style>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+</head>
+<body>
+<div id="root"><div class="boot">현황판을 불러오는 중…</div></div>
+<script type="text/babel" data-type="module">
+const { useState, useMemo, useEffect } = React;
+
+
+const RACK_DATA = [{"room": "홍릉", "rackId": 1, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5, Master x1", "items": [{"type": "server", "size": "?U", "count": 5}, {"type": "Master", "size": null, "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 2, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 3, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 4, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 5, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 6, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 7, "labNominal": "윤세영", "labActual": "윤세영", "detail": "8U x 1", "items": [{"type": "server", "size": "8U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 8, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 4, Master x1, Storage x1", "items": [{"type": "server", "size": "?U", "count": 4}, {"type": "Master", "size": null, "count": 1}, {"type": "Storage", "size": null, "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 9, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 10, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 11, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 12, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 13, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 14, "labNominal": "서민준", "labActual": "서민준", "detail": "?U x 1, ?U x 2, NAS x 1", "items": [{"type": "server", "size": "?U", "count": 1}, {"type": "server", "size": "?U", "count": 2}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 3, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 15, "labNominal": "이주호", "labActual": "이주호", "detail": "8U x 5", "items": [{"type": "server", "size": "8U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 16, "labNominal": "이주호", "labActual": "이주호", "detail": "8U x 3, 1U x 1", "items": [{"type": "server", "size": "8U", "count": 3}, {"type": "server", "size": "1U", "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 17, "labNominal": "윤철희", "labActual": "윤철희", "detail": "8U x 4", "items": [{"type": "server", "size": "8U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 18, "labNominal": "윤철희", "labActual": "윤철희", "detail": "8U x 4, 2U x 1", "items": [{"type": "server", "size": "8U", "count": 4}, {"type": "server", "size": "2U", "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 19, "labNominal": "심현정", "labActual": "심현정", "detail": "8U x 4", "items": [{"type": "server", "size": "8U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 20, "labNominal": "심현정", "labActual": "심현정", "detail": "8U x 4", "items": [{"type": "server", "size": "8U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 21, "labNominal": "임재환", "labActual": "임재환", "detail": "4U x 3", "items": [{"type": "server", "size": "4U", "count": 3}], "serverCount": 3, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 22, "labNominal": "임재환", "labActual": "임재환", "detail": "4U x 1", "items": [{"type": "server", "size": "4U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 23, "labNominal": "김범준", "labActual": "김범준", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 24, "labNominal": "김범준", "labActual": "김범준", "detail": "?U x 7", "items": [{"type": "server", "size": "?U", "count": 7}], "serverCount": 7, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 25, "labNominal": "서민준", "labActual": "서민준", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 1, "labNominal": "네트워크", "labActual": "네트워크", "detail": "-", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": true}, {"room": "양재", "rackId": 2, "labNominal": "최윤재", "labActual": "최윤재", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 3, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 4, NAS x1", "items": [{"type": "server", "size": "?U", "count": 4}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 4, "labNominal": "윤세영", "labActual": "윤세영", "detail": "8U x 4, 3U x 1", "items": [{"type": "server", "size": "8U", "count": 4}, {"type": "server", "size": "3U", "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 5, "labNominal": "오성준", "labActual": "오성준", "detail": "4U x 1", "items": [{"type": "server", "size": "4U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 6, "labNominal": "오성준", "labActual": "오성준", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 7, "labNominal": "한동수", "labActual": "한동수", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 8, "labNominal": "한동수", "labActual": "한동수", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 9, "labNominal": "신기정", "labActual": "신기정", "detail": "4U x 2", "items": [{"type": "server", "size": "4U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 10, "labNominal": "예종철", "labActual": "예종철", "detail": "2U x 1, 4U x 7", "items": [{"type": "server", "size": "2U", "count": 1}, {"type": "server", "size": "4U", "count": 7}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 11, "labNominal": "예종철", "labActual": "예종철", "detail": "4U x 3, 2U x 1", "items": [{"type": "server", "size": "4U", "count": 3}, {"type": "server", "size": "2U", "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 12, "labNominal": "심현정", "labActual": "심현정", "detail": "8U x 3", "items": [{"type": "server", "size": "8U", "count": 3}], "serverCount": 3, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 13, "labNominal": "이기민", "labActual": "신진우", "detail": "4U x 1, 2U x 3, 1U x 1", "items": [{"type": "server", "size": "4U", "count": 1}, {"type": "server", "size": "2U", "count": 3}, {"type": "server", "size": "1U", "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 14, "labNominal": "이기민", "labActual": "신진우", "detail": "4U x 1", "items": [{"type": "server", "size": "4U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 15, "labNominal": "안성수", "labActual": "안성수", "detail": "8U x 6", "items": [{"type": "server", "size": "8U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 16, "labNominal": "안성수", "labActual": "안성수", "detail": "8U x 5", "items": [{"type": "server", "size": "8U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 17, "labNominal": "김승룡", "labActual": "김승룡", "detail": "?U x 4", "items": [{"type": "server", "size": "?U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 18, "labNominal": "김승룡", "labActual": "김승룡", "detail": "?U x 2", "items": [{"type": "server", "size": "?U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 19, "labNominal": "황성주", "labActual": "황성주", "detail": "?U x 8", "items": [{"type": "server", "size": "?U", "count": 8}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 20, "labNominal": "황성주", "labActual": "황성주", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 21, "labNominal": "황성주", "labActual": "황성주", "detail": "?U x 2", "items": [{"type": "server", "size": "?U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 22, "labNominal": "양은호", "labActual": "양은호", "detail": "8U x 7", "items": [{"type": "server", "size": "8U", "count": 7}], "serverCount": 7, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 23, "labNominal": "양은호", "labActual": "양은호", "detail": "8U x 4, 4U x 4", "items": [{"type": "server", "size": "8U", "count": 4}, {"type": "server", "size": "4U", "count": 4}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 24, "labNominal": "양은호", "labActual": "양은호", "detail": "8U x 5, 4U x 3", "items": [{"type": "server", "size": "8U", "count": 5}, {"type": "server", "size": "4U", "count": 3}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 25, "labNominal": "신기정", "labActual": "신기정", "detail": "4U x 6", "items": [{"type": "server", "size": "4U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 26, "labNominal": "신진우", "labActual": "신진우", "detail": "4U x 5", "items": [{"type": "server", "size": "4U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 27, "labNominal": "신진우", "labActual": "신진우", "detail": "4U x 4, 2U x 2", "items": [{"type": "server", "size": "4U", "count": 4}, {"type": "server", "size": "2U", "count": 2}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 28, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 10", "items": [{"type": "server", "size": "4U", "count": 10}], "serverCount": 10, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 29, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 5, 3U x 5, 2U x 2", "items": [{"type": "server", "size": "4U", "count": 5}, {"type": "server", "size": "3U", "count": 5}, {"type": "server", "size": "2U", "count": 2}], "serverCount": 12, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 30, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 2, 3U x 4, 2U x 2, 2U x 3, 1U x 3", "items": [{"type": "server", "size": "4U", "count": 2}, {"type": "server", "size": "3U", "count": 4}, {"type": "server", "size": "2U", "count": 2}, {"type": "server", "size": "2U", "count": 3}, {"type": "server", "size": "1U", "count": 3}], "serverCount": 14, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 31, "labNominal": "김기응", "labActual": "김기응", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": true, "note": "정리 완료 (Free)", "shared": false, "infra": false}, {"room": "양재", "rackId": 32, "labNominal": "김기응", "labActual": "김기응", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": true, "note": "정리 완료 (Free)", "shared": false, "infra": false}, {"room": "대전", "rackId": 1, "labNominal": "정송", "labActual": "정송", "detail": "4U x 4, ?U x 2", "items": [{"type": "server", "size": "4U", "count": 4}, {"type": "server", "size": "?U", "count": 2}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 2, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 6, 2U x 2, 2U x 1, 2U x 2", "items": [{"type": "server", "size": "4U", "count": 6}, {"type": "server", "size": "2U", "count": 2}, {"type": "server", "size": "2U", "count": 1}, {"type": "server", "size": "2U", "count": 2}], "serverCount": 11, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 3, "labNominal": "최재식", "labActual": "최재식", "detail": "?U x 5, Hub x 3, NAS x 1", "items": [{"type": "server", "size": "?U", "count": 5}, {"type": "Hub", "size": null, "count": 3}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 4, "labNominal": "최재식", "labActual": "최재식", "detail": "?U x 5, ?U x 1", "items": [{"type": "server", "size": "?U", "count": 5}, {"type": "server", "size": "?U", "count": 1}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 5, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 7", "items": [{"type": "server", "size": "?U", "count": 7}], "serverCount": 7, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 6, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 7, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 4, NAS x 1", "items": [{"type": "server", "size": "?U", "count": 4}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 8, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 2, NAS x 3", "items": [{"type": "server", "size": "?U", "count": 2}, {"type": "Nas", "size": null, "count": 3}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 9, "labNominal": "윤세영", "labActual": "윤세영", "detail": "8U x 3, 4U x 1", "items": [{"type": "server", "size": "8U", "count": 3}, {"type": "server", "size": "4U", "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 10, "labNominal": "윤세영", "labActual": "윤세영", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 11, "labNominal": "양은호", "labActual": "양은호", "detail": "2 Desktop", "items": [{"type": "Desktop", "size": null, "count": 2}], "serverCount": 0, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 12, "labNominal": "예종철", "labActual": "예종철", "detail": "1 Terminal", "items": [{"type": "Terminal", "size": null, "count": 1}], "serverCount": 0, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 13, "labNominal": "신진우", "labActual": "신진우", "detail": "4U x 6, 1U x 1", "items": [{"type": "server", "size": "4U", "count": 6}, {"type": "server", "size": "1U", "count": 1}], "serverCount": 7, "empty": false, "reclaimable": false, "note": "타 학과 건물에 추가 랙 사용중", "shared": false, "infra": false}, {"room": "대전", "rackId": 14, "labNominal": "최윤재", "labActual": "최윤재", "detail": "?U x 2", "items": [{"type": "server", "size": "?U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 15, "labNominal": "최윤재", "labActual": "최윤재", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}];
+
+const ROOMS = ["홍릉", "양재", "대전"];
+
+const ROOM_META = {
+  "홍릉": { full: "홍릉 서버실", code: "HR" },
+  "양재": { full: "양재 (AI Hub)", code: "YJ" },
+  "대전": { full: "대전 캠퍼스", code: "DJ" },
+};
+
+// 냉방 용량 기준 랙당 권장 최대 서버 수 (관리자 통보 기준, 8GPU·4U 서버 1대 ≈ 3kW 가정)
+const SERVER_KW = 3;
+// 랙 1개의 물리적 최대 슬롯 수 (4U 서버 기준)
+const PHYSICAL_SLOTS_PER_RACK = 8;
+
+// 슬롯 확보 플랜 저장/공유 —— 브라우저 localStorage + URL 해시
+const PLAN_STORAGE_KEY = "gpuDashboardSlotPlans_v1";
+const CODE_TO_ROOM = Object.fromEntries(
+  Object.entries(ROOM_META).map(([room, m]) => [m.code, room])
+);
+
+// 선택된 랙 키("홍릉-25") 집합 → URL용 짧은 코드 문자열("HR25-YJ6-…")
+function encodePlan(keys) {
+  return Array.from(keys)
+    .map((k) => {
+      const [room, id] = k.split("-");
+      const code = ROOM_META[room] ? ROOM_META[room].code : null;
+      return code ? `${code}${id}` : null;
+    })
+    .filter(Boolean)
+    .sort()
+    .join("-");
+}
+
+// 코드 문자열 → 랙 키 배열 (알 수 없는 토큰은 무시)
+function decodePlan(str) {
+  const keys = [];
+  if (!str) return keys;
+  str.split("-").forEach((tok) => {
+    const m = /^([A-Z]{2})(\d+)$/.exec(tok);
+    if (!m) return;
+    const room = CODE_TO_ROOM[m[1]];
+    if (room) keys.push(`${room}-${m[2]}`);
+  });
+  return keys;
+}
+const ROOM_CAPACITY = {
+  "홍릉": { coolingKW: 316, rackCount: 25, kwPerRack: 12.64, maxServersPerRack: 4 },
+  "양재": { coolingKW: 560, rackCount: 32, kwPerRack: 17.5, maxServersPerRack: 6 },
+  "대전": { coolingKW: 116, rackCount: 15, kwPerRack: 7.7, maxServersPerRack: 2.5 },
+};
+
+// 랙 부하 수준: 권장 최대 대비 현재 서버 수
+function rackLoad(r) {
+  const cap = ROOM_CAPACITY[r.room];
+  if (!cap || r.infra || r.serverCount <= 0) {
+    return { level: "none", ratio: 0, max: cap ? cap.maxServersPerRack : 0 };
+  }
+  const ratio = r.serverCount / cap.maxServersPerRack;
+  let level = "ok";
+  if (ratio > 1) level = "over";
+  else if (ratio >= 0.8) level = "near";
+  return { level, ratio, max: cap.maxServersPerRack };
+}
+
+const LOAD_META = {
+  over: { color: "var(--c-over)", label: "초과" },
+  near: { color: "var(--c-near)", label: "임박" },
+  ok:   { color: "var(--c-ok)", label: "여유" },
+  none: { color: "var(--c-empty)", label: "-" },
+};
+
+// 슬롯 수 표기 (대전 2.5처럼 소수가 나올 수 있어 정수면 정수로, 아니면 소수 1자리)
+const fmtSlots = (n) => (Number.isInteger(n) ? String(n) : n.toFixed(1));
+
+function statusOf(r) {
+  if (r.reclaimable) return "reclaim";
+  if (r.shared) return "shared";
+  if (r.infra) return "infra";
+  if (r.empty) return "empty";
+  return "occupied";
+}
+
+const STATUS_META = {
+  occupied: { label: "사용중", color: "var(--c-occupied)" },
+  shared:   { label: "학과 공용", color: "var(--c-shared)" },
+  reclaim:  { label: "회수 가능", color: "var(--c-reclaim)" },
+  empty:    { label: "빈 랙", color: "var(--c-empty)" },
+  infra:    { label: "인프라", color: "var(--c-infra)" },
+};
+
+const SEG_COLORS = {
+  server: "var(--c-occupied)",
+  Master: "var(--c-shared)",
+  Storage: "var(--c-shared)",
+  NAS: "#8AA0C4",
+  Hub: "#8AA0C4",
+  Desktop: "#8AA0C4",
+  Terminal: "#8AA0C4",
+};
+
+function RackElevation({ rack, onSelect, selected }) {
+  const st = statusOf(rack);
+  const meta = STATUS_META[st];
+  const load = rackLoad(rack);
+  const totalUnits = rack.items.reduce((s, i) => s + (i.count || 1), 0) || 1;
+  return (
+    <button
+      onClick={() => onSelect(rack)}
+      className="rack-card"
+      style={{
+        borderColor: selected
+          ? meta.color
+          : load.level === "over"
+          ? "var(--c-over)"
+          : "var(--border)",
+        boxShadow: selected ? `0 0 0 1px ${meta.color}` : "none",
+      }}
+    >
+      <div className="rack-card-head">
+        <span className="rack-id">R{String(rack.rackId).padStart(2, "0")}</span>
+        <span className="rack-dot" style={{ background: meta.color }} />
+      </div>
+      <div className="rack-elev">
+        {rack.items.length === 0 ? (
+          <div className="rack-elev-empty" />
+        ) : (
+          rack.items.map((it, idx) => (
+            <div
+              key={idx}
+              className="rack-seg"
+              style={{
+                flexGrow: it.count || 1,
+                background: SEG_COLORS[it.type] || "#5A6474",
+              }}
+              title={`${it.type} ${it.size || ""} x${it.count || ""}`}
+            />
+          ))
+        )}
+      </div>
+      <div className="rack-card-foot">
+        <span className="rack-owner" title={rack.labActual}>{rack.labActual}</span>
+        <span
+          className="rack-count"
+          style={{ color: load.level === "over" ? "var(--c-over)" : undefined }}
+          title={
+            load.level === "none"
+              ? undefined
+              : `권장 최대 ${load.max}대 / 현재 ${rack.serverCount}대`
+          }
+        >
+          {load.level === "over" ? "⚠ " : ""}{rack.serverCount || "-"}
+        </span>
+      </div>
+    </button>
+  );
+}
+
+function DetailPanel({ rack, onClose }) {
+  if (!rack) return null;
+  const st = statusOf(rack);
+  const meta = STATUS_META[st];
+  return (
+    <div className="detail-panel">
+      <div className="detail-head">
+        <div>
+          <div className="detail-eyebrow">{rack.room} · R{String(rack.rackId).padStart(2, "0")}</div>
+          <div className="detail-title">
+            {rack.labActual}
+            {rack.labActual !== rack.labNominal && (
+              <span className="detail-nominal"> (명목: {rack.labNominal})</span>
+            )}
+          </div>
+        </div>
+        <button className="detail-close" onClick={onClose}>×</button>
+      </div>
+      <div className="detail-status" style={{ color: meta.color, borderColor: meta.color }}>
+        {meta.label}
+      </div>
+      <div className="detail-rows">
+        {rack.items.length === 0 ? (
+          <div className="detail-empty-msg">설치된 장비 없음</div>
+        ) : (
+          rack.items.map((it, idx) => (
+            <div className="detail-row" key={idx}>
+              <span className="detail-row-type">{it.type}{it.size ? ` (${it.size})` : ""}</span>
+              <span className="detail-row-count">{it.count != null ? `×${it.count}` : ""}</span>
+            </div>
+          ))
+        )}
+      </div>
+      {rack.note && <div className="detail-note">📝 {rack.note}</div>}
+    </div>
+  );
+}
+
+const ROOM_COLOR = {
+  "홍릉": "#5B8DEF",
+  "양재": "#34D399",
+  "대전": "#A78BFA",
+};
+
+function aggregateByOwner() {
+  const map = {};
+  RACK_DATA.forEach((r) => {
+    if (r.shared || r.infra) return;
+    const key = r.labActual;
+    if (!map[key]) {
+      map[key] = { owner: key, totalRacks: 0, totalServers: 0, byRoom: {}, flags: new Set(), nominals: new Set() };
+    }
+    const o = map[key];
+    o.totalRacks += 1;
+    o.totalServers += r.serverCount;
+    o.byRoom[r.room] = o.byRoom[r.room] || { racks: 0, servers: 0 };
+    o.byRoom[r.room].racks += 1;
+    o.byRoom[r.room].servers += r.serverCount;
+    if (r.labNominal !== r.labActual) o.nominals.add(r.labNominal);
+    if (statusOf(r) === "reclaim") o.flags.add("reclaim");
+    if (statusOf(r) === "empty") o.flags.add("empty");
+  });
+  return Object.values(map);
+}
+
+function LabCard({ lab, onSelect, selected, avgRacks }) {
+  const roomsUsed = ROOMS.filter((r) => lab.byRoom[r]);
+  const delta = lab.totalRacks - avgRacks;
+  return (
+    <button
+      className="lab-card"
+      onClick={() => onSelect(lab)}
+      style={{
+        borderColor: selected ? "var(--c-occupied)" : "var(--border)",
+        boxShadow: selected ? "0 0 0 1px var(--c-occupied)" : "none",
+      }}
+    >
+      <div className="lab-card-head">
+        <span className="lab-name">{lab.owner}</span>
+        {lab.flags.has("reclaim") && <span className="lab-flag" style={{ color: "var(--c-reclaim)" }}>회수가능</span>}
+      </div>
+      <div className="lab-card-metrics">
+        <div>
+          <div className="lab-metric-big mono">{lab.totalRacks}</div>
+          <div className="lab-metric-label">랙</div>
+        </div>
+        <div>
+          <div className="lab-metric-big mono">{lab.totalServers}</div>
+          <div className="lab-metric-label">서버</div>
+        </div>
+        <div>
+          <div
+            className="lab-metric-big mono"
+            style={{ color: delta > 0 ? "var(--c-reclaim)" : delta < 0 ? "var(--c-shared)" : "var(--text-muted)" }}
+          >
+            {delta > 0 ? `+${delta.toFixed(1)}` : delta.toFixed(1)}
+          </div>
+          <div className="lab-metric-label">평균 대비 (랙)</div>
+        </div>
+      </div>
+      <div className="lab-room-bar">
+        {roomsUsed.map((r) => (
+          <div
+            key={r}
+            style={{ flexGrow: lab.byRoom[r].racks, background: ROOM_COLOR[r] }}
+            title={`${r}: 랙 ${lab.byRoom[r].racks} / 서버 ${lab.byRoom[r].servers}`}
+          />
+        ))}
+      </div>
+      <div className="lab-room-list">
+        {roomsUsed.map((r) => (
+          <span key={r}>
+            <span className="legend-dot" style={{ background: ROOM_COLOR[r] }} />
+            {r} {lab.byRoom[r].racks}랙
+          </span>
+        ))}
+      </div>
+    </button>
+  );
+}
+
+function LabDetailPanel({ lab, onClose, avgRacks, avgServers }) {
+  if (!lab) return null;
+  const racks = RACK_DATA.filter((r) => !r.shared && !r.infra && r.labActual === lab.owner);
+  return (
+    <div className="detail-panel">
+      <div className="detail-head">
+        <div>
+          <div className="detail-eyebrow">연구실 종합 · {ROOMS.filter((r) => lab.byRoom[r]).join(" / ")}</div>
+          <div className="detail-title">{lab.owner}</div>
+        </div>
+        <button className="detail-close" onClick={onClose}>×</button>
+      </div>
+      <div className="lab-detail-stats">
+        <div>
+          <div className="lab-metric-big mono">{lab.totalRacks}</div>
+          <div className="lab-metric-label">총 랙 수 (평균 {avgRacks.toFixed(1)})</div>
+        </div>
+        <div>
+          <div className="lab-metric-big mono">{lab.totalServers}</div>
+          <div className="lab-metric-label">총 서버 수 (평균 {avgServers.toFixed(1)})</div>
+        </div>
+      </div>
+      <div className="detail-rows">
+        {racks.map((r) => (
+          <div className="detail-row" key={`${r.room}-${r.rackId}`}>
+            <span className="detail-row-type">{r.room} R{String(r.rackId).padStart(2, "0")}</span>
+            <span className="detail-row-count">{r.serverCount}대</span>
+          </div>
+        ))}
+      </div>
+      {lab.nominals.size > 0 && (
+        <div className="detail-note">📝 일부 랙은 명의상 {Array.from(lab.nominals).join(", ")}로 등록되어 있음</div>
+      )}
+    </div>
+  );
+}
+
+function SummaryCard({ room }) {
+  const racks = RACK_DATA.filter((r) => r.room === room);
+  const occupied = racks.filter((r) => statusOf(r) === "occupied").length;
+  const shared = racks.filter((r) => statusOf(r) === "shared").length;
+  const empty = racks.filter((r) => statusOf(r) === "empty").length;
+  const reclaim = racks.filter((r) => statusOf(r) === "reclaim").length;
+  const servers = racks.reduce((s, r) => s + r.serverCount, 0);
+  return (
+    <div className="summary-card">
+      <div className="summary-room">{ROOM_META[room].full}</div>
+      <div className="summary-main">
+        <span className="summary-big">{racks.length}</span>
+        <span className="summary-unit">랙</span>
+      </div>
+      <div className="summary-bar">
+        <div style={{ flexGrow: occupied || 0.001, background: "var(--c-occupied)" }} />
+        <div style={{ flexGrow: shared || 0.001, background: "var(--c-shared)" }} />
+        <div style={{ flexGrow: empty || 0.001, background: "var(--c-empty)" }} />
+        <div style={{ flexGrow: reclaim || 0.001, background: "var(--c-reclaim)" }} />
+      </div>
+      <div className="summary-legend">
+        <span>사용중 {occupied}</span>
+        <span>공용 {shared}</span>
+        <span>여유 {empty}</span>
+        <span>회수 {reclaim}</span>
+      </div>
+      <div className="summary-servers">서버 {servers}대 설치</div>
+    </div>
+  );
+}
+
+function CapacityBanner() {
+  return (
+    <div className="cap-row">
+      <div className="cap-caption">
+        냉방 용량 기준 <b>랙당 권장 최대 서버 수</b>
+        <span className="cap-caption-sub"> · 8GPU·4U 서버 1대 ≈ {SERVER_KW}kW 가정</span>
+      </div>
+      {ROOMS.map((room) => {
+        const cap = ROOM_CAPACITY[room];
+        const racks = RACK_DATA.filter(
+          (r) => r.room === room && !r.infra && r.serverCount > 0
+        );
+        const over = racks.filter((r) => rackLoad(r).level === "over").length;
+        const near = racks.filter((r) => rackLoad(r).level === "near").length;
+        const worst = over > 0 ? "over" : near > 0 ? "near" : "ok";
+        const meta = LOAD_META[worst];
+        return (
+          <div
+            className="cap-card"
+            key={room}
+            style={{ borderColor: worst === "over" ? "var(--c-over)" : "var(--border)" }}
+          >
+            <div className="cap-head">
+              <span className="cap-room">{ROOM_META[room].full}</span>
+              <span
+                className="cap-light"
+                style={{ background: meta.color, boxShadow: `0 0 8px ${meta.color}` }}
+                title={LOAD_META[worst].label}
+              />
+            </div>
+            <div className="cap-main">
+              <span className="cap-big mono">~{cap.maxServersPerRack}</span>
+              <span className="cap-phys mono">/ {PHYSICAL_SLOTS_PER_RACK}</span>
+              <span className="cap-unit">권장 / 물리 슬롯 (서버 · 랙당)</span>
+            </div>
+            <div className="cap-meta mono">
+              냉방 {cap.coolingKW}kW · 랙당 {cap.kwPerRack}kW · 랙 {cap.rackCount}개
+            </div>
+            <div
+              className="cap-status"
+              style={{ color: over > 0 ? "var(--c-over)" : near > 0 ? "var(--c-near)" : "var(--text-muted)" }}
+            >
+              {over > 0
+                ? `⚠ ${over}개 랙 권장치 초과`
+                : near > 0
+                ? `${near}개 랙 권장치 임박`
+                : "전 랙 권장 범위 내"}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function GPUDashboard() {
+  const [roomFilter, setRoomFilter] = useState("전체");
+  const [statusFilter, setStatusFilter] = useState("전체");
+  const [query, setQuery] = useState("");
+  const [sortKey, setSortKey] = useState("rack");
+  const [selected, setSelected] = useState(null);
+  const [view, setView] = useState("rack");
+  const [selectedLab, setSelectedLab] = useState(null);
+  const [labSortKey, setLabSortKey] = useState("racks-desc");
+
+  const candidateKeys = useMemo(
+    () =>
+      RACK_DATA.filter((r) => !r.shared && !r.infra && (r.reclaimable || r.empty)).map(
+        (r) => `${r.room}-${r.rackId}`
+      ),
+    []
+  );
+  const sharedKeys = useMemo(
+    () => RACK_DATA.filter((r) => r.shared).map((r) => `${r.room}-${r.rackId}`),
+    []
+  );
+  const [slotSelection, setSlotSelection] = useState(() => new Set(candidateKeys));
+  const [slotShowAll, setSlotShowAll] = useState(false);
+
+  const toggleSlot = (key) => {
+    setSlotSelection((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  };
+
+  // ---- 슬롯 확보 플랜 저장/불러오기/공유 ----
+  const [planName, setPlanName] = useState("");
+  const [savedPlans, setSavedPlans] = useState(() => {
+    try {
+      const raw = localStorage.getItem(PLAN_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  });
+  const [shareMsg, setShareMsg] = useState("");
+
+  // 최초 로드 시 URL 해시(#plan=...)에 담긴 선택을 복원
+  useEffect(() => {
+    const m = /[#&]plan=([^&]+)/.exec(window.location.hash);
+    if (!m) return;
+    const keys = decodePlan(decodeURIComponent(m[1]));
+    if (keys.length) {
+      setSlotSelection(new Set(keys));
+      setView("slot");
+    }
+  }, []);
+
+  const persistPlans = (plans) => {
+    setSavedPlans(plans);
+    try {
+      localStorage.setItem(PLAN_STORAGE_KEY, JSON.stringify(plans));
+    } catch (e) {
+      /* localStorage 사용 불가 시 무시 (세션 한정) */
+    }
+  };
+
+  const savePlan = () => {
+    const name = planName.trim();
+    if (!name) return;
+    const entry = { name, keys: Array.from(slotSelection), ts: Date.now() };
+    const others = savedPlans.filter((p) => p.name !== name);
+    persistPlans([entry, ...others].sort((a, b) => b.ts - a.ts));
+    setPlanName("");
+  };
+
+  const applyPlan = (plan) => setSlotSelection(new Set(plan.keys));
+
+  const deletePlan = (name) => persistPlans(savedPlans.filter((p) => p.name !== name));
+
+  const copyShareLink = () => {
+    const encoded = encodePlan(slotSelection);
+    const url = `${window.location.origin}${window.location.pathname}#plan=${encoded}`;
+    const done = () => {
+      setShareMsg("링크 복사됨");
+      setTimeout(() => setShareMsg(""), 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done).catch(() => window.prompt("아래 링크를 복사하세요", url));
+    } else {
+      window.prompt("아래 링크를 복사하세요", url);
+    }
+  };
+
+  const filtered = useMemo(() => {
+    let rows = RACK_DATA.slice();
+    if (roomFilter !== "전체") rows = rows.filter((r) => r.room === roomFilter);
+    if (statusFilter !== "전체") rows = rows.filter((r) => statusOf(r) === statusFilter);
+    if (query.trim()) {
+      const q = query.trim().toLowerCase();
+      rows = rows.filter(
+        (r) =>
+          r.labActual.toLowerCase().includes(q) ||
+          r.labNominal.toLowerCase().includes(q)
+      );
+    }
+    if (sortKey === "rack") {
+      rows.sort((a, b) => (a.room === b.room ? a.rackId - b.rackId : ROOMS.indexOf(a.room) - ROOMS.indexOf(b.room)));
+    } else if (sortKey === "servers-desc") {
+      rows.sort((a, b) => b.serverCount - a.serverCount);
+    } else if (sortKey === "servers-asc") {
+      rows.sort((a, b) => a.serverCount - b.serverCount);
+    } else if (sortKey === "lab") {
+      rows.sort((a, b) => a.labActual.localeCompare(b.labActual, "ko"));
+    }
+    return rows;
+  }, [roomFilter, statusFilter, query, sortKey]);
+
+  const grouped = useMemo(() => {
+    const g = {};
+    filtered.forEach((r) => {
+      g[r.room] = g[r.room] || [];
+      g[r.room].push(r);
+    });
+    return g;
+  }, [filtered]);
+
+  const totalServers = RACK_DATA.reduce((s, r) => s + r.serverCount, 0);
+
+  const slotSummary = useMemo(() => {
+    const chosen = RACK_DATA.filter((r) => slotSelection.has(`${r.room}-${r.rackId}`));
+    const byRoom = {};
+    ROOMS.forEach((room) => (byRoom[room] = { racks: 0, servers: 0, slots: 0, physical: 0 }));
+    let displaced = 0;
+    let sharedRacks = 0;
+    let sharedServers = 0;
+    let totalSlots = 0;
+    chosen.forEach((r) => {
+      const perRack = (ROOM_CAPACITY[r.room] && ROOM_CAPACITY[r.room].maxServersPerRack) || 0;
+      byRoom[r.room].racks += 1;
+      byRoom[r.room].servers += r.serverCount;
+      byRoom[r.room].slots += perRack;
+      byRoom[r.room].physical += PHYSICAL_SLOTS_PER_RACK;
+      totalSlots += perRack;
+      if (r.serverCount > 0) displaced += r.serverCount;
+      if (r.shared) {
+        sharedRacks += 1;
+        sharedServers += r.serverCount;
+      }
+    });
+    return {
+      totalRacks: chosen.length,
+      byRoom,
+      displacedServers: displaced,
+      sharedRacks,
+      sharedServers,
+      labRacks: chosen.length - sharedRacks,
+      totalSlots,
+      netSlots: totalSlots - displaced,
+      physicalSlots: chosen.length * PHYSICAL_SLOTS_PER_RACK,
+    };
+  }, [slotSelection]);
+
+  const slotRows = useMemo(() => {
+    let rows = RACK_DATA.filter((r) => !r.infra);
+    if (!slotShowAll) {
+      rows = rows.filter(
+        (r) => r.reclaimable || r.empty || r.shared || slotSelection.has(`${r.room}-${r.rackId}`)
+      );
+    }
+    if (query.trim()) {
+      const q = query.trim().toLowerCase();
+      rows = rows.filter((r) => r.labActual.toLowerCase().includes(q) || r.labNominal.toLowerCase().includes(q));
+    }
+    rows.sort((a, b) => (a.room === b.room ? a.rackId - b.rackId : ROOMS.indexOf(a.room) - ROOMS.indexOf(b.room)));
+    return rows;
+  }, [slotShowAll, slotSelection, query]);
+
+  const allLabs = useMemo(() => aggregateByOwner(), []);
+  const labAvg = useMemo(() => {
+    const n = allLabs.length || 1;
+    const totalRacks = allLabs.reduce((s, l) => s + l.totalRacks, 0);
+    const totalSrv = allLabs.reduce((s, l) => s + l.totalServers, 0);
+    return { racks: totalRacks / n, servers: totalSrv / n, count: allLabs.length };
+  }, [allLabs]);
+
+  const filteredLabs = useMemo(() => {
+    let labs = allLabs.slice();
+    if (query.trim()) {
+      const q = query.trim().toLowerCase();
+      labs = labs.filter((l) => l.owner.toLowerCase().includes(q));
+    }
+    if (labSortKey === "racks-desc") labs.sort((a, b) => b.totalRacks - a.totalRacks);
+    else if (labSortKey === "servers-desc") labs.sort((a, b) => b.totalServers - a.totalServers);
+    else if (labSortKey === "delta-desc") labs.sort((a, b) => (b.totalRacks - labAvg.racks) - (a.totalRacks - labAvg.racks));
+    else if (labSortKey === "name") labs.sort((a, b) => a.owner.localeCompare(b.owner, "ko"));
+    return labs;
+  }, [allLabs, query, labSortKey, labAvg]);
+
+  return (
+    <div className="dash-root">
+      <style>{`
+        .dash-root {
+          --bg: #0A0C10;
+          --panel: #11141B;
+          --panel2: #161A23;
+          --border: #232936;
+          --text: #E7E9EE;
+          --text-muted: #7C8496;
+          --c-occupied: #5B8DEF;
+          --c-shared: #E8A33D;
+          --c-empty: #3A4152;
+          --c-reclaim: #F97066;
+          --c-infra: #6B7280;
+          --c-over: #FF5A4D;
+          --c-near: #F5B544;
+          --c-ok: #34D399;
+          background: var(--bg);
+          color: var(--text);
+          font-family: 'IBM Plex Sans KR', 'IBM Plex Sans', -apple-system, sans-serif;
+          min-height: 100vh;
+          padding: 28px 20px 60px;
+          box-sizing: border-box;
+        }
+        .dash-root * { box-sizing: border-box; }
+        .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          flex-wrap: wrap;
+          gap: 12px;
+          max-width: 1180px;
+          margin: 0 auto 22px;
+          border-bottom: 1px solid var(--border);
+          padding-bottom: 18px;
+        }
+        .header-eyebrow {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 11px;
+          letter-spacing: 0.12em;
+          color: var(--c-occupied);
+          text-transform: uppercase;
+          margin-bottom: 6px;
+        }
+        .header-title {
+          font-size: 24px;
+          font-weight: 600;
+          letter-spacing: -0.01em;
+        }
+        .header-sub {
+          color: var(--text-muted);
+          font-size: 13px;
+          margin-top: 4px;
+        }
+        .header-stat {
+          font-family: 'IBM Plex Mono', monospace;
+          text-align: right;
+        }
+        .header-stat-big {
+          font-size: 28px;
+          font-weight: 600;
+          color: var(--c-occupied);
+        }
+        .header-stat-label {
+          font-size: 11px;
+          color: var(--text-muted);
+          letter-spacing: 0.05em;
+        }
+        .summary-row {
+          max-width: 1180px;
+          margin: 0 auto 24px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 12px;
+        }
+        @media (max-width: 720px) {
+          .summary-row { grid-template-columns: 1fr; }
+        }
+        .summary-card {
+          background: var(--panel);
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          padding: 16px 18px;
+        }
+        .summary-room { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+        .summary-main { display: flex; align-items: baseline; gap: 6px; margin-bottom: 10px; }
+        .summary-big { font-family: 'IBM Plex Mono', monospace; font-size: 30px; font-weight: 600; }
+        .summary-unit { font-size: 12px; color: var(--text-muted); }
+        .summary-bar {
+          display: flex;
+          height: 6px;
+          border-radius: 3px;
+          overflow: hidden;
+          background: var(--border);
+          margin-bottom: 10px;
+        }
+        .summary-legend {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          font-size: 11px;
+          color: var(--text-muted);
+          font-family: 'IBM Plex Mono', monospace;
+        }
+        .summary-servers {
+          margin-top: 8px;
+          font-size: 11px;
+          color: var(--text-muted);
+          border-top: 1px dashed var(--border);
+          padding-top: 8px;
+        }
+        .cap-row {
+          max-width: 1180px;
+          margin: -6px auto 24px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 12px;
+        }
+        .cap-caption {
+          grid-column: 1 / -1;
+          font-size: 12px;
+          color: var(--text-muted);
+          letter-spacing: 0.02em;
+        }
+        .cap-caption b { color: var(--text); font-weight: 600; }
+        .cap-caption-sub { font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+        @media (max-width: 720px) {
+          .cap-row { grid-template-columns: 1fr; }
+        }
+        .cap-card {
+          background: linear-gradient(180deg, var(--panel2), var(--panel));
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          padding: 14px 16px;
+        }
+        .cap-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+        }
+        .cap-room { font-size: 13px; color: var(--text-muted); }
+        .cap-light { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .cap-main { display: flex; align-items: baseline; gap: 6px; }
+        .cap-big { font-size: 26px; font-weight: 600; color: var(--c-occupied); }
+        .cap-phys { font-size: 18px; font-weight: 500; color: var(--text-muted); }
+        .cap-unit { font-size: 11px; color: var(--text-muted); }
+        .cap-meta { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+        .cap-status {
+          font-size: 12px;
+          margin-top: 8px;
+          border-top: 1px dashed var(--border);
+          padding-top: 8px;
+        }
+        .toolbar {
+          max-width: 1180px;
+          margin: 0 auto 18px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          align-items: center;
+        }
+        .chip-group { display: flex; gap: 6px; flex-wrap: wrap; }
+        .chip {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 12px;
+          padding: 6px 12px;
+          border-radius: 999px;
+          border: 1px solid var(--border);
+          background: var(--panel);
+          color: var(--text-muted);
+          cursor: pointer;
+          transition: all 0.15s ease;
+        }
+        .chip:hover { border-color: var(--c-occupied); color: var(--text); }
+        .chip.active {
+          background: var(--c-occupied);
+          border-color: var(--c-occupied);
+          color: #0A0C10;
+          font-weight: 600;
+        }
+        .search-input {
+          background: var(--panel);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 7px 12px;
+          color: var(--text);
+          font-size: 13px;
+          font-family: 'IBM Plex Mono', monospace;
+          min-width: 160px;
+        }
+        .search-input:focus { outline: none; border-color: var(--c-occupied); }
+        .select-sort {
+          background: var(--panel);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 7px 10px;
+          color: var(--text-muted);
+          font-size: 12px;
+          font-family: 'IBM Plex Mono', monospace;
+        }
+        .spacer { flex: 1; }
+        .legend-strip {
+          max-width: 1180px;
+          margin: 0 auto 20px;
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+          font-size: 11px;
+          color: var(--text-muted);
+          font-family: 'IBM Plex Mono', monospace;
+        }
+        .legend-dot {
+          display: inline-block;
+          width: 8px; height: 8px;
+          border-radius: 50%;
+          margin-right: 5px;
+        }
+        .content {
+          max-width: 1180px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 300px;
+          gap: 20px;
+          align-items: start;
+        }
+        @media (max-width: 900px) {
+          .content { grid-template-columns: 1fr; }
+        }
+        .room-block { margin-bottom: 26px; }
+        .room-block-title {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 12px;
+          color: var(--text-muted);
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+          padding-bottom: 6px;
+          border-bottom: 1px solid var(--border);
+        }
+        .rack-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+          gap: 8px;
+        }
+        .rack-card {
+          background: var(--panel);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 8px;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          text-align: left;
+          font-family: inherit;
+          color: var(--text);
+          transition: transform 0.1s ease;
+        }
+        .rack-card:hover { transform: translateY(-2px); }
+        .rack-card-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .rack-id {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 11px;
+          color: var(--text-muted);
+        }
+        .rack-dot { width: 6px; height: 6px; border-radius: 50%; }
+        .rack-elev {
+          height: 46px;
+          border: 1px solid var(--border);
+          border-radius: 4px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column-reverse;
+          background: #0D1016;
+        }
+        .rack-seg { width: 100%; border-top: 1px solid rgba(0,0,0,0.35); }
+        .rack-elev-empty {
+          width: 100%; height: 100%;
+          background: repeating-linear-gradient(
+            135deg, transparent, transparent 4px, rgba(255,255,255,0.03) 4px, rgba(255,255,255,0.03) 8px
+          );
+        }
+        .rack-card-foot {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          gap: 4px;
+        }
+        .rack-owner {
+          font-size: 11px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 60px;
+        }
+        .rack-count {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 11px;
+          color: var(--text-muted);
+        }
+        .detail-panel {
+          position: sticky;
+          top: 20px;
+          background: var(--panel2);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          padding: 18px;
+        }
+        .detail-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 10px;
+        }
+        .detail-eyebrow {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 11px;
+          color: var(--text-muted);
+          margin-bottom: 4px;
+        }
+        .detail-title { font-size: 17px; font-weight: 600; }
+        .detail-nominal { font-size: 12px; color: var(--text-muted); font-weight: 400; }
+        .detail-close {
+          background: none; border: none; color: var(--text-muted);
+          font-size: 20px; cursor: pointer; line-height: 1;
+        }
+        .detail-status {
+          display: inline-block;
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 11px;
+          border: 1px solid;
+          border-radius: 999px;
+          padding: 3px 10px;
+          margin-bottom: 14px;
+        }
+        .detail-rows { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+        .detail-row {
+          display: flex;
+          justify-content: space-between;
+          font-size: 13px;
+          padding: 6px 0;
+          border-bottom: 1px dashed var(--border);
+        }
+        .detail-row-count { font-family: 'IBM Plex Mono', monospace; color: var(--text-muted); }
+        .detail-empty-msg { color: var(--text-muted); font-size: 13px; }
+        .detail-note {
+          font-size: 12px;
+          color: var(--c-shared);
+          background: rgba(232,163,61,0.1);
+          border: 1px solid rgba(232,163,61,0.3);
+          border-radius: 8px;
+          padding: 8px 10px;
+          margin-top: 8px;
+        }
+        .detail-placeholder {
+          color: var(--text-muted);
+          font-size: 13px;
+          text-align: center;
+          padding: 40px 10px;
+          border: 1px dashed var(--border);
+          border-radius: 12px;
+        }
+        .view-chip { font-size: 12px; }
+        .lab-stat-row { margin-bottom: 18px; }
+        .lab-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 10px;
+        }
+        .lab-card {
+          background: var(--panel);
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          padding: 14px;
+          cursor: pointer;
+          text-align: left;
+          font-family: inherit;
+          color: var(--text);
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          transition: transform 0.1s ease;
+        }
+        .lab-card:hover { transform: translateY(-2px); }
+        .lab-card-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .lab-name { font-size: 14px; font-weight: 600; }
+        .lab-flag {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 10px;
+          border: 1px solid currentColor;
+          border-radius: 999px;
+          padding: 2px 7px;
+        }
+        .lab-card-metrics {
+          display: flex;
+          justify-content: space-between;
+          gap: 6px;
+        }
+        .lab-metric-big { font-size: 20px; font-weight: 600; }
+        .lab-metric-label { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+        .lab-room-bar {
+          display: flex;
+          height: 6px;
+          border-radius: 3px;
+          overflow: hidden;
+          background: var(--border);
+        }
+        .lab-room-list {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          font-size: 11px;
+          color: var(--text-muted);
+          font-family: 'IBM Plex Mono', monospace;
+        }
+        .lab-detail-stats {
+          display: flex;
+          gap: 24px;
+          margin-bottom: 14px;
+          padding-bottom: 14px;
+          border-bottom: 1px dashed var(--border);
+        }
+        .slot-banner {
+          max-width: 1180px;
+          margin: 0 auto 20px;
+          background: var(--panel2);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          padding: 14px 18px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 20px;
+        }
+        .slot-banner-mains { display: flex; align-items: center; gap: 18px; }
+        .slot-banner-main { display: flex; align-items: baseline; gap: 8px; }
+        .slot-banner-big { font-size: 32px; font-weight: 700; color: var(--c-shared); }
+        .slot-banner-label { font-size: 12px; color: var(--text-muted); line-height: 1.3; }
+        .slot-banner-div { width: 1px; align-self: stretch; background: var(--border); }
+        .slot-banner-rooms { display: flex; gap: 16px; font-size: 12px; color: var(--text-muted); flex-wrap: wrap; }
+        .slot-banner-room b { color: var(--text); }
+        .slot-room-slot { color: var(--c-ok); }
+        .slot-banner-phys { color: var(--text-muted); font-weight: 500; }
+        .slot-banner-hint {
+          font-size: 11px;
+          color: var(--text-muted);
+          font-family: 'IBM Plex Mono', monospace;
+          width: 100%;
+        }
+        .slot-banner-warn b { color: var(--text); }
+        .slot-banner-warn {
+          font-size: 12px;
+          color: var(--c-reclaim);
+          background: rgba(249,112,102,0.1);
+          border: 1px solid rgba(249,112,102,0.3);
+          border-radius: 8px;
+          padding: 6px 10px;
+        }
+        .plan-bar {
+          max-width: 1180px;
+          margin: -6px auto 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .plan-save { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .plan-input {
+          background: var(--panel);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 7px 12px;
+          color: var(--text);
+          font-size: 13px;
+          font-family: 'IBM Plex Sans KR', sans-serif;
+          min-width: 200px;
+        }
+        .plan-input:focus { outline: none; border-color: var(--c-occupied); }
+        .plan-btn {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 12px;
+          padding: 7px 12px;
+          border-radius: 8px;
+          border: 1px solid var(--border);
+          background: var(--panel);
+          color: var(--text);
+          cursor: pointer;
+          transition: all 0.15s ease;
+        }
+        .plan-btn:hover { border-color: var(--c-occupied); }
+        .plan-msg { font-size: 12px; color: var(--c-ok); font-family: 'IBM Plex Mono', monospace; }
+        .plan-list { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .plan-list-label { font-size: 12px; color: var(--text-muted); }
+        .plan-chip {
+          display: inline-flex;
+          align-items: center;
+          border: 1px solid var(--border);
+          border-radius: 999px;
+          background: var(--panel);
+          overflow: hidden;
+        }
+        .plan-chip-load {
+          background: none;
+          border: none;
+          color: var(--text);
+          font-size: 12px;
+          padding: 5px 4px 5px 12px;
+          cursor: pointer;
+          font-family: 'IBM Plex Sans KR', sans-serif;
+        }
+        .plan-chip-load:hover { color: var(--c-occupied); }
+        .plan-chip-count { color: var(--text-muted); font-size: 11px; }
+        .plan-chip-del {
+          background: none;
+          border: none;
+          color: var(--text-muted);
+          font-size: 15px;
+          padding: 5px 10px 5px 6px;
+          cursor: pointer;
+          line-height: 1;
+        }
+        .plan-chip-del:hover { color: var(--c-reclaim); }
+        .plan-hint { font-size: 11px; color: var(--text-muted); font-family: 'IBM Plex Mono', monospace; }
+        .slot-list { display: flex; flex-direction: column; gap: 4px; }
+        .slot-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background: var(--panel);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 8px 12px;
+          font-size: 12px;
+          cursor: pointer;
+        }
+        .slot-row.checked { border-color: var(--c-shared); background: rgba(232,163,61,0.06); }
+        .slot-row.is-shared { border-left: 3px solid var(--c-shared); }
+        .slot-shared-tag {
+          font-family: 'IBM Plex Mono', monospace;
+          font-size: 9px;
+          color: var(--c-shared);
+          border: 1px solid var(--c-shared);
+          border-radius: 3px;
+          padding: 1px 4px;
+          margin-right: 6px;
+        }
+        .slot-row input { accent-color: var(--c-shared); width: 14px; height: 14px; }
+        .slot-rack-id { color: var(--text-muted); width: 34px; }
+        .slot-owner { flex: 1; }
+        .slot-status { font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+        .slot-servers { color: var(--text-muted); font-size: 11px; width: 80px; text-align: right; }
+        .footnote {
+          max-width: 1180px;
+          margin: 24px auto 0;
+          font-size: 11px;
+          color: var(--text-muted);
+          font-family: 'IBM Plex Mono', monospace;
+          border-top: 1px solid var(--border);
+          padding-top: 12px;
+        }
+      `}</style>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+      />
+
+      <div className="header">
+        <div>
+          <div className="header-eyebrow">Dept. Infrastructure / Snapshot</div>
+          <div className="header-title">GPU 서버실 현황판</div>
+          <div className="header-sub">홍릉 · 양재 · 대전 — 랙 배정 및 점유 현황 (설문 취합 기준, 1–2개 연구실 업데이트 예정)</div>
+        </div>
+        <div className="header-stat">
+          <div className="header-stat-big mono">{RACK_DATA.length}</div>
+          <div className="header-stat-label">TOTAL RACKS · {totalServers} SERVERS</div>
+        </div>
+      </div>
+
+      <div className="summary-row">
+        {ROOMS.map((room) => (
+          <SummaryCard key={room} room={room} />
+        ))}
+      </div>
+
+      <CapacityBanner />
+
+      <div className="toolbar">
+        <div className="chip-group">
+          <span className={`chip view-chip ${view === "rack" ? "active" : ""}`} onClick={() => setView("rack")}>
+            🗄 랙별 보기
+          </span>
+          <span className={`chip view-chip ${view === "lab" ? "active" : ""}`} onClick={() => setView("lab")}>
+            👤 연구실별 보기
+          </span>
+          <span className={`chip view-chip ${view === "slot" ? "active" : ""}`} onClick={() => setView("slot")}>
+            🧮 슬롯 계산기
+          </span>
+        </div>
+        <input
+          className="search-input"
+          placeholder="연구실 이름 검색..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        {view === "rack" && (
+          <>
+            <div className="chip-group">
+              <span
+                className={`chip ${roomFilter === "전체" ? "active" : ""}`}
+                onClick={() => setRoomFilter("전체")}
+              >
+                전체 서버실
+              </span>
+              {ROOMS.map((room) => (
+                <span
+                  key={room}
+                  className={`chip ${roomFilter === room ? "active" : ""}`}
+                  onClick={() => setRoomFilter(room)}
+                >
+                  {room}
+                </span>
+              ))}
+            </div>
+            <div className="chip-group">
+              {["전체", "occupied", "shared", "empty", "reclaim"].map((s) => (
+                <span
+                  key={s}
+                  className={`chip ${statusFilter === s ? "active" : ""}`}
+                  onClick={() => setStatusFilter(s)}
+                >
+                  {s === "전체" ? "모든 상태" : STATUS_META[s].label}
+                </span>
+              ))}
+            </div>
+          </>
+        )}
+        {view === "slot" && (
+          <div className="chip-group">
+            <span
+              className="chip"
+              onClick={() => setSlotSelection(new Set(candidateKeys))}
+            >
+              ↺ 기본값(회수가능+빈랙)
+            </span>
+            <span
+              className={`chip ${sharedKeys.every((k) => slotSelection.has(k)) ? "active" : ""}`}
+              onClick={() =>
+                setSlotSelection((prev) => {
+                  const next = new Set(prev);
+                  const allOn = sharedKeys.every((k) => next.has(k));
+                  sharedKeys.forEach((k) => (allOn ? next.delete(k) : next.add(k)));
+                  return next;
+                })
+              }
+            >
+              🏛 학과 공용 {sharedKeys.length}랙 일괄
+            </span>
+            <span className="chip" onClick={() => setSlotSelection(new Set())}>
+              전체 해제
+            </span>
+            <span className={`chip ${slotShowAll ? "active" : ""}`} onClick={() => setSlotShowAll((v) => !v)}>
+              {slotShowAll ? "후보 랙만 보기" : "전체 랙 보기"}
+            </span>
+          </div>
+        )}
+        <div className="spacer" />
+        {view === "rack" && (
+          <select className="select-sort" value={sortKey} onChange={(e) => setSortKey(e.target.value)}>
+            <option value="rack">정렬: 랙 번호순</option>
+            <option value="servers-desc">정렬: 서버 많은 순</option>
+            <option value="servers-asc">정렬: 서버 적은 순</option>
+            <option value="lab">정렬: 연구실 이름순</option>
+          </select>
+        )}
+        {view === "lab" && (
+          <select className="select-sort" value={labSortKey} onChange={(e) => setLabSortKey(e.target.value)}>
+            <option value="racks-desc">정렬: 총 랙 수 많은 순</option>
+            <option value="servers-desc">정렬: 총 서버 많은 순</option>
+            <option value="delta-desc">정렬: 평균 초과 큰 순</option>
+            <option value="name">정렬: 이름순</option>
+          </select>
+        )}
+      </div>
+
+      {view === "rack" && (
+        <div className="legend-strip">
+          {Object.entries(STATUS_META).map(([k, v]) => (
+            <span key={k}>
+              <span className="legend-dot" style={{ background: v.color }} />
+              {v.label}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {view === "lab" && (
+        <div className="summary-row lab-stat-row">
+          <div className="summary-card">
+            <div className="summary-room">연구실 수 (공용/인프라 제외)</div>
+            <div className="summary-main"><span className="summary-big">{labAvg.count}</span><span className="summary-unit">개</span></div>
+          </div>
+          <div className="summary-card">
+            <div className="summary-room">연구실당 평균 랙 수</div>
+            <div className="summary-main"><span className="summary-big">{labAvg.racks.toFixed(1)}</span><span className="summary-unit">랙</span></div>
+          </div>
+          <div className="summary-card">
+            <div className="summary-room">연구실당 평균 서버 수</div>
+            <div className="summary-main"><span className="summary-big">{labAvg.servers.toFixed(1)}</span><span className="summary-unit">대</span></div>
+          </div>
+        </div>
+      )}
+
+      {view === "slot" && (
+        <div className="slot-banner">
+          <div className="slot-banner-mains">
+            <div className="slot-banner-main">
+              <span className="slot-banner-big mono">{slotSummary.totalRacks}</span>
+              <span className="slot-banner-label">랙 확보 가능<br />(선택 기준)</span>
+            </div>
+            <div className="slot-banner-div" />
+            <div className="slot-banner-main">
+              <span className="slot-banner-big mono">
+                <span style={{ color: "var(--c-ok)" }}>~{fmtSlots(slotSummary.totalSlots)}</span>
+                <span className="slot-banner-phys"> / {slotSummary.physicalSlots}</span>
+              </span>
+              <span className="slot-banner-label">슬롯 확보 가능<br />(권장 / 물리 최대)</span>
+            </div>
+          </div>
+          <div className="slot-banner-rooms">
+            {ROOMS.map((room) => (
+              <div key={room} className="slot-banner-room">
+                <span className="legend-dot" style={{ background: ROOM_COLOR[room] }} />
+                {room} <b className="mono">{slotSummary.byRoom[room].racks}</b>랙 · 슬롯{" "}
+                <b className="mono slot-room-slot">~{fmtSlots(slotSummary.byRoom[room].slots)}</b>
+                <span className="mono"> / {slotSummary.byRoom[room].physical}</span>
+              </div>
+            ))}
+          </div>
+          <div className="slot-banner-rooms">
+            <div className="slot-banner-room">
+              연구실 <b className="mono">{slotSummary.labRacks}</b>랙
+            </div>
+            <div className="slot-banner-room">
+              <span className="legend-dot" style={{ background: "var(--c-shared)" }} />
+              학과 공용 <b className="mono">{slotSummary.sharedRacks}</b>랙
+            </div>
+          </div>
+          <div className="slot-banner-hint">
+            슬롯 = 권장(냉방) / 물리(랙당 {PHYSICAL_SLOTS_PER_RACK}) · 권장 랙당 대전 2.5 · 홍릉 4 · 양재 6
+          </div>
+          {slotSummary.displacedServers > 0 && (
+            <div className="slot-banner-warn">
+              ⚠ 선택한 랙 중 이미 서버 {slotSummary.displacedServers}대가 설치되어 있어, 실제 회수 전 이전 계획이 필요합니다.
+              {" "}이전 완료 시 순 확보 슬롯 약 <b>{fmtSlots(slotSummary.netSlots)}</b>개.
+            </div>
+          )}
+        </div>
+      )}
+
+      {view === "slot" && (
+        <div className="plan-bar">
+          <div className="plan-save">
+            <input
+              className="plan-input"
+              placeholder="플랜 이름 (예: 1차 회수안)"
+              value={planName}
+              onChange={(e) => setPlanName(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && savePlan()}
+            />
+            <button className="plan-btn" onClick={savePlan}>💾 저장</button>
+            <button className="plan-btn" onClick={copyShareLink}>🔗 공유 링크</button>
+            {shareMsg && <span className="plan-msg">{shareMsg}</span>}
+          </div>
+          {savedPlans.length > 0 && (
+            <div className="plan-list">
+              <span className="plan-list-label">저장된 플랜:</span>
+              {savedPlans.map((p) => (
+                <span className="plan-chip" key={p.name}>
+                  <button
+                    className="plan-chip-load"
+                    onClick={() => applyPlan(p)}
+                    title={`${p.keys.length}랙 불러오기`}
+                  >
+                    {p.name} <span className="plan-chip-count mono">{p.keys.length}랙</span>
+                  </button>
+                  <button className="plan-chip-del" onClick={() => deletePlan(p.name)} title="삭제">×</button>
+                </span>
+              ))}
+            </div>
+          )}
+          <div className="plan-hint">
+            저장 위치: 이 브라우저(localStorage) · 공유 링크는 선택 내용을 URL에 담아 다른 기기·동료와 공유합니다
+          </div>
+        </div>
+      )}
+
+
+      <div className="content">
+        {view === "rack" ? (
+          <>
+            <div>
+              {ROOMS.filter((room) => grouped[room] && grouped[room].length > 0).map((room) => (
+                <div className="room-block" key={room}>
+                  <div className="room-block-title">
+                    {ROOM_META[room].full} · {grouped[room].length}개 표시중
+                  </div>
+                  <div className="rack-grid">
+                    {grouped[room].map((rack) => (
+                      <RackElevation
+                        key={`${rack.room}-${rack.rackId}`}
+                        rack={rack}
+                        onSelect={setSelected}
+                        selected={
+                          selected &&
+                          selected.room === rack.room &&
+                          selected.rackId === rack.rackId
+                        }
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+              {filtered.length === 0 && (
+                <div className="detail-placeholder">조건에 맞는 랙이 없습니다.</div>
+              )}
+            </div>
+            {selected ? (
+              <DetailPanel rack={selected} onClose={() => setSelected(null)} />
+            ) : (
+              <div className="detail-placeholder">랙을 클릭하면 상세 정보가 여기에 표시됩니다.</div>
+            )}
+          </>
+        ) : view === "lab" ? (
+          <>
+            <div>
+              <div className="room-block-title">
+                교수별 3개 서버실 총 사용량 · {filteredLabs.length}명 표시중 (점선 = 평균 {labAvg.racks.toFixed(1)}랙)
+              </div>
+              <div className="lab-grid">
+                {filteredLabs.map((lab) => (
+                  <LabCard
+                    key={lab.owner}
+                    lab={lab}
+                    avgRacks={labAvg.racks}
+                    onSelect={setSelectedLab}
+                    selected={selectedLab && selectedLab.owner === lab.owner}
+                  />
+                ))}
+              </div>
+              {filteredLabs.length === 0 && (
+                <div className="detail-placeholder">조건에 맞는 연구실이 없습니다.</div>
+              )}
+            </div>
+            {selectedLab ? (
+              <LabDetailPanel
+                lab={selectedLab}
+                onClose={() => setSelectedLab(null)}
+                avgRacks={labAvg.racks}
+                avgServers={labAvg.servers}
+              />
+            ) : (
+              <div className="detail-placeholder">연구실을 클릭하면 상세 정보가 여기에 표시됩니다.</div>
+            )}
+          </>
+        ) : (
+          <>
+            <div>
+              {ROOMS.map((room) => {
+                const rows = slotRows.filter((r) => r.room === room);
+                if (rows.length === 0) return null;
+                return (
+                  <div className="room-block" key={room}>
+                    <div className="room-block-title">
+                      {ROOM_META[room].full} · 후보 {rows.length}개 (
+                      {rows.filter((r) => slotSelection.has(`${r.room}-${r.rackId}`)).length}개 선택됨)
+                    </div>
+                    <div className="slot-list">
+                      {rows.map((r) => {
+                        const key = `${r.room}-${r.rackId}`;
+                        const checked = slotSelection.has(key);
+                        const st = statusOf(r);
+                        return (
+                          <label
+                            className={`slot-row ${checked ? "checked" : ""} ${r.shared ? "is-shared" : ""}`}
+                            key={key}
+                          >
+                            <input type="checkbox" checked={checked} onChange={() => toggleSlot(key)} />
+                            <span className="slot-rack-id mono">R{String(r.rackId).padStart(2, "0")}</span>
+                            <span className="slot-owner">
+                              {r.shared && <span className="slot-shared-tag">공용</span>}
+                              {r.labActual}
+                            </span>
+                            <span className="slot-status" style={{ color: STATUS_META[st].color }}>
+                              {STATUS_META[st].label}
+                            </span>
+                            <span className="slot-servers mono">{r.serverCount > 0 ? `설치 ${r.serverCount}대` : "빈 랙"}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+              {slotRows.length === 0 && (
+                <div className="detail-placeholder">조건에 맞는 랙이 없습니다. "전체 랙 보기"를 눌러보세요.</div>
+              )}
+            </div>
+            <div className="detail-panel">
+              <div className="detail-title" style={{ marginBottom: 10 }}>확보 시나리오 요약</div>
+              <div className="lab-detail-stats" style={{ marginBottom: 12 }}>
+                <div>
+                  <div className="lab-metric-big mono">{slotSummary.totalRacks}</div>
+                  <div className="lab-metric-label">선택된 랙 수</div>
+                </div>
+                <div>
+                  <div className="lab-metric-big mono">{slotSummary.displacedServers}</div>
+                  <div className="lab-metric-label">이전 필요 서버 수</div>
+                </div>
+              </div>
+              {ROOMS.map((room) => (
+                <div className="detail-row" key={room}>
+                  <span className="detail-row-type">
+                    <span className="legend-dot" style={{ background: ROOM_COLOR[room] }} />
+                    {room}
+                  </span>
+                  <span className="detail-row-count">
+                    {slotSummary.byRoom[room].racks}랙
+                    {slotSummary.byRoom[room].servers > 0 ? ` (이전 ${slotSummary.byRoom[room].servers}대)` : ""}
+                  </span>
+                </div>
+              ))}
+              {slotSummary.sharedRacks > 0 && (
+                <div className="detail-note" style={{ marginTop: 12 }}>
+                  🏛 학과 공용 랙 {slotSummary.sharedRacks}개를 회수 대상에 포함했습니다
+                  {slotSummary.sharedServers > 0
+                    ? ` (공용 서버 ${slotSummary.sharedServers}대 이전 필요).`
+                    : "."}{" "}
+                  공용 자원 회수는 학과 차원의 합의가 필요한 항목입니다.
+                </div>
+              )}
+              <div className="detail-note" style={{ marginTop: 12 }}>
+                💡 체크박스로 랙을 켜고 끄면서 신규 연구실 배정 시나리오를 자유롭게 계산해보세요. 기본값은 이미 "회수 완료"로 표시된 랙과 빈 랙이며, 학과 공용 랙은 후보로만 표시되고 기본 선택되지 않습니다.
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+
+      <div className="footnote">
+        DATA SOURCE: 서버실_현황.xlsx (연구실 설문 취합) — 일부 연구실(최윤재 등) 세부 사양 미기재. 신기정/James/이기민 명의 랙은 실사용자(주재걸/신진우) 기준으로 표기.
+      </div>
+    </div>
+  );
+}
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<GPUDashboard />);
+</script>
+</body>
+</html>
