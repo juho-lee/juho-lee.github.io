@@ -59,19 +59,6 @@ const PHYSICAL_SLOTS_PER_RACK = 8;
 const FACULTY_CURRENT = 22;
 const FACULTY_TARGET = 32;
 
-// 학과 전체 용량 합계 (인프라 랙 제외) — 정책 기준선 계산용
-const DEPT_TOTAL = (() => {
-  let racks = 0, slots = 0, physical = 0;
-  RACK_DATA.forEach((r) => {
-    if (r.infra) return;
-    racks += 1;
-    const cap = ROOM_CAPACITY[r.room];
-    if (cap) slots += cap.maxServersPerRack;
-    physical += PHYSICAL_SLOTS_PER_RACK;
-  });
-  return { racks, slots, physical };
-})();
-
 // 슬롯 확보 플랜 저장/공유 —— 브라우저 localStorage + URL 해시
 const PLAN_STORAGE_KEY = "gpuDashboardSlotPlans_v1";
 const CODE_TO_ROOM = Object.fromEntries(
@@ -108,6 +95,20 @@ const ROOM_CAPACITY = {
   "양재": { coolingKW: 560, rackCount: 32, kwPerRack: 17.5, maxServersPerRack: 6 },
   "대전": { coolingKW: 116, rackCount: 15, kwPerRack: 7.7, maxServersPerRack: 2.5 },
 };
+
+// 학과 전체 용량 합계 (인프라 랙 제외) — 정책 기준선 계산용
+// ※ ROOM_CAPACITY 정의 이후에 와야 함 (즉시 실행되므로 TDZ 주의)
+const DEPT_TOTAL = (() => {
+  let racks = 0, slots = 0, physical = 0;
+  RACK_DATA.forEach((r) => {
+    if (r.infra) return;
+    racks += 1;
+    const cap = ROOM_CAPACITY[r.room];
+    if (cap) slots += cap.maxServersPerRack;
+    physical += PHYSICAL_SLOTS_PER_RACK;
+  });
+  return { racks, slots, physical };
+})();
 
 // 랙 부하 수준: 권장 최대 대비 현재 서버 수
 function rackLoad(r) {
