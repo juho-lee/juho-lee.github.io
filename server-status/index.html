@@ -57,7 +57,9 @@ const PHYSICAL_SLOTS_PER_RACK = 8;
 
 // 교원 수 — 현재 22명, 2027년 목표 32명 (22 + 신규 10명)
 const FACULTY_CURRENT = 22;
-const FACULTY_TARGET = 32;
+// 신임 교원 충원 시나리오 — ~2026 +4명(→26), ~2027 +10명(→32)
+const FACULTY_NEW_2026 = 4;
+const FACULTY_NEW_2027 = 10;
 
 // 슬롯 확보 플랜 저장/공유 —— 브라우저 localStorage + URL 해시
 const PLAN_STORAGE_KEY = "gpuDashboardSlotPlans_v1";
@@ -96,12 +98,12 @@ const ROOM_CAPACITY = {
   "대전": { coolingKW: 116, rackCount: 15, kwPerRack: 7.7, maxServersPerRack: 2.5 },
 };
 
-// 학과 전체 용량 합계 (인프라 랙 제외) — 정책 기준선 계산용
-// ※ ROOM_CAPACITY 정의 이후에 와야 함 (즉시 실행되므로 TDZ 주의)
-const DEPT_TOTAL = (() => {
+// 개별 교수 배정분 합계 (학과 공용·인프라 제외) — 기존 교원 잔여 자원 계산용
+// ※ 반드시 ROOM_CAPACITY 뒤에 위치 (즉시 실행 IIFE, TDZ 주의)
+const DEPT_INDIVIDUAL = (() => {
   let racks = 0, slots = 0, physical = 0;
   RACK_DATA.forEach((r) => {
-    if (r.infra) return;
+    if (r.infra || r.shared) return;
     racks += 1;
     const cap = ROOM_CAPACITY[r.room];
     if (cap) slots += cap.maxServersPerRack;
@@ -266,11 +268,13 @@ function aggregateByOwner() {
     if (r.shared || r.infra) return;
     const key = r.labActual;
     if (!map[key]) {
-      map[key] = { owner: key, totalRacks: 0, totalServers: 0, byRoom: {}, flags: new Set(), nominals: new Set() };
+      map[key] = { owner: key, totalRacks: 0, totalServers: 0, totalSlots: 0, totalPhysical: 0, byRoom: {}, flags: new Set(), nominals: new Set() };
     }
     const o = map[key];
     o.totalRacks += 1;
     o.totalServers += r.serverCount;
+    o.totalSlots += (ROOM_CAPACITY[r.room] && ROOM_CAPACITY[r.room].maxServersPerRack) || 0;
+    o.totalPhysical += PHYSICAL_SLOTS_PER_RACK;
     o.byRoom[r.room] = o.byRoom[r.room] || { racks: 0, servers: 0 };
     o.byRoom[r.room].racks += 1;
     o.byRoom[r.room].servers += r.serverCount;
@@ -301,6 +305,10 @@ function LabCard({ lab, onSelect, selected, avgRacks }) {
         <div>
           <div className="lab-metric-big mono">{lab.totalRacks}</div>
           <div className="lab-metric-label">랙</div>
+        </div>
+        <div>
+          <div className="lab-metric-big mono" style={{ color: "var(--c-ok)" }}>{fmtSlots(lab.totalSlots)}</div>
+          <div className="lab-metric-label">권장 슬롯</div>
         </div>
         <div>
           <div className="lab-metric-big mono">{lab.totalServers}</div>
@@ -337,7 +345,7 @@ function LabCard({ lab, onSelect, selected, avgRacks }) {
   );
 }
 
-function LabDetailPanel({ lab, onClose, avgRacks, avgServers }) {
+function LabDetailPanel({ lab, onClose, avgRacks, avgServers, avgSlots }) {
   if (!lab) return null;
   const racks = RACK_DATA.filter((r) => !r.shared && !r.infra && r.labActual === lab.owner);
   return (
@@ -353,6 +361,10 @@ function LabDetailPanel({ lab, onClose, avgRacks, avgServers }) {
         <div>
           <div className="lab-metric-big mono">{lab.totalRacks}</div>
           <div className="lab-metric-label">총 랙 수 (평균 {avgRacks.toFixed(1)})</div>
+        </div>
+        <div>
+          <div className="lab-metric-big mono" style={{ color: "var(--c-ok)" }}>{fmtSlots(lab.totalSlots)}</div>
+          <div className="lab-metric-label">권장 슬롯 (평균 {avgSlots.toFixed(1)})</div>
         </div>
         <div>
           <div className="lab-metric-big mono">{lab.totalServers}</div>
@@ -615,6 +627,7 @@ function GPUDashboard() {
     let displaced = 0;
     let sharedRacks = 0;
     let sharedServers = 0;
+    let sharedSlots = 0;
     let totalSlots = 0;
     chosen.forEach((r) => {
       const perRack = (ROOM_CAPACITY[r.room] && ROOM_CAPACITY[r.room].maxServersPerRack) || 0;
@@ -627,8 +640,10 @@ function GPUDashboard() {
       if (r.shared) {
         sharedRacks += 1;
         sharedServers += r.serverCount;
+        sharedSlots += perRack;
       }
     });
+    const physicalSlots = chosen.length * PHYSICAL_SLOTS_PER_RACK;
     return {
       totalRacks: chosen.length,
       byRoom,
@@ -638,7 +653,10 @@ function GPUDashboard() {
       labRacks: chosen.length - sharedRacks,
       totalSlots,
       netSlots: totalSlots - displaced,
-      physicalSlots: chosen.length * PHYSICAL_SLOTS_PER_RACK,
+      physicalSlots,
+      // 개별 교수 소유(비공용) 확보분 — 기존 교원 잔여 계산에 사용
+      labSlots: totalSlots - sharedSlots,
+      labPhysical: (chosen.length - sharedRacks) * PHYSICAL_SLOTS_PER_RACK,
     };
   }, [slotSelection]);
 
@@ -662,7 +680,8 @@ function GPUDashboard() {
     const n = allLabs.length || 1;
     const totalRacks = allLabs.reduce((s, l) => s + l.totalRacks, 0);
     const totalSrv = allLabs.reduce((s, l) => s + l.totalServers, 0);
-    return { racks: totalRacks / n, servers: totalSrv / n, count: allLabs.length };
+    const totalSlots = allLabs.reduce((s, l) => s + l.totalSlots, 0);
+    return { racks: totalRacks / n, servers: totalSrv / n, slots: totalSlots / n, count: allLabs.length };
   }, [allLabs]);
 
   const filteredLabs = useMemo(() => {
@@ -1087,7 +1106,8 @@ function GPUDashboard() {
           border-radius: 12px;
         }
         .view-chip { font-size: 12px; }
-        .lab-stat-row { margin-bottom: 18px; }
+        .lab-stat-row { margin-bottom: 18px; grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 720px) { .lab-stat-row { grid-template-columns: repeat(2, 1fr); } }
         .lab-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -1173,19 +1193,31 @@ function GPUDashboard() {
         .slot-banner-phys { color: var(--text-muted); font-weight: 500; }
         .slot-banner-proj {
           width: 100%;
-          display: flex;
-          flex-wrap: wrap;
-          align-items: baseline;
-          gap: 8px 14px;
           background: var(--panel);
           border: 1px solid var(--border);
           border-radius: 8px;
-          padding: 8px 12px;
+          padding: 10px 12px;
+          overflow-x: auto;
         }
-        .slot-banner-proj-label { font-size: 12px; color: var(--text-muted); }
-        .slot-banner-proj-vals { font-size: 13px; color: var(--text); }
-        .slot-banner-proj-vals b { font-size: 16px; }
-        .slot-banner-proj-sub { color: var(--text-muted); font-size: 11px; margin-left: 6px; }
+        .slot-proj-title { font-size: 12px; color: var(--text); margin-bottom: 6px; }
+        .slot-proj-note { color: var(--text-muted); font-size: 11px; }
+        .slot-proj-table { border-collapse: collapse; font-size: 13px; min-width: 380px; }
+        .slot-proj-table th, .slot-proj-table td { text-align: right; padding: 4px 14px; white-space: nowrap; }
+        .slot-proj-table thead th {
+          font-size: 11px;
+          color: var(--text-muted);
+          font-weight: 500;
+          border-bottom: 1px solid var(--border);
+        }
+        .slot-proj-table th:first-child, .slot-proj-table td:first-child {
+          text-align: left;
+          color: var(--text-muted);
+          font-family: 'IBM Plex Sans KR', sans-serif;
+          padding-left: 0;
+        }
+        .slot-proj-table tbody td { color: var(--text); font-weight: 600; }
+        .slot-proj-table tbody td.slot-proj-slot { color: var(--c-ok); }
+        .slot-proj-table tbody tr.slot-proj-existing td { border-top: 1px solid var(--border); }
         .slot-banner-hint {
           font-size: 11px;
           color: var(--text-muted);
@@ -1460,6 +1492,10 @@ function GPUDashboard() {
             <div className="summary-main"><span className="summary-big">{labAvg.racks.toFixed(1)}</span><span className="summary-unit">랙</span></div>
           </div>
           <div className="summary-card">
+            <div className="summary-room">연구실당 평균 권장 슬롯</div>
+            <div className="summary-main"><span className="summary-big" style={{ color: "var(--c-ok)" }}>{labAvg.slots.toFixed(1)}</span><span className="summary-unit">슬롯</span></div>
+          </div>
+          <div className="summary-card">
             <div className="summary-room">연구실당 평균 서버 수</div>
             <div className="summary-main"><span className="summary-big">{labAvg.servers.toFixed(1)}</span><span className="summary-unit">대</span></div>
           </div>
@@ -1502,17 +1538,40 @@ function GPUDashboard() {
             </div>
           </div>
           <div className="slot-banner-proj">
-            <span className="slot-banner-proj-label">
-              교원 {FACULTY_TARGET}명 기준 (2027 목표 · {FACULTY_CURRENT}+10) · 학과 전체 1인당 평균
-            </span>
-            <span className="slot-banner-proj-vals mono">
-              <b>{(DEPT_TOTAL.racks / FACULTY_TARGET).toFixed(2)}</b>랙
-              {" · "}
-              <b style={{ color: "var(--c-ok)" }}>{(DEPT_TOTAL.slots / FACULTY_TARGET).toFixed(1)}</b>슬롯
-              <span className="slot-banner-proj-sub">
-                (냉방 기준 · 물리 {(DEPT_TOTAL.physical / FACULTY_TARGET).toFixed(1)})
-              </span>
-            </span>
+            <div className="slot-proj-title">
+              확보분 재배분 시 1인당 평균 · 개별 교수 배정분 기준 (학과 공용 확보분은 신임 몫)
+              <span className="slot-proj-note"> — 기존 풀 {DEPT_INDIVIDUAL.racks}랙 (공용·인프라 제외)</span>
+            </div>
+            <table className="slot-proj-table mono">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>랙</th>
+                  <th>권장 슬롯</th>
+                  <th>물리 슬롯</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>신임 {FACULTY_NEW_2026}명 · 2026</td>
+                  <td>{(slotSummary.totalRacks / FACULTY_NEW_2026).toFixed(2)}</td>
+                  <td className="slot-proj-slot">{(slotSummary.totalSlots / FACULTY_NEW_2026).toFixed(2)}</td>
+                  <td>{(slotSummary.physicalSlots / FACULTY_NEW_2026).toFixed(2)}</td>
+                </tr>
+                <tr>
+                  <td>신임 {FACULTY_NEW_2027}명 · 2027</td>
+                  <td>{(slotSummary.totalRacks / FACULTY_NEW_2027).toFixed(2)}</td>
+                  <td className="slot-proj-slot">{(slotSummary.totalSlots / FACULTY_NEW_2027).toFixed(2)}</td>
+                  <td>{(slotSummary.physicalSlots / FACULTY_NEW_2027).toFixed(2)}</td>
+                </tr>
+                <tr className="slot-proj-existing">
+                  <td>기존 {FACULTY_CURRENT}명 · 확보 후 잔여</td>
+                  <td>{((DEPT_INDIVIDUAL.racks - slotSummary.labRacks) / FACULTY_CURRENT).toFixed(2)}</td>
+                  <td className="slot-proj-slot">{((DEPT_INDIVIDUAL.slots - slotSummary.labSlots) / FACULTY_CURRENT).toFixed(2)}</td>
+                  <td>{((DEPT_INDIVIDUAL.physical - slotSummary.labPhysical) / FACULTY_CURRENT).toFixed(2)}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div className="slot-banner-hint">
             슬롯 = 권장(냉방) / 물리(랙당 {PHYSICAL_SLOTS_PER_RACK}) · 권장 랙당 대전 2.5 · 홍릉 4 · 양재 6
@@ -1626,6 +1685,7 @@ function GPUDashboard() {
                 onClose={() => setSelectedLab(null)}
                 avgRacks={labAvg.racks}
                 avgServers={labAvg.servers}
+                avgSlots={labAvg.slots}
               />
             ) : (
               <div className="detail-placeholder">연구실을 클릭하면 상세 정보가 여기에 표시됩니다.</div>
