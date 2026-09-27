@@ -123,8 +123,8 @@ export const PUBLICATIONS = [
     titleSentenceCase: true,
     category: "conference",
     authors: [
-      "SeongHyeon Kim",
-      "Chaeyun Jang",
+      { name: "SeongHyeon Kim", equalContribution: true },
+      { name: "Chaeyun Jang", equalContribution: true },
       "Seungyoo Lee",
       "Jiyeon Ham",
       "Yunju Bak",
