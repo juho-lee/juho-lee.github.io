@@ -392,6 +392,297 @@
       color: var(--muted);
       margin-top: 5px;
     }
+
+    /* ── Conference result importer ──────────────────────────────── */
+    .import-panel {
+      padding: 32px 0 38px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .import-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .import-heading h2 {
+      margin-bottom: 0;
+    }
+
+    .import-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 760px) {
+      .import-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .raw-textarea {
+      width: 100%;
+      min-height: 280px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--fg);
+      padding: 12px 14px;
+      font: 0.82rem/1.5 ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      outline: none;
+    }
+
+    .raw-textarea:focus {
+      border-color: var(--fg);
+    }
+
+    .import-controls {
+      display: grid;
+      grid-template-columns: 1fr 110px;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .import-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .parse-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .summary-chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 9px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .summary-chip.accepted {
+      border-color: #2d7a4f;
+      color: #2d7a4f;
+    }
+
+    html[data-theme="dark"] .summary-chip.accepted {
+      border-color: #6ecf95;
+      color: #6ecf95;
+    }
+
+    .import-empty {
+      color: var(--muted);
+      font-size: 0.87rem;
+      padding: 22px 0;
+    }
+
+    .parsed-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .parsed-card {
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--line);
+      border-radius: 5px;
+      padding: 13px 14px;
+    }
+
+    .parsed-card.enabled {
+      border-left-color: #2d7a4f;
+    }
+
+    .parsed-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .parsed-title-input {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid transparent;
+      padding: 0 0 3px;
+      background: transparent;
+      color: var(--fg);
+      font: inherit;
+      font-weight: 600;
+      outline: none;
+    }
+
+    .parsed-title-input:focus {
+      border-bottom-color: var(--line);
+    }
+
+    .parsed-meta {
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 3px;
+    }
+
+    .title-protection {
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px solid var(--line);
+    }
+
+    .title-protection-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 7px;
+    }
+
+    .title-protection-label {
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    .title-protection-actions {
+      display: flex;
+      gap: 5px;
+    }
+
+    .title-token-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .title-token {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      padding: 2px 8px;
+      font: inherit;
+      font-size: 0.76rem;
+      cursor: pointer;
+    }
+
+    .title-token[aria-pressed="true"] {
+      border-color: var(--link);
+      color: var(--link);
+      background: var(--code-bg);
+      font-weight: 600;
+    }
+
+    .rendered-title-preview {
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 7px;
+    }
+
+    .rendered-title-preview strong {
+      color: var(--fg);
+      font-weight: 500;
+    }
+
+    .parsed-options {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .parsed-options select {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--bg);
+      color: var(--fg);
+      padding: 3px 7px;
+      font: inherit;
+      font-size: 0.8rem;
+    }
+
+    .parsed-author-list {
+      display: grid;
+      gap: 5px;
+      margin-top: 11px;
+    }
+
+    .parsed-author {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+      font-size: 0.83rem;
+    }
+
+    .parsed-author-name {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .marker-btn {
+      min-width: 30px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--muted);
+      padding: 2px 7px;
+      font: inherit;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+
+    .marker-btn[aria-pressed="true"] {
+      border-color: var(--link);
+      color: var(--link);
+      background: var(--code-bg);
+    }
+
+    .marker-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    .import-code {
+      position: relative;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--code-bg);
+      padding: 14px 16px;
+    }
+
+    .import-code pre {
+      max-height: 420px;
+      overflow: auto;
+      margin: 0;
+      padding-right: 48px;
+      color: var(--fg);
+      white-space: pre-wrap;
+      word-break: break-word;
+      font: 0.78rem/1.55 ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    .legacy-heading {
+      margin: 34px 0 -4px;
+      color: var(--muted);
+      font-size: 0.83rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      font-weight: 400;
+    }
   </style>
 </head>
 
@@ -399,13 +690,65 @@
   <header class="container editor-header">
     <div>
       <h1 style="font-size:1.4rem">Publication Editor</h1>
-      <p class="subtitle">Generate entries for <code>data/publications_source.md</code></p>
+      <p class="subtitle">Generate entries for <code>data/publications.js</code></p>
     </div>
     <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
       <button class="btn btn-sm" id="theme-toggle-btn" type="button">☾</button>
       <a href="index.html" class="btn btn-sm">← Site</a>
     </div>
   </header>
+
+  <section class="container import-panel" aria-labelledby="import-title">
+    <div class="import-heading">
+      <div>
+        <h2 id="import-title">Import conference results</h2>
+        <p class="subtitle">Paste the text copied from your OpenReview author page. Parsing happens only in this browser tab.</p>
+      </div>
+    </div>
+
+    <div class="import-grid">
+      <div>
+        <label class="section-label" for="import-raw">Raw OpenReview text</label>
+        <textarea id="import-raw" class="raw-textarea" placeholder="Paste the complete author-page text here…" spellcheck="false"></textarea>
+        <div class="import-controls">
+          <div class="field">
+            <label for="import-conference">Conference</label>
+            <select id="import-conference">
+              <option value="auto">Detect automatically</option>
+              <option value="neurips">NeurIPS</option>
+              <option value="icml">ICML</option>
+              <option value="iclr">ICLR</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="import-year">Year</label>
+            <input id="import-year" type="number" min="1990" max="2100" placeholder="Auto" />
+          </div>
+        </div>
+        <div class="import-actions">
+          <button type="button" class="btn btn-primary" id="parse-results-btn">Parse results</button>
+          <button type="button" class="btn" id="clear-import-btn">Clear</button>
+        </div>
+        <p class="hint-text">Only explicit accept decisions are imported. Rejections, withdrawals, and uncertain records stay excluded.</p>
+      </div>
+
+      <div>
+        <p class="section-label">Accepted publications</p>
+        <div id="parse-summary" class="parse-summary" hidden></div>
+        <div id="parsed-results" class="import-empty">Paste a page and select <strong>Parse results</strong>.</div>
+      </div>
+    </div>
+
+    <div id="import-code-section" hidden>
+      <div class="import-code">
+        <pre id="import-code-output"></pre>
+        <button type="button" class="copy-btn" id="copy-import-code-btn">Copy JS</button>
+      </div>
+      <p class="hint-text">Paste these objects immediately after <code>export const PUBLICATIONS = [</code> in <code>data/publications.js</code>.</p>
+    </div>
+
+    <h2 class="legacy-heading">Manual single-entry editor</h2>
+  </section>
 
   <main class="container editor-main">
 
@@ -565,6 +908,8 @@
     // ─────────────────────────────────────────────────────────────
     let authors = [];     // { name, isSelf, equal, corr }
     let extraLinks = [];  // { label, url }
+    let importedPapers = [];
+    let importContext = { venue: "", year: 0 };
 
     // ─────────────────────────────────────────────────────────────
     // DOM helpers
@@ -578,6 +923,572 @@
         .replace(/&/g, "&amp;").replace(/</g, "&lt;")
         .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
+
+    // ───────────────────────────────────────────────────────────
+    // Conference result importer
+    // ───────────────────────────────────────────────────────────
+    const CONFERENCE_LABELS = {
+      neurips: "NeurIPS",
+      icml: "ICML",
+      iclr: "ICLR",
+    };
+
+    function detectConference(text) {
+      const counts = Object.keys(CONFERENCE_LABELS).map(key => {
+        const pattern = key === "neurips" ? /\b(?:NeurIPS|NIPS)\b/gi : new RegExp(`\\b${key}\\b`, "gi");
+        return [key, (String(text).match(pattern) || []).length];
+      });
+      counts.sort((a, b) => b[1] - a[1]);
+      return counts[0][1] > 0 ? counts[0][0] : "";
+    }
+
+    function detectYear(text, venue) {
+      const years = String(text).match(/\b(?:19|20)\d{2}\b/g) || [];
+      if (!years.length) return 0;
+
+      const venueLabel = CONFERENCE_LABELS[venue] || "";
+      const nearby = venueLabel
+        ? [...String(text).matchAll(new RegExp(`${venueLabel}[^\\n]{0,50}\\b((?:19|20)\\d{2})\\b`, "gi"))]
+          .map(match => match[1])
+        : [];
+      const candidates = nearby.length ? nearby : years;
+      const frequencies = new Map();
+      candidates.forEach(year => frequencies.set(year, (frequencies.get(year) || 0) + 1));
+      return Number([...frequencies.entries()].sort((a, b) => b[1] - a[1])[0][0]);
+    }
+
+    function splitAuthorNames(line) {
+      return String(line || "")
+        .replace(/\s+and\s+/gi, ", ")
+        .split(",")
+        .map(name => name.trim())
+        .filter(Boolean);
+    }
+
+    function getDecisionInfo(blockLines, venue, year) {
+      const normalized = blockLines.map(line => line.trim()).filter(Boolean);
+      const whole = normalized.join("\n");
+      const lower = whole.toLowerCase();
+
+      if (/\bwithdrawn\b/.test(lower)) {
+        return { decision: "withdrawn", presentation: "" };
+      }
+
+      const evidence = [];
+      normalized.forEach((line, index) => {
+        if (/recommendation|decision/i.test(line)) {
+          evidence.push(line, normalized[index + 1] || "", normalized[index + 2] || "");
+        }
+        const label = CONFERENCE_LABELS[venue] || "";
+        if (label && line.toLowerCase().includes(label.toLowerCase()) && (!year || line.includes(String(year)))) {
+          evidence.push(line);
+        }
+      });
+      const decisionText = evidence.join(" ").toLowerCase();
+
+      if (/\breject(?:ed)?\b/.test(decisionText) || /recommendation\s*:\s*reject/i.test(whole)) {
+        return { decision: "rejected", presentation: "" };
+      }
+
+      const explicitAccept = /\baccept(?:ed)?\b/.test(decisionText)
+        || /(?:recommendation|decision)\s*:\s*\n?\s*accept/i.test(whole);
+      const presentedAsAccepted = /\b(?:poster|spotlight|oral)\b/.test(decisionText)
+        && !/submitted\s+to/.test(decisionText);
+
+      if (!explicitAccept && !presentedAsAccepted) {
+        return { decision: "ambiguous", presentation: "" };
+      }
+
+      let presentation = "poster";
+      if (/\boral(?:\s+presentation)?\b/.test(decisionText)) presentation = "oral";
+      else if (/\bspotlight\b/.test(decisionText)) presentation = "spotlight";
+      else if (/\bposter\b/.test(decisionText)) presentation = "poster";
+      else presentation = "unspecified";
+
+      return { decision: "accepted", presentation };
+    }
+
+    function parseSubmissionBlock(blockLines, venue, year) {
+      const number = blockLines[0].trim().replace(/^#\s*/, "");
+      const pdfIndex = blockLines.findIndex((line, index) => index > 0 && /(?:download\s+)?pdf/i.test(line));
+      if (pdfIndex < 1) return null;
+
+      const title = blockLines.slice(1, pdfIndex).map(line => line.trim()).filter(Boolean).join(" ");
+      const authorLine = blockLines.slice(pdfIndex + 1).find(line => line.trim()) || "";
+      const authorNames = splitAuthorNames(authorLine);
+      const info = getDecisionInfo(blockLines, venue, year);
+      const urlMatch = blockLines.join("\n").match(/https?:\/\/openreview\.net\/forum\?id=[^\s)]+/i);
+
+      if (!title || authorNames.length === 0) return null;
+      return {
+        submissionNumber: number,
+        title,
+        protectedTitleTokens: autoProtectedTitleTokens(title),
+        authors: authorNames.map(name => ({ name, equal: false, corr: false })),
+        decision: info.decision,
+        presentation: info.presentation,
+        paperUrl: urlMatch ? urlMatch[0] : "",
+        include: info.decision === "accepted",
+        isNew: true,
+        toAppear: true,
+      };
+    }
+
+    function parseConferencePage(raw, requestedVenue, requestedYear) {
+      const venue = requestedVenue === "auto" ? detectConference(raw) : requestedVenue;
+      const year = Number(requestedYear) || detectYear(raw, venue);
+      const lines = String(raw).split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+      const starts = [];
+
+      lines.forEach((line, index) => {
+        if (!/^#?\s*\d{1,6}$/.test(line)) return;
+        const lookahead = lines.slice(index + 1, index + 7).join("\n");
+        if (/(?:download\s+)?pdf/i.test(lookahead)) starts.push(index);
+      });
+
+      const records = starts.map((start, position) => {
+        const end = starts[position + 1] ?? lines.length;
+        return parseSubmissionBlock(lines.slice(start, end), venue, year);
+      }).filter(Boolean);
+
+      return { venue, year, records };
+    }
+
+    function getTitleTokens(title) {
+      const pattern = /[\p{L}\p{N}]+(?:[-‑–][\p{L}\p{N}]+)*/gu;
+      return [...String(title).matchAll(pattern)].map((match, index) => ({
+        index,
+        text: match[0],
+        start: match.index,
+        end: match.index + match[0].length,
+      }));
+    }
+
+    function shouldAutoProtectTitleToken(token) {
+      return String(token).split(/[-‑–]/).some(part => {
+        const acronym = /^[A-Z]{2,}[a-z0-9]*$/.test(part);
+        const camelCase = /^[A-Z]?[a-z]+[A-Z][A-Za-z0-9]*$/.test(part);
+        return acronym || camelCase;
+      });
+    }
+
+    function autoProtectedTitleTokens(title) {
+      return new Set(
+        getTitleTokens(title)
+          .filter(token => shouldAutoProtectTitleToken(token.text))
+          .map(token => token.index)
+      );
+    }
+
+    function applyTitleProtections(title, protectedTokens) {
+      const raw = String(title);
+      const selected = protectedTokens instanceof Set ? protectedTokens : autoProtectedTitleTokens(raw);
+      const tokens = getTitleTokens(raw);
+      let output = "";
+      let cursor = 0;
+
+      tokens.forEach(token => {
+        output += raw.slice(cursor, token.start);
+        const alreadyProtected = raw[token.start - 1] === "{" && raw[token.end] === "}";
+        output += selected.has(token.index) && !alreadyProtected ? `{${token.text}}` : token.text;
+        cursor = token.end;
+      });
+      output += raw.slice(cursor);
+      return output;
+    }
+
+    function sentenceCaseTitlePreview(protectedTitle) {
+      const preserved = [];
+      const withoutBraces = String(protectedTitle).replace(/\{([^{}]*)\}/g, (_, text) => {
+        preserved.push(text);
+        return `§${preserved.length - 1}§`;
+      });
+      const lower = withoutBraces.toLowerCase();
+      const chars = [...lower];
+      const firstPlaceholder = lower.indexOf("§");
+
+      for (let index = 0; index < chars.length; index += 1) {
+        if (firstPlaceholder !== -1 && index >= firstPlaceholder) break;
+        if (/[a-z]/.test(chars[index])) {
+          chars[index] = chars[index].toUpperCase();
+          break;
+        }
+      }
+
+      return chars.join("").replace(/§(\d+)§/g, (_, index) => preserved[Number(index)] || "");
+    }
+
+    function jsString(value) {
+      return JSON.stringify(String(value));
+    }
+
+    function publicationObjectCode(paper) {
+      const lines = ["  {"];
+      lines.push(`    title: ${jsString(applyTitleProtections(paper.title, paper.protectedTitleTokens))},`);
+      lines.push("    titleSentenceCase: true,");
+      lines.push('    category: "conference",');
+      lines.push("    authors: [");
+      paper.authors.forEach(author => {
+        if (!author.equal && !author.corr) {
+          lines.push(`      ${jsString(author.name)},`);
+          return;
+        }
+        const flags = [ `name: ${jsString(author.name)}` ];
+        if (author.equal) flags.push("equalContribution: true");
+        if (author.corr) flags.push("corresponding: true");
+        lines.push(`      { ${flags.join(", ")} },`);
+      });
+      lines.push("    ],");
+      lines.push(`    year: ${importContext.year},`);
+      lines.push(`    venue: ${jsString(importContext.venue)},`);
+      if (paper.toAppear) lines.push('    status: "to_appear",');
+      if (paper.presentation === "spotlight") lines.push('    note: "spotlight",');
+      if (paper.presentation === "oral") lines.push('    note: "oral presentation",');
+      if (paper.isNew) lines.push("    isNew: true,");
+      if (paper.paperUrl) {
+        lines.push("    links: [");
+        lines.push(`      { label: "Paper", url: ${jsString(paper.paperUrl)} },`);
+        lines.push("    ],");
+      }
+      lines.push("  },");
+      return lines.join("\n");
+    }
+
+    function updateImportCode() {
+      const selected = importedPapers.filter(paper => paper.include && paper.decision === "accepted");
+      const section = el("import-code-section");
+      if (!selected.length || !importContext.venue || !importContext.year) {
+        section.hidden = true;
+        el("import-code-output").textContent = "";
+        return;
+      }
+      el("import-code-output").textContent = selected.map(publicationObjectCode).join("\n");
+      section.hidden = false;
+    }
+
+    function moveImportedAuthor(paper, fromIndex, toIndex) {
+      if (toIndex < 0 || toIndex >= paper.authors.length || fromIndex === toIndex) return;
+      const [author] = paper.authors.splice(fromIndex, 1);
+      paper.authors.splice(toIndex, 0, author);
+      renderImportResults();
+    }
+
+    function renderTitleProtectionControls(paper, container) {
+      if (!(paper.protectedTitleTokens instanceof Set)) {
+        paper.protectedTitleTokens = autoProtectedTitleTokens(paper.title);
+      }
+      container.innerHTML = "";
+
+      const head = document.createElement("div");
+      head.className = "title-protection-head";
+      const label = document.createElement("span");
+      label.className = "title-protection-label";
+      label.textContent = "Preserve capitalization";
+
+      const actions = document.createElement("div");
+      actions.className = "title-protection-actions";
+      const autoBtn = document.createElement("button");
+      autoBtn.type = "button";
+      autoBtn.className = "icon-btn";
+      autoBtn.textContent = "Auto detect";
+      autoBtn.setAttribute("aria-label", `Auto-detect protected title words for ${paper.title}`);
+      autoBtn.addEventListener("click", () => {
+        paper.protectedTitleTokens = autoProtectedTitleTokens(paper.title);
+        renderTitleProtectionControls(paper, container);
+        updateImportCode();
+      });
+
+      const clearBtn = document.createElement("button");
+      clearBtn.type = "button";
+      clearBtn.className = "icon-btn";
+      clearBtn.textContent = "Clear";
+      clearBtn.setAttribute("aria-label", `Clear protected title words for ${paper.title}`);
+      clearBtn.addEventListener("click", () => {
+        paper.protectedTitleTokens = new Set();
+        renderTitleProtectionControls(paper, container);
+        updateImportCode();
+      });
+      actions.append(autoBtn, clearBtn);
+      head.append(label, actions);
+
+      const tokenList = document.createElement("div");
+      tokenList.className = "title-token-list";
+      getTitleTokens(paper.title).forEach(token => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "title-token";
+        button.textContent = token.text;
+        button.setAttribute("aria-label", `Preserve capitalization of ${token.text}`);
+        button.setAttribute("aria-pressed", String(paper.protectedTitleTokens.has(token.index)));
+        button.addEventListener("click", () => {
+          if (paper.protectedTitleTokens.has(token.index)) {
+            paper.protectedTitleTokens.delete(token.index);
+          } else {
+            paper.protectedTitleTokens.add(token.index);
+          }
+          button.setAttribute("aria-pressed", String(paper.protectedTitleTokens.has(token.index)));
+          previewText.textContent = sentenceCaseTitlePreview(
+            applyTitleProtections(paper.title, paper.protectedTitleTokens)
+          );
+          updateImportCode();
+        });
+        tokenList.appendChild(button);
+      });
+
+      const preview = document.createElement("p");
+      preview.className = "rendered-title-preview";
+      preview.appendChild(document.createTextNode("Rendered: "));
+      const previewText = document.createElement("strong");
+      previewText.textContent = sentenceCaseTitlePreview(
+        applyTitleProtections(paper.title, paper.protectedTitleTokens)
+      );
+      preview.appendChild(previewText);
+      container.append(head, tokenList, preview);
+    }
+
+    function renderImportResults() {
+      const results = el("parsed-results");
+      results.innerHTML = "";
+
+      const accepted = importedPapers.filter(paper => paper.decision === "accepted");
+      const rejected = importedPapers.filter(paper => paper.decision === "rejected");
+      const withdrawn = importedPapers.filter(paper => paper.decision === "withdrawn");
+      const ambiguous = importedPapers.filter(paper => paper.decision === "ambiguous");
+
+      const summary = el("parse-summary");
+      summary.hidden = false;
+      summary.innerHTML = `
+        <span class="summary-chip">${CONFERENCE_LABELS[importContext.venue]} ${importContext.year}</span>
+        <span class="summary-chip accepted">${accepted.length} accepted</span>
+        <span class="summary-chip">${rejected.length} rejected</span>
+        <span class="summary-chip">${withdrawn.length} withdrawn</span>
+        <span class="summary-chip">${ambiguous.length} ambiguous</span>
+      `;
+
+      if (!accepted.length) {
+        results.className = "import-empty";
+        results.textContent = importedPapers.length
+          ? "No explicitly accepted papers were found. Check the conference selection or decision wording."
+          : "No submission blocks were recognized. Keep submission numbers, titles, authors, and decision lines in the pasted text.";
+        updateImportCode();
+        return;
+      }
+
+      results.className = "parsed-list";
+      accepted.forEach(paper => {
+        const paperIndex = importedPapers.indexOf(paper);
+        const card = document.createElement("article");
+        card.className = `parsed-card${paper.include ? " enabled" : ""}`;
+        card.dataset.paperIndex = String(paperIndex);
+
+        const head = document.createElement("div");
+        head.className = "parsed-card-head";
+
+        const titleWrap = document.createElement("div");
+        titleWrap.style.flex = "1";
+        const titleInput = document.createElement("input");
+        titleInput.type = "text";
+        titleInput.className = "parsed-title-input";
+        titleInput.value = paper.title;
+        titleInput.setAttribute("aria-label", `Title for submission ${paper.submissionNumber}`);
+        titleInput.addEventListener("input", event => {
+          paper.title = event.target.value;
+          paper.protectedTitleTokens = autoProtectedTitleTokens(paper.title);
+          renderTitleProtectionControls(paper, titleProtection);
+          updateImportCode();
+        });
+        const meta = document.createElement("div");
+        meta.className = "parsed-meta";
+        meta.textContent = `Submission #${paper.submissionNumber} · ${CONFERENCE_LABELS[importContext.venue]} ${importContext.year}`;
+        titleWrap.append(titleInput, meta);
+
+        const includeLabel = document.createElement("label");
+        includeLabel.className = "check-label";
+        const includeBox = document.createElement("input");
+        includeBox.type = "checkbox";
+        includeBox.checked = paper.include;
+        includeBox.setAttribute("aria-label", `Include ${paper.title}`);
+        includeBox.addEventListener("change", event => {
+          paper.include = event.target.checked;
+          card.classList.toggle("enabled", paper.include);
+          updateImportCode();
+        });
+        includeLabel.append(includeBox, document.createTextNode(" Include"));
+        head.append(titleWrap, includeLabel);
+        card.appendChild(head);
+
+        const titleProtection = document.createElement("div");
+        titleProtection.className = "title-protection";
+        renderTitleProtectionControls(paper, titleProtection);
+        card.appendChild(titleProtection);
+
+        const options = document.createElement("div");
+        options.className = "parsed-options";
+        const presentation = document.createElement("select");
+        presentation.setAttribute("aria-label", `Presentation type for ${paper.title}`);
+        [["poster", "Poster"], ["spotlight", "Spotlight"], ["oral", "Oral"], ["unspecified", "Unspecified"]]
+          .forEach(([value, label]) => {
+            const option = document.createElement("option");
+            option.value = value;
+            option.textContent = label;
+            option.selected = paper.presentation === value;
+            presentation.appendChild(option);
+          });
+        presentation.addEventListener("change", event => {
+          paper.presentation = event.target.value;
+          updateImportCode();
+        });
+
+        const newLabel = document.createElement("label");
+        newLabel.className = "check-label";
+        const newBox = document.createElement("input");
+        newBox.type = "checkbox";
+        newBox.checked = paper.isNew;
+        newBox.setAttribute("aria-label", `Mark ${paper.title} as new`);
+        newBox.addEventListener("change", event => {
+          paper.isNew = event.target.checked;
+          updateImportCode();
+        });
+        newLabel.append(newBox, document.createTextNode(" New"));
+
+        const appearLabel = document.createElement("label");
+        appearLabel.className = "check-label";
+        const appearBox = document.createElement("input");
+        appearBox.type = "checkbox";
+        appearBox.checked = paper.toAppear;
+        appearBox.setAttribute("aria-label", `Mark ${paper.title} as to appear`);
+        appearBox.addEventListener("change", event => {
+          paper.toAppear = event.target.checked;
+          updateImportCode();
+        });
+        appearLabel.append(appearBox, document.createTextNode(" To appear"));
+        options.append(presentation, newLabel, appearLabel);
+        card.appendChild(options);
+
+        const authorList = document.createElement("div");
+        authorList.className = "parsed-author-list";
+        paper.authors.forEach((author, authorIndex) => {
+          const row = document.createElement("div");
+          row.className = "parsed-author";
+          const name = document.createElement("span");
+          name.className = "parsed-author-name";
+          name.textContent = author.name;
+          if (author.name.toLowerCase() === SELF.toLowerCase()) name.style.fontWeight = "700";
+
+          const upBtn = document.createElement("button");
+          upBtn.type = "button";
+          upBtn.className = "marker-btn";
+          upBtn.textContent = "↑";
+          upBtn.title = "Move author earlier";
+          upBtn.disabled = authorIndex === 0;
+          upBtn.setAttribute("aria-label", `Move ${author.name} earlier`);
+          upBtn.addEventListener("click", () => {
+            moveImportedAuthor(paper, authorIndex, authorIndex - 1);
+          });
+
+          const downBtn = document.createElement("button");
+          downBtn.type = "button";
+          downBtn.className = "marker-btn";
+          downBtn.textContent = "↓";
+          downBtn.title = "Move author later";
+          downBtn.disabled = authorIndex === paper.authors.length - 1;
+          downBtn.setAttribute("aria-label", `Move ${author.name} later`);
+          downBtn.addEventListener("click", () => {
+            moveImportedAuthor(paper, authorIndex, authorIndex + 1);
+          });
+
+          const equalBtn = document.createElement("button");
+          equalBtn.type = "button";
+          equalBtn.className = "marker-btn";
+          equalBtn.textContent = "*";
+          equalBtn.title = "Toggle equal contribution";
+          equalBtn.setAttribute("aria-label", `Equal contribution for ${author.name}`);
+          equalBtn.setAttribute("aria-pressed", String(author.equal));
+          equalBtn.addEventListener("click", () => {
+            paper.authors[authorIndex].equal = !paper.authors[authorIndex].equal;
+            equalBtn.setAttribute("aria-pressed", String(paper.authors[authorIndex].equal));
+            updateImportCode();
+          });
+
+          const corrBtn = document.createElement("button");
+          corrBtn.type = "button";
+          corrBtn.className = "marker-btn";
+          corrBtn.textContent = "†";
+          corrBtn.title = "Toggle co-corresponding author";
+          corrBtn.setAttribute("aria-label", `Co-corresponding author ${author.name}`);
+          corrBtn.setAttribute("aria-pressed", String(author.corr));
+          corrBtn.addEventListener("click", () => {
+            paper.authors[authorIndex].corr = !paper.authors[authorIndex].corr;
+            corrBtn.setAttribute("aria-pressed", String(paper.authors[authorIndex].corr));
+            const corrCount = paper.authors.filter(item => item.corr).length;
+            warning.textContent = corrCount === 1 ? "Mark at least two co-corresponding authors." : "";
+            updateImportCode();
+          });
+          row.append(name, upBtn, downBtn, equalBtn, corrBtn);
+          authorList.appendChild(row);
+        });
+        card.appendChild(authorList);
+
+        const warning = document.createElement("div");
+        warning.className = "error-item";
+        warning.style.marginTop = "7px";
+        warning.textContent = paper.authors.filter(author => author.corr).length === 1
+          ? "Mark at least two co-corresponding authors."
+          : "";
+        card.appendChild(warning);
+        results.appendChild(card);
+      });
+
+      updateImportCode();
+    }
+
+    el("parse-results-btn").addEventListener("click", () => {
+      const raw = el("import-raw").value;
+      if (!raw.trim()) {
+        el("parsed-results").className = "import-empty";
+        el("parsed-results").textContent = "Paste the copied OpenReview page text first.";
+        return;
+      }
+
+      const parsed = parseConferencePage(raw, el("import-conference").value, el("import-year").value);
+      importContext = { venue: parsed.venue, year: parsed.year };
+      importedPapers = parsed.records;
+      if (parsed.year && !el("import-year").value) el("import-year").placeholder = String(parsed.year);
+
+      if (!parsed.venue || !parsed.year) {
+        el("parsed-results").className = "import-empty";
+        el("parsed-results").textContent = "Conference or year could not be detected. Select them manually and parse again.";
+        el("parse-summary").hidden = true;
+        el("import-code-section").hidden = true;
+        return;
+      }
+      renderImportResults();
+    });
+
+    el("clear-import-btn").addEventListener("click", () => {
+      el("import-raw").value = "";
+      el("import-conference").value = "auto";
+      el("import-year").value = "";
+      el("import-year").placeholder = "Auto";
+      importedPapers = [];
+      importContext = { venue: "", year: 0 };
+      el("parse-summary").hidden = true;
+      el("parsed-results").className = "import-empty";
+      el("parsed-results").innerHTML = "Paste a page and select <strong>Parse results</strong>.";
+      el("import-code-section").hidden = true;
+    });
+
+    el("copy-import-code-btn").addEventListener("click", () => {
+      const invalid = importedPapers.find(paper => {
+        if (!paper.include || paper.decision !== "accepted") return false;
+        return !paper.title.trim() || paper.authors.filter(author => author.corr).length === 1;
+      });
+      if (invalid) {
+        alert(`Fix the title or co-corresponding markers for submission #${invalid.submissionNumber} before copying.`);
+        return;
+      }
+      copyToClipboard(el("import-code-output").textContent, el("copy-import-code-btn"));
+    });
 
     // ─────────────────────────────────────────────────────────────
     // Theme toggle (mirrors main site)
