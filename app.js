@@ -170,13 +170,17 @@ function formatTitle(pub) {
   return escapeHtml(applySentenceCaseWithBraces(raw));
 }
 
-function formatVenue(venueKey, year) {
+function formatVenue(venueKey, year, includeYear = true) {
   const alias = VENUE_ALIASES[venueKey?.toLowerCase?.()] || null;
   if (!alias) {
-    return `${escapeHtml(venueKey || "Unknown venue")} ${escapeHtml(year)}`;
+    return includeYear
+      ? `${escapeHtml(venueKey || "Unknown venue")} ${escapeHtml(year)}`
+      : escapeHtml(venueKey || "Unknown venue");
   }
 
-  return `${escapeHtml(alias.short)} ${escapeHtml(year)}`;
+  return includeYear
+    ? `${escapeHtml(alias.short)} ${escapeHtml(year)}`
+    : escapeHtml(alias.short);
 }
 
 function formatLinks(links = []) {
@@ -534,8 +538,25 @@ function setupToTopButton() {
 function renderPublications() {
   const container = document.getElementById("publication-sections");
   const legend = document.getElementById("author-legend");
+  const counts = document.getElementById("publication-counts");
   if (!container) {
     return;
+  }
+
+  if (counts) {
+    const categoryCounts = Object.fromEntries(
+      CATEGORY_ORDER.map((category) => [
+        category.key,
+        PUBLICATIONS.filter((pub) => pub.category === category.key).length,
+      ])
+    );
+    counts.textContent = [
+      `${PUBLICATIONS.length} publications`,
+      `${categoryCounts.conference} conferences`,
+      `${categoryCounts.journal} journals`,
+      `${categoryCounts.workshop} workshops`,
+      `${categoryCounts.preprint} preprints`,
+    ].join(" · ");
   }
 
   if (legend) {
@@ -549,29 +570,50 @@ function renderPublications() {
       return "";
     }
 
-    const items = sorted
-      .map((pub) => {
-        const authors = formatAuthors(pub.authors);
-        const links = formatLinks(pub.links);
-        const note = pub.note ? `<span class="badge">${escapeHtml(pub.note)}</span>` : "";
-        const newBadge = pub.isNew ? '<span class="badge-new">new</span>' : "";
-        const statusPrefix =
-          pub.status === "to_appear" ? '<span class="pub-status">To appear in</span> ' : "";
-        const pubId = getPublicationId(pub);
-        const bibtexBlock = escapeHtml(formatBibTeX(pub));
-        const exportButtons = `<button class="action-link" type="button" data-action="toggle-bibtex" data-pub-id="${escapeHtml(pubId)}" aria-expanded="false">BibTeX</button>`;
+    const years = [...new Set(sorted.map((pub) => pub.year))];
+    const yearGroups = years
+      .map((year) => {
+        const items = sorted
+          .filter((pub) => pub.year === year)
+          .map((pub) => {
+            const authors = formatAuthors(pub.authors);
+            const links = formatLinks(pub.links);
+            const statusPrefix =
+              pub.status === "to_appear" ? '<span class="pub-status">To appear in</span> ' : "";
+            const pubId = getPublicationId(pub);
+            const bibtexBlock = escapeHtml(formatBibTeX(pub));
+            const exportButtons = `<button class="action-link" type="button" data-action="toggle-bibtex" data-pub-id="${escapeHtml(pubId)}" aria-expanded="false">BibTeX</button>`;
+            const metadata = [
+              `<span class="pub-venue">${statusPrefix}${formatVenue(pub.venue, pub.year)}</span>`,
+              pub.note ? `<span class="pub-label">${escapeHtml(pub.note)}</span>` : "",
+              pub.isNew ? '<span class="pub-label pub-label-new">new</span>' : "",
+              links,
+              exportButtons,
+            ]
+              .filter(Boolean)
+              .join(' <span class="dot">·</span> ');
+
+            return `
+              <li class="publication-item">
+                <div class="pub-title">${formatTitle(pub)}</div>
+                <div class="pub-authors">${authors}</div>
+                <div class="pub-meta">${metadata}</div>
+                <div class="bibtex-wrapper" data-bibtex-block="${escapeHtml(pubId)}" hidden>
+                  <button class="action-link bibtex-copy-btn" type="button" data-action="copy-bibtex" data-pub-id="${escapeHtml(pubId)}">Copy</button>
+                  <pre class="bibtex-block"><code>${bibtexBlock}</code></pre>
+                </div>
+              </li>
+            `;
+          })
+          .join("");
 
         return `
-          <li class="publication-item">
-            <div class="pub-title">${formatTitle(pub)}</div>
-            <div class="pub-authors">${authors}</div>
-            <div class="pub-venue">${statusPrefix}${formatVenue(pub.venue, pub.year)} ${note}${newBadge}</div>
-            <div class="pub-links">${links ? `${links} <span class="dot">·</span> ` : ""}${exportButtons}</div>
-            <div class="bibtex-wrapper" data-bibtex-block="${escapeHtml(pubId)}" hidden>
-              <button class="action-link bibtex-copy-btn" type="button" data-action="copy-bibtex" data-pub-id="${escapeHtml(pubId)}">Copy</button>
-              <pre class="bibtex-block"><code>${bibtexBlock}</code></pre>
-            </div>
-          </li>
+          <section class="publication-year-group">
+            <h4 class="publication-year">${escapeHtml(year)}</h4>
+            <ul class="publication-list">
+              ${items}
+            </ul>
+          </section>
         `;
       })
       .join("");
@@ -579,9 +621,7 @@ function renderPublications() {
     return `
       <section class="publication-group">
         <h3>${escapeHtml(category.title)}</h3>
-        <ol class="publication-list" reversed start="${sorted.length}">
-          ${items}
-        </ol>
+        <div class="publication-year-groups">${yearGroups}</div>
       </section>
     `;
   });
