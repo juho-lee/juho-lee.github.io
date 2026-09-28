@@ -174,8 +174,8 @@ export const PUBLICATIONS = [
     category: "conference",
     authors: [
       "Younghwan Kil",
-      "Joonhyeong Park",
       "Giung Nam",
+      "Joonhyeong Park",
       "Jinwoo Shin",
       "Juho Lee",
     ],
