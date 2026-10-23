@@ -19,7 +19,7 @@
   .workspace-lock:disabled { opacity:0.5; }
   .rack-edit-toolbar { max-width:1180px; margin:0 auto 18px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--text-muted); }
   .edit-note { flex-basis:100%; line-height:1.6; }
-  .server-handles { display:flex; flex-wrap:wrap; gap:4px; border-top:1px solid var(--border); padding-top:8px; }
+  .server-handles { user-select:none; display:flex; flex-wrap:wrap; gap:4px; border-top:1px solid var(--border); padding-top:8px; }
   .server-handle { border:1px solid var(--border); border-radius:4px; background:var(--panel); color:var(--text); font:inherit; font-size:10px; padding:4px; cursor:grab; }
   .server-handle.active { outline:2px solid var(--c-occupied); }
   .server-handles > span { flex-basis:100%; }
@@ -240,15 +240,15 @@ function RackElevation({ rack, onSelect, selected, editMode, picked, onPick, onM
       {editMode && !rack.infra && <div className="server-handles" onClick={e => e.stopPropagation()}>
         {rack.items.flatMap((item, itemIndex) => item.type === "server" ? Array.from({length:item.count}, (_, unit) => {
           const source = { room:rack.room, rackId:rack.rackId, itemIndex, unit };
-          const active = picked && JSON.stringify(picked) === JSON.stringify(source);
+          const active = picked.some(item => serverKey(item) === serverKey(source));
           return <button type="button" key={`${itemIndex}-${unit}`} className={`server-handle${active ? " active" : ""}`} draggable
-            aria-pressed={!!active} title="드래그하여 이동 · 클릭하여 선택 · Ctrl/⌘+클릭하여 삭제"
-            onClick={e => { if (e.ctrlKey || e.metaKey) onMove(source,null); else onPick(source); }} onContextMenu={e => { if(e.ctrlKey) e.preventDefault(); }} onDragStart={e => { e.stopPropagation(); onPick(source); e.dataTransfer.setData("application/x-gpu-server",JSON.stringify(source)); e.dataTransfer.effectAllowed = "move"; }}>
+            aria-pressed={!!active} title="드래그하여 이동 · 클릭하여 선택 · Shift+클릭하여 범위 추가 선택 · Ctrl/⌘+클릭하여 삭제"
+            onClick={e => { if (e.ctrlKey || e.metaKey) onMove(source,null); else onPick(source,e.shiftKey); }} onContextMenu={e => { if(e.ctrlKey) e.preventDefault(); }} onDragStart={e => { e.stopPropagation(); const sources = active ? picked : [source]; if (!active) onPick(source); e.dataTransfer.setData("application/x-gpu-server",JSON.stringify(sources)); e.dataTransfer.effectAllowed = "move"; }}>
             {item.size || "?U"} · {unit + 1}
           </button>;
         }) : [])}
         <span className="rack-slot-summary">{rack.serverCount ? "서버를 다른 랙으로 드래그" : "여기에 서버 놓기"}</span>
-        {picked && <button type="button" className="server-handle" onClick={() => onMove(picked,rack)}>선택 서버를 여기로 이동</button>}
+        {picked.length > 0 && <button type="button" className="server-handle" onClick={() => onMove(picked,rack)}>선택 {picked.length}대를 여기로 이동</button>}
       </div>}
     </div>
   );
@@ -529,6 +529,23 @@ function changeServer(racks, source, target) {
   }
   return next;
 }
+function serverKey(server) { return `${server.room}-${server.rackId}-${server.itemIndex}-${server.unit}`; }
+function serverList(racks) {
+  return racks.filter(r => !r.infra).flatMap(r => r.items.flatMap((item,itemIndex) => item.type === "server"
+    ? Array.from({length:item.count},(_,unit) => ({room:r.room,rackId:r.rackId,itemIndex,unit})) : []));
+}
+function selectServerRange(picked, anchor, source, ordered) {
+  const start = ordered.findIndex(s => serverKey(s) === serverKey(anchor || source));
+  const end = ordered.findIndex(s => serverKey(s) === serverKey(source));
+  const range = start < 0 || end < 0 ? [source] : ordered.slice(Math.min(start,end), Math.max(start,end)+1);
+  return [...new Map([...picked,...range].map(s => [serverKey(s),s])).values()];
+}
+function changeServers(racks, sources, target) {
+  const unique = [...new Map(sources.map(s => [serverKey(s),s])).values()];
+  // Descending item/unit indices keep remaining source references valid after removal.
+  unique.sort((a,b) => a.room.localeCompare(b.room) || a.rackId-b.rackId || b.itemIndex-a.itemIndex || b.unit-a.unit);
+  return unique.reduce((current, source) => changeServer(current,source,target),racks);
+}
 function GPUDashboard({ onCommit, storageMessage }) {
   const [draftState, setDraftState] = useState({ racks:null, past:[] });
   const draftRacks = draftState.racks;
@@ -541,13 +558,18 @@ function GPUDashboard({ onCommit, storageMessage }) {
     setDraftState(previous => previous.past.length ? {
       racks:previous.past[previous.past.length - 1], past:previous.past.slice(0,-1)
     } : previous);
-    setPicked(null); setSelected(null);
+    setPicked([]); setSelectionAnchor(null); setSelected(null);
   };
-  const [picked, setPicked] = useState(null);
+  const [picked, setPicked] = useState([]);
+  const [selectionAnchor, setSelectionAnchor] = useState(null);
+  const pickServer = (source, extend = false) => {
+    if (extend) setPicked(previous => selectServerRange(previous,selectionAnchor,source,serverList(filtered)));
+    else { setPicked([source]); setSelectionAnchor(source); }
+  };
   const RACK_DATA = draftRacks || liveRacks();
   const editMode = draftRacks !== null;
-  const moveServer = (source,target) => { setDraftRacks(racks => changeServer(racks,source,target)); setPicked(null); setSelected(null); };
-  const discardEditing = () => { setDraftRacks(null); setPicked(null); setSelected(null); setEditing(null); };
+  const moveServer = (source,target) => { setDraftRacks(racks => changeServers(racks,Array.isArray(source) ? source : [source],target)); setPicked([]); setSelectionAnchor(null); setSelected(null); };
+  const discardEditing = () => { setDraftRacks(null); setPicked([]); setSelectionAnchor(null); setSelected(null); setEditing(null); };
   useEffect(() => {
     if (!editMode) return;
     const warn = e => { e.preventDefault(); e.returnValue = ""; };
@@ -1465,12 +1487,12 @@ function GPUDashboard({ onCommit, storageMessage }) {
         {editMode && <>
           <button className="chip" onClick={() => onCommit({...snapshot(savedPlans),racks:draftRacks})}>변경사항 저장</button>
           <button className="chip" disabled={!draftState.past.length} onClick={undoEdit}>실행 취소 ({draftState.past.length})</button>
-          <button className="chip" disabled={!picked} onClick={() => { if(picked) moveServer(picked,null); }}>선택 서버 삭제</button>
-          <span role="status">{picked ? `${picked.room} R${picked.rackId} 서버 선택됨` : "서버를 드래그하거나 클릭해서 선택하세요."}</span>
-          <span className="edit-note">저장 전 임시 편집 중 · 모드를 끄면 변경 취소 · Ctrl/⌘+클릭: 서버 즉시 삭제 · Ctrl/⌘+Z: 실행 취소 · 랙 명의는 유지됩니다. 상단 집계는 저장 후 반영됩니다.</span>
+          <button className="chip" disabled={!picked.length} onClick={() => { if(picked.length) moveServer(picked,null); }}>선택 서버 삭제</button>
+          <span role="status">{picked.length ? `서버 ${picked.length}대 선택됨` : "클릭으로 선택 · Shift+클릭으로 범위 추가 선택"}</span>
+          <span className="edit-note">저장 전 임시 편집 중 · 모드를 끄면 변경 취소 · Shift+클릭: 범위 추가 선택 · Ctrl/⌘+클릭: 서버 즉시 삭제 · Ctrl/⌘+Z: 실행 취소 · 랙 명의는 유지됩니다. 상단 집계는 저장 후 반영됩니다.</span>
         </>}
       </div>}
-      {editing && <RackEditor rack={editing} onClose={() => setEditing(null)} onSave={(rack) => { const racks = RACK_DATA.map(r => r.room === rack.room && r.rackId === rack.rackId ? rack : r); if(editMode) { const data = normalizeWorkspace({...snapshot(savedPlans),racks}); setDraftRacks(data.racks); setEditing(null); setSelected(null); setPicked(null); } else onCommit({...snapshot(savedPlans),racks}); }} />}
+      {editing && <RackEditor rack={editing} onClose={() => setEditing(null)} onSave={(rack) => { const racks = RACK_DATA.map(r => r.room === rack.room && r.rackId === rack.rackId ? rack : r); if(editMode) { const data = normalizeWorkspace({...snapshot(savedPlans),racks}); setDraftRacks(data.racks); setEditing(null); setSelected(null); setPicked([]); setSelectionAnchor(null); } else onCommit({...snapshot(savedPlans),racks}); }} />}
       {settingsOpen && <SettingsEditor onClose={() => setSettingsOpen(false)} onSave={settings => onCommit({ ...snapshot(savedPlans), settings })} />}
       <div className="summary-row">
         {ROOMS.map((room) => (
@@ -1746,7 +1768,7 @@ function GPUDashboard({ onCommit, storageMessage }) {
                       <RackElevation
                         key={`${rack.room}-${rack.rackId}`}
                         rack={rack}
-                        editMode={editMode} picked={picked} onPick={setPicked} onMove={moveServer}
+                        editMode={editMode} picked={picked} onPick={pickServer} onMove={moveServer}
                         onSelect={setSelected}
                         selected={
                           selected &&
