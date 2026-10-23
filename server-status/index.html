@@ -15,6 +15,30 @@
     color: #7C8496; font-family: system-ui, sans-serif;
     text-align: center; padding: 80px 20px; font-size: 14px;
   }
+  .workspace-lock { border:0; padding:0; margin:0; min-width:0; }
+  .workspace-lock:disabled { opacity:0.5; }
+  .rack-edit-toolbar { max-width:1180px; margin:0 auto 18px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--text-muted); }
+  .edit-note { flex-basis:100%; line-height:1.6; }
+  .server-handles { display:flex; flex-wrap:wrap; gap:4px; border-top:1px solid var(--border); padding-top:8px; }
+  .server-handle { border:1px solid var(--border); border-radius:4px; background:var(--panel); color:var(--text); font:inherit; font-size:10px; padding:4px; cursor:grab; }
+  .server-handle.active { outline:2px solid var(--c-occupied); }
+  .server-handles > span { flex-basis:100%; }
+  .workspace-toolbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; max-width:1180px; margin:0 auto 24px; }
+  .workspace-toolbar [role] { flex-basis:100%; font-size:13px; color:var(--text-muted); line-height:1.5; }
+  .workspace-toolbar .chip { display:inline-flex; align-items:center; justify-content:center; min-height:36px; margin:0; line-height:1.5; }
+  .workspace-toolbar .file-import { position:relative; }
+  .workspace-toolbar .file-import input { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+  .workspace-toolbar .file-import:focus-within { outline:2px solid var(--c-occupied); outline-offset:3px; }
+  .editor-overlay { position:fixed; inset:0; z-index:100; background:#0009; display:flex; align-items:center; justify-content:center; padding:16px; }
+  .editor-panel { color:var(--text); background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:24px; width:620px; max-width:100%; max-height:85vh; overflow:auto; box-sizing:border-box; }
+  .editor-panel label { display:block; margin:12px 0; font-size:14px; }
+  .editor-panel input:not([type=checkbox]), .editor-panel select, .editor-panel textarea { display:block; box-sizing:border-box; width:100%; margin-top:6px; padding:9px; background:var(--bg); color:var(--text); border:1px solid var(--border); border-radius:5px; font:inherit; }
+  .editor-panel button { padding:9px 14px; cursor:pointer; }
+  .editor-panel p { font-size:13px; line-height:1.6; }
+  .editor-item { display:flex; gap:10px; align-items:center; border-bottom:1px solid var(--border); }
+  .editor-item label { flex:1; min-width:0; }
+  .editor-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:24px; }
+  .editor-panel fieldset { border:1px solid var(--border); margin-top:16px; }
 </style>
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -26,7 +50,7 @@
 const { useState, useMemo, useEffect } = React;
 
 
-const RACK_DATA = [{"room": "홍릉", "rackId": 1, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5, Master x1", "items": [{"type": "server", "size": "?U", "count": 5}, {"type": "Master", "size": null, "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 2, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 3, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 4, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 5, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 6, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 7, "labNominal": "윤세영", "labActual": "윤세영", "detail": "8U x 1", "items": [{"type": "server", "size": "8U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 8, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 4, Master x1, Storage x1", "items": [{"type": "server", "size": "?U", "count": 4}, {"type": "Master", "size": null, "count": 1}, {"type": "Storage", "size": null, "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 9, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 10, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 11, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 12, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 13, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 14, "labNominal": "서민준", "labActual": "서민준", "detail": "?U x 1, ?U x 2, NAS x 1", "items": [{"type": "server", "size": "?U", "count": 1}, {"type": "server", "size": "?U", "count": 2}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 3, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 15, "labNominal": "이주호", "labActual": "이주호", "detail": "8U x 5", "items": [{"type": "server", "size": "8U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 16, "labNominal": "이주호", "labActual": "이주호", "detail": "8U x 3, 1U x 1", "items": [{"type": "server", "size": "8U", "count": 3}, {"type": "server", "size": "1U", "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 17, "labNominal": "윤철희", "labActual": "윤철희", "detail": "8U x 4", "items": [{"type": "server", "size": "8U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 18, "labNominal": "윤철희", "labActual": "윤철희", "detail": "8U x 4, 2U x 1", "items": [{"type": "server", "size": "8U", "count": 4}, {"type": "server", "size": "2U", "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 19, "labNominal": "심현정", "labActual": "심현정", "detail": "8U x 4", "items": [{"type": "server", "size": "8U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 20, "labNominal": "심현정", "labActual": "심현정", "detail": "8U x 4", "items": [{"type": "server", "size": "8U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 21, "labNominal": "임재환", "labActual": "임재환", "detail": "4U x 3", "items": [{"type": "server", "size": "4U", "count": 3}], "serverCount": 3, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 22, "labNominal": "임재환", "labActual": "임재환", "detail": "4U x 1", "items": [{"type": "server", "size": "4U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 23, "labNominal": "김범준", "labActual": "김범준", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 24, "labNominal": "김범준", "labActual": "김범준", "detail": "?U x 7", "items": [{"type": "server", "size": "?U", "count": 7}], "serverCount": 7, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 25, "labNominal": "서민준", "labActual": "서민준", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 1, "labNominal": "네트워크", "labActual": "네트워크", "detail": "-", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": true}, {"room": "양재", "rackId": 2, "labNominal": "최윤재", "labActual": "최윤재", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 3, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 4, NAS x1", "items": [{"type": "server", "size": "?U", "count": 4}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 4, "labNominal": "윤세영", "labActual": "윤세영", "detail": "8U x 4, 3U x 1", "items": [{"type": "server", "size": "8U", "count": 4}, {"type": "server", "size": "3U", "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 5, "labNominal": "오성준", "labActual": "오성준", "detail": "4U x 1", "items": [{"type": "server", "size": "4U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 6, "labNominal": "오성준", "labActual": "오성준", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 7, "labNominal": "한동수", "labActual": "한동수", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 8, "labNominal": "한동수", "labActual": "한동수", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 9, "labNominal": "신기정", "labActual": "신기정", "detail": "4U x 2", "items": [{"type": "server", "size": "4U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 10, "labNominal": "예종철", "labActual": "예종철", "detail": "2U x 1, 4U x 7", "items": [{"type": "server", "size": "2U", "count": 1}, {"type": "server", "size": "4U", "count": 7}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 11, "labNominal": "예종철", "labActual": "예종철", "detail": "4U x 3, 2U x 1", "items": [{"type": "server", "size": "4U", "count": 3}, {"type": "server", "size": "2U", "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 12, "labNominal": "심현정", "labActual": "심현정", "detail": "8U x 3", "items": [{"type": "server", "size": "8U", "count": 3}], "serverCount": 3, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 13, "labNominal": "이기민", "labActual": "신진우", "detail": "4U x 1, 2U x 3, 1U x 1", "items": [{"type": "server", "size": "4U", "count": 1}, {"type": "server", "size": "2U", "count": 3}, {"type": "server", "size": "1U", "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 14, "labNominal": "이기민", "labActual": "신진우", "detail": "4U x 1", "items": [{"type": "server", "size": "4U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 15, "labNominal": "안성수", "labActual": "안성수", "detail": "8U x 6", "items": [{"type": "server", "size": "8U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 16, "labNominal": "안성수", "labActual": "안성수", "detail": "8U x 5", "items": [{"type": "server", "size": "8U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 17, "labNominal": "김승룡", "labActual": "김승룡", "detail": "?U x 4", "items": [{"type": "server", "size": "?U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 18, "labNominal": "김승룡", "labActual": "김승룡", "detail": "?U x 2", "items": [{"type": "server", "size": "?U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 19, "labNominal": "황성주", "labActual": "황성주", "detail": "?U x 8", "items": [{"type": "server", "size": "?U", "count": 8}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 20, "labNominal": "황성주", "labActual": "황성주", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 21, "labNominal": "황성주", "labActual": "황성주", "detail": "?U x 2", "items": [{"type": "server", "size": "?U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 22, "labNominal": "양은호", "labActual": "양은호", "detail": "8U x 7", "items": [{"type": "server", "size": "8U", "count": 7}], "serverCount": 7, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 23, "labNominal": "양은호", "labActual": "양은호", "detail": "8U x 4, 4U x 4", "items": [{"type": "server", "size": "8U", "count": 4}, {"type": "server", "size": "4U", "count": 4}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 24, "labNominal": "양은호", "labActual": "양은호", "detail": "8U x 5, 4U x 3", "items": [{"type": "server", "size": "8U", "count": 5}, {"type": "server", "size": "4U", "count": 3}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 25, "labNominal": "신기정", "labActual": "신기정", "detail": "4U x 6", "items": [{"type": "server", "size": "4U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 26, "labNominal": "신진우", "labActual": "신진우", "detail": "4U x 5", "items": [{"type": "server", "size": "4U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 27, "labNominal": "신진우", "labActual": "신진우", "detail": "4U x 4, 2U x 2", "items": [{"type": "server", "size": "4U", "count": 4}, {"type": "server", "size": "2U", "count": 2}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 28, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 10", "items": [{"type": "server", "size": "4U", "count": 10}], "serverCount": 10, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 29, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 5, 3U x 5, 2U x 2", "items": [{"type": "server", "size": "4U", "count": 5}, {"type": "server", "size": "3U", "count": 5}, {"type": "server", "size": "2U", "count": 2}], "serverCount": 12, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 30, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 2, 3U x 4, 2U x 2, 2U x 3, 1U x 3", "items": [{"type": "server", "size": "4U", "count": 2}, {"type": "server", "size": "3U", "count": 4}, {"type": "server", "size": "2U", "count": 2}, {"type": "server", "size": "2U", "count": 3}, {"type": "server", "size": "1U", "count": 3}], "serverCount": 14, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 31, "labNominal": "김기응", "labActual": "김기응", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": true, "note": "정리 완료 (Free)", "shared": false, "infra": false}, {"room": "양재", "rackId": 32, "labNominal": "김기응", "labActual": "김기응", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": true, "note": "정리 완료 (Free)", "shared": false, "infra": false}, {"room": "대전", "rackId": 1, "labNominal": "정송", "labActual": "정송", "detail": "4U x 4, ?U x 2", "items": [{"type": "server", "size": "4U", "count": 4}, {"type": "server", "size": "?U", "count": 2}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 2, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 6, 2U x 2, 2U x 1, 2U x 2", "items": [{"type": "server", "size": "4U", "count": 6}, {"type": "server", "size": "2U", "count": 2}, {"type": "server", "size": "2U", "count": 1}, {"type": "server", "size": "2U", "count": 2}], "serverCount": 11, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 3, "labNominal": "최재식", "labActual": "최재식", "detail": "?U x 5, Hub x 3, NAS x 1", "items": [{"type": "server", "size": "?U", "count": 5}, {"type": "Hub", "size": null, "count": 3}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 4, "labNominal": "최재식", "labActual": "최재식", "detail": "?U x 5, ?U x 1", "items": [{"type": "server", "size": "?U", "count": 5}, {"type": "server", "size": "?U", "count": 1}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 5, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 7", "items": [{"type": "server", "size": "?U", "count": 7}], "serverCount": 7, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 6, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 7, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 4, NAS x 1", "items": [{"type": "server", "size": "?U", "count": 4}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 8, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 2, NAS x 3", "items": [{"type": "server", "size": "?U", "count": 2}, {"type": "Nas", "size": null, "count": 3}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 9, "labNominal": "윤세영", "labActual": "윤세영", "detail": "8U x 3, 4U x 1", "items": [{"type": "server", "size": "8U", "count": 3}, {"type": "server", "size": "4U", "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 10, "labNominal": "윤세영", "labActual": "윤세영", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 11, "labNominal": "양은호", "labActual": "양은호", "detail": "2 Desktop", "items": [{"type": "Desktop", "size": null, "count": 2}], "serverCount": 0, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 12, "labNominal": "예종철", "labActual": "예종철", "detail": "1 Terminal", "items": [{"type": "Terminal", "size": null, "count": 1}], "serverCount": 0, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 13, "labNominal": "신진우", "labActual": "신진우", "detail": "4U x 6, 1U x 1", "items": [{"type": "server", "size": "4U", "count": 6}, {"type": "server", "size": "1U", "count": 1}], "serverCount": 7, "empty": false, "reclaimable": false, "note": "타 학과 건물에 추가 랙 사용중", "shared": false, "infra": false}, {"room": "대전", "rackId": 14, "labNominal": "최윤재", "labActual": "최윤재", "detail": "?U x 2", "items": [{"type": "server", "size": "?U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 15, "labNominal": "최윤재", "labActual": "최윤재", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}];
+let RACK_DATA = [{"room": "홍릉", "rackId": 1, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5, Master x1", "items": [{"type": "server", "size": "?U", "count": 5}, {"type": "Master", "size": null, "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 2, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 3, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 4, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 5, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 6, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 7, "labNominal": "윤세영", "labActual": "윤세영", "detail": "8U x 1", "items": [{"type": "server", "size": "8U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 8, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 4, Master x1, Storage x1", "items": [{"type": "server", "size": "?U", "count": 4}, {"type": "Master", "size": null, "count": 1}, {"type": "Storage", "size": null, "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 9, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 10, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 11, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 12, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 13, "labNominal": "학과 공용", "labActual": "학과 공용", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": true, "infra": false}, {"room": "홍릉", "rackId": 14, "labNominal": "서민준", "labActual": "서민준", "detail": "?U x 1, ?U x 2, NAS x 1", "items": [{"type": "server", "size": "?U", "count": 1}, {"type": "server", "size": "?U", "count": 2}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 3, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 15, "labNominal": "이주호", "labActual": "이주호", "detail": "8U x 5", "items": [{"type": "server", "size": "8U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 16, "labNominal": "이주호", "labActual": "이주호", "detail": "8U x 3, 1U x 1", "items": [{"type": "server", "size": "8U", "count": 3}, {"type": "server", "size": "1U", "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 17, "labNominal": "윤철희", "labActual": "윤철희", "detail": "8U x 4", "items": [{"type": "server", "size": "8U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 18, "labNominal": "윤철희", "labActual": "윤철희", "detail": "8U x 4, 2U x 1", "items": [{"type": "server", "size": "8U", "count": 4}, {"type": "server", "size": "2U", "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 19, "labNominal": "심현정", "labActual": "심현정", "detail": "8U x 4", "items": [{"type": "server", "size": "8U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 20, "labNominal": "심현정", "labActual": "심현정", "detail": "8U x 4", "items": [{"type": "server", "size": "8U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 21, "labNominal": "임재환", "labActual": "임재환", "detail": "4U x 3", "items": [{"type": "server", "size": "4U", "count": 3}], "serverCount": 3, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 22, "labNominal": "임재환", "labActual": "임재환", "detail": "4U x 1", "items": [{"type": "server", "size": "4U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 23, "labNominal": "김범준", "labActual": "김범준", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 24, "labNominal": "김범준", "labActual": "김범준", "detail": "?U x 7", "items": [{"type": "server", "size": "?U", "count": 7}], "serverCount": 7, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "홍릉", "rackId": 25, "labNominal": "서민준", "labActual": "서민준", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 1, "labNominal": "네트워크", "labActual": "네트워크", "detail": "-", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": true}, {"room": "양재", "rackId": 2, "labNominal": "최윤재", "labActual": "최윤재", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 3, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 4, NAS x1", "items": [{"type": "server", "size": "?U", "count": 4}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 4, "labNominal": "윤세영", "labActual": "윤세영", "detail": "8U x 4, 3U x 1", "items": [{"type": "server", "size": "8U", "count": 4}, {"type": "server", "size": "3U", "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 5, "labNominal": "오성준", "labActual": "오성준", "detail": "4U x 1", "items": [{"type": "server", "size": "4U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 6, "labNominal": "오성준", "labActual": "오성준", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 7, "labNominal": "한동수", "labActual": "한동수", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 8, "labNominal": "한동수", "labActual": "한동수", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 9, "labNominal": "신기정", "labActual": "신기정", "detail": "4U x 2", "items": [{"type": "server", "size": "4U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 10, "labNominal": "예종철", "labActual": "예종철", "detail": "2U x 1, 4U x 7", "items": [{"type": "server", "size": "2U", "count": 1}, {"type": "server", "size": "4U", "count": 7}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 11, "labNominal": "예종철", "labActual": "예종철", "detail": "4U x 3, 2U x 1", "items": [{"type": "server", "size": "4U", "count": 3}, {"type": "server", "size": "2U", "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 12, "labNominal": "심현정", "labActual": "심현정", "detail": "8U x 3", "items": [{"type": "server", "size": "8U", "count": 3}], "serverCount": 3, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 13, "labNominal": "이기민", "labActual": "신진우", "detail": "4U x 1, 2U x 3, 1U x 1", "items": [{"type": "server", "size": "4U", "count": 1}, {"type": "server", "size": "2U", "count": 3}, {"type": "server", "size": "1U", "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 14, "labNominal": "이기민", "labActual": "신진우", "detail": "4U x 1", "items": [{"type": "server", "size": "4U", "count": 1}], "serverCount": 1, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 15, "labNominal": "안성수", "labActual": "안성수", "detail": "8U x 6", "items": [{"type": "server", "size": "8U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 16, "labNominal": "안성수", "labActual": "안성수", "detail": "8U x 5", "items": [{"type": "server", "size": "8U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 17, "labNominal": "김승룡", "labActual": "김승룡", "detail": "?U x 4", "items": [{"type": "server", "size": "?U", "count": 4}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 18, "labNominal": "김승룡", "labActual": "김승룡", "detail": "?U x 2", "items": [{"type": "server", "size": "?U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 19, "labNominal": "황성주", "labActual": "황성주", "detail": "?U x 8", "items": [{"type": "server", "size": "?U", "count": 8}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 20, "labNominal": "황성주", "labActual": "황성주", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 21, "labNominal": "황성주", "labActual": "황성주", "detail": "?U x 2", "items": [{"type": "server", "size": "?U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 22, "labNominal": "양은호", "labActual": "양은호", "detail": "8U x 7", "items": [{"type": "server", "size": "8U", "count": 7}], "serverCount": 7, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 23, "labNominal": "양은호", "labActual": "양은호", "detail": "8U x 4, 4U x 4", "items": [{"type": "server", "size": "8U", "count": 4}, {"type": "server", "size": "4U", "count": 4}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 24, "labNominal": "양은호", "labActual": "양은호", "detail": "8U x 5, 4U x 3", "items": [{"type": "server", "size": "8U", "count": 5}, {"type": "server", "size": "4U", "count": 3}], "serverCount": 8, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 25, "labNominal": "신기정", "labActual": "신기정", "detail": "4U x 6", "items": [{"type": "server", "size": "4U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 26, "labNominal": "신진우", "labActual": "신진우", "detail": "4U x 5", "items": [{"type": "server", "size": "4U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 27, "labNominal": "신진우", "labActual": "신진우", "detail": "4U x 4, 2U x 2", "items": [{"type": "server", "size": "4U", "count": 4}, {"type": "server", "size": "2U", "count": 2}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 28, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 10", "items": [{"type": "server", "size": "4U", "count": 10}], "serverCount": 10, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 29, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 5, 3U x 5, 2U x 2", "items": [{"type": "server", "size": "4U", "count": 5}, {"type": "server", "size": "3U", "count": 5}, {"type": "server", "size": "2U", "count": 2}], "serverCount": 12, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 30, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 2, 3U x 4, 2U x 2, 2U x 3, 1U x 3", "items": [{"type": "server", "size": "4U", "count": 2}, {"type": "server", "size": "3U", "count": 4}, {"type": "server", "size": "2U", "count": 2}, {"type": "server", "size": "2U", "count": 3}, {"type": "server", "size": "1U", "count": 3}], "serverCount": 14, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "양재", "rackId": 31, "labNominal": "김기응", "labActual": "김기응", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": true, "note": "정리 완료 (Free)", "shared": false, "infra": false}, {"room": "양재", "rackId": 32, "labNominal": "김기응", "labActual": "김기응", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": true, "note": "정리 완료 (Free)", "shared": false, "infra": false}, {"room": "대전", "rackId": 1, "labNominal": "정송", "labActual": "정송", "detail": "4U x 4, ?U x 2", "items": [{"type": "server", "size": "4U", "count": 4}, {"type": "server", "size": "?U", "count": 2}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 2, "labNominal": "김기응", "labActual": "김기응", "detail": "4U x 6, 2U x 2, 2U x 1, 2U x 2", "items": [{"type": "server", "size": "4U", "count": 6}, {"type": "server", "size": "2U", "count": 2}, {"type": "server", "size": "2U", "count": 1}, {"type": "server", "size": "2U", "count": 2}], "serverCount": 11, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 3, "labNominal": "최재식", "labActual": "최재식", "detail": "?U x 5, Hub x 3, NAS x 1", "items": [{"type": "server", "size": "?U", "count": 5}, {"type": "Hub", "size": null, "count": 3}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 4, "labNominal": "최재식", "labActual": "최재식", "detail": "?U x 5, ?U x 1", "items": [{"type": "server", "size": "?U", "count": 5}, {"type": "server", "size": "?U", "count": 1}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 5, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 7", "items": [{"type": "server", "size": "?U", "count": 7}], "serverCount": 7, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 6, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 5", "items": [{"type": "server", "size": "?U", "count": 5}], "serverCount": 5, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 7, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 4, NAS x 1", "items": [{"type": "server", "size": "?U", "count": 4}, {"type": "Nas", "size": null, "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 8, "labNominal": "주재걸", "labActual": "주재걸", "detail": "?U x 2, NAS x 3", "items": [{"type": "server", "size": "?U", "count": 2}, {"type": "Nas", "size": null, "count": 3}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 9, "labNominal": "윤세영", "labActual": "윤세영", "detail": "8U x 3, 4U x 1", "items": [{"type": "server", "size": "8U", "count": 3}, {"type": "server", "size": "4U", "count": 1}], "serverCount": 4, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 10, "labNominal": "윤세영", "labActual": "윤세영", "detail": "0", "items": [], "serverCount": 0, "empty": true, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 11, "labNominal": "양은호", "labActual": "양은호", "detail": "2 Desktop", "items": [{"type": "Desktop", "size": null, "count": 2}], "serverCount": 0, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 12, "labNominal": "예종철", "labActual": "예종철", "detail": "1 Terminal", "items": [{"type": "Terminal", "size": null, "count": 1}], "serverCount": 0, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 13, "labNominal": "신진우", "labActual": "신진우", "detail": "4U x 6, 1U x 1", "items": [{"type": "server", "size": "4U", "count": 6}, {"type": "server", "size": "1U", "count": 1}], "serverCount": 7, "empty": false, "reclaimable": false, "note": "타 학과 건물에 추가 랙 사용중", "shared": false, "infra": false}, {"room": "대전", "rackId": 14, "labNominal": "최윤재", "labActual": "최윤재", "detail": "?U x 2", "items": [{"type": "server", "size": "?U", "count": 2}], "serverCount": 2, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}, {"room": "대전", "rackId": 15, "labNominal": "최윤재", "labActual": "최윤재", "detail": "?U x 6", "items": [{"type": "server", "size": "?U", "count": 6}], "serverCount": 6, "empty": false, "reclaimable": false, "note": null, "shared": false, "infra": false}];
 
 // ── 랙 소유자 보정 (실사용 기준) ──────────────────────────────────
 // 정확한 데이터 확보 시 이 표만 고치면 화면 전체(집계·평균·교원 수)에 반영됩니다.
@@ -51,15 +75,15 @@ const ROOM_META = {
 };
 
 // 냉방 용량 기준 랙당 권장 최대 서버 수 (관리자 통보 기준, 8GPU·4U 서버 1대 ≈ 3kW 가정)
-const SERVER_KW = 3;
+let SERVER_KW = 3;
 // 랙 1개의 물리적 최대 슬롯 수 (4U 서버 기준)
-const PHYSICAL_SLOTS_PER_RACK = 8;
+let PHYSICAL_SLOTS_PER_RACK = 8;
 
 // 교원 수 — 현재 22명, 2027년 목표 32명 (22 + 신규 10명)
-const FACULTY_CURRENT = 22;
+let FACULTY_CURRENT = 22;
 // 신임 교원 충원 시나리오 — ~2026 +4명(→26), ~2027 +10명(→32)
-const FACULTY_NEW_2026 = 4;
-const FACULTY_NEW_2027 = 10;
+let FACULTY_NEW_2026 = 4;
+let FACULTY_NEW_2027 = 10;
 
 // 슬롯 확보 플랜 저장/공유 —— 브라우저 localStorage + URL 해시
 const PLAN_STORAGE_KEY = "gpuDashboardSlotPlans_v1";
@@ -92,7 +116,7 @@ function decodePlan(str) {
   });
   return keys;
 }
-const ROOM_CAPACITY = {
+let ROOM_CAPACITY = {
   "홍릉": { coolingKW: 316, rackCount: 25, kwPerRack: 12.64, maxServersPerRack: 4 },
   "양재": { coolingKW: 560, rackCount: 32, kwPerRack: 17.5, maxServersPerRack: 6 },
   "대전": { coolingKW: 116, rackCount: 15, kwPerRack: 7.7, maxServersPerRack: 2.5 },
@@ -100,7 +124,7 @@ const ROOM_CAPACITY = {
 
 // 개별 교수 배정분 합계 (학과 공용·인프라 제외) — 기존 교원 잔여 자원 계산용
 // ※ 반드시 ROOM_CAPACITY 뒤에 위치 (즉시 실행 IIFE, TDZ 주의)
-const DEPT_INDIVIDUAL = (() => {
+function individualTotals() {
   let racks = 0, slots = 0, physical = 0;
   RACK_DATA.forEach((r) => {
     if (r.infra || r.shared) return;
@@ -110,7 +134,8 @@ const DEPT_INDIVIDUAL = (() => {
     physical += PHYSICAL_SLOTS_PER_RACK;
   });
   return { racks, slots, physical };
-})();
+}
+let DEPT_INDIVIDUAL = individualTotals();
 
 // 랙 부하 수준: 권장 최대 대비 현재 서버 수
 function rackLoad(r) {
@@ -161,14 +186,22 @@ const SEG_COLORS = {
   Terminal: "#8AA0C4",
 };
 
-function RackElevation({ rack, onSelect, selected }) {
+function RackElevation({ rack, onSelect, selected, editMode, picked, onPick, onMove }) {
   const st = statusOf(rack);
   const meta = STATUS_META[st];
   const load = rackLoad(rack);
-  const totalUnits = rack.items.reduce((s, i) => s + (i.count || 1), 0) || 1;
+  const occupied = Math.min(rack.serverCount, PHYSICAL_SLOTS_PER_RACK);
+  const remaining = Math.max(0, PHYSICAL_SLOTS_PER_RACK - rack.serverCount);
+  const overflow = Math.max(0, rack.serverCount - PHYSICAL_SLOTS_PER_RACK);
+  const auxiliary = rack.items.filter(it => it.type !== "server").reduce((n, it) => n + it.count, 0);
+  const slotLabel = rack.infra ? "인프라 전용" : `사용 ${occupied} · 잔여 ${remaining}${overflow ? ` · 초과 ${overflow}` : ""}`;
   return (
-    <button
+    <div
+      role="button" tabIndex={0}
+      onKeyDown={e => { if (e.target === e.currentTarget && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); onSelect(rack); } }}
       onClick={() => onSelect(rack)}
+      onDragOver={e => { if(editMode && !rack.infra) { e.preventDefault(); e.dataTransfer.dropEffect = "move"; } }}
+      onDrop={e => { if (!editMode || rack.infra) return; e.preventDefault(); e.stopPropagation(); try { onMove(JSON.parse(e.dataTransfer.getData("application/x-gpu-server")), rack); } catch (_) {} }}
       className="rack-card"
       style={{
         borderColor: selected
@@ -183,23 +216,13 @@ function RackElevation({ rack, onSelect, selected }) {
         <span className="rack-id">R{String(rack.rackId).padStart(2, "0")}</span>
         <span className="rack-dot" style={{ background: meta.color }} />
       </div>
-      <div className="rack-elev">
-        {rack.items.length === 0 ? (
-          <div className="rack-elev-empty" />
-        ) : (
-          rack.items.map((it, idx) => (
-            <div
-              key={idx}
-              className="rack-seg"
-              style={{
-                flexGrow: it.count || 1,
-                background: SEG_COLORS[it.type] || "#5A6474",
-              }}
-              title={`${it.type} ${it.size || ""} x${it.count || ""}`}
-            />
-          ))
-        )}
+      <div className="rack-elev" role="img" aria-label={`${rack.room} R${rack.rackId}: ${slotLabel}`} title={`${slotLabel} (서버 1대 = 1슬롯 가정, 실제 U 점유와 다를 수 있음)`}>
+        {Array.from({ length: PHYSICAL_SLOTS_PER_RACK }, (_, index) => (
+          <div key={index} className={`rack-slot${!rack.infra && index < occupied ? " rack-slot-filled" : ""}`} />
+        ))}
       </div>
+      <div className="rack-slot-summary">{slotLabel}</div>
+      {auxiliary > 0 && <div className="rack-slot-summary" title="보조 장비의 공간은 슬롯 계산에서 제외됩니다">기타 장비 {auxiliary}대 별도</div>}
       <div className="rack-card-foot">
         <span className="rack-owner" title={rack.labActual}>{rack.labActual}</span>
         <span
@@ -214,11 +237,24 @@ function RackElevation({ rack, onSelect, selected }) {
           {load.level === "over" ? "⚠ " : ""}{rack.serverCount || "-"}
         </span>
       </div>
-    </button>
+      {editMode && !rack.infra && <div className="server-handles" onClick={e => e.stopPropagation()}>
+        {rack.items.flatMap((item, itemIndex) => item.type === "server" ? Array.from({length:item.count}, (_, unit) => {
+          const source = { room:rack.room, rackId:rack.rackId, itemIndex, unit };
+          const active = picked && JSON.stringify(picked) === JSON.stringify(source);
+          return <button type="button" key={`${itemIndex}-${unit}`} className={`server-handle${active ? " active" : ""}`} draggable
+            aria-pressed={!!active} title="드래그하여 이동 · 클릭하여 선택 · Ctrl/⌘+클릭하여 삭제"
+            onClick={e => { if (e.ctrlKey || e.metaKey) onMove(source,null); else onPick(source); }} onContextMenu={e => { if(e.ctrlKey) e.preventDefault(); }} onDragStart={e => { e.stopPropagation(); onPick(source); e.dataTransfer.setData("application/x-gpu-server",JSON.stringify(source)); e.dataTransfer.effectAllowed = "move"; }}>
+            {item.size || "?U"} · {unit + 1}
+          </button>;
+        }) : [])}
+        <span className="rack-slot-summary">{rack.serverCount ? "서버를 다른 랙으로 드래그" : "여기에 서버 놓기"}</span>
+        {picked && <button type="button" className="server-handle" onClick={() => onMove(picked,rack)}>선택 서버를 여기로 이동</button>}
+      </div>}
+    </div>
   );
 }
 
-function DetailPanel({ rack, onClose }) {
+function DetailPanel({ rack, onClose, onEdit }) {
   if (!rack) return null;
   const st = statusOf(rack);
   const meta = STATUS_META[st];
@@ -239,6 +275,7 @@ function DetailPanel({ rack, onClose }) {
       <div className="detail-status" style={{ color: meta.color, borderColor: meta.color }}>
         {meta.label}
       </div>
+      <button className="chip" onClick={() => onEdit(rack)}>랙 수정</button>
       <div className="detail-rows">
         {rack.items.length === 0 ? (
           <div className="detail-empty-msg">설치된 장비 없음</div>
@@ -472,7 +509,65 @@ function CapacityBanner() {
   );
 }
 
-function GPUDashboard() {
+function liveRacks() { return RACK_DATA; }
+// Move/delete exactly one server, retaining its size and any additional metadata.
+function changeServer(racks, source, target) {
+  const next = clone(racks);
+  const from = next.find(r => r.room === source.room && r.rackId === source.rackId);
+  const item = from && from.items[source.itemIndex];
+  if (!item || item.type !== "server" || !Number.isInteger(source.unit) || source.unit < 0 || source.unit >= item.count) return racks;
+  const to = target && next.find(r => r.room === target.room && r.rackId === target.rackId);
+  if (target && (!to || to.infra || to === from)) return racks;
+  if (from.infra) return racks;
+  if (to) to.items.push({...item, count:1});
+  item.count -= 1;
+  if (!item.count) from.items.splice(source.itemIndex,1);
+  for (const r of next) {
+    r.serverCount = r.items.filter(i => i.type === "server").reduce((n,i) => n+i.count,0);
+    r.empty = r.items.length === 0;
+    r.detail = r.items.map(i => `${i.type === "server" ? i.size || "?U" : i.type} x ${i.count}`).join(", ") || "0";
+  }
+  return next;
+}
+function GPUDashboard({ onCommit, storageMessage }) {
+  const [draftState, setDraftState] = useState({ racks:null, past:[] });
+  const draftRacks = draftState.racks;
+  const setDraftRacks = update => setDraftState(previous => {
+    const next = typeof update === "function" ? update(previous.racks) : update;
+    if (next === previous.racks) return previous;
+    return { racks:next, past:next === null || previous.racks === null ? [] : [...previous.past, previous.racks] };
+  });
+  const undoEdit = () => {
+    setDraftState(previous => previous.past.length ? {
+      racks:previous.past[previous.past.length - 1], past:previous.past.slice(0,-1)
+    } : previous);
+    setPicked(null); setSelected(null);
+  };
+  const [picked, setPicked] = useState(null);
+  const RACK_DATA = draftRacks || liveRacks();
+  const editMode = draftRacks !== null;
+  const moveServer = (source,target) => { setDraftRacks(racks => changeServer(racks,source,target)); setPicked(null); setSelected(null); };
+  const discardEditing = () => { setDraftRacks(null); setPicked(null); setSelected(null); setEditing(null); };
+  useEffect(() => {
+    if (!editMode) return;
+    const warn = e => { e.preventDefault(); e.returnValue = ""; };
+    window.addEventListener("beforeunload",warn);
+    return () => window.removeEventListener("beforeunload",warn);
+  },[editMode]);
+  const [editing, setEditing] = useState(null);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  useEffect(() => {
+    if (!editMode || editing || settingsOpen) return;
+    const shortcut = event => {
+      const target = event.target;
+      if (target instanceof Element && target.closest("input, textarea, select, [contenteditable]:not([contenteditable='false'])")) return;
+      if ((event.ctrlKey || event.metaKey) && !event.shiftKey && !event.altKey && event.key.toLowerCase() === "z") {
+        event.preventDefault(); undoEdit();
+      }
+    };
+    window.addEventListener("keydown", shortcut);
+    return () => window.removeEventListener("keydown", shortcut);
+  }, [editMode, editing, settingsOpen]);
   const [roomFilter, setRoomFilter] = useState("전체");
   const [statusFilter, setStatusFilter] = useState("전체");
   const [query, setQuery] = useState("");
@@ -508,6 +603,7 @@ function GPUDashboard() {
   // ---- 슬롯 확보 플랜 저장/불러오기/공유 ----
   const [planName, setPlanName] = useState("");
   const [savedPlans, setSavedPlans] = useState(() => {
+    if (ACTIVE_PLANS !== null) return clone(ACTIVE_PLANS);
     try {
       const raw = localStorage.getItem(PLAN_STORAGE_KEY);
       return raw ? JSON.parse(raw) : [];
@@ -551,8 +647,10 @@ function GPUDashboard() {
 
   const persistPlans = (plans) => {
     setSavedPlans(plans);
+    ACTIVE_PLANS = clone(plans);
     try {
       localStorage.setItem(PLAN_STORAGE_KEY, JSON.stringify(plans));
+      saveWorkspace(plans);
     } catch (e) {
       /* localStorage 사용 불가 시 무시 (세션 한정) */
     }
@@ -607,7 +705,7 @@ function GPUDashboard() {
       rows.sort((a, b) => a.labActual.localeCompare(b.labActual, "ko"));
     }
     return rows;
-  }, [roomFilter, statusFilter, query, sortKey]);
+  }, [roomFilter, statusFilter, query, sortKey, draftRacks]);
 
   const grouped = useMemo(() => {
     const g = {};
@@ -1010,21 +1108,18 @@ function GPUDashboard() {
         }
         .rack-dot { width: 6px; height: 6px; border-radius: 50%; }
         .rack-elev {
-          height: 46px;
+          height: 80px;
           border: 1px solid var(--border);
           border-radius: 4px;
           overflow: hidden;
           display: flex;
           flex-direction: column-reverse;
-          background: #0D1016;
+          background: var(--bg);
         }
-        .rack-seg { width: 100%; border-top: 1px solid rgba(0,0,0,0.35); }
-        .rack-elev-empty {
-          width: 100%; height: 100%;
-          background: repeating-linear-gradient(
-            135deg, transparent, transparent 4px, rgba(255,255,255,0.03) 4px, rgba(255,255,255,0.03) 8px
-          );
-        }
+        .rack-slot { flex: 1 1 0; min-height: 0; width: 100%; }
+        .rack-slot + .rack-slot { border-bottom: 1px solid var(--border); }
+        .rack-slot-filled { background: var(--c-occupied-fill); }
+        .rack-slot-summary { font-size: 10px; color: var(--text-muted); line-height: 1.5; }
         .rack-card-foot {
           display: flex;
           justify-content: space-between;
@@ -1364,6 +1459,19 @@ function GPUDashboard() {
         </div>
       </div>
 
+      <fieldset className="workspace-lock" disabled={editMode}><WorkspaceToolbar plans={savedPlans} onCommit={onCommit} message={storageMessage} onSettings={() => setSettingsOpen(true)} /></fieldset>
+      {view === "rack" && <div className="rack-edit-toolbar">
+        <button className={`chip${editMode ? " active" : ""}`} onClick={() => { if(editMode) discardEditing(); else { setDraftRacks(clone(liveRacks())); setSelected(null); } }}>{editMode ? "수정 모드 끄기 (취소)" : "수정 모드 켜기"}</button>
+        {editMode && <>
+          <button className="chip" onClick={() => onCommit({...snapshot(savedPlans),racks:draftRacks})}>변경사항 저장</button>
+          <button className="chip" disabled={!draftState.past.length} onClick={undoEdit}>실행 취소 ({draftState.past.length})</button>
+          <button className="chip" disabled={!picked} onClick={() => { if(picked) moveServer(picked,null); }}>선택 서버 삭제</button>
+          <span role="status">{picked ? `${picked.room} R${picked.rackId} 서버 선택됨` : "서버를 드래그하거나 클릭해서 선택하세요."}</span>
+          <span className="edit-note">저장 전 임시 편집 중 · 모드를 끄면 변경 취소 · Ctrl/⌘+클릭: 서버 즉시 삭제 · Ctrl/⌘+Z: 실행 취소 · 랙 명의는 유지됩니다. 상단 집계는 저장 후 반영됩니다.</span>
+        </>}
+      </div>}
+      {editing && <RackEditor rack={editing} onClose={() => setEditing(null)} onSave={(rack) => { const racks = RACK_DATA.map(r => r.room === rack.room && r.rackId === rack.rackId ? rack : r); if(editMode) { const data = normalizeWorkspace({...snapshot(savedPlans),racks}); setDraftRacks(data.racks); setEditing(null); setSelected(null); setPicked(null); } else onCommit({...snapshot(savedPlans),racks}); }} />}
+      {settingsOpen && <SettingsEditor onClose={() => setSettingsOpen(false)} onSave={settings => onCommit({ ...snapshot(savedPlans), settings })} />}
       <div className="summary-row">
         {ROOMS.map((room) => (
           <SummaryCard key={room} room={room} />
@@ -1377,10 +1485,10 @@ function GPUDashboard() {
           <span className={`chip view-chip ${view === "rack" ? "active" : ""}`} onClick={() => setView("rack")}>
             🗄 랙별 보기
           </span>
-          <span className={`chip view-chip ${view === "lab" ? "active" : ""}`} onClick={() => setView("lab")}>
+          <span className={`chip view-chip ${view === "lab" ? "active" : ""}`} onClick={() => { if(!editMode) setView("lab"); }}>
             👤 연구실별 보기
           </span>
-          <span className={`chip view-chip ${view === "slot" ? "active" : ""}`} onClick={() => setView("slot")}>
+          <span className={`chip view-chip ${view === "slot" ? "active" : ""}`} onClick={() => { if(!editMode) setView("slot"); }}>
             🧮 슬롯 계산기
           </span>
         </div>
@@ -1472,6 +1580,7 @@ function GPUDashboard() {
 
       {view === "rack" && (
         <div className="legend-strip">
+          <span>랙 그림: {PHYSICAL_SLOTS_PER_RACK}칸 · 서버 1대 = 1슬롯 가정 (U 크기·보조 장비 공간 제외)</span>
           {Object.entries(STATUS_META).map(([k, v]) => (
             <span key={k}>
               <span className="legend-dot" style={{ background: v.color }} />
@@ -1574,7 +1683,7 @@ function GPUDashboard() {
             </table>
           </div>
           <div className="slot-banner-hint">
-            슬롯 = 권장(냉방) / 물리(랙당 {PHYSICAL_SLOTS_PER_RACK}) · 권장 랙당 대전 2.5 · 홍릉 4 · 양재 6
+            슬롯 = 권장(냉방) / 물리(랙당 {PHYSICAL_SLOTS_PER_RACK}) · 권장 랙당 {ROOMS.map(room => `${room} ${fmtSlots(ROOM_CAPACITY[room].maxServersPerRack)}`).join(" · ")}
           </div>
           {slotSummary.displacedServers > 0 && (
             <div className="slot-banner-warn">
@@ -1637,6 +1746,7 @@ function GPUDashboard() {
                       <RackElevation
                         key={`${rack.room}-${rack.rackId}`}
                         rack={rack}
+                        editMode={editMode} picked={picked} onPick={setPicked} onMove={moveServer}
                         onSelect={setSelected}
                         selected={
                           selected &&
@@ -1653,7 +1763,7 @@ function GPUDashboard() {
               )}
             </div>
             {selected ? (
-              <DetailPanel rack={selected} onClose={() => setSelected(null)} />
+              <DetailPanel rack={selected} onClose={() => setSelected(null)} onEdit={setEditing} />
             ) : (
               <div className="detail-placeholder">랙을 클릭하면 상세 정보가 여기에 표시됩니다.</div>
             )}
@@ -1788,8 +1898,144 @@ function GPUDashboard() {
 }
 
 
+let ACTIVE_PLANS = null;
+const WORKSPACE_KEY = "gpuDashboardWorkspace_v1";
+const clone = value => JSON.parse(JSON.stringify(value));
+function snapshot(plans = []) {
+  return clone({ format: "gpu-server-status", version: 1, savedAt: new Date().toISOString(), racks: RACK_DATA,
+    settings: { rooms: ROOM_CAPACITY, serverKW: SERVER_KW, physicalSlots: PHYSICAL_SLOTS_PER_RACK,
+      facultyCurrent: FACULTY_CURRENT, faculty2026: FACULTY_NEW_2026, faculty2027: FACULTY_NEW_2027 }, plans });
+}
+const INITIAL_WORKSPACE = snapshot();
+function normalizeWorkspace(input) {
+  const fail = message => { throw new Error(message); };
+  if (!input || input.format !== "gpu-server-status" || input.version !== 1) fail("지원하는 현황 JSON 형식(버전 1)이 아닙니다.");
+  const data = clone(input);
+  const positive = n => typeof n === "number" && Number.isFinite(n) && n > 0;
+  const text = v => typeof v === "string" && v.trim().length > 0;
+  const keys = new Set();
+  if (!Array.isArray(data.racks) || data.racks.length !== INITIAL_WORKSPACE.racks.length) fail("랙 수가 초기 현황과 다릅니다.");
+  const validKeys = new Set(INITIAL_WORKSPACE.racks.map(r => `${r.room}-${r.rackId}`));
+  data.racks.forEach(r => {
+    const key = `${r.room}-${r.rackId}`;
+    if (!validKeys.has(key) || keys.has(key)) fail("알 수 없거나 중복된 랙이 있습니다.");
+    keys.add(key);
+    if (!text(r.labNominal) || !text(r.labActual) || !Array.isArray(r.items)) fail("배정 명의, 실사용자와 장비 목록을 확인하세요.");
+    if (![r.shared,r.infra,r.reclaimable].every(v => typeof v === "boolean") || (r.shared && r.infra)) fail("랙 상태를 확인하세요.");
+    if (r.note != null && typeof r.note !== "string") fail("비고는 문자열이어야 합니다.");
+    r.items.forEach(i => { if (!text(i.type) || !Number.isSafeInteger(i.count) || i.count < 1 || (i.size != null && typeof i.size !== "string")) fail("장비 종류와 1 이상의 정수 수량을 입력하세요."); });
+    r.serverCount = r.items.filter(i => i.type === "server").reduce((n,i) => n+i.count,0);
+    r.empty = r.items.length === 0;
+    r.detail = r.items.map(i => `${i.type === "server" ? i.size || "?U" : i.type} x ${i.count}`).join(", ") || "0";
+  });
+  const c = data.settings;
+  if (!c || ![c.serverKW,c.physicalSlots,c.facultyCurrent,c.faculty2026,c.faculty2027].every(positive)) fail("계산 설정은 0보다 큰 숫자여야 합니다.");
+  if (![c.physicalSlots,c.facultyCurrent,c.faculty2026,c.faculty2027].every(Number.isSafeInteger)) fail("물리 슬롯과 교원 수는 정수여야 합니다.");
+  ROOMS.forEach(room => {
+    const cap = c.rooms && c.rooms[room];
+    if (!cap || ![cap.coolingKW,cap.maxServersPerRack].every(positive)) fail(`${room} 냉방·권장 슬롯 설정을 확인하세요.`);
+    cap.rackCount = data.racks.filter(r => r.room === room).length;
+    cap.kwPerRack = cap.coolingKW / cap.rackCount;
+  });
+  if (!Array.isArray(data.plans)) fail("계획 목록이 올바르지 않습니다.");
+  const names = new Set();
+  data.plans.forEach(p => {
+    if (!text(p.name) || names.has(p.name) || !Array.isArray(p.keys) || !p.keys.every(k => keys.has(k)) || !Number.isFinite(p.ts)) fail("계획 이름, 랙 또는 저장 시각이 올바르지 않습니다.");
+    names.add(p.name); p.keys = [...new Set(p.keys)];
+  });
+  return data;
+}
+function applyWorkspace(data) {
+  ACTIVE_PLANS = clone(data.plans);
+  RACK_DATA = clone(data.racks); ROOM_CAPACITY = clone(data.settings.rooms);
+  SERVER_KW = data.settings.serverKW; PHYSICAL_SLOTS_PER_RACK = data.settings.physicalSlots;
+  FACULTY_CURRENT = data.settings.facultyCurrent; FACULTY_NEW_2026 = data.settings.faculty2026; FACULTY_NEW_2027 = data.settings.faculty2027;
+  DEPT_INDIVIDUAL = individualTotals();
+}
+function saveWorkspace(plans) {
+  localStorage.setItem(WORKSPACE_KEY, JSON.stringify(snapshot(plans)));
+}
+function Workspace() {
+  const [state, setState] = useState(() => {
+    try {
+      const raw = localStorage.getItem(WORKSPACE_KEY);
+      if (raw) { const data = normalizeWorkspace(JSON.parse(raw)); applyWorkspace(data); localStorage.setItem(PLAN_STORAGE_KEY, JSON.stringify(data.plans)); }
+      return { revision: 0, message: raw ? "브라우저 임시 저장 복원됨" : "초기 현황 · 다른 머신으로 이동 시 JSON을 내보내세요" };
+    } catch (e) { return { revision: 0, message: `임시 저장 복원 실패: ${e.message}` }; }
+  });
+  const commit = input => {
+    let data;
+    try { data = normalizeWorkspace(input); } catch (e) { window.alert(e.message); return; }
+    applyWorkspace(data);
+    let message = "브라우저에 임시 저장됨 · 다른 머신으로 이동 시 JSON을 내보내세요";
+    try { saveWorkspace(data.plans); localStorage.setItem(PLAN_STORAGE_KEY, JSON.stringify(data.plans)); }
+    catch (e) { message = "브라우저 저장 실패 · 작업을 유지하려면 JSON을 내보내세요"; }
+    // Remount derived views so every aggregate and selection uses the new snapshot.
+    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    setState(s => ({ revision: s.revision + 1, message }));
+  };
+  return <GPUDashboard key={state.revision} onCommit={commit} storageMessage={state.message} />;
+}
+function WorkspaceToolbar({ plans, onCommit, message, onSettings }) {
+  const [error,setError] = useState("");
+  const exportJSON = () => {
+    const url = URL.createObjectURL(new Blob([JSON.stringify(snapshot(plans), null, 2)], { type: "application/json" }));
+    const a = document.createElement("a"); a.href = url; a.download = `server-status-${new Date().toISOString().replace(/[:.]/g,"-")}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url),1000);
+  };
+  const importJSON = async event => {
+    const file = event.target.files[0]; event.target.value = ""; if (!file) return;
+    try {
+      if (file.size > 5 * 1024 * 1024) throw new Error("5MB 이하의 JSON 파일을 선택하세요.");
+      const data = normalizeWorkspace(JSON.parse(await file.text()));
+      if (window.confirm(`${data.racks.length}개 랙과 ${data.plans.length}개 계획을 불러옵니다. 현재 현황·설정·저장 계획을 교체할까요? 필요한 경우 먼저 JSON을 내보내세요.`)) onCommit(data);
+      setError("");
+    } catch(e) { setError(`불러오기 실패: ${e.message}`); }
+  };
+  return <div className="workspace-toolbar">
+    <button className="chip" onClick={exportJSON}>JSON 내보내기</button>
+    <label className="chip file-import">JSON 불러오기<input aria-label="JSON 불러오기" type="file" accept=".json,application/json" onChange={importJSON} /></label>
+    <button className="chip" onClick={onSettings}>계산 설정</button>
+    <button className="chip" onClick={() => { if(window.confirm("현황·계산 설정·저장 계획을 초기 상태로 되돌릴까요? 필요한 경우 먼저 JSON을 내보내세요.")) onCommit(clone(INITIAL_WORKSPACE)); }}>초기 현황 복원</button>
+    <div role="status">{message}</div>{error && <div role="alert">{error}</div>}
+  </div>;
+}
+function EditorShell({ title, onClose, onSubmit, children }) {
+  return <div className="editor-overlay"><form className="editor-panel" role="dialog" aria-modal="true" aria-label={title} onSubmit={e => { e.preventDefault(); onSubmit(); }}>
+    <h2>{title}</h2>{children}<div className="editor-actions"><button type="button" onClick={onClose}>취소</button><button type="submit">변경사항 저장</button></div>
+  </form></div>;
+}
+function RackEditor({ rack, onClose, onSave }) {
+  const [draft,setDraft] = useState(() => clone(rack));
+  const update = (key,value) => setDraft(d => ({...d,[key]:value}));
+  const itemUpdate = (index,key,value) => update("items",draft.items.map((it,i) => i === index ? {...it,[key]:value} : it));
+  return <EditorShell title={`${rack.room} R${rack.rackId} 수정`} onClose={onClose} onSubmit={() => onSave(draft)}>
+    <label>배정 명의<input required value={draft.labNominal} onChange={e => update("labNominal",e.target.value)} /></label>
+    <label>실사용 연구실<input required value={draft.labActual} onChange={e => update("labActual",e.target.value)} /></label>
+    <label>용도<select value={draft.infra ? "infra" : draft.shared ? "shared" : "lab"} onChange={e => setDraft(d => ({...d,infra:e.target.value === "infra",shared:e.target.value === "shared"}))}><option value="lab">개별 연구실</option><option value="shared">학과 공용</option><option value="infra">인프라</option></select></label>
+    <label><input type="checkbox" checked={draft.reclaimable} onChange={e => update("reclaimable",e.target.checked)} /> 회수 가능</label>
+    <h3>설치 장비</h3><p>장비가 없으면 빈 랙으로 표시합니다. 서버 수는 server 장비 수량으로 계산합니다.</p>
+    {draft.items.map((it,i) => <div className="editor-item" key={i}>
+      <label>종류<select value={it.type} onChange={e => itemUpdate(i,"type",e.target.value)}>{[...new Set(["server","Master","Storage","Nas","Hub","Desktop","Terminal",it.type])].map(t => <option key={t}>{t}</option>)}</select></label>
+      <label>크기<input placeholder="4U / ?U" value={it.size || ""} onChange={e => itemUpdate(i,"size",e.target.value || null)} /></label>
+      <label>수량<input required type="number" min="1" step="1" value={it.count} onChange={e => itemUpdate(i,"count",Number(e.target.value))} /></label>
+      <button type="button" onClick={() => update("items",draft.items.filter((_,j) => i !== j))}>삭제</button>
+    </div>)}
+    <button type="button" onClick={() => update("items",[...draft.items,{type:"server",size:"?U",count:1}])}>장비 추가</button>
+    <label>비고<textarea value={draft.note || ""} onChange={e => update("note",e.target.value)} /></label>
+  </EditorShell>;
+}
+function SettingsEditor({ onClose, onSave }) {
+  const [draft,setDraft] = useState(() => snapshot().settings);
+  const field = (label,key,step="1") => <label>{label}<input required type="number" min={step} step={step} value={draft[key]} onChange={e => setDraft(d => ({...d,[key]:Number(e.target.value)}))} /></label>;
+  return <EditorShell title="계산 설정" onClose={onClose} onSubmit={() => onSave(draft)}>
+    {field("서버 1대 전력 가정 (kW)","serverKW","0.1")}{field("랙당 물리 슬롯","physicalSlots")}{field("기존 교원 수","facultyCurrent")}{field("2026 신임 교원 수","faculty2026")}{field("2027 신임 교원 수","faculty2027")}
+    {ROOMS.map(room => <fieldset key={room}><legend>{room}</legend>{[["coolingKW","냉방 용량 (kW)"],["maxServersPerRack","랙당 권장 슬롯"]].map(([key,label]) => <label key={key}>{label}<input required type="number" min="0.1" step="0.1" value={draft.rooms[room][key]} onChange={e => setDraft(d => ({...d,rooms:{...d.rooms,[room]:{...d.rooms[room],[key]:Number(e.target.value)}}}))} /></label>)}</fieldset>)}
+    <p>권장 슬롯은 직접 지정하는 계획값입니다. 냉방 용량을 바꿔도 자동 변경되지 않습니다.</p>
+  </EditorShell>;
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<GPUDashboard />);
+root.render(<Workspace />);
 </script>
 </body>
 </html>
