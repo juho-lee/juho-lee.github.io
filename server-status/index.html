@@ -44,6 +44,7 @@
   .editor-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:24px; }
   .editor-panel fieldset { border:1px solid var(--border); margin-top:16px; }
 </style>
+<script src="./report.js"></script>
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
@@ -525,7 +526,7 @@ function changeServer(racks, source, target) {
   if (from.infra) return racks;
   // Resolve legacy rack-level ownership before mixing servers from different labs.
   for (const rack of [from, to].filter(Boolean)) {
-    rack.items.forEach(i => { if (i.type === "server" && !i.owner) i.owner = rack.labActual; });
+    rack.items.forEach(i => { if (i.type === "server") { if (!i.owner) i.owner = rack.labActual; if (!i.origin) i.origin = {room:rack.room,rackId:rack.rackId,rackMappingVerified:true}; } });
   }
   if (to) {
     to.items.push({...item, count:1});
@@ -1943,19 +1944,22 @@ function GPUDashboard({ onCommit, storageMessage }) {
 }
 
 
+let ACTIVE_MIGRATION = null;
+let ACTIVE_REPORT_BASELINE = null;
 let ACTIVE_PLANS = null;
 const WORKSPACE_KEY = "gpuDashboardWorkspace_v1";
 const clone = value => JSON.parse(JSON.stringify(value));
 function snapshot(plans = []) {
   return clone({ format: "gpu-server-status", version: 1, savedAt: new Date().toISOString(), racks: RACK_DATA,
     settings: { rooms: ROOM_CAPACITY, serverKW: SERVER_KW, physicalSlots: PHYSICAL_SLOTS_PER_RACK,
-      facultyCurrent: FACULTY_CURRENT, faculty2026: FACULTY_NEW_2026, faculty2027: FACULTY_NEW_2027 }, plans });
+      facultyCurrent: FACULTY_CURRENT, faculty2026: FACULTY_NEW_2026, faculty2027: FACULTY_NEW_2027 }, plans, ...(ACTIVE_MIGRATION ? {migration: ACTIVE_MIGRATION} : {}), ...(ACTIVE_REPORT_BASELINE ? {reportBaseline: ACTIVE_REPORT_BASELINE} : {}) });
 }
 const INITIAL_WORKSPACE = snapshot();
 function normalizeWorkspace(input) {
   const fail = message => { throw new Error(message); };
   if (!input || input.format !== "gpu-server-status" || input.version !== 1) fail("지원하는 현황 JSON 형식(버전 1)이 아닙니다.");
   const data = clone(input);
+  if (data.reportBaseline != null && (!Array.isArray(data.reportBaseline) || data.reportBaseline.some(r => !r || typeof r.room !== "string" || !Number.isSafeInteger(r.rackId) || typeof r.labActual !== "string" || (r.allocationCategory != null && !Object.hasOwn(GPUReport.categories,r.allocationCategory))))) fail("보고서 기준 배정 정보가 올바르지 않습니다.");
   const positive = n => typeof n === "number" && Number.isFinite(n) && n > 0;
   const text = v => typeof v === "string" && v.trim().length > 0;
   const keys = new Set();
@@ -1967,6 +1971,7 @@ function normalizeWorkspace(input) {
     keys.add(key);
     if (!text(r.labNominal) || !text(r.labActual) || !Array.isArray(r.items)) fail("배정 명의, 실사용자와 장비 목록을 확인하세요.");
     if (![r.shared,r.infra,r.reclaimable].every(v => typeof v === "boolean") || (r.shared && r.infra)) fail("랙 상태를 확인하세요.");
+    if (r.allocationCategory != null && !Object.hasOwn(GPUReport.categories,r.allocationCategory)) fail("보고서 배정 분류를 확인하세요.");
     if (r.note != null && typeof r.note !== "string") fail("비고는 문자열이어야 합니다.");
     r.items.forEach(i => { if (!text(i.type) || !Number.isSafeInteger(i.count) || i.count < 1 || (i.size != null && typeof i.size !== "string") || (i.owner != null && !text(i.owner))) fail("장비 종류와 1 이상의 정수 수량을 입력하세요."); });
     const ownedServers = r.items.filter(i => i.type === "server");
@@ -1997,6 +2002,8 @@ function normalizeWorkspace(input) {
   return data;
 }
 function applyWorkspace(data) {
+  ACTIVE_MIGRATION = data.migration ? clone(data.migration) : null;
+  ACTIVE_REPORT_BASELINE = data.reportBaseline ? clone(data.reportBaseline) : null;
   ACTIVE_PLANS = clone(data.plans);
   RACK_DATA = clone(data.racks); ROOM_CAPACITY = clone(data.settings.rooms);
   SERVER_KW = data.settings.serverKW; PHYSICAL_SLOTS_PER_RACK = data.settings.physicalSlots;
@@ -2048,6 +2055,19 @@ function WorkspaceToolbar({ plans, onCommit, message, onSettings }) {
     } catch(e) { setError(`플랜 불러오기 실패: ${e.message}`); }
     finally { setLoading(false); }
   };
+  const reportData = () => GPUReport.build(snapshot(plans));
+  const exportReport = () => {
+    const content = GPUReport.markdown(reportData());
+    const url = URL.createObjectURL(new Blob([content],{type:"text/markdown;charset=utf-8"}));
+    const link=document.createElement("a"); link.href=url; link.download=`migration-report-${new Date().toISOString().slice(0,10)}.md`; link.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+  };
+  const printReport = () => {
+    const content=GPUReport.printable(reportData());
+    const reportWindow=window.open("","_blank");
+    if(!reportWindow) { setError("보고서 창을 열 수 없습니다. 팝업을 허용하거나 Markdown으로 내려받으세요."); return; }
+    reportWindow.opener=null;
+    reportWindow.document.open(); reportWindow.document.write(content); reportWindow.document.close();
+  };
   const exportJSON = () => {
     const url = URL.createObjectURL(new Blob([JSON.stringify(snapshot(plans), null, 2)], { type: "application/json" }));
     const a = document.createElement("a"); a.href = url; a.download = `server-status-${new Date().toISOString().replace(/[:.]/g,"-")}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url),1000);
@@ -2065,6 +2085,8 @@ function WorkspaceToolbar({ plans, onCommit, message, onSettings }) {
     <button className="chip" onClick={exportJSON}>JSON 내보내기</button>
     <label className="chip file-import">JSON 불러오기<input aria-label="JSON 불러오기" type="file" accept=".json,application/json" onChange={importJSON} /></label>
     <button className="chip" onClick={onSettings}>계산 설정</button>
+    <button className="chip" onClick={exportReport}>현재 현황 보고서 (MD)</button>
+    <button className="chip" onClick={printReport}>보고서 인쇄 / PDF</button>
     <button className="chip" onClick={() => { if(window.confirm("현황·계산 설정·저장 계획을 초기 상태로 되돌릴까요? 필요한 경우 먼저 JSON을 내보내세요.")) onCommit(clone(INITIAL_WORKSPACE)); }}>초기 현황 복원</button>
     <div className="migration-loader">
       <label htmlFor="migration-plan">대전 이전 플랜</label>
@@ -2093,6 +2115,10 @@ function RackEditor({ rack, onClose, onSave }) {
       const name = e.target.value;
       setDraft(d => ({...d,labActual:name,items:d.items.map(i => i.type === "server" ? {...i,owner:name} : i)}));
     }} /></label>
+    <label>보고서 배정 분류<select value={draft.allocationCategory || GPUReport.classify(draft, ACTIVE_REPORT_BASELINE?.find(r => r.room === draft.room && r.rackId === draft.rackId))} onChange={e => update("allocationCategory",e.target.value)}>
+      {Object.entries(GPUReport.categories).map(([value,label]) => <option key={value} value={value}>{label}</option>)}
+    </select></label>
+    <p>빈 랙의 배정 상태와 임시 점유 분류에 사용합니다. 예약이 확인된 랙만 신임교원 예약으로 지정하세요.</p>
     <label>용도<select value={draft.infra ? "infra" : draft.shared ? "shared" : "lab"} onChange={e => setDraft(d => ({...d,infra:e.target.value === "infra",shared:e.target.value === "shared"}))}><option value="lab">개별 연구실</option><option value="shared">학과 공용</option><option value="infra">인프라</option></select></label>
     <label><input type="checkbox" checked={draft.reclaimable} onChange={e => update("reclaimable",e.target.checked)} /> 회수 가능</label>
     <h3>설치 장비</h3><p>장비가 없으면 빈 랙으로 표시합니다. 서버 수는 server 장비 수량으로 계산합니다.</p>

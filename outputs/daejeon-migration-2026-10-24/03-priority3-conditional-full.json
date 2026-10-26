@@ -1,0 +1,3797 @@
+{
+  "format": "gpu-server-status",
+  "version": 1,
+  "savedAt": "2026-10-24T02:40:36.850Z",
+  "racks": [
+    {
+      "room": "홍릉",
+      "rackId": 1,
+      "labNominal": "학과 공용",
+      "labActual": "최재식 / 윤세영 / 김기응",
+      "detail": "Master x 1, 8U x 1, 8U x 1, 8U x 1, 4U x 1",
+      "items": [
+        {
+          "type": "Master",
+          "size": null,
+          "count": 1
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ03-server-1",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 3,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-3",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ04-server-4",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 4,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-4",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "윤세영",
+          "assetId": "DJ09-server-2",
+          "model": "RTX A5000 x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 9,
+            "possibleRackIds": [
+              9
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "8U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 2934,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B4:C4",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX A5000",
+              "count": 8,
+              "maxW": 230
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-7",
+          "model": "A100 x 3",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "2U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2223,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B40:C40",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "A100",
+              "count": 3,
+              "maxW": 400
+            }
+          ]
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 공용 서버 5대 추가 폐기(시뮬레이션만). 비서버 장비 보존.\n[C · 3순위 빈 랙까지 허용] 장비 구성: 최재식: 서버 구성 미확인 — 원본 JSON 수량 보존 (8U, 4.89kW/대) ×2; 윤세영: RTX A5000 x 8 (8U, 2.93kW/대) ×1; 김기응: A100 x 3 (4U, 2.22kW/대) ×1. 임시 점유. 원배정 명의 '학과 공용' 유지. 4대 이전: DJ03-server-1, DJ04-server-4, DJ09-server-2, DJ02-server-7. 계획 점유 32/32U, 계획 AC 최대 15.73kW / 가정 상한 18kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 2,
+      "labNominal": "학과 공용",
+      "labActual": "윤세영 / 김기응 / 최윤재 / 신진우",
+      "detail": "8U x 1, 2U x 1, 8U x 1, 8U x 1, Nas x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "윤세영",
+          "assetId": "DJ09-server-1",
+          "model": "RTX 3090 x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 9,
+            "possibleRackIds": [
+              9
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "8U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4000,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B3:C3",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 8,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-8",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "2U"
+          },
+          "estimatedU": 2,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "snapshot_only_unreconciled",
+          "sourceRef": "첨부 JSON 대전-2",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최윤재",
+          "assetId": "DJ15-server-3",
+          "model": "320W (max 400W) x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 15,
+            "possibleRackIds": [
+              14,
+              15
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4445,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B18:C18",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "미상",
+              "count": 8,
+              "maxW": 400
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "신진우",
+          "assetId": "DJ13-server-5",
+          "model": "RTX 2080 Ti x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 13,
+            "possibleRackIds": [
+              13
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 3200,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B28:C28",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 2080 Ti",
+              "count": 8,
+              "maxW": 260
+            }
+          ]
+        },
+        {
+          "type": "Nas",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ08-Nas-5",
+          "model": "Nas (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 8,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 500,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-8",
+          "inventoryAdditional": false
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 공용 서버 5대 추가 폐기(시뮬레이션만). 비서버 장비 보존.\n[C · 3순위 빈 랙까지 허용] 장비 구성: 윤세영: RTX 3090 x 8 (8U, 4.00kW/대) ×1; 김기응: 서버 구성 미확인 — 원본 JSON 수량 보존 (2U, 4.89kW/대) ×1; 최윤재: 320W (max 400W) x 8 (8U, 4.45kW/대) ×1; 신진우: RTX 2080 Ti x 8 (8U, 3.20kW/대) ×1; 주재걸: Nas (모델 미상) (4U, 0.50kW/대) ×1. 임시 점유. 원배정 명의 '학과 공용' 유지. 5대 이전: DJ09-server-1, DJ02-server-8, DJ15-server-3, DJ13-server-5, DJ08-Nas-5. 계획 점유 30/32U, 계획 AC 최대 17.03kW / 가정 상한 18kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 3,
+      "labNominal": "학과 공용",
+      "labActual": "최윤재 / 윤세영 / 정송 / 주재걸 / 최재식",
+      "detail": "8U x 1, 8U x 1, 4U x 1, 4U x 1, 8U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최윤재",
+          "assetId": "DJ15-server-5",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 15,
+            "possibleRackIds": [
+              14,
+              15
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "snapshot_only_unreconciled",
+          "sourceRef": "첨부 JSON 대전-15",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "윤세영",
+          "assetId": "DJ09-server-3",
+          "model": "RTX A5000 x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 9,
+            "possibleRackIds": [
+              9
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "8U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 2934,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B4:C4",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX A5000",
+              "count": 8,
+              "maxW": 230
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "정송",
+          "assetId": "DJ01-server-4",
+          "model": "TITAN Xp x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 1,
+            "possibleRackIds": [
+              1
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2223,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B23:C23",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN Xp",
+              "count": 4,
+              "maxW": 300
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ06-server-4",
+          "model": "TITAN RTX x 6",
+          "origin": {
+            "room": "대전",
+            "rackId": 6,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2756,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B8:C8",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN RTX",
+              "count": 6,
+              "maxW": 280
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ03-server-2",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 3,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-3",
+          "inventoryAdditional": false
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 공용 서버 5대 추가 폐기(시뮬레이션만). 비서버 장비 보존.\n[C · 3순위 빈 랙까지 허용] 장비 구성: 최윤재: 서버 구성 미확인 — 원본 JSON 수량 보존 (8U, 4.89kW/대) ×1; 윤세영: RTX A5000 x 8 (8U, 2.93kW/대) ×1; 정송: TITAN Xp x 4 (4U, 2.22kW/대) ×1; 주재걸: TITAN RTX x 6 (4U, 2.76kW/대) ×1; 최재식: 서버 구성 미확인 — 원본 JSON 수량 보존 (8U, 4.89kW/대) ×1. 임시 점유. 원배정 명의 '학과 공용' 유지. 5대 이전: DJ15-server-5, DJ09-server-3, DJ01-server-4, DJ06-server-4, DJ03-server-2. 계획 점유 32/32U, 계획 AC 최대 17.69kW / 가정 상한 18kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 4,
+      "labNominal": "학과 공용",
+      "labActual": "주재걸 / 최윤재 / 최재식 / 김기응",
+      "detail": "4U x 1, 8U x 1, 8U x 1, 8U x 1, 4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ05-server-7",
+          "model": "RTX 3090 x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 5,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2445,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B6:C6",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 4,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최윤재",
+          "assetId": "DJ14-server-2",
+          "model": "320W (max 400W) x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 14,
+            "possibleRackIds": [
+              14,
+              15
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4445,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B15:C15",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "미상",
+              "count": 8,
+              "maxW": 400
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ05-server-2",
+          "model": "RTX 3090 x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 5,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4000,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B5:C5",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 8,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ04-server-5",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 4,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-4",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-4",
+          "model": "TITAN RTX x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2134,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B38:C38",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN RTX",
+              "count": 4,
+              "maxW": 280
+            }
+          ]
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 공용 서버 5대 추가 폐기(시뮬레이션만). 비서버 장비 보존.\n[C · 3순위 빈 랙까지 허용] 장비 구성: 주재걸: RTX 3090 x 4 (4U, 2.44kW/대) ×1; 최윤재: 320W (max 400W) x 8 (8U, 4.45kW/대) ×1; 주재걸: RTX 3090 x 8 (8U, 4.00kW/대) ×1; 최재식: 서버 구성 미확인 — 원본 JSON 수량 보존 (8U, 4.89kW/대) ×1; 김기응: TITAN RTX x 4 (4U, 2.13kW/대) ×1. 임시 점유. 원배정 명의 '학과 공용' 유지. 5대 이전: DJ05-server-7, DJ14-server-2, DJ05-server-2, DJ04-server-5, DJ02-server-4. 계획 점유 32/32U, 계획 AC 최대 17.91kW / 가정 상한 18kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 5,
+      "labNominal": "학과 공용",
+      "labActual": "최재식 / 김기응 / 주재걸",
+      "detail": "8U x 1, 2U x 1, 4U x 1, 4U x 1, 4U x 1, Nas x 1, 4U x 1, Hub x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ04-server-1",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 4,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-4",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-11",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "2U"
+          },
+          "estimatedU": 2,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "snapshot_only_unreconciled",
+          "sourceRef": "첨부 JSON 대전-2",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ07-server-3",
+          "model": "RTX 2080 Ti x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 7,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2045,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B10:C10",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 2080 Ti",
+              "count": 4,
+              "maxW": 260
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ07-server-2",
+          "model": "RTX 2080 Ti x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 7,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2045,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B10:C10",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 2080 Ti",
+              "count": 4,
+              "maxW": 260
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-1",
+          "model": "RTX 3090 x 1 + RTX 3090 Ti x 1",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 1778,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B36:C36",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 1,
+              "maxW": 350
+            },
+            {
+              "model": "RTX 3090 Ti",
+              "count": 1,
+              "maxW": 450
+            }
+          ]
+        },
+        {
+          "type": "Nas",
+          "size": "4U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ03-Nas-9",
+          "model": "Nas (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 3,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 500,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-3",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ-unlocated-주재걸-20",
+          "model": "TITAN X x 2",
+          "origin": {
+            "room": "대전",
+            "rackId": null,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": null
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 1556,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B13:C13",
+          "inventoryAdditional": true,
+          "gpus": [
+            {
+              "model": "TITAN X",
+              "count": 2,
+              "maxW": 300
+            }
+          ]
+        },
+        {
+          "type": "Hub",
+          "size": "1U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ03-Hub-7",
+          "model": "Hub (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 3,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 1,
+          "estimatedMaxPowerW": 200,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-3",
+          "inventoryAdditional": false
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 공용 서버 5대 추가 폐기(시뮬레이션만). 비서버 장비 보존.\n[C · 3순위 빈 랙까지 허용] 장비 구성: 최재식: 서버 구성 미확인 — 원본 JSON 수량 보존 (8U, 4.89kW/대) ×1; 김기응: 서버 구성 미확인 — 원본 JSON 수량 보존 (2U, 4.89kW/대) ×1; 주재걸: RTX 2080 Ti x 4 (4U, 2.04kW/대) ×2; 김기응: RTX 3090 x 1 + RTX 3090 Ti x 1 (4U, 1.78kW/대) ×1; 최재식: Nas (모델 미상) (4U, 0.50kW/대) ×1; 주재걸: TITAN X x 2 (4U, 1.56kW/대) ×1; 최재식: Hub (모델 미상) (1U, 0.20kW/대) ×1. 임시 점유. 원배정 명의 '학과 공용' 유지. 8대 이전: DJ04-server-1, DJ02-server-11, DJ07-server-3, DJ07-server-2, DJ02-server-1, DJ03-Nas-9, DJ-unlocated-주재걸-20, DJ03-Hub-7. 계획 점유 31/32U, 계획 AC 최대 17.90kW / 가정 상한 18kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 6,
+      "labNominal": "학과 공용",
+      "labActual": "최윤재 / 주재걸 / 정송",
+      "detail": "8U x 1, 10U x 1, 4U x 1, 8U x 1, Hub x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최윤재",
+          "assetId": "DJ15-server-6",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 15,
+            "possibleRackIds": [
+              14,
+              15
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "snapshot_only_unreconciled",
+          "sourceRef": "첨부 JSON 대전-15",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "10U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ08-server-2",
+          "model": "TITAN Xp x 10",
+          "origin": {
+            "room": "대전",
+            "rackId": 8,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 10,
+          "estimatedMaxPowerW": 4223,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B11:C11",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN Xp",
+              "count": 10,
+              "maxW": 300
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ06-server-3",
+          "model": "TITAN RTX x 6",
+          "origin": {
+            "room": "대전",
+            "rackId": 6,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2756,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B8:C8",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN RTX",
+              "count": 6,
+              "maxW": 280
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "정송",
+          "assetId": "DJ01-server-2",
+          "model": "TITAN RTX x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 1,
+            "possibleRackIds": [
+              1
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 3378,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B21:C21",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN RTX",
+              "count": 8,
+              "maxW": 280
+            }
+          ]
+        },
+        {
+          "type": "Hub",
+          "size": "1U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ03-Hub-8",
+          "model": "Hub (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 3,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 1,
+          "estimatedMaxPowerW": 200,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-3",
+          "inventoryAdditional": false
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 공용 서버 5대 추가 폐기(시뮬레이션만). 비서버 장비 보존.\n[C · 3순위 빈 랙까지 허용] 장비 구성: 최윤재: 서버 구성 미확인 — 원본 JSON 수량 보존 (8U, 4.89kW/대) ×1; 주재걸: TITAN Xp x 10 (10U, 4.22kW/대) ×1; 주재걸: TITAN RTX x 6 (4U, 2.76kW/대) ×1; 정송: TITAN RTX x 8 (8U, 3.38kW/대) ×1; 최재식: Hub (모델 미상) (1U, 0.20kW/대) ×1. 임시 점유. 원배정 명의 '학과 공용' 유지. 5대 이전: DJ15-server-6, DJ08-server-2, DJ06-server-3, DJ01-server-2, DJ03-Hub-8. 계획 점유 31/32U, 계획 AC 최대 15.45kW / 가정 상한 18kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 7,
+      "labNominal": "윤세영",
+      "labActual": "윤세영",
+      "detail": "8U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1
+        }
+      ],
+      "serverCount": 1,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 8,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "Master x 1, Storage x 1",
+      "items": [
+        {
+          "type": "Master",
+          "size": null,
+          "count": 1
+        },
+        {
+          "type": "Storage",
+          "size": null,
+          "count": 1
+        }
+      ],
+      "serverCount": 0,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 9,
+      "labNominal": "학과 공용",
+      "labActual": "최윤재 / 신진우 / 주재걸",
+      "detail": "8U x 1, 8U x 1, 4U x 1, Terminal x 1, 1U x 1, 4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최윤재",
+          "assetId": "DJ15-server-1",
+          "model": "280W (max 325W) x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 15,
+            "possibleRackIds": [
+              14,
+              15
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 3778,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B16:C16",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "미상",
+              "count": 8,
+              "maxW": 325
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "신진우",
+          "assetId": "DJ13-server-4",
+          "model": "RTX 2080 Ti x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 13,
+            "possibleRackIds": [
+              13
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 3200,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B28:C28",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 2080 Ti",
+              "count": 8,
+              "maxW": 260
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ07-server-4",
+          "model": "RTX 2080 Ti x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 7,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2045,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B10:C10",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 2080 Ti",
+              "count": 4,
+              "maxW": 260
+            }
+          ]
+        },
+        {
+          "type": "Terminal",
+          "size": "4U",
+          "count": 1,
+          "owner": "예종철",
+          "assetId": "DJ12-Terminal-1",
+          "model": "Terminal (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 12,
+            "possibleRackIds": [],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 300,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-12",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "1U",
+          "count": 1,
+          "owner": "신진우",
+          "assetId": "DJ13-server-7",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 13,
+            "possibleRackIds": [
+              13
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "1U"
+          },
+          "estimatedU": 1,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "snapshot_only_unreconciled",
+          "sourceRef": "첨부 JSON 대전-13",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "신진우",
+          "assetId": "DJ13-server-2",
+          "model": "TITAN X x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 13,
+            "possibleRackIds": [
+              13
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2223,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B27:C27",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN X",
+              "count": 4,
+              "maxW": 300
+            }
+          ]
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 장비 구성: 최윤재: 280W (max 325W) x 8 (8U, 3.78kW/대) ×1; 신진우: RTX 2080 Ti x 8 (8U, 3.20kW/대) ×1; 주재걸: RTX 2080 Ti x 4 (4U, 2.04kW/대) ×1; 예종철: Terminal (모델 미상) (4U, 0.30kW/대) ×1; 신진우: 서버 구성 미확인 — 원본 JSON 수량 보존 (1U, 4.89kW/대) ×1; 신진우: TITAN X x 4 (4U, 2.22kW/대) ×1. 임시 점유. 원배정 명의 '학과 공용' 유지. 6대 이전: DJ15-server-1, DJ13-server-4, DJ07-server-4, DJ12-Terminal-1, DJ13-server-7, DJ13-server-2. 계획 점유 29/32U, 계획 AC 최대 16.43kW / 가정 상한 18kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 10,
+      "labNominal": "학과 공용",
+      "labActual": "최재식 / 최윤재 / 주재걸",
+      "detail": "8U x 1, 8U x 1, 8U x 1, 8U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ04-server-2",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 4,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-4",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ03-server-5",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 3,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-3",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최윤재",
+          "assetId": "DJ15-server-2",
+          "model": "280W (max 350W) x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 15,
+            "possibleRackIds": [
+              14,
+              15
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4000,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B17:C17",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "미상",
+              "count": 8,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ05-server-5",
+          "model": "RTX 3090 x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 5,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4000,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B5:C5",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 8,
+              "maxW": 350
+            }
+          ]
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 장비 구성: 최재식: 서버 구성 미확인 — 원본 JSON 수량 보존 (8U, 4.89kW/대) ×2; 최윤재: 280W (max 350W) x 8 (8U, 4.00kW/대) ×1; 주재걸: RTX 3090 x 8 (8U, 4.00kW/대) ×1. 임시 점유. 원배정 명의 '학과 공용' 유지. 4대 이전: DJ04-server-2, DJ03-server-5, DJ15-server-2, DJ05-server-5. 계획 점유 32/32U, 계획 AC 최대 17.78kW / 가정 상한 18kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 11,
+      "labNominal": "학과 공용",
+      "labActual": "주재걸 / 정송 / 김기응",
+      "detail": "8U x 1, 4U x 1, 4U x 1, 4U x 1, 4U x 1, Nas x 1, 4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ05-server-1",
+          "model": "RTX 3090 x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 5,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4000,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B5:C5",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 8,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "정송",
+          "assetId": "DJ01-server-3",
+          "model": "TITAN RTX x 7",
+          "origin": {
+            "room": "대전",
+            "rackId": 1,
+            "possibleRackIds": [
+              1
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 3067,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B22:C22",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN RTX",
+              "count": 7,
+              "maxW": 280
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ06-server-1",
+          "model": "RTX 3090 x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 6,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2445,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B6:C6",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 4,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-6",
+          "model": "RTX A6000 x 2",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 1556,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B39:C39",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX A6000",
+              "count": 2,
+              "maxW": 300
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ-unlocated-주재걸-19",
+          "model": "TITAN Xp x 2 + GTX 1080 Ti x 2",
+          "origin": {
+            "room": "대전",
+            "rackId": null,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": null
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2223,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B12:C12",
+          "inventoryAdditional": true,
+          "gpus": [
+            {
+              "model": "TITAN Xp",
+              "count": 2,
+              "maxW": 300
+            },
+            {
+              "model": "GTX 1080 Ti",
+              "count": 2,
+              "maxW": 300
+            }
+          ]
+        },
+        {
+          "type": "Nas",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ08-Nas-3",
+          "model": "Nas (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 8,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 500,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-8",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "정송",
+          "assetId": "DJ01-server-5",
+          "model": "TITAN X x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 1,
+            "possibleRackIds": [
+              1
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2223,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B24:C24",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN X",
+              "count": 4,
+              "maxW": 300
+            }
+          ]
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 장비 구성: 주재걸: RTX 3090 x 8 (8U, 4.00kW/대) ×1; 정송: TITAN RTX x 7 (4U, 3.07kW/대) ×1; 주재걸: RTX 3090 x 4 (4U, 2.44kW/대) ×1; 김기응: RTX A6000 x 2 (4U, 1.56kW/대) ×1; 주재걸: TITAN Xp x 2 + GTX 1080 Ti x 2 (4U, 2.22kW/대) ×1; 주재걸: Nas (모델 미상) (4U, 0.50kW/대) ×1; 정송: TITAN X x 4 (4U, 2.22kW/대) ×1. 임시 점유. 원배정 명의 '학과 공용' 유지. 7대 이전: DJ05-server-1, DJ01-server-3, DJ06-server-1, DJ02-server-6, DJ-unlocated-주재걸-19, DJ08-Nas-3, DJ01-server-5. 계획 점유 32/32U, 계획 AC 최대 16.01kW / 가정 상한 18kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 12,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 13,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 14,
+      "labNominal": "서민준",
+      "labActual": "서민준",
+      "detail": "?U x 1, ?U x 2, Nas x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 1
+        },
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 2
+        },
+        {
+          "type": "Nas",
+          "size": null,
+          "count": 1
+        }
+      ],
+      "serverCount": 3,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 15,
+      "labNominal": "이주호",
+      "labActual": "이주호",
+      "detail": "8U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 16,
+      "labNominal": "이주호",
+      "labActual": "이주호",
+      "detail": "8U x 3, 1U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 3
+        },
+        {
+          "type": "server",
+          "size": "1U",
+          "count": 1
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 17,
+      "labNominal": "윤철희",
+      "labActual": "윤철희",
+      "detail": "8U x 4",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 18,
+      "labNominal": "윤철희",
+      "labActual": "윤철희",
+      "detail": "8U x 4, 2U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 19,
+      "labNominal": "심현정",
+      "labActual": "심현정",
+      "detail": "8U x 4",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 20,
+      "labNominal": "심현정",
+      "labActual": "심현정",
+      "detail": "8U x 4",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 21,
+      "labNominal": "임재환",
+      "labActual": "임재환",
+      "detail": "4U x 3",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 3
+        }
+      ],
+      "serverCount": 3,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 22,
+      "labNominal": "임재환",
+      "labActual": "임재환",
+      "detail": "4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1
+        }
+      ],
+      "serverCount": 1,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 23,
+      "labNominal": "김범준",
+      "labActual": "김범준",
+      "detail": "?U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 24,
+      "labNominal": "김범준",
+      "labActual": "김범준",
+      "detail": "?U x 7",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 7
+        }
+      ],
+      "serverCount": 7,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 25,
+      "labNominal": "서민준",
+      "labActual": "서민준",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 1,
+      "labNominal": "네트워크",
+      "labActual": "네트워크",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": true
+    },
+    {
+      "room": "양재",
+      "rackId": 2,
+      "labNominal": "최윤재",
+      "labActual": "최윤재",
+      "detail": "?U x 6",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 6
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 3,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "detail": "?U x 4, Nas x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 4
+        },
+        {
+          "type": "Nas",
+          "size": null,
+          "count": 1
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 4,
+      "labNominal": "윤세영",
+      "labActual": "윤세영",
+      "detail": "8U x 4, 3U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "3U",
+          "count": 1
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 5,
+      "labNominal": "오성준",
+      "labActual": "오성준",
+      "detail": "4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1
+        }
+      ],
+      "serverCount": 1,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 6,
+      "labNominal": "오성준",
+      "labActual": "최재식 / 주재걸 / 최윤재",
+      "detail": "8U x 1, 4U x 1, 8U x 1, 8U x 1, Nas x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ04-server-3",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 4,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-4",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ06-server-2",
+          "model": "RTX 3090 x 2 + TITAN Xp x 1 + TITAN V JHH Special Edition x 1",
+          "origin": {
+            "room": "대전",
+            "rackId": 6,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2334,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B7:C7",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 2,
+              "maxW": 350
+            },
+            {
+              "model": "TITAN Xp",
+              "count": 1,
+              "maxW": 300
+            },
+            {
+              "model": "TITAN V JHH Special Edition",
+              "count": 1,
+              "maxW": 300
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ04-server-6",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 4,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-4",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최윤재",
+          "assetId": "DJ14-server-1",
+          "model": "280W (max 350W) x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 14,
+            "possibleRackIds": [
+              14,
+              15
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4000,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B14:C14",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "미상",
+              "count": 8,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "Nas",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ07-Nas-5",
+          "model": "Nas (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 7,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 500,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-7",
+          "inventoryAdditional": false
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 장비 구성: 최재식: 서버 구성 미확인 — 원본 JSON 수량 보존 (8U, 4.89kW/대) ×2; 주재걸: RTX 3090 x 2 + TITAN Xp x 1 + TITAN V JHH Special Edition x 1 (4U, 2.33kW/대) ×1; 최윤재: 280W (max 350W) x 8 (8U, 4.00kW/대) ×1; 주재걸: Nas (모델 미상) (4U, 0.50kW/대) ×1. 임시 점유. 원배정 명의 '오성준' 유지. 5대 이전: DJ04-server-3, DJ06-server-2, DJ04-server-6, DJ14-server-1, DJ07-Nas-5. 계획 점유 32/32U, 계획 AC 최대 16.61kW / 가정 상한 24kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 7,
+      "labNominal": "한동수",
+      "labActual": "주재걸 / 신진우 / 최윤재",
+      "detail": "Desktop x 1, 8U x 1, 8U x 1, 8U x 1",
+      "items": [
+        {
+          "type": "Desktop",
+          "size": "8U",
+          "count": 1,
+          "owner": "양은호",
+          "assetId": "DJ11-Desktop-1",
+          "model": "Desktop (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 11,
+            "possibleRackIds": [],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 1000,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-11",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ05-server-4",
+          "model": "RTX 3090 x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 5,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4000,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B5:C5",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 8,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "신진우",
+          "assetId": "DJ13-server-3",
+          "model": "RTX 2080 Ti x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 13,
+            "possibleRackIds": [
+              13
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 3200,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B28:C28",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 2080 Ti",
+              "count": 8,
+              "maxW": 260
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최윤재",
+          "assetId": "DJ15-server-4",
+          "model": "280W (max 300W) x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 15,
+            "possibleRackIds": [
+              14,
+              15
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 3556,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B19:C19",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "미상",
+              "count": 8,
+              "maxW": 300
+            }
+          ]
+        }
+      ],
+      "serverCount": 3,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 장비 구성: 양은호: Desktop (모델 미상) (8U, 1.00kW/대) ×1; 주재걸: RTX 3090 x 8 (8U, 4.00kW/대) ×1; 신진우: RTX 2080 Ti x 8 (8U, 3.20kW/대) ×1; 최윤재: 280W (max 300W) x 8 (8U, 3.56kW/대) ×1. 임시 점유. 원배정 명의 '한동수' 유지. 4대 이전: DJ11-Desktop-1, DJ05-server-4, DJ13-server-3, DJ15-server-4. 계획 점유 32/32U, 계획 AC 최대 11.76kW / 가정 상한 24kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 8,
+      "labNominal": "한동수",
+      "labActual": "김기응 / 최재식 / 신진우 / 정송 / 주재걸",
+      "detail": "4U x 1, 8U x 1, 4U x 1, Nas x 1, 2U x 1, 4U x 1, 4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-5",
+          "model": "TITAN RTX x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2134,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B38:C38",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN RTX",
+              "count": 4,
+              "maxW": 280
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ03-server-4",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 3,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-3",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "신진우",
+          "assetId": "DJ13-server-6",
+          "model": "RTX 2080 Ti x 6",
+          "origin": {
+            "room": "대전",
+            "rackId": 13,
+            "possibleRackIds": [
+              13
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2623,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B29:C29",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 2080 Ti",
+              "count": 6,
+              "maxW": 260
+            }
+          ]
+        },
+        {
+          "type": "Nas",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ08-Nas-4",
+          "model": "Nas (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 8,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 500,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-8",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-10",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "2U"
+          },
+          "estimatedU": 2,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "snapshot_only_unreconciled",
+          "sourceRef": "첨부 JSON 대전-2",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "정송",
+          "assetId": "DJ01-server-6",
+          "model": "RTX 3080 x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 1,
+            "possibleRackIds": [
+              1
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2445,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B25:C25",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3080",
+              "count": 4,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ07-server-1",
+          "model": "TITAN RTX x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 7,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2134,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B9:C9",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN RTX",
+              "count": 4,
+              "maxW": 280
+            }
+          ]
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 장비 구성: 김기응: TITAN RTX x 4 (4U, 2.13kW/대) ×1; 최재식: 서버 구성 미확인 — 원본 JSON 수량 보존 (8U, 4.89kW/대) ×1; 신진우: RTX 2080 Ti x 6 (4U, 2.62kW/대) ×1; 주재걸: Nas (모델 미상) (4U, 0.50kW/대) ×1; 김기응: 서버 구성 미확인 — 원본 JSON 수량 보존 (2U, 4.89kW/대) ×1; 정송: RTX 3080 x 4 (4U, 2.44kW/대) ×1; 주재걸: TITAN RTX x 4 (4U, 2.13kW/대) ×1. 임시 점유. 원배정 명의 '한동수' 유지. 7대 이전: DJ02-server-5, DJ03-server-4, DJ13-server-6, DJ08-Nas-4, DJ02-server-10, DJ01-server-6, DJ07-server-1. 계획 점유 30/32U, 계획 AC 최대 19.61kW / 가정 상한 24kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 9,
+      "labNominal": "신기정",
+      "labActual": "신기정",
+      "detail": "4U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 2
+        }
+      ],
+      "serverCount": 2,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 10,
+      "labNominal": "예종철",
+      "labActual": "예종철",
+      "detail": "2U x 1, 4U x 7",
+      "items": [
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 7
+        }
+      ],
+      "serverCount": 8,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 11,
+      "labNominal": "예종철",
+      "labActual": "예종철",
+      "detail": "4U x 3, 2U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 3
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 12,
+      "labNominal": "심현정",
+      "labActual": "심현정",
+      "detail": "8U x 3",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 3
+        }
+      ],
+      "serverCount": 3,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 13,
+      "labNominal": "이기민",
+      "labActual": "이기민",
+      "detail": "4U x 1, 2U x 3, 1U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 3
+        },
+        {
+          "type": "server",
+          "size": "1U",
+          "count": 1
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 14,
+      "labNominal": "이기민",
+      "labActual": "이기민",
+      "detail": "4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1
+        }
+      ],
+      "serverCount": 1,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 15,
+      "labNominal": "안성수",
+      "labActual": "안성수",
+      "detail": "8U x 6",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 6
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 16,
+      "labNominal": "안성수",
+      "labActual": "안성수",
+      "detail": "8U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 17,
+      "labNominal": "김승룡",
+      "labActual": "김승룡",
+      "detail": "?U x 4",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 4
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 18,
+      "labNominal": "김승룡",
+      "labActual": "김승룡",
+      "detail": "?U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 2
+        }
+      ],
+      "serverCount": 2,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 19,
+      "labNominal": "황성주",
+      "labActual": "황성주",
+      "detail": "?U x 8",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 8
+        }
+      ],
+      "serverCount": 8,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 20,
+      "labNominal": "황성주",
+      "labActual": "황성주",
+      "detail": "?U x 6",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 6
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 21,
+      "labNominal": "황성주",
+      "labActual": "황성주",
+      "detail": "?U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 2
+        }
+      ],
+      "serverCount": 2,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 22,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "detail": "8U x 7",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 7
+        }
+      ],
+      "serverCount": 7,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 23,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "detail": "8U x 4, 4U x 4",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 4
+        }
+      ],
+      "serverCount": 8,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 24,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "detail": "8U x 5, 4U x 3",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 5
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 3
+        }
+      ],
+      "serverCount": 8,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 25,
+      "labNominal": "신기정",
+      "labActual": "신기정",
+      "detail": "4U x 6",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 6
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 26,
+      "labNominal": "신진우",
+      "labActual": "신진우",
+      "detail": "4U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 27,
+      "labNominal": "신진우",
+      "labActual": "신진우",
+      "detail": "4U x 4, 2U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 2
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 28,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "detail": "4U x 10",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 10
+        }
+      ],
+      "serverCount": 10,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 29,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "detail": "4U x 5, 3U x 5, 2U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 5
+        },
+        {
+          "type": "server",
+          "size": "3U",
+          "count": 5
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 2
+        }
+      ],
+      "serverCount": 12,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 30,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "detail": "4U x 2, 3U x 4, 2U x 2, 2U x 3, 1U x 3",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 2
+        },
+        {
+          "type": "server",
+          "size": "3U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 2
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 3
+        },
+        {
+          "type": "server",
+          "size": "1U",
+          "count": 3
+        }
+      ],
+      "serverCount": 14,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 31,
+      "labNominal": "김기응",
+      "labActual": "주재걸 / 김기응 / 정송 / 신진우",
+      "detail": "4U x 1, 8U x 1, 4U x 1, 4U x 1, 4U x 1, 4U x 1, 4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ08-server-1",
+          "model": "RTX 2080 Ti x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 8,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2045,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B10:C10",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 2080 Ti",
+              "count": 4,
+              "maxW": 260
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ05-server-3",
+          "model": "RTX 3090 x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 5,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4000,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B5:C5",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 8,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-2",
+          "model": "RTX 3090 x 1 + RTX 3090 Ti x 1",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 1778,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B36:C36",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 1,
+              "maxW": 350
+            },
+            {
+              "model": "RTX 3090 Ti",
+              "count": 1,
+              "maxW": 450
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-3",
+          "model": "RTX 3090 Ti x 2",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 1889,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B37:C37",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090 Ti",
+              "count": 2,
+              "maxW": 450
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ06-server-5",
+          "model": "TITAN RTX x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 6,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2134,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B9:C9",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN RTX",
+              "count": 4,
+              "maxW": 280
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "정송",
+          "assetId": "DJ01-server-1",
+          "model": "RTX 3090 x 5",
+          "origin": {
+            "room": "대전",
+            "rackId": 1,
+            "possibleRackIds": [
+              1
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2834,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B20:C20",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 5,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "신진우",
+          "assetId": "DJ13-server-1",
+          "model": "TITAN Xp x 4",
+          "origin": {
+            "room": "대전",
+            "rackId": 13,
+            "possibleRackIds": [
+              13
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 2223,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B26:C26",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "TITAN Xp",
+              "count": 4,
+              "maxW": 300
+            }
+          ]
+        }
+      ],
+      "serverCount": 7,
+      "empty": false,
+      "reclaimable": false,
+      "note": "정리 완료 (Free)\n[C · 3순위 빈 랙까지 허용] 장비 구성: 주재걸: RTX 2080 Ti x 4 (4U, 2.04kW/대) ×1; 주재걸: RTX 3090 x 8 (8U, 4.00kW/대) ×1; 김기응: RTX 3090 x 1 + RTX 3090 Ti x 1 (4U, 1.78kW/대) ×1; 김기응: RTX 3090 Ti x 2 (4U, 1.89kW/대) ×1; 주재걸: TITAN RTX x 4 (4U, 2.13kW/대) ×1; 정송: RTX 3090 x 5 (4U, 2.83kW/대) ×1; 신진우: TITAN Xp x 4 (4U, 2.22kW/대) ×1. 임시 점유. 원배정 명의 '김기응' 유지. 7대 이전: DJ08-server-1, DJ05-server-3, DJ02-server-2, DJ02-server-3, DJ06-server-5, DJ01-server-1, DJ13-server-1. 계획 점유 32/32U, 계획 AC 최대 16.90kW / 가정 상한 24kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 32,
+      "labNominal": "김기응",
+      "labActual": "김기응 / 주재걸 / 윤세영 / 최재식",
+      "detail": "2U x 1, 8U x 1, 4U x 1, 8U x 1, Desktop x 1, Hub x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1,
+          "owner": "김기응",
+          "assetId": "DJ02-server-9",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 2,
+            "possibleRackIds": [
+              2
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "2U"
+          },
+          "estimatedU": 2,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "snapshot_only_unreconciled",
+          "sourceRef": "첨부 JSON 대전-2",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "주재걸",
+          "assetId": "DJ05-server-6",
+          "model": "RTX 3090 x 8",
+          "origin": {
+            "room": "대전",
+            "rackId": 5,
+            "possibleRackIds": [
+              5,
+              6,
+              7,
+              8
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4000,
+          "specStatus": "gpu_known_chassis_assumed",
+          "sourceRef": "대전 서버실 세부현황.xlsx 시트1 B5:C5",
+          "inventoryAdditional": false,
+          "gpus": [
+            {
+              "model": "RTX 3090",
+              "count": 8,
+              "maxW": 350
+            }
+          ]
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1,
+          "owner": "윤세영",
+          "assetId": "DJ09-server-4",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 9,
+            "possibleRackIds": [
+              9
+            ],
+            "rackMappingVerified": false,
+            "originalSize": "4U"
+          },
+          "estimatedU": 4,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "snapshot_only_unreconciled",
+          "sourceRef": "첨부 JSON 대전-9",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ03-server-3",
+          "model": "서버 구성 미확인 — 원본 JSON 수량 보존",
+          "origin": {
+            "room": "대전",
+            "rackId": 3,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": "?U"
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 4889,
+          "specStatus": "gpu_aggregate_only",
+          "sourceRef": "첨부 JSON 대전-3",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "Desktop",
+          "size": "8U",
+          "count": 1,
+          "owner": "양은호",
+          "assetId": "DJ11-Desktop-2",
+          "model": "Desktop (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 11,
+            "possibleRackIds": [],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 8,
+          "estimatedMaxPowerW": 1000,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-11",
+          "inventoryAdditional": false
+        },
+        {
+          "type": "Hub",
+          "size": "1U",
+          "count": 1,
+          "owner": "최재식",
+          "assetId": "DJ03-Hub-6",
+          "model": "Hub (모델 미상)",
+          "origin": {
+            "room": "대전",
+            "rackId": 3,
+            "possibleRackIds": [
+              3,
+              4
+            ],
+            "rackMappingVerified": true,
+            "originalSize": null
+          },
+          "estimatedU": 1,
+          "estimatedMaxPowerW": 200,
+          "specStatus": "assumed_auxiliary",
+          "sourceRef": "첨부 JSON 대전-3",
+          "inventoryAdditional": false
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": "정리 완료 (Free)\n[C · 3순위 빈 랙까지 허용] 장비 구성: 김기응: 서버 구성 미확인 — 원본 JSON 수량 보존 (2U, 4.89kW/대) ×1; 주재걸: RTX 3090 x 8 (8U, 4.00kW/대) ×1; 윤세영: 서버 구성 미확인 — 원본 JSON 수량 보존 (4U, 4.89kW/대) ×1; 최재식: 서버 구성 미확인 — 원본 JSON 수량 보존 (8U, 4.89kW/대) ×1; 양은호: Desktop (모델 미상) (8U, 1.00kW/대) ×1; 최재식: Hub (모델 미상) (1U, 0.20kW/대) ×1. 임시 점유. 원배정 명의 '김기응' 유지. 6대 이전: DJ02-server-9, DJ05-server-6, DJ09-server-4, DJ03-server-3, DJ11-Desktop-2, DJ03-Hub-6. 계획 점유 31/32U, 계획 AC 최대 19.87kW / 가정 상한 24kW. 전원·실측 U 미검증. 보조장비/장비별 모델·전력은 JSON 항목 model/estimatedU/estimatedMaxPowerW 참조.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 1,
+      "labNominal": "정송",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 2,
+      "labNominal": "김기응",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 3,
+      "labNominal": "최재식",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 4,
+      "labNominal": "최재식",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 5,
+      "labNominal": "주재걸",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 6,
+      "labNominal": "주재걸",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 7,
+      "labNominal": "주재걸",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 8,
+      "labNominal": "주재걸",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 9,
+      "labNominal": "윤세영",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 10,
+      "labNominal": "윤세영",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 11,
+      "labNominal": "양은호",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 12,
+      "labNominal": "예종철",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 13,
+      "labNominal": "신진우",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "타 학과 건물에 추가 랙 사용중\n[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 14,
+      "labNominal": "최윤재",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 15,
+      "labNominal": "최윤재",
+      "labActual": "이전 완료",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": "[C · 3순위 빈 랙까지 허용] 대전 폐쇄 계획. 랙별 서버·GPU 매칭 미확인분은 연구실 내 임시 대응이며 자산 확인 필요.",
+      "shared": false,
+      "infra": false
+    }
+  ],
+  "settings": {
+    "rooms": {
+      "홍릉": {
+        "coolingKW": 316,
+        "rackCount": 25,
+        "kwPerRack": 12.64,
+        "maxServersPerRack": 4
+      },
+      "양재": {
+        "coolingKW": 560,
+        "rackCount": 32,
+        "kwPerRack": 17.5,
+        "maxServersPerRack": 6
+      },
+      "대전": {
+        "coolingKW": 116,
+        "rackCount": 15,
+        "kwPerRack": 7.733333333333333,
+        "maxServersPerRack": 2.5
+      }
+    },
+    "serverKW": 3,
+    "physicalSlots": 8,
+    "facultyCurrent": 22,
+    "faculty2026": 4,
+    "faculty2027": 10
+  },
+  "plans": [],
+  "migration": {
+    "scenario": "C · 3순위 빈 랙까지 허용",
+    "conditional": true,
+    "cardinalityOptimal": false,
+    "cardinalityUpperBound": 78,
+    "physicalVerified": false,
+    "electricalVerified": false,
+    "baselineFile": "server-status-2026-10-24T02-16-12-024Z.json",
+    "baselineSHA256": "b434557e606869235854c7b7be87025dad8a2959d4b294c88444282a1e04b963",
+    "equipmentCount": 78,
+    "serverCount": 67,
+    "auxiliaryCount": 11,
+    "fullyEvacuated": true,
+    "inventoryReconciliation": "Conservative upper envelope: 65 baseline servers plus 2 additional inventory servers, 19 configurations unresolved; not a verified asset register.",
+    "assumptions": {
+      "usableRackU": 32,
+      "planningRackUsablePowerKW": {
+        "홍릉": 18,
+        "양재": 24
+      },
+      "masterPreservedHR1": {
+        "u": 4,
+        "powerW": 800
+      },
+      "powerFormula": "known GPU board maxima + 800W host, divided by 0.90 PSU efficiency; unknown chassis 4400W/0.90; auxiliary AC estimates",
+      "coolingNotElectrical": true
+    },
+    "remainingDevices": [],
+    "destinationRacks": [
+      {
+        "room": "홍릉",
+        "rackId": 1,
+        "priority": 1,
+        "totalU": 32,
+        "totalMaxPowerW": 15735,
+        "devices": [
+          "DJ03-server-1",
+          "DJ04-server-4",
+          "DJ09-server-2",
+          "DJ02-server-7"
+        ]
+      },
+      {
+        "room": "홍릉",
+        "rackId": 2,
+        "priority": 1,
+        "totalU": 30,
+        "totalMaxPowerW": 17034,
+        "devices": [
+          "DJ09-server-1",
+          "DJ02-server-8",
+          "DJ15-server-3",
+          "DJ13-server-5",
+          "DJ08-Nas-5"
+        ]
+      },
+      {
+        "room": "홍릉",
+        "rackId": 3,
+        "priority": 1,
+        "totalU": 32,
+        "totalMaxPowerW": 17691,
+        "devices": [
+          "DJ15-server-5",
+          "DJ09-server-3",
+          "DJ01-server-4",
+          "DJ06-server-4",
+          "DJ03-server-2"
+        ]
+      },
+      {
+        "room": "홍릉",
+        "rackId": 4,
+        "priority": 1,
+        "totalU": 32,
+        "totalMaxPowerW": 17913,
+        "devices": [
+          "DJ05-server-7",
+          "DJ14-server-2",
+          "DJ05-server-2",
+          "DJ04-server-5",
+          "DJ02-server-4"
+        ]
+      },
+      {
+        "room": "홍릉",
+        "rackId": 5,
+        "priority": 1,
+        "totalU": 31,
+        "totalMaxPowerW": 17902,
+        "devices": [
+          "DJ04-server-1",
+          "DJ02-server-11",
+          "DJ07-server-3",
+          "DJ07-server-2",
+          "DJ02-server-1",
+          "DJ03-Nas-9",
+          "DJ-unlocated-주재걸-20",
+          "DJ03-Hub-7"
+        ]
+      },
+      {
+        "room": "홍릉",
+        "rackId": 6,
+        "priority": 1,
+        "totalU": 31,
+        "totalMaxPowerW": 15446,
+        "devices": [
+          "DJ15-server-6",
+          "DJ08-server-2",
+          "DJ06-server-3",
+          "DJ01-server-2",
+          "DJ03-Hub-8"
+        ]
+      },
+      {
+        "room": "양재",
+        "rackId": 31,
+        "priority": 1,
+        "totalU": 32,
+        "totalMaxPowerW": 16903,
+        "devices": [
+          "DJ08-server-1",
+          "DJ05-server-3",
+          "DJ02-server-2",
+          "DJ02-server-3",
+          "DJ06-server-5",
+          "DJ01-server-1",
+          "DJ13-server-1"
+        ]
+      },
+      {
+        "room": "양재",
+        "rackId": 32,
+        "priority": 1,
+        "totalU": 31,
+        "totalMaxPowerW": 19867,
+        "devices": [
+          "DJ02-server-9",
+          "DJ05-server-6",
+          "DJ09-server-4",
+          "DJ03-server-3",
+          "DJ11-Desktop-2",
+          "DJ03-Hub-6"
+        ]
+      },
+      {
+        "room": "양재",
+        "rackId": 6,
+        "priority": 2,
+        "totalU": 32,
+        "totalMaxPowerW": 16612,
+        "devices": [
+          "DJ04-server-3",
+          "DJ06-server-2",
+          "DJ04-server-6",
+          "DJ14-server-1",
+          "DJ07-Nas-5"
+        ]
+      },
+      {
+        "room": "양재",
+        "rackId": 7,
+        "priority": 2,
+        "totalU": 32,
+        "totalMaxPowerW": 11756,
+        "devices": [
+          "DJ11-Desktop-1",
+          "DJ05-server-4",
+          "DJ13-server-3",
+          "DJ15-server-4"
+        ]
+      },
+      {
+        "room": "양재",
+        "rackId": 8,
+        "priority": 2,
+        "totalU": 30,
+        "totalMaxPowerW": 19614,
+        "devices": [
+          "DJ02-server-5",
+          "DJ03-server-4",
+          "DJ13-server-6",
+          "DJ08-Nas-4",
+          "DJ02-server-10",
+          "DJ01-server-6",
+          "DJ07-server-1"
+        ]
+      },
+      {
+        "room": "홍릉",
+        "rackId": 9,
+        "priority": 3,
+        "totalU": 29,
+        "totalMaxPowerW": 16435,
+        "devices": [
+          "DJ15-server-1",
+          "DJ13-server-4",
+          "DJ07-server-4",
+          "DJ12-Terminal-1",
+          "DJ13-server-7",
+          "DJ13-server-2"
+        ]
+      },
+      {
+        "room": "홍릉",
+        "rackId": 10,
+        "priority": 3,
+        "totalU": 32,
+        "totalMaxPowerW": 17778,
+        "devices": [
+          "DJ04-server-2",
+          "DJ03-server-5",
+          "DJ15-server-2",
+          "DJ05-server-5"
+        ]
+      },
+      {
+        "room": "홍릉",
+        "rackId": 11,
+        "priority": 3,
+        "totalU": 32,
+        "totalMaxPowerW": 16014,
+        "devices": [
+          "DJ05-server-1",
+          "DJ01-server-3",
+          "DJ06-server-1",
+          "DJ02-server-6",
+          "DJ-unlocated-주재걸-19",
+          "DJ08-Nas-3",
+          "DJ01-server-5"
+        ]
+      }
+    ]
+  }
+}
