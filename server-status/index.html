@@ -23,6 +23,10 @@
   .server-handle { border:1px solid var(--border); border-radius:4px; background:var(--panel); color:var(--text); font:inherit; font-size:10px; padding:4px; cursor:grab; }
   .server-handle.active { outline:2px solid var(--c-occupied); }
   .server-handles > span { flex-basis:100%; }
+  .migration-loader { flex-basis:100%; display:flex; flex-wrap:wrap; gap:10px; align-items:center; padding-top:12px; border-top:1px solid var(--border); font-size:13px; color:var(--text-muted); }
+  .migration-loader select { min-width:0; max-width:100%; padding:8px; border:1px solid var(--border); border-radius:6px; background:var(--panel); color:var(--text); font:inherit; }
+  .migration-loader a { text-decoration:none; }
+  .migration-loader > span { flex-basis:100%; line-height:1.5; }
   .workspace-toolbar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; max-width:1180px; margin:0 auto 24px; }
   .workspace-toolbar [role] { flex-basis:100%; font-size:13px; color:var(--text-muted); line-height:1.5; }
   .workspace-toolbar .chip { display:inline-flex; align-items:center; justify-content:center; min-height:36px; margin:0; line-height:1.5; }
@@ -244,7 +248,7 @@ function RackElevation({ rack, onSelect, selected, editMode, picked, onPick, onM
           return <button type="button" key={`${itemIndex}-${unit}`} className={`server-handle${active ? " active" : ""}`} draggable
             aria-pressed={!!active} title="드래그하여 이동 · 클릭하여 선택 · Shift+클릭하여 범위 추가 선택 · Ctrl/⌘+클릭하여 삭제"
             onClick={e => { if (e.ctrlKey || e.metaKey) onMove(source,null); else onPick(source,e.shiftKey); }} onContextMenu={e => { if(e.ctrlKey) e.preventDefault(); }} onDragStart={e => { e.stopPropagation(); const sources = active ? picked : [source]; if (!active) onPick(source); e.dataTransfer.setData("application/x-gpu-server",JSON.stringify(sources)); e.dataTransfer.effectAllowed = "move"; }}>
-            {item.size || "?U"} · {unit + 1}
+            {item.owner || rack.labActual} · {item.size || "?U"} · {unit + 1}
           </button>;
         }) : [])}
         <span className="rack-slot-summary">{rack.serverCount ? "서버를 다른 랙으로 드래그" : "여기에 서버 놓기"}</span>
@@ -282,7 +286,7 @@ function DetailPanel({ rack, onClose, onEdit }) {
         ) : (
           rack.items.map((it, idx) => (
             <div className="detail-row" key={idx}>
-              <span className="detail-row-type">{it.type}{it.size ? ` (${it.size})` : ""}</span>
+              <span className="detail-row-type">{it.type}{it.size ? ` (${it.size})` : ""}{it.owner ? ` · ${it.owner}` : ""}</span>
               <span className="detail-row-count">{it.count != null ? `×${it.count}` : ""}</span>
             </div>
           ))
@@ -519,13 +523,30 @@ function changeServer(racks, source, target) {
   const to = target && next.find(r => r.room === target.room && r.rackId === target.rackId);
   if (target && (!to || to.infra || to === from)) return racks;
   if (from.infra) return racks;
-  if (to) to.items.push({...item, count:1});
+  // Resolve legacy rack-level ownership before mixing servers from different labs.
+  for (const rack of [from, to].filter(Boolean)) {
+    rack.items.forEach(i => { if (i.type === "server" && !i.owner) i.owner = rack.labActual; });
+  }
+  if (to) {
+    to.items.push({...item, count:1});
+    to.reclaimable = false;
+  }
   item.count -= 1;
   if (!item.count) from.items.splice(source.itemIndex,1);
   for (const r of next) {
     r.serverCount = r.items.filter(i => i.type === "server").reduce((n,i) => n+i.count,0);
     r.empty = r.items.length === 0;
     r.detail = r.items.map(i => `${i.type === "server" ? i.size || "?U" : i.type} x ${i.count}`).join(", ") || "0";
+  }
+  for (const rack of [from, to].filter(Boolean)) {
+    const owners = [...new Set(rack.items.filter(i => i.type === "server").map(i => i.owner))];
+    if (owners.length) {
+      rack.labActual = owners.join(" / ");
+      rack.shared = owners.every(owner => owner === "학과 공용");
+    } else if (rack.empty) {
+      rack.labActual = "미배정";
+      rack.shared = false;
+    }
   }
   return next;
 }
@@ -568,6 +589,8 @@ function GPUDashboard({ onCommit, storageMessage }) {
   };
   const RACK_DATA = draftRacks || liveRacks();
   const editMode = draftRacks !== null;
+  const editModeRef = React.useRef(editMode);
+  editModeRef.current = editMode;
   const moveServer = (source,target) => { setDraftRacks(racks => changeServers(racks,Array.isArray(source) ? source : [source],target)); setPicked([]); setSelectionAnchor(null); setSelected(null); };
   const discardEditing = () => { setDraftRacks(null); setPicked([]); setSelectionAnchor(null); setSelected(null); setEditing(null); };
   useEffect(() => {
@@ -1481,7 +1504,7 @@ function GPUDashboard({ onCommit, storageMessage }) {
         </div>
       </div>
 
-      <fieldset className="workspace-lock" disabled={editMode}><WorkspaceToolbar plans={savedPlans} onCommit={onCommit} message={storageMessage} onSettings={() => setSettingsOpen(true)} /></fieldset>
+      <fieldset className="workspace-lock" disabled={editMode}><WorkspaceToolbar plans={savedPlans} onCommit={data => { if(editModeRef.current) { window.alert("수정 모드를 종료한 뒤 불러오세요."); return; } onCommit(data); }} message={storageMessage} onSettings={() => setSettingsOpen(true)} /></fieldset>
       {view === "rack" && <div className="rack-edit-toolbar">
         <button className={`chip${editMode ? " active" : ""}`} onClick={() => { if(editMode) discardEditing(); else { setDraftRacks(clone(liveRacks())); setSelected(null); } }}>{editMode ? "수정 모드 끄기 (취소)" : "수정 모드 켜기"}</button>
         {editMode && <>
@@ -1489,7 +1512,7 @@ function GPUDashboard({ onCommit, storageMessage }) {
           <button className="chip" disabled={!draftState.past.length} onClick={undoEdit}>실행 취소 ({draftState.past.length})</button>
           <button className="chip" disabled={!picked.length} onClick={() => { if(picked.length) moveServer(picked,null); }}>선택 서버 삭제</button>
           <span role="status">{picked.length ? `서버 ${picked.length}대 선택됨` : "클릭으로 선택 · Shift+클릭으로 범위 추가 선택"}</span>
-          <span className="edit-note">저장 전 임시 편집 중 · 모드를 끄면 변경 취소 · Shift+클릭: 범위 추가 선택 · Ctrl/⌘+클릭: 서버 즉시 삭제 · Ctrl/⌘+Z: 실행 취소 · 랙 명의는 유지됩니다. 상단 집계는 저장 후 반영됩니다.</span>
+          <span className="edit-note">저장 전 임시 편집 중 · 모드를 끄면 변경 취소 · Shift+클릭: 범위 추가 선택 · Ctrl/⌘+클릭: 서버 즉시 삭제 · Ctrl/⌘+Z: 실행 취소 · 배정 명의는 유지되며 실사용자는 서버 소유자를 따릅니다. 상단 집계는 저장 후 반영됩니다.</span>
         </>}
       </div>}
       {editing && <RackEditor rack={editing} onClose={() => setEditing(null)} onSave={(rack) => { const racks = RACK_DATA.map(r => r.room === rack.room && r.rackId === rack.rackId ? rack : r); if(editMode) { const data = normalizeWorkspace({...snapshot(savedPlans),racks}); setDraftRacks(data.racks); setEditing(null); setSelected(null); setPicked([]); setSelectionAnchor(null); } else onCommit({...snapshot(savedPlans),racks}); }} />}
@@ -1945,7 +1968,13 @@ function normalizeWorkspace(input) {
     if (!text(r.labNominal) || !text(r.labActual) || !Array.isArray(r.items)) fail("배정 명의, 실사용자와 장비 목록을 확인하세요.");
     if (![r.shared,r.infra,r.reclaimable].every(v => typeof v === "boolean") || (r.shared && r.infra)) fail("랙 상태를 확인하세요.");
     if (r.note != null && typeof r.note !== "string") fail("비고는 문자열이어야 합니다.");
-    r.items.forEach(i => { if (!text(i.type) || !Number.isSafeInteger(i.count) || i.count < 1 || (i.size != null && typeof i.size !== "string")) fail("장비 종류와 1 이상의 정수 수량을 입력하세요."); });
+    r.items.forEach(i => { if (!text(i.type) || !Number.isSafeInteger(i.count) || i.count < 1 || (i.size != null && typeof i.size !== "string") || (i.owner != null && !text(i.owner))) fail("장비 종류와 1 이상의 정수 수량을 입력하세요."); });
+    const ownedServers = r.items.filter(i => i.type === "server");
+    if (ownedServers.length && ownedServers.every(i => i.owner)) {
+      const owners = [...new Set(ownedServers.map(i => i.owner))];
+      r.labActual = owners.join(" / ");
+      r.shared = !r.infra && owners.every(owner => owner === "학과 공용");
+    }
     r.serverCount = r.items.filter(i => i.type === "server").reduce((n,i) => n+i.count,0);
     r.empty = r.items.length === 0;
     r.detail = r.items.map(i => `${i.type === "server" ? i.size || "?U" : i.type} x ${i.count}`).join(", ") || "0";
@@ -1998,8 +2027,27 @@ function Workspace() {
   };
   return <GPUDashboard key={state.revision} onCommit={commit} storageMessage={state.message} />;
 }
+const MIGRATION_PLANS = [
+  {file:"01-priority1-partial.json",label:"A · 1순위 8랙 · 55대 이전 / 23대 잔류"},
+  {file:"02-priority2-partial.json",label:"B · 2순위까지 11랙 · 67대 이전 / 11대 잔류"},
+  {file:"03-priority3-conditional-full.json",label:"C · 3순위까지 14랙 · 조건부 전체 이전"},
+];
 function WorkspaceToolbar({ plans, onCommit, message, onSettings }) {
   const [error,setError] = useState("");
+  const [planFile,setPlanFile] = useState(MIGRATION_PLANS[0].file);
+  const [loading,setLoading] = useState(false);
+  const loadMigrationPlan = async () => {
+    setLoading(true); setError("");
+    try {
+      const selectedPlan = MIGRATION_PLANS.find(plan => plan.file === planFile);
+      if (!selectedPlan) throw new Error("플랜을 선택하세요.");
+      const response = await fetch(new URL(`plans/${selectedPlan.file}`, window.location.href));
+      if (!response.ok) throw new Error(`플랜을 가져올 수 없습니다 (${response.status}).`);
+      const data = normalizeWorkspace(await response.json());
+      if (window.confirm(`${selectedPlan.label}\n\n홍릉 1–6번 공용 서버 30대 추가 폐기를 가정합니다. 실제 U·전원 용량 미검증의 조건부 계획입니다.\n현재 현황·설정·저장 계획을 교체할까요? 필요한 경우 먼저 JSON을 내보내세요.`)) onCommit(data);
+    } catch(e) { setError(`플랜 불러오기 실패: ${e.message}`); }
+    finally { setLoading(false); }
+  };
   const exportJSON = () => {
     const url = URL.createObjectURL(new Blob([JSON.stringify(snapshot(plans), null, 2)], { type: "application/json" }));
     const a = document.createElement("a"); a.href = url; a.download = `server-status-${new Date().toISOString().replace(/[:.]/g,"-")}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url),1000);
@@ -2018,6 +2066,15 @@ function WorkspaceToolbar({ plans, onCommit, message, onSettings }) {
     <label className="chip file-import">JSON 불러오기<input aria-label="JSON 불러오기" type="file" accept=".json,application/json" onChange={importJSON} /></label>
     <button className="chip" onClick={onSettings}>계산 설정</button>
     <button className="chip" onClick={() => { if(window.confirm("현황·계산 설정·저장 계획을 초기 상태로 되돌릴까요? 필요한 경우 먼저 JSON을 내보내세요.")) onCommit(clone(INITIAL_WORKSPACE)); }}>초기 현황 복원</button>
+    <div className="migration-loader">
+      <label htmlFor="migration-plan">대전 이전 플랜</label>
+      <select id="migration-plan" value={planFile} disabled={loading} onChange={e => setPlanFile(e.target.value)}>
+        {MIGRATION_PLANS.map(plan => <option key={plan.file} value={plan.file}>{plan.label}</option>)}
+      </select>
+      <button className="chip" disabled={loading} onClick={loadMigrationPlan}>{loading ? "불러오는 중…" : "플랜 불러오기"}</button>
+      <a className="chip" href="plans/migration-report.md" target="_blank" rel="noopener noreferrer">배치·가정 보고서</a>
+      <span>2026-10-24 기준 · 실제 U·전원 미검증 · 불러오면 현재 현황을 교체합니다.</span>
+    </div>
     <div role="status">{message}</div>{error && <div role="alert">{error}</div>}
   </div>;
 }
@@ -2032,17 +2089,21 @@ function RackEditor({ rack, onClose, onSave }) {
   const itemUpdate = (index,key,value) => update("items",draft.items.map((it,i) => i === index ? {...it,[key]:value} : it));
   return <EditorShell title={`${rack.room} R${rack.rackId} 수정`} onClose={onClose} onSubmit={() => onSave(draft)}>
     <label>배정 명의<input required value={draft.labNominal} onChange={e => update("labNominal",e.target.value)} /></label>
-    <label>실사용 연구실<input required value={draft.labActual} onChange={e => update("labActual",e.target.value)} /></label>
+    <label>실사용 연구실<input required value={draft.labActual} onChange={e => {
+      const name = e.target.value;
+      setDraft(d => ({...d,labActual:name,items:d.items.map(i => i.type === "server" ? {...i,owner:name} : i)}));
+    }} /></label>
     <label>용도<select value={draft.infra ? "infra" : draft.shared ? "shared" : "lab"} onChange={e => setDraft(d => ({...d,infra:e.target.value === "infra",shared:e.target.value === "shared"}))}><option value="lab">개별 연구실</option><option value="shared">학과 공용</option><option value="infra">인프라</option></select></label>
     <label><input type="checkbox" checked={draft.reclaimable} onChange={e => update("reclaimable",e.target.checked)} /> 회수 가능</label>
     <h3>설치 장비</h3><p>장비가 없으면 빈 랙으로 표시합니다. 서버 수는 server 장비 수량으로 계산합니다.</p>
     {draft.items.map((it,i) => <div className="editor-item" key={i}>
       <label>종류<select value={it.type} onChange={e => itemUpdate(i,"type",e.target.value)}>{[...new Set(["server","Master","Storage","Nas","Hub","Desktop","Terminal",it.type])].map(t => <option key={t}>{t}</option>)}</select></label>
+      {it.type === "server" && <label>소유자<input required value={it.owner || draft.labActual} onChange={e => itemUpdate(i,"owner",e.target.value)} /></label>}
       <label>크기<input placeholder="4U / ?U" value={it.size || ""} onChange={e => itemUpdate(i,"size",e.target.value || null)} /></label>
       <label>수량<input required type="number" min="1" step="1" value={it.count} onChange={e => itemUpdate(i,"count",Number(e.target.value))} /></label>
       <button type="button" onClick={() => update("items",draft.items.filter((_,j) => i !== j))}>삭제</button>
     </div>)}
-    <button type="button" onClick={() => update("items",[...draft.items,{type:"server",size:"?U",count:1}])}>장비 추가</button>
+    <button type="button" onClick={() => update("items",[...draft.items,{type:"server",size:"?U",count:1,owner:draft.labActual}])}>장비 추가</button>
     <label>비고<textarea value={draft.note || ""} onChange={e => update("note",e.target.value)} /></label>
   </EditorShell>;
 }
