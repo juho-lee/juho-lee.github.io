@@ -8,13 +8,13 @@ const context = vm.createContext({});
 vm.runInContext(fs.readFileSync(path.join(root, 'report.js'), 'utf8'), context);
 const api = context.GPUReport;
 const load = name => JSON.parse(fs.readFileSync(path.join(root, 'plans', name + '.json')));
-const complete = '03-priority3-conditional-full';
+const complete = '03-priority3-partial';
 
 test('scenario room totals reconcile and include auxiliary devices', () => {
   for (const [name, emptyHR, emptyYJ, moved, retained] of [
-    ['01-priority1-partial', 6, 3, 55, 23],
-    ['02-priority2-partial', 6, 0, 67, 11],
-    [complete, 3, 0, 78, 0]
+    ['01-priority1-partial', 1, 3, 55, 23],
+    ['02-priority2-partial', 1, 0, 67, 11],
+    [complete, 0, 0, 71, 7]
   ]) {
     const report = api.build(load(name));
     const rows = report.sections.find(s => s.title === '서버실별 잔여 랙').rows;
@@ -33,22 +33,22 @@ test('scenario room totals reconcile and include auxiliary devices', () => {
 test('nominal temporary use is distinct from existing equipment mixing', () => {
   const report = api.build(load(complete));
   const section = report.sections.find(s => s.title === '대전 이전에 사용한 공간의 성격');
-  assert.deepEqual(Array.from(section.rows, r => r[1]), [8,0,3,3]);
+  assert.deepEqual(Array.from(section.rows, r => r[1]), [2,0,4,6]);
   assert.equal(report.occupancy.filter(r => r.mixedFaculty).length, 0);
   assert.equal(report.occupancy.filter(r => r.mixedExisting).length, 1);
-  assert.equal(report.occupancy.find(r => r.rack.room === '홍릉' && r.rack.rackId === 1).knownPower, false);
+  assert.equal(report.occupancy.find(r => r.rack.room === '홍릉' && r.rack.rackId === 8).knownPower, false);
 });
 
 test('explicit faculty reservations override defaults, source totals follow live edits', () => {
   const data = load(complete);
-  data.racks.find(r => r.room === '홍릉' && r.rackId === 12).allocationCategory = 'newFaculty';
+  data.racks.find(r => r.room === '홍릉' && r.rackId === 25).allocationCategory = 'newFaculty';
   let report = api.build(data);
-  assert.equal(report.sections.find(s => s.title === '서버실별 잔여 랙').rows[0][6], 1);
+  assert.equal(report.occupancy.find(r => r.rack.room === '홍릉' && r.rack.rackId === 25).category, 'newFaculty');
   const rack = data.racks.find(r => r.items.some(i => i.origin?.room === '대전'));
   const index = rack.items.findIndex(i => i.origin?.room === '대전');
   rack.items.splice(index,1);
   report = api.build(data);
-  assert.equal(report.occupancy.flatMap(r => r.incoming).reduce((n,i) => n+i.count,0), 77);
+  assert.equal(report.occupancy.flatMap(r => r.incoming).reduce((n,i) => n+i.count,0), 70);
 });
 
 test('missing provenance cannot fabricate routes; output escapes user content', () => {

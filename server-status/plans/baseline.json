@@ -1,0 +1,2136 @@
+{
+  "format": "gpu-server-status",
+  "version": 1,
+  "savedAt": "2026-10-24T02:16:12.020Z",
+  "racks": [
+    {
+      "room": "홍릉",
+      "rackId": 1,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "?U x 5, Master x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        },
+        {
+          "type": "Master",
+          "size": null,
+          "count": 1
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 2,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "?U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 3,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "?U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 4,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "?U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 5,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "?U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 6,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "?U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 7,
+      "labNominal": "윤세영",
+      "labActual": "윤세영",
+      "detail": "8U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 1
+        }
+      ],
+      "serverCount": 1,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 8,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "Master x 1, Storage x 1",
+      "items": [
+        {
+          "type": "Master",
+          "size": null,
+          "count": 1
+        },
+        {
+          "type": "Storage",
+          "size": null,
+          "count": 1
+        }
+      ],
+      "serverCount": 0,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 9,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 10,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 11,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 12,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 13,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": true,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 14,
+      "labNominal": "서민준",
+      "labActual": "서민준",
+      "detail": "?U x 1, ?U x 2, Nas x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 1
+        },
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 2
+        },
+        {
+          "type": "Nas",
+          "size": null,
+          "count": 1
+        }
+      ],
+      "serverCount": 3,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 15,
+      "labNominal": "이주호",
+      "labActual": "이주호",
+      "detail": "8U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 16,
+      "labNominal": "이주호",
+      "labActual": "이주호",
+      "detail": "8U x 3, 1U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 3
+        },
+        {
+          "type": "server",
+          "size": "1U",
+          "count": 1
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 17,
+      "labNominal": "윤철희",
+      "labActual": "윤철희",
+      "detail": "8U x 4",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 18,
+      "labNominal": "윤철희",
+      "labActual": "윤철희",
+      "detail": "8U x 4, 2U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 19,
+      "labNominal": "심현정",
+      "labActual": "심현정",
+      "detail": "8U x 4",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 20,
+      "labNominal": "심현정",
+      "labActual": "심현정",
+      "detail": "8U x 4",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 21,
+      "labNominal": "임재환",
+      "labActual": "임재환",
+      "detail": "4U x 3",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 3
+        }
+      ],
+      "serverCount": 3,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 22,
+      "labNominal": "임재환",
+      "labActual": "임재환",
+      "detail": "4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1
+        }
+      ],
+      "serverCount": 1,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 23,
+      "labNominal": "김범준",
+      "labActual": "김범준",
+      "detail": "?U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 24,
+      "labNominal": "김범준",
+      "labActual": "김범준",
+      "detail": "?U x 7",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 7
+        }
+      ],
+      "serverCount": 7,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "홍릉",
+      "rackId": 25,
+      "labNominal": "서민준",
+      "labActual": "서민준",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 1,
+      "labNominal": "네트워크",
+      "labActual": "네트워크",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": true
+    },
+    {
+      "room": "양재",
+      "rackId": 2,
+      "labNominal": "최윤재",
+      "labActual": "최윤재",
+      "detail": "?U x 6",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 6
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 3,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "detail": "?U x 4, Nas x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 4
+        },
+        {
+          "type": "Nas",
+          "size": null,
+          "count": 1
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 4,
+      "labNominal": "윤세영",
+      "labActual": "윤세영",
+      "detail": "8U x 4, 3U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "3U",
+          "count": 1
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 5,
+      "labNominal": "오성준",
+      "labActual": "오성준",
+      "detail": "4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1
+        }
+      ],
+      "serverCount": 1,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 6,
+      "labNominal": "오성준",
+      "labActual": "오성준",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 7,
+      "labNominal": "한동수",
+      "labActual": "한동수",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 8,
+      "labNominal": "한동수",
+      "labActual": "한동수",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 9,
+      "labNominal": "신기정",
+      "labActual": "신기정",
+      "detail": "4U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 2
+        }
+      ],
+      "serverCount": 2,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 10,
+      "labNominal": "예종철",
+      "labActual": "예종철",
+      "detail": "2U x 1, 4U x 7",
+      "items": [
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 7
+        }
+      ],
+      "serverCount": 8,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 11,
+      "labNominal": "예종철",
+      "labActual": "예종철",
+      "detail": "4U x 3, 2U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 3
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 12,
+      "labNominal": "심현정",
+      "labActual": "심현정",
+      "detail": "8U x 3",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 3
+        }
+      ],
+      "serverCount": 3,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 13,
+      "labNominal": "이기민",
+      "labActual": "이기민",
+      "detail": "4U x 1, 2U x 3, 1U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 3
+        },
+        {
+          "type": "server",
+          "size": "1U",
+          "count": 1
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 14,
+      "labNominal": "이기민",
+      "labActual": "이기민",
+      "detail": "4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1
+        }
+      ],
+      "serverCount": 1,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 15,
+      "labNominal": "안성수",
+      "labActual": "안성수",
+      "detail": "8U x 6",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 6
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 16,
+      "labNominal": "안성수",
+      "labActual": "안성수",
+      "detail": "8U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 17,
+      "labNominal": "김승룡",
+      "labActual": "김승룡",
+      "detail": "?U x 4",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 4
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 18,
+      "labNominal": "김승룡",
+      "labActual": "김승룡",
+      "detail": "?U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 2
+        }
+      ],
+      "serverCount": 2,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 19,
+      "labNominal": "황성주",
+      "labActual": "황성주",
+      "detail": "?U x 8",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 8
+        }
+      ],
+      "serverCount": 8,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 20,
+      "labNominal": "황성주",
+      "labActual": "황성주",
+      "detail": "?U x 6",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 6
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 21,
+      "labNominal": "황성주",
+      "labActual": "황성주",
+      "detail": "?U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 2
+        }
+      ],
+      "serverCount": 2,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 22,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "detail": "8U x 7",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 7
+        }
+      ],
+      "serverCount": 7,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 23,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "detail": "8U x 4, 4U x 4",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 4
+        }
+      ],
+      "serverCount": 8,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 24,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "detail": "8U x 5, 4U x 3",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 5
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 3
+        }
+      ],
+      "serverCount": 8,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 25,
+      "labNominal": "신기정",
+      "labActual": "신기정",
+      "detail": "4U x 6",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 6
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 26,
+      "labNominal": "신진우",
+      "labActual": "신진우",
+      "detail": "4U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 27,
+      "labNominal": "신진우",
+      "labActual": "신진우",
+      "detail": "4U x 4, 2U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 2
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 28,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "detail": "4U x 10",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 10
+        }
+      ],
+      "serverCount": 10,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 29,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "detail": "4U x 5, 3U x 5, 2U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 5
+        },
+        {
+          "type": "server",
+          "size": "3U",
+          "count": 5
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 2
+        }
+      ],
+      "serverCount": 12,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 30,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "detail": "4U x 2, 3U x 4, 2U x 2, 2U x 3, 1U x 3",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 2
+        },
+        {
+          "type": "server",
+          "size": "3U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 2
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 3
+        },
+        {
+          "type": "server",
+          "size": "1U",
+          "count": 3
+        }
+      ],
+      "serverCount": 14,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 31,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": true,
+      "note": "정리 완료 (Free)",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "양재",
+      "rackId": 32,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": true,
+      "note": "정리 완료 (Free)",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 1,
+      "labNominal": "정송",
+      "labActual": "정송",
+      "detail": "4U x 4, ?U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 4
+        },
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 2
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 2,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "detail": "4U x 6, 2U x 2, 2U x 1, 2U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 6
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 2
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 1
+        },
+        {
+          "type": "server",
+          "size": "2U",
+          "count": 2
+        }
+      ],
+      "serverCount": 11,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 3,
+      "labNominal": "최재식",
+      "labActual": "최재식",
+      "detail": "?U x 5, Hub x 3, Nas x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        },
+        {
+          "type": "Hub",
+          "size": null,
+          "count": 3
+        },
+        {
+          "type": "Nas",
+          "size": null,
+          "count": 1
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 4,
+      "labNominal": "최재식",
+      "labActual": "최재식",
+      "detail": "?U x 5, ?U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        },
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 1
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 5,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "detail": "?U x 7",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 7
+        }
+      ],
+      "serverCount": 7,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 6,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "detail": "?U x 5",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 5
+        }
+      ],
+      "serverCount": 5,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 7,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "detail": "?U x 4, Nas x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 4
+        },
+        {
+          "type": "Nas",
+          "size": null,
+          "count": 1
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 8,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "detail": "?U x 2, Nas x 3",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 2
+        },
+        {
+          "type": "Nas",
+          "size": null,
+          "count": 3
+        }
+      ],
+      "serverCount": 2,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 9,
+      "labNominal": "윤세영",
+      "labActual": "윤세영",
+      "detail": "8U x 3, 4U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "8U",
+          "count": 3
+        },
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 1
+        }
+      ],
+      "serverCount": 4,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 10,
+      "labNominal": "윤세영",
+      "labActual": "윤세영",
+      "detail": "0",
+      "items": [],
+      "serverCount": 0,
+      "empty": true,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 11,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "detail": "Desktop x 2",
+      "items": [
+        {
+          "type": "Desktop",
+          "size": null,
+          "count": 2
+        }
+      ],
+      "serverCount": 0,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 12,
+      "labNominal": "예종철",
+      "labActual": "예종철",
+      "detail": "Terminal x 1",
+      "items": [
+        {
+          "type": "Terminal",
+          "size": null,
+          "count": 1
+        }
+      ],
+      "serverCount": 0,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 13,
+      "labNominal": "신진우",
+      "labActual": "신진우",
+      "detail": "4U x 6, 1U x 1",
+      "items": [
+        {
+          "type": "server",
+          "size": "4U",
+          "count": 6
+        },
+        {
+          "type": "server",
+          "size": "1U",
+          "count": 1
+        }
+      ],
+      "serverCount": 7,
+      "empty": false,
+      "reclaimable": false,
+      "note": "타 학과 건물에 추가 랙 사용중",
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 14,
+      "labNominal": "최윤재",
+      "labActual": "최윤재",
+      "detail": "?U x 2",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 2
+        }
+      ],
+      "serverCount": 2,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    },
+    {
+      "room": "대전",
+      "rackId": 15,
+      "labNominal": "최윤재",
+      "labActual": "최윤재",
+      "detail": "?U x 6",
+      "items": [
+        {
+          "type": "server",
+          "size": "?U",
+          "count": 6
+        }
+      ],
+      "serverCount": 6,
+      "empty": false,
+      "reclaimable": false,
+      "note": null,
+      "shared": false,
+      "infra": false
+    }
+  ],
+  "settings": {
+    "rooms": {
+      "홍릉": {
+        "coolingKW": 316,
+        "rackCount": 25,
+        "kwPerRack": 12.64,
+        "maxServersPerRack": 4
+      },
+      "양재": {
+        "coolingKW": 560,
+        "rackCount": 32,
+        "kwPerRack": 17.5,
+        "maxServersPerRack": 6
+      },
+      "대전": {
+        "coolingKW": 116,
+        "rackCount": 15,
+        "kwPerRack": 7.733333333333333,
+        "maxServersPerRack": 2.5
+      }
+    },
+    "serverKW": 3,
+    "physicalSlots": 8,
+    "facultyCurrent": 22,
+    "faculty2026": 4,
+    "faculty2027": 10
+  },
+  "plans": [],
+  "reportBaseline": [
+    {
+      "room": "홍릉",
+      "rackId": 1,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 2,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 3,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 4,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 5,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 6,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 7,
+      "labNominal": "윤세영",
+      "labActual": "윤세영",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 8,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 9,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 10,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 11,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 12,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 13,
+      "labNominal": "학과 공용",
+      "labActual": "학과 공용",
+      "infra": false,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 14,
+      "labNominal": "서민준",
+      "labActual": "서민준",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 15,
+      "labNominal": "이주호",
+      "labActual": "이주호",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 16,
+      "labNominal": "이주호",
+      "labActual": "이주호",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 17,
+      "labNominal": "윤철희",
+      "labActual": "윤철희",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 18,
+      "labNominal": "윤철희",
+      "labActual": "윤철희",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 19,
+      "labNominal": "심현정",
+      "labActual": "심현정",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 20,
+      "labNominal": "심현정",
+      "labActual": "심현정",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 21,
+      "labNominal": "임재환",
+      "labActual": "임재환",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 22,
+      "labNominal": "임재환",
+      "labActual": "임재환",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 23,
+      "labNominal": "김범준",
+      "labActual": "김범준",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 24,
+      "labNominal": "김범준",
+      "labActual": "김범준",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "홍릉",
+      "rackId": 25,
+      "labNominal": "서민준",
+      "labActual": "서민준",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 1,
+      "labNominal": "네트워크",
+      "labActual": "네트워크",
+      "infra": true,
+      "allocationCategory": "unknown"
+    },
+    {
+      "room": "양재",
+      "rackId": 2,
+      "labNominal": "최윤재",
+      "labActual": "최윤재",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 3,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 4,
+      "labNominal": "윤세영",
+      "labActual": "윤세영",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 5,
+      "labNominal": "오성준",
+      "labActual": "오성준",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 6,
+      "labNominal": "오성준",
+      "labActual": "오성준",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 7,
+      "labNominal": "한동수",
+      "labActual": "한동수",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 8,
+      "labNominal": "한동수",
+      "labActual": "한동수",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 9,
+      "labNominal": "신기정",
+      "labActual": "신기정",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 10,
+      "labNominal": "예종철",
+      "labActual": "예종철",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 11,
+      "labNominal": "예종철",
+      "labActual": "예종철",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 12,
+      "labNominal": "심현정",
+      "labActual": "심현정",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 13,
+      "labNominal": "이기민",
+      "labActual": "이기민",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 14,
+      "labNominal": "이기민",
+      "labActual": "이기민",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 15,
+      "labNominal": "안성수",
+      "labActual": "안성수",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 16,
+      "labNominal": "안성수",
+      "labActual": "안성수",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 17,
+      "labNominal": "김승룡",
+      "labActual": "김승룡",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 18,
+      "labNominal": "김승룡",
+      "labActual": "김승룡",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 19,
+      "labNominal": "황성주",
+      "labActual": "황성주",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 20,
+      "labNominal": "황성주",
+      "labActual": "황성주",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 21,
+      "labNominal": "황성주",
+      "labActual": "황성주",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 22,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 23,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 24,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 25,
+      "labNominal": "신기정",
+      "labActual": "신기정",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 26,
+      "labNominal": "신진우",
+      "labActual": "신진우",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 27,
+      "labNominal": "신진우",
+      "labActual": "신진우",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 28,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 29,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 30,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 31,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "infra": false,
+      "allocationCategory": "unassigned"
+    },
+    {
+      "room": "양재",
+      "rackId": 32,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "infra": false,
+      "allocationCategory": "unassigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 1,
+      "labNominal": "정송",
+      "labActual": "정송",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 2,
+      "labNominal": "김기응",
+      "labActual": "김기응",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 3,
+      "labNominal": "최재식",
+      "labActual": "최재식",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 4,
+      "labNominal": "최재식",
+      "labActual": "최재식",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 5,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 6,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 7,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 8,
+      "labNominal": "주재걸",
+      "labActual": "주재걸",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 9,
+      "labNominal": "윤세영",
+      "labActual": "윤세영",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 10,
+      "labNominal": "윤세영",
+      "labActual": "윤세영",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 11,
+      "labNominal": "양은호",
+      "labActual": "양은호",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 12,
+      "labNominal": "예종철",
+      "labActual": "예종철",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 13,
+      "labNominal": "신진우",
+      "labActual": "신진우",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 14,
+      "labNominal": "최윤재",
+      "labActual": "최윤재",
+      "infra": false,
+      "allocationCategory": "assigned"
+    },
+    {
+      "room": "대전",
+      "rackId": 15,
+      "labNominal": "최윤재",
+      "labActual": "최윤재",
+      "infra": false,
+      "allocationCategory": "assigned"
+    }
+  ],
+  "baselineRevision": "2026-10-28-no-extra-decommission"
+}
